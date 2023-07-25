@@ -10,8 +10,16 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+    
         <script>
+
+        
+            function myalertpodibmmq() {
+                alert("fundtransfer-ibm-mq-0 \n fundtransfer-ibm-mq-1 \n fundtransfer-ibm-mq-2");
+            }
+        
+            
+        </script>
         
 
     </head>
@@ -310,10 +318,36 @@
                                         <ol class="breadcrumb mb-4">
                                             <li class="breadcrumb-item active"><b>Queues</b></li>
                                         </ol>
+                                        <p class="mb-0">We have created queues “transfer.reply” and. “transfer.request” through config and it is already setup. We will now verify and confirm the setup.</p>
+                                        <ol>
+                                            <li>Go to Integration Instances -> click fundtransfer</li>
+                                            <img src="assets/img/CP4ISetup/image048.png" alt="Usecase" class="center" object-fit="none"/>
+
+                                            <li>Click Manage -> you will see custom queue manager has started running</li>
+                                            <img src="assets/img/CP4ISetup/image049.png" alt="Usecase" class="center" object-fit="none"/>
+
+                                            <li>You will find transfer.reply and transfer.request queues. We will test the queue at the later stage</li>
+                                            <img src="assets/img/CP4ISetup/image050.png" alt="Usecase" class="center" object-fit="none"/>
+                                        </ol>
 
                                         <ol class="breadcrumb mb-4">
-                                            <li class="breadcrumb-item active"><b>Verify Pods</b></li>
+                                            <li class="breadcrumb-item active"><b>Assignment</b></li>
                                         </ol>
+
+
+                                            <div class="card mb-4">
+                                                <div class="card-header">
+                                                    <i class="fas fa-table me-1"></i>
+                                                    Quiz: What are the pods installed for "fundtransfer" Queue Manager ?
+                                                </div>
+                                                <div class="card-body">
+                                                    <form action="/url" method="GET">
+                                                        <input type="text">
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                            <input type="submit" value="Submit"class="submit-btn" onclick="myalertpodibmmq()" />
                                         </ol>
                                     
                                     </ol>
