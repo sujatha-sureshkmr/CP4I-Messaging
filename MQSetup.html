@@ -288,7 +288,7 @@
                                         <p class="mb-0">An OpenShift Container Platform route exposes a service at a host name, such as www.example.com, so that external clients can reach it by name. We will configure the route for cp4i.</p>
                                         <ol>
                                             <li>Go to ocp console -> Networking -> Route -> Create Route. Use the project cp4i</li>
-                                            <img src="assets/img/CP4ISetup/image046.png" alt="Usecase" class="center" object-fit="none"/>
+                                            <img src="assets/img/CP4ISetup/image047.png" alt="Usecase" class="center" object-fit="none"/>
 
                                             <li>Create a route using the yaml given below and then click create</li>
                                             <code>kind: Route </br> 
@@ -313,7 +313,7 @@
                                                   port: </br> 
                                                     targetPort: qmgr </br> 
                                                 </code>
-                                            <img src="assets/img/CP4ISetup/image047.png" alt="Usecase" class="center" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image048.png" alt="Usecase" class="center" object-fit="contain"/>
                                         </br> 
                                         </ol>
                                         <ol class="breadcrumb mb-4">
@@ -322,13 +322,13 @@
                                         <p class="mb-0">We have created queues “transfer.reply” and. “transfer.request” through config and it is already setup. We will now verify and confirm the setup.</p>
                                         <ol>
                                             <li>Go to Integration Instances -> click fundtransfer</li>
-                                            <img src="assets/img/CP4ISetup/image048.png" alt="Usecase" class="center" object-fit="none"/>
-
-                                            <li>Click Manage -> you will see custom queue manager has started running</li>
                                             <img src="assets/img/CP4ISetup/image049.png" alt="Usecase" class="center" object-fit="none"/>
 
-                                            <li>You will find transfer.reply and transfer.request queues. We will test the queue at the later stage</li>
+                                            <li>Click Manage -> you will see custom queue manager has started running</li>
                                             <img src="assets/img/CP4ISetup/image050.png" alt="Usecase" class="center" object-fit="none"/>
+
+                                            <li>You will find transfer.reply and transfer.request queues. We will test the queue at the later stage</li>
+                                            <img src="assets/img/CP4ISetup/image051.png" alt="Usecase" class="center" object-fit="none"/>
                                         </ol>
 
                                         <ol class="breadcrumb mb-4">
