@@ -124,7 +124,7 @@
                                 <p class="mb-0">
                                     A Native HA configuration provides a highly available queue manager where the recoverable MQ data (for example, the messages)  are replicated across multiple sets of storage, preventing loss from storage failures. The queue manager consists of multiple running instances, one is the leader, the others are ready to quickly take over in the event of a failure, maximizing access to the queue manager and its messages. 
                                 </p>
-                                <img src="assets/img/CP4ISetup/image022.jpg" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                <img src="assets/img/CP4ISetup/image022.jpg" alt="Usecase" class="center" object-fit="contain"/>
 
                                 <p class="mb-0"> We will now setup and configure MQ queue manager and queues.</p> </br>
                                 <ol class="breadcrumb mb-4">
@@ -133,9 +133,9 @@
                                 <p class="mb-0">The ConfigMap API object holds key-value pairs of configuration data that can be consumed in pods or used to store configuration data for system components such as controllers. ConfigMap is similar to secrets, but designed to more conveniently support working with strings that do not contain sensitive information. Let us configure the config map.</p>
                                 <ol>
                                     <li>Go to ocp console -> Workloads -> ConfigMaps</li>
-                                    <img src="assets/img/CP4ISetup/image023.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                    <img src="assets/img/CP4ISetup/image023.png" alt="Usecase" class="center" object-fit="contain"/>
                                     <li>We are working on the project “cp4i”. Click create ConfigMap</li>
-                                    <img src="assets/img/CP4ISetup/image024.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                    <img src="assets/img/CP4ISetup/image024.png" alt="Usecase" class="center" object-fit="contain"/>
                                     <li>Use the following options for the setup and click “Create”</li>
                                     <div class="card mb-4">
                                         <div class="card-header">
@@ -177,10 +177,10 @@
                                         </div>
                                     </div>
 
-                                    <img src="assets/img/CP4ISetup/image025.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                    <img src="assets/img/CP4ISetup/image025.png" alt="Usecase" class="center" object-fit="contain"/>
                                     <li>ConfigMap is successfully created in namespace “cp4i”</li>
 
-                                    <img src="assets/img/CP4ISetup/image026.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                    <img src="assets/img/CP4ISetup/image026.png" alt="Usecase" class="center" object-fit="contain"/>
                                     </ol>
 
                                     <ol class="breadcrumb mb-4">
@@ -189,7 +189,7 @@
                                     <p class="mb-0">Now we will create the license key used for IBM MQ</p>
                                     <ol>
                                         <li>Go to ocp console -> Workloads -> Secrets -> Click Create -> From YAML</li>
-                                        <img src="assets/img/CP4ISetup/image027.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                        <img src="assets/img/CP4ISetup/image027.png" alt="Usecase" class="center" object-fit="contain"/>
                                     </br>
                                         <li>There are many ways to create configurations, one way is through yaml. Copy the yaml content given here and paste in the ocp console. Click "Create"</li>
                                         <code>kind: Secret </br>
@@ -204,11 +204,11 @@
                                             </br>
                                               type: Opaque
                                             </code>
-                                        <img src="assets/img/CP4ISetup/image028.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                        <img src="assets/img/CP4ISetup/image028.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                         <li>Secret key is successfully created in the namespace cp4i</li>
 
-                                        <img src="assets/img/CP4ISetup/image029.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                        <img src="assets/img/CP4ISetup/image029.png" alt="Usecase" class="center" object-fit="contain"/>
 
 
                                         <ol class="breadcrumb mb-4">
@@ -217,55 +217,55 @@
                                         <p class="mb-0">A queue manager is a program that provides messaging services to applications. Applications that use the Message Queue Interface (MQI) can put messages on queues and get messages from queues. The queue manager ensures that messages are sent to the correct queue or are routed to another queue manager. Let us now login to CP4I navigator console to configure queue manager</p>
                                         <ol>
                                             <li>Go to the environment details page -> “Cloud Pak Console’ -> copy and paste “login info for the CP4I Navigator console” in a text editor. You will need this information throughout this lab.</li>
-                                            <img src="assets/img/CP4ISetup/image030.png" alt="Usecase" class="imagesmall" object-fit="object-fit"/>
+                                            <img src="assets/img/CP4ISetup/image030.png" alt="Usecase" class="center" object-fit="object-fit"/>
 
                                             <li>Login to CP4I Navigator console. Log in with “IBM provided credentials (admin only)”. Use the credentials given in the environment details</li>
-                                            <img src="assets/img/CP4ISetup/image031.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image031.png" alt="Usecase" class="center" object-fit="contain"/>
 
 
                                             <li>From the welcome screen -> click Integration Instances</li>
-                                            <img src="assets/img/CP4ISetup/image032.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image032.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                             <li>Click “Create Instance”</li>
-                                            <img src="assets/img/CP4ISetup/image033.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image033.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                             <li>Click “Messaging” -> Next</li>
-                                            <img src="assets/img/CP4ISetup/image034.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image034.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                             <li>Click “Production (Custom)” -> Next</li>
-                                            <img src="assets/img/CP4ISetup/image035.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image035.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                             <li>Follow the following configurations: </li>
                                             <ol type="a">
                                                 <li>UI Form is chosen by default. Enable advanced settings</li>
-                                                <img src="assets/img/CP4ISetup/image036.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image036.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Name the queue manager as “fundtransfer”. Follow the options highlighted in red for licence configuration</li>
-                                                <img src="assets/img/CP4ISetup/image037.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image037.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>PKI configuration – follow the highlighted configurations</li>
-                                                <img src="assets/img/CP4ISetup/image038.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image038.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Choose Native HA for queue manager availability</li>
-                                                <img src="assets/img/CP4ISetup/image039.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image039.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Follow the red highlighted parts for config map configuration</li>
-                                                <img src="assets/img/CP4ISetup/image040.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image040.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Storage class configuration</li>
-                                                <img src="assets/img/CP4ISetup/image041.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image041.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Storage for queue manager and recovery logs</li>
-                                                <img src="assets/img/CP4ISetup/image042.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image042.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Configuration for security context </li>
-                                                <img src="assets/img/CP4ISetup/image043.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image043.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Configuration for version and web</li>
-                                                <img src="assets/img/CP4ISetup/image044.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image044.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>Now click create for queue manager creation.</li>
-                                                <img src="assets/img/CP4ISetup/image045.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                                <img src="assets/img/CP4ISetup/image045.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                                 <li>It would take 5 to 10 mins for the queue manager to be active</li>
                                                 
@@ -278,7 +278,7 @@
                                         <p class="mb-0">An OpenShift Container Platform route exposes a service at a host name, such as www.example.com, so that external clients can reach it by name. We will configure the route for cp4i.</p>
                                         <ol>
                                             <li>Go to ocp console -> Networking -> Route -> Create Route. Use the project cp4i</li>
-                                            <img src="assets/img/CP4ISetup/image046.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image046.png" alt="Usecase" class="center" object-fit="contain"/>
 
                                             <li>Create a route using the yaml given below and then click create</li>
                                             <code>kind: Route </br> 
@@ -303,7 +303,7 @@
                                                   port: </br> 
                                                     targetPort: qmgr </br> 
                                                 </code>
-                                            <img src="assets/img/CP4ISetup/image047.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image047.png" alt="Usecase" class="center" object-fit="contain"/>
                                         </br> 
                                         </ol>
                                         <ol class="breadcrumb mb-4">
