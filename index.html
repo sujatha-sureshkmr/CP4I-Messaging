@@ -14,7 +14,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">CP4I</a>
+            <a class="navbar-brand ps-3" href="index.html">CP4I Practicum</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search
@@ -102,7 +102,47 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Overview</h1>
+                        <h1 class="mt-4">MQ Modernization</h1>
+                        <h3 class="mt-4">CP4I Practicum</h3>
+                       
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Overview</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-book-open"></i>
+                                Funds Transfer Cloud Native Integration
+                            </div>
+                            <div class="card-body">
+                            <div>
+                                <p class="lead"><b>Use Case: Funds Transfer Scenario</b></p>
+                                <p class="lead">The bank needs to support the customers need to transfer payments/funds to registered receivers when the transfer is received at the backend the customer needs to be notified that the transfer was 
+initiated. Then once the processing is complete the customer will   receive a second notification that indicating the processing outcome
+</p>
+<img src="assets/img/intro/usecase.png" alt="Usecase" class="center" width="700" height="400"/>
+
+                            </div>
+
+                            <div>
+                                <p></p>
+                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
+                                <p class="lead"><ol>
+                                    <li>User triggers a transfer of funds from their mobile banking</li>
+                                    <li>Backend for Frontend service invokes call to backend systems invokes the API</li>
+                                    <li>API invokes persistent queue on the queue manager</li>
+                                    <li>The queue manager is configured to work with streaming queue which will post the message to the events for processing by the subscribed event consumers</li>
+                                    <li>Events are processed on the event brokers</li>
+                                    <li>Event consumers process the inbound event</li>
+                                    <li>Core banking processes the transfer</li>
+                                    <li>When processing is complete core banking triggers notification to the events to be picked up by the event consumers</li>
+                                  </ol>  
+</p>
+<img src="assets/img/intro/architecture.png" alt="Usecase" class="center" width="900" height="400"/>
+
+                            </div>
+                            </div>
+                            
+                        </div>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Environment Details</li>
                         </ol>
@@ -173,40 +213,6 @@
                                 </div>
                             </div>
                         </div>-->
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-book-open"></i>
-                                Funds Transfer Cloud Native Integration
-                            </div>
-                            <div class="card-body">
-                            <div>
-                                <p class="lead"><b>Funds Transfer Scenario</b></p>
-                                <p class="lead">The bank needs to support the customers need to transfer payments/funds to registered receivers when the transfer is received at the backend the customer needs to be notified that the transfer was 
-initiated. Then once the processing is complete the customer will   receive a second notification that indicating the processing outcome
-</p>
-<img src="assets/img/intro/usecase.png" alt="Usecase" class="center" width="700" height="400"/>
-
-                            </div>
-
-                            <div>
-                                <p></p>
-                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
-                                <p class="lead"><ol>
-                                    <li>User triggers a transfer of funds from their mobile banking</li>
-                                    <li>Backend for Frontend service invokes call to backend systems invokes the API</li>
-                                    <li>API invokes persistent queue on the queue manager</li>
-                                    <li>The queue manager is configured to work with streaming queue which will post the message to the events for processing by the subscribed event consumers</li>
-                                    <li>Events are processed on the event brokers</li>
-                                    <li>Event consumers process the inbound event</li>
-                                    <li>Core banking processes the transfer</li>
-                                    <li>When processing is complete core banking triggers notification to the events to be picked up by the event consumers</li>
-                                  </ol>  
-</p>
-<img src="assets/img/intro/architecture.png" alt="Usecase" class="center" width="900" height="400"/>
-
-                            </div>
-                            </div>
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
