@@ -42,72 +42,146 @@
                 </li>
             </ul>-->
     </nav>
-    <script id="replace_with_nav" src="nav.js"></script>
-    <div id="layoutSidenav_content">
-        <main>
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">MQ Modernization</h1>
-                <h3 class="mt-4">CP4I Practicum</h3>
-
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-book-open"></i>
-                        Table of Content
-                    </div>
-                    <div class="card-body">
-                        <div>
-
-
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <a class="nav-link" href="content.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Table Of Content
+                        </a>
+                        <div class="sb-sidenav-menu-heading">CP4I - Messaging</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4I Setup
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4isetuppreexisting.html">Existing configuration in OCP</a>
+                                <a class="nav-link" href="cp4isetupnewoperators.html">Installation of new operators</a>
+                            </nav>
                         </div>
 
-                        <div>
-                            <p></p>
-                            <p class="lead">
-                            <ol>
-                                <li><a href="index.html">Overview</a></li>
-                                <ul>
-                                    <li>Scenario</li>
-                                    <li>Objective</li>
-                                    <li>Solution</li>
-                                    <li> Details</li>
-                                </ul>
-                                <li>CP4I Setup</li>
-                                <ul>
-                                    <li><a href="cp4isetuppreexisting.html">Existing configuration in OCP</a></li>
-                                    <li><a href="cp4isetupnewoperators.html">Installation of new operators</a></li>
-                                    <li><a href="#">Setup external applications for queue generation (coming soon)</a>
-                                    </li>
-                                </ul>
-                                <li>Software Setup</li>
-                                <ul>
-                                    <li><a href="MQSetup.html">MQ</a></li>
-                                    <li><a href="EventstreamsSetup.html">Event Streams</a></li>
-                                    <li><a href="#">API Connect (coming soon)</a></li>
-                                </ul>
-                                <li><a href="#">Verify the initial scenario</a></li>
-                                <li><a href="#">Demo the whole solution</a></li>
-                            </ol>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Software Setup
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="MQSetup.html">MQ</a>
+                                <a class="nav-link" href="EventstreamsSetup.html">EventStreams</a>
+                                <a class="nav-link" href="apiSetup.html">API Connect</a>
 
+                            </nav>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Solution validation
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="#">Verify the initial scenario</a>
+                                <a class="nav-link" href="#">Demo the whole solution</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Addons</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Charts
+                        </a>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tables
+                        </a>
                     </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM Labs</div>
 
                 </div>
-
-            </div>
-    </div>
-    </main>
-    <footer class="py-4 bg-light mt-auto">
-        <div class="container-fluid px-4">
-            <div class="d-flex align-items-center justify-content-between small">
-                <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
-                <div>
-                    <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
-                    &middot;
-                    <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
-                </div>
-            </div>
+            </nav>
         </div>
-    </footer>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">MQ Modernization</h1>
+                    <h3 class="mt-4">CP4I Practicum</h3>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-book-open"></i>
+                            Table of Content
+                        </div>
+                        <div class="card-body">
+                            <div>
+
+
+                            </div>
+
+                            <div>
+                                <p></p>
+                                <p class="lead">
+                                <ol>
+                                    <li><a href="index.html">Overview</a></li>
+                                    <ul>
+                                        <li>Scenario</li>
+                                        <li>Objective</li>
+                                        <li>Solution</li>
+                                        <li> Details</li>
+                                    </ul>
+                                    <li>CP4I Setup</li>
+                                    <ul>
+                                        <li><a href="cp4isetuppreexisting.html">Existing configuration in OCP</a></li>
+                                        <li><a href="cp4isetupnewoperators.html">Installation of new operators</a></li>
+                                        <li><a href="#">Setup external applications for queue generation (coming
+                                                soon)</a>
+                                        </li>
+                                    </ul>
+                                    <li>Software Setup</li>
+                                    <ul>
+                                        <li><a href="MQSetup.html">MQ</a></li>
+                                        <li><a href="EventstreamsSetup.html">Event Streams</a></li>
+                                        <li><a href="#">API Connect (coming soon)</a></li>
+                                    </ul>
+                                    <li><a href="#">Verify the initial scenario</a></li>
+                                    <li><a href="#">Demo the whole solution</a></li>
+                                </ol>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+        </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                    <div>
+                        <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                        &middot;
+                        <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
