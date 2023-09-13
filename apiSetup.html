@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>CP4I - Messaging</title>
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+        
+<script>
+    function myalertoperator() {
+        alert("Packages name for the operators are: \nibm-integration-platform-navigator \nibm-mq  \nibm-appconnect  \nibm-apiconnect \ndatapower-operator");
+    }
+
+    function myalertpodibmmq() {
+        alert("ibm-mq-xxxxxxxxxxx-xxxxx");
+    }
+
+    
+</script>
+
+    </head>
+    <body>
+        <iframe src="headNav.html" title=="Navigation Header"></iframe>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Overview
+                            </a>
+                            <div class="sb-sidenav-menu-heading">CP4I - Messaging</div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                CP4I Setup
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="cp4isetuppreexisting.html">Existing configuration in OCP</a>
+                                    <a class="nav-link" href="cp4isetupnewoperators.html">Installation of new operators</a>
+                                </nav>
+                            </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Software Setup
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                            <a class="nav-link" href="MQSetup.html">MQ</a>
+                                            <a class="nav-link" href="EventstreamsSetup.html">EventStreams</a>
+                                            <a class="nav-link" href="apiSetup.html">API Setup</a>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Place Holder
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="cp4isetuppreexisting.html">Place Holder</a>
+                                            <a class="nav-link" href="cp4isetuppreexisting.html">Place Holder</a>
+                                            <a class="nav-link" href="cp4isetuppreexisting.html">Place Holder</a>
+                                        </nav>
+                                    </div>
+                                </nav>
+                            </div>
+                            <div class="sb-sidenav-menu-heading">Addons</div>
+                            <a class="nav-link" href="cp4isetuppreexisting.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="cp4isetuppreexisting.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">IBM CSM Labs</div>
+                        
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Installation of new operators</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
+                            <li class="breadcrumb-item active">Installation of new operators</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <p class="mb-0">
+                                    We will need additional operators for this lab. Operators we need for this lab are: 
+                                    <ol>
+                                    <li>IBM MQ</li>
+                                    <li>IBM App connect</li>
+                                    <li>IBM API connect</li>
+                                </ol>
+                                <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active"><b>IBM MQ</b></li>
+                                </ol>
+                                <p>IBM MQ is messaging middleware that simplifies and accelerates the integration of diverse applications and business data across multiple platforms. It uses message queues to facilitate the exchanges of information and offers a single messaging solution for cloud, mobile, Internet of Things (IoT) and on-premises environments.</p>
+
+<p>The IBM MQ Operator for Red Hat OpenShift Container Platform provides an easy way to manage the life cycle of IBM MQ queue managers.</p>
+<ol>
+<li>Go to OCP Console -> Operators-> Operator Hub -> Choose the project cp4i  -> filter by  IBM MQ </li>
+<img src="assets/img/CP4ISetup/image018.png" alt="Usecase" class="center" object-fit="contain"/>
+<li>Click Install</li>
+<img src="assets/img/CP4ISetup/image019.png" alt="Usecase" class="center" object-fit="contain"/>
+<li>We will need to choose the various options for the installation. You may refer to the details below. Note: It would take couple of minutes for the installation to complete.</li>
+<img src="assets/img/CP4ISetup/image020.png" alt="Usecase" class="center" object-fit="contain"/>
+<li>You will see a message of successful completion when the installation is complete.</li>
+<img src="assets/img/CP4ISetup/image021.png" alt="Usecase" class="center" object-fit="contain"/>
+<li>You can go to oc oc CLI to check on the installed pods.</li>
+<code>oc get pods</code>
+</br>
+
+</br>
+
+</ol>
+<p>Assignment<br>
+You will need to install following operators for this lab. Note: This would take 3-5 mins for each installation. <br>
+a. IBM Event Streams<br>
+b. IBM API Connect<br>
+c. IBM App Connect<br>
+</p>
+
+
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Quiz: What are the pods installed for IBM MQ?
+    </div>
+    <div class="card-body">
+        <form action="/url" method="GET">
+            <input type="text">
+        </form>
+    </div>
+</div>
+
+<input type="submit" value="Submit"class="submit-btn" onclick="myalertpodibmmq()" />
+
+
+</br></br>
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Quiz: What is the operators installed in cp4i namespace?
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Package Name</th>
+                </tr>
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <th>ibm platform navigator</th>
+                    <th><input type="string"></th>
+                </tr>
+                <tr>
+                    <th>ibm mq</th>
+                    <th><input type="string"></th>
+                </tr>
+                <tr>
+                    <th>ibm appconnect</th>
+                    <th><input type="string"></th>
+                </tr>
+                <tr>
+                    <th>ibm apiconnect</th>
+                    <th><input type="string"></th>
+                </tr>
+                <tr>
+                    <th>ibm streams</th>
+                    <th><input type="string"></th>
+                </tr>
+               
+               
+            </tbody>
+        </table>
+    </div>
+</div>
+<input type="submit" value="Submit"class="submit-btn" onclick="myalertoperator()" />
+
+</br>
+
+
+
+
+
+
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </main>
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div class="d-flex align-items-center justify-content-between small">
+                            <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                            <div>
+                                <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                                &middot;
+                                <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
