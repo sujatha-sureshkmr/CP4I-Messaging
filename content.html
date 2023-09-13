@@ -111,118 +111,50 @@
                         <h1 class="mt-4">MQ Modernization</h1>
                         <h3 class="mt-4">CP4I Practicum</h3>
                        
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Overview</li>
-                        </ol>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-book-open"></i>
-                                Funds Transfer Cloud Native Integration
+                               Table of Content
                             </div>
                             <div class="card-body">
                             <div>
                                 
 
                             </div>
-                            <div>
-                                <p class="lead"><b>Use Case: Funds Transfer Scenario</b></p>
-                                <p class="lead">The bank needs to support the customers need to transfer payments/funds to registered receivers when the transfer is received at the backend the customer needs to be notified that the transfer was 
-initiated. Then once the processing is complete the customer will   receive a second notification that indicating the processing outcome
-</p>
-<img src="assets/img/CP4ISetup/usecase.png" alt="Usecase" class="center" width="700" height="400"/>
-
-                            </div>
-
+                       
                             <div>
                                 <p></p>
-                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
-                                <p class="lead"><ol>
-                                    <li>User triggers a transfer of funds from their mobile banking</li>
-                                    <li>Backend for Frontend service invokes call to backend systems invokes the API</li>
-                                    <li>API invokes persistent queue on the queue manager</li>
-                                    <li>The queue manager is configured to work with streaming queue which will post the message to the events for processing by the subscribed event consumers</li>
-                                    <li>Events are processed on the event brokers</li>
-                                    <li>Event consumers process the inbound event</li>
-                                    <li>Core banking processes the transfer</li>
-                                    <li>When processing is complete core banking triggers notification to the events to be picked up by the event consumers</li>
+                                <p class="lead">
+                                    <ol>
+                                    <li><a href="index.html">Overview</a></li>
+                                    <ul>
+                                        <li>Scenario</li>
+                                        <li>Objective</li>
+                                        <li>Solution</li>
+                                        <li> Details</li>
+                                    </ul>
+                                    <li>CP4I Setup</li>
+                                    <ul>
+                                        <li><a href="cp4isetuppreexisting.html">Existing configuration in OCP</a></li>
+                                        <li><a href="cp4isetupnewoperators.html">Installation of new operators</a></li>
+                                        <li><a href="#">Setup external applications for queue generation (coming soon)</a></li>
+                                    </ul>
+                                    <li>Software Setup</li>
+                                    <ul>
+                                        <li><a href="MQSetup.html">MQ</a></li>
+                                        <li><a href="EventstreamsSetup.html">Event Streams</a></li>
+                                        <li><a href="#">API Connect (coming soon)</a></li>
+                                    </ul>
+                                    <li><a href="#">Verify the initial scenario</a></li>
+                                    <li><a href="#">Demo the whole solution</a></li>
                                   </ol>  
-</p>
-<img src="assets/img/CP4ISetup/architecture.png" alt="Usecase" class="center" width="900" height="400"/>
 
                             </div>
                             </div>
                             
                         </div>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Environment Details</li>
-                        </ol>
-                        <div class="row">
-                            <div class="col-xl-2 col-md-3">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Group 1</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-3">
-                                <div class="card bg-secondary text-white mb-4">
-                                    <div class="card-body">Group 2</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-3">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Group 3</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-3">
-                                <div class="card bg-info text-white mb-4">
-                                    <div class="card-body">Group 4</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-md-3">
-                                <div class="card bg-dark text-white mb-4">
-                                    <div class="card-body">Group 5</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                       
                         </div>
-                       <!-- <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>-->
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
