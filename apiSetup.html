@@ -14,8 +14,8 @@
         <script>
 
         
-            function myalertpodeventstreams() {
-                alert("Installed Operators -> IBM Event Streams -> EventStreams");
+            function myalertnewapifield() {
+                alert("1. Add new fields in swagger.json from other resources \n2. add it in getOrder_Mapping.map \n3.Regenerate bar files \n4.Upload the bar files and test it to confirm the new parameters are added.");
             }
             function myalertpodeventstreamsuser() {
                 alert("Installed Operators -> IBM Event Streams -> Kafka User");
@@ -128,218 +128,95 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">EventStreams Setup</h1>
+                        <h1 class="mt-4">API Setup</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
-                            <li class="breadcrumb-item active">EventStreams</li>
+                            <li class="breadcrumb-item active">App connect & API Setup</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
                                 <p class="mb-0">
-                                    Built on open source Apache Kafka, IBM Event Streams is an event-streaming platform that helps you build smart applications that can react to events as they happen. Some typical use cases for which Event Streams is a central piece are:
-                                    <ol>
-                                        <li>Creation of adaptive solutions: Use streams of data to build responsive, engaging user experiences. </li>
-                                        <li>Facilitate machine learning: Use events to move from batch processing to real-time and predictive analytics.</li>
-                                    </ol>
-                                    IBM Event Streams offers a fully managed Apache Kafka service, ensuring durability and high availability for your solutions. By using Event Streams, you have support around the clock from our team of Kafka experts. Apache Kafka is a distributed messaging system. A Kafka cluster consists of a set of brokers. A cluster has a minimum of three brokers.
+                                    Implementing a robust enterprise-grade messaging system that prioritizes security and reliability is essential for all types of applications within your backend integration framework.   
                                 </p>
 
-                                <p class="mb-0"> We will now setup and configure EventStreams & Topics.</p> </br>
+                                <p class="mb-0"> In this tutorial, you will establish a message queue designed to receive order data originating from an API call made to send a request to MQ. The diagram highlights the specific component you will be creating and its role within the broader architecture of a banking application where fund transfers are initiated.
+                                </p> </br>
                                 <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><b>EventStreams Instance</b></li>
+                                    <li class="breadcrumb-item active"><b>Installation of App Connect</b></li>
                                 </ol>
-                                <p class="mb-0">EventsStreams can be configured through OCP console, terminal, CP4I etc. Here we will guide you on how to setup using ocp ternimal to creat a production type eventstreams environment(ft-eventstreams) with 3 brokers. Apache Kafka is a distributed messaging system. A Kafka cluster consists of a set of brokers. A cluster has a minimum of three brokers.</p>
-                                <ol>
-                                    <li>Login to Openshift console. Copy oc login details. Login to Bastion terminal, perform oc login and oc project mapped to cp4i. Refer to the section (CP4I - Setup -> Existing Configuration in OCP -> Installed Pods).</li>
-                                    <!--<img src="assets/img/CP4ISetup/image023.png" alt="Usecase" class="center" object-fit="none"/>-->
-                                    <li>Create eventstreams.yaml file in oc terminal</li>
-                                    <code>vi eventstreams.yaml</code>
-                                    <li>Use the following yaml content, paste in the oc terminal. Save and exit from eventstreams.yaml</li>
-                                    <code>apiVersion: eventstreams.ibm.com/v1beta2 </br> 
-                                        kind: EventStreams  </br> 
-                                        metadata: </br> 
-                                          annotations: </br> 
-                                            eventstreams.ibm.com/apicurio-registry-version: '>=2.4' </br> 
-                                          namespace: cp4i </br> 
-                                          name: ft-eventstreams </br> 
-                                        spec: </br> 
-                                          version: latest </br> 
-                                          license: </br> 
-                                            accept: true </br> 
-                                            license: L-YBXJ-ADJNSM </br> 
-                                            use: CloudPakForIntegrationProduction </br> 
-                                          adminApi: {} </br> 
-                                          adminUI: </br> 
-                                            authentication: </br> 
-                                              - type: scram-sha-512 </br> 
-                                          apicurioRegistry: {} </br> 
-                                          collector: {} </br> 
-                                          restProducer: {} </br> 
-                                          strimziOverrides: </br> 
-                                            entityOperator:  </br> 
-                                                topicOperator: {} </br> 
-                                            kafka: </br> 
-                                              replicas: 3 </br> 
-                                              authorization: </br> 
-                                                type: custom </br> 
-                                                authorizerClass: com.ibm.eventstreams.runas.authorizer.RunAsAuthorizer </br> 
-                                                supportsAdminApi: true </br> 
-                                              config: </br> 
-                                                inter.broker.protocol.version: '3.5' </br> 
-                                                log.cleaner.threads: 6 </br> 
-                                                num.io.threads: 24 </br> 
-                                                num.network.threads: 9 </br> 
-                                                num.replica.fetchers: 3 </br> 
-                                                offsets.topic.replication.factor: 3 </br> 
-                                                default.replication.factor: 3 </br> 
-                                                min.insync.replicas: 2 </br> 
-                                              listeners: </br> 
-                                                - name: external </br> 
-                                                  port: 9094 </br> 
-                                                  type: route </br> 
-                                                  tls: true </br> 
-                                                  authentication: </br> 
-                                                    type: scram-sha-512 </br> 
-                                                - name: tls </br> 
-                                                  port: 9093 </br> 
-                                                  type: internal </br> 
-                                                  tls: true </br> 
-                                                  authentication: </br> 
-                                                    type: tls </br> 
-                                              metricsConfig: </br> 
-                                                type: jmxPrometheusExporter </br> 
-                                                valueFrom: </br> 
-                                                  configMapKeyRef: </br> 
-                                                    key: kafka-metrics-config.yaml </br> 
-                                                    name: prod-3-brokers-metrics-config </br> 
-                                              resources: </br> 
-                                                requests: </br> 
-                                                  memory: 8096Mi </br> 
-                                                  cpu: 2000m </br> 
-                                                limits: </br> 
-                                                  memory: 8096Mi </br> 
-                                                  cpu: 2000m </br> 
-                                              storage: </br> 
-                                                type: persistent-claim </br> 
-                                                size: 10Gi </br> 
-                                                class: ocs-storagecluster-ceph-rbd </br> 
-                                            zookeeper: </br> 
-                                              replicas: 3 </br> 
-                                              metricsConfig: </br> 
-                                                type: jmxPrometheusExporter </br> 
-                                                valueFrom: </br> 
-                                                  configMapKeyRef: </br> 
-                                                    key: zookeeper-metrics-config.yaml </br> 
-                                                    name: prod-3-brokers-metrics-config </br> 
-                                              storage: </br> 
-                                                type: persistent-claim </br> 
-                                                size: 4Gi </br> 
-                                                class: ocs-storagecluster-ceph-rbd </br> 
-                                          requestIbmServices: </br> 
-                                            iam: true </br> 
-                                            monitoring: true </br> 
-                                        </code> 
-                                    <li>Apply the changes to oc</li>
-                                    <code>oc apply -f eventstreams.yaml</code>
-                                    </ol>
-                                     
-                                    <p class="mb-0"></p> </br>
+                                <p class="mb-0">Refer to this link for App Connect installation</p> </br>
+                                <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-installing-software">Installation of App Connect</a></li>                                    <p class="mb-0"></p> </br>
                                     <ol class="breadcrumb mb-4">
-                                        <li class="breadcrumb-item active"><b>Kafka User</b></li>
+                                        <li class="breadcrumb-item active"><b>Configure App Connect Enterprise Toolkit for MQ</b></li>
                                     </ol>
-                                    <p class="mb-0"> We will now create a kafka user (event-admin) using oc terminal. The purpose of this Kafka user are as follows:
+                                    <p class="mb-0"> We will now setup App connect for MQ transfer.request queue.
                                     
                                         <ol>
-                                            <li>This kafka user generates SCRAM-SHA-512 credentials for a producer and consumer application.</li>
-                                            <li>It grants permissions to produce to or consume from any topic.</li>
-                                            <li>It grants permission to read any schema.</li>
-                                        </ol></p> 
+                                            <li>Go to bastion terminal and login to oc. Note: change the default project to cp4i. (refer to installed pods)</li>
+                                            <li>Prior to launching the App Connect Enterprise toolkit, it's important to verify the IP address for IBM MQ. In the terminal window, you can accomplish this by executing the OpenShift command: 'oc get svc -n cp4i | grep mq'. This command will provide you with a list of services within the designated namespaces. Please make note of the IP address, which, in this case, is '172.30.221.139', and ensure that it corresponds to the port '1414'.</li>
+                                            <img src="assets/img/CP4ISetup/image054.png" alt="Usecase" class="center" object-fit="contain"/>
+                                            <li>Launch your App Connect Enterprise Toolkit by either clicking on the application icon or running the 'ace toolkit' command in the terminal window, depending on your operating system.</li>
+                                            <li>Download “transferrequest.zip” from the link here. </br>
+                                            <a href="Designerfiles/transferrequest.zip">transferrequest designer file</a></li>
+                                            <li>The toolkit will load your project. To import the 'transferrequest.zip' file you downloaded (located at '~/Downloads/ace-apic.zip'), follow these steps: Go to 'File' -> 'Import' -> 'Project Interchange' and then click 'Next.'</li>
+                                            <img src="assets/img/CP4ISetup/image055.png" alt="Usecase" class="center" object-fit="contain"/>
+                                            <img src="assets/img/CP4ISetup/image056.png" alt="Usecase" class="center" object-fit="contain"/>
+                                            <li>The toolkit opens the project. To view the integration flow that you deploy, click transferrequest -> Resources -> Subflows -> getOrder.subflow . </br>
+                                                Check the MQ node by clicking the MQ Output Node. Click Properties and select Basic, and enter the queue name (you created in MQ Task) TRANSFER.REQUEST.</br>
+                                                Click on the MQ connection tab. App Connect Enterprise employs an MQ client connection.</br>
+                                                Choose the MQ client connection properties.</br>
+                                                Input the Destination queue manager name as "fundtransfer".</br>
+                                                Provide the IP address of your MQ Queue manager host, as identified at the beginning of this task.</br>
+                                                Specify the port number as "1414".</br>
+                                                Enter the Channel name as "SYSTEM.DEF.SVRCONN".</br>
+                                                Save the flow by using the shortcut Ctrl + S.</br> </li>
+                                             <img src="assets/img/CP4ISetup/image057.png" alt="Usecase" class="center" object-fit="contain"/>
+                                             <li>In the Application Development view on the left, on transferrequest flow, right-click on maps and then select New -> BAR file.</li>
+                                             <img src="assets/img/CP4ISetup/image058.png" alt="Usecase" class="center" object-fit="contain"/>
+                                             <li>Input the BAR file name as "transferrquest" and then click on the "Finish" button. App Connect Enterprise will proceed to generate an empty BAR file.</li>
+                                             <img src="assets/img/CP4ISetup/image060.png" alt="Usecase" class="center" object-fit="contain"/>
+                                             <li>To configure which artifacts should be included in the BAR file, select "transferrequest" enable the "Compile and in-line resources" option, and then click the "Build and Save" button. A pop-up window will appear, indicating that the operation has been successfully completed. Click "OK" to proceed.</li>
+                                             <img src="assets/img/CP4ISetup/image061.png" alt="Usecase" class="center" object-fit="contain"/>
+                                             
+                                            </ol></p> 
                                         <ol>
-                                    <li>Create eventstreams_user.yaml file in oc terminal</li>
-                                    <code>vi eventstreams_user.yaml</code>
-                                    <li>Use the following yaml content, paste in the oc terminal. Save and exit from eventstreams_user.yaml</li>
-                                    <code>
-                                        apiVersion: eventstreams.ibm.com/v1beta2 </br>
-                                        kind: KafkaUser </br>
-                                        metadata: </br>
-                                          name: event-admin </br>
-                                          namespace: cp4i </br>
-                                          labels: </br>
-                                            eventstreams.ibm.com/cluster: ft-eventstreams </br>
-                                        spec: </br>
-                                          authentication: </br>
-                                            type: scram-sha-512 </br>
-                                          authorization: </br>
-                                            type: simple </br>
-                                            acls: </br>
-                                              - resource: </br>
-                                                  type: topic </br>
-                                                  name: '*' </br>
-                                                  patternType: literal </br>
-                                                operations: </br>
-                                                  - All </br>
-                                              - resource: </br>
-                                                  type: group </br>
-                                                  name: '*' </br>
-                                                  patternType: literal </br>
-                                                operations: </br>
-                                                  - All </br>
-                                              - resource: </br>
-                                                  type: transactionalId </br>
-                                                  name: '*' </br>
-                                                  patternType: literal </br>
-                                                operations: </br>
-                                                  - All </br>
-                                              - resource: </br>
-                                                  type: topic </br>
-                                                  name: __schema_ </br>
-                                                  patternType: prefix </br>
-                                                operations: </br>
-                                                  - All </br>
-                                              - resource: </br>
-                                                  type: topic </br>
-                                                  name: __schema_ </br>
-                                                  patternType: prefix </br>
-                                                operations: </br>
-                                                  - Write </br>
-                                              - resource: </br>
-                                                  type: topic </br>
-                                                  name: __schema_ </br>
-                                                  patternType: prefix </br>
-                                                operations: </br>
-                                                  - Read</code>
-
-                                    <li>Apply the changes to oc</li>
-                                    <code>oc apply -f eventstreams_user.yaml</code>
-                                    </ol>
-                                    <p class="mb-0"></p> </br>
-                                    <ol class="breadcrumb mb-4">
-                                        <li class="breadcrumb-item active"><b>Kafka Topic</b></li>
-                                    </ol>
-                                    <p class="mb-0"> We will now create a kafka topic(ft-status) using oc terminal. Kafka topics are the categories used to organize messages. Each topic has a name that is unique across the entire Kafka cluster.
-
-                                        Messages are sent to and read from specific topics.  In other words, producers write data to topics, and consumers read data from topics. 
-                                    </p> 
-                                        <ol>
-                                    <li>Create eventstreams_topic.yaml file in oc terminal</li>
-                                    <code>vi eventstreams_topic.yaml</code>
-                                    <li>Use the following yaml content, paste in the oc terminal. Save and exit from eventstreams_topic.yaml</li>
-                                    <code>apiVersion: eventstreams.ibm.com/v1beta2 </br>
-                                        kind: KafkaTopic </br>
-                                        metadata: </br>
-                                          name: ft-status </br>
-                                          labels: </br>
-                                            eventstreams.ibm.com/cluster: ft-eventstreams </br>
-                                          namespace: cp4i </br>
-                                        spec: </br>
-                                          config: </br>
-                                            min.insync.replicas: '1' </br>
-                                          partitions: 3 </br>
-                                          replicas: 3 </br>
-                                        </code>
-                                    <li>Apply the changes to oc</li>
-                                    <code>oc apply -f eventstreams_topic.yaml</code>
-                                </ol>
+                                            <ol class="breadcrumb mb-4">
+                                                <li class="breadcrumb-item active"><b>Deploy Integration BAR file as containers</b></li>
+                                            </ol>
+                                            <p class="mb-0">In this particular assignment, you will be launching a BAR file through the App Connect Enterprise Dashboard.
+                                            
+                                                <ol>
+                                                    <li>Return to the Cloud Pak Platform Navigator using your web browser. Access the Menu and navigate to the Integrations dashboard found within the Run section.                                                        </li>
+                                                    <li>To commence the deployment of the 'transferrequest.bar' file, it is necessary to establish an Integration server. Let's proceed by creating one! Simply click on the ‘Deploy Integrations’ option from the integrations dashboard.</li>
+                                                    <img src="assets/img/CP4ISetup/image062.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                    <li>Within the "Create an Integration Server" page, you are presented with four choices for deploying a BAR file.  For this lab, you will select the "Quick start integration" option and proceed by clicking "NEXT"</li>
+                                                    <img src="assets/img/CP4ISetup/image063.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                    <li>Click to upload your BAR File. And select the “transferrequesr.bar”. And click Next.</br>
+                                                    <img src="assets/img/CP4ISetup/image064.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                    <li>You don’t need to download configuration package (Configuration package contains the files that you can use for App Connect Enterprise works with Databases, Event Streams, etc) click Next.</li>
+                                                    <img src="assets/img/CP4ISetup/image065.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                    <li>On Create an Integration Server page, enter the Integration Server name as transferrequest. Then click Create.</li>
+                                                     <img src="assets/img/CP4ISetup/image066.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>During the deployment process, App Connect Enterprise opens the servers page. You see the App Connect Enterprise Dashboard with the Integration Server orders deployed and started .Click the transrequest server icon.</br>
+                                                    <b>Note: The deployment process takes 2-3 minutes, refresh the browser to see the BAR file.</b></li>
+                                                     <img src="assets/img/CP4ISetup/image067.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>Click transferrequest API.</li>
+                                                     <img src="assets/img/CP4ISetup/image068.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>This page displays the REST API Base URL. Copy the base URL (in the example below: http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1
+                                                        ).</li>
+                                                     <img src="assets/img/CP4ISetup/image069.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>In the Bastion terminal, run the following curl command and add "0000" to complete it. Here's the command:</li>
+                                                     <code>curl -G -k http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1/0000</code>
+                                                     <li>If the API call is successful, you see JSON reply with { "accountid":"ABC-1234567890","orderid":"0000","amount":1E+2,"transactiondate":"2023-09-17T17:36:13.965Z"}</li>
+                                                     <img src="assets/img/CP4ISetup/image070.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>To verify that the message has arrived in the "transfer.request" queue within MQ, you can use the MQ Console. Simply open a web browser, navigate to the Cloud Pak Platform Navigator, and click on the "fundtransfer" link. Then, select "Manage fundtransfer".</li>
+                                                     <img src="assets/img/CP4ISetup/image071.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>You would see in the queues on  "fundtransfer". The queue “transfer.request” has a message (look at maximum Depth)</li>
+                                                     <img src="assets/img/CP4ISetup/image072.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                     <li>Click “TRANSFER.REQUEST” to view all the messages sent. You may also download the output of the message.</li>
+                                                     <img src="assets/img/CP4ISetup/image073.png" alt="Usecase" class="center" object-fit="contain"/>
+                                                    </ol></p> 
+                                                <ol>
 
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item active"><b>Assignment</b></li>
@@ -348,7 +225,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-table me-1"></i>
-                                        Quiz: Where do we check the status of "ft-eventstreams" ?
+                                        Quiz: There is a new requirement to capture a new field ("fund transfer destination country") in this API. Please explain how do we do that?
                                     </div>
                                     <div class="card-body">
                                         <form action="/url" method="GET">
@@ -357,35 +234,8 @@
                                     </div>
                                 </div>
 
-                                <input type="submit" value="Submit"class="submit-btn" onclick="myalertpodeventstreams()" />
+                                <input type="submit" value="Submit"class="submit-btn" onclick="myalertnewapifield()" />
 
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
-                                        Quiz: Where do we check the status of "event-admin" ?
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="/url" method="GET">
-                                            <input type="text">
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <input type="submit" value="Submit"class="submit-btn" onclick="myalertpodeventstreamsuser()" />
-
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
-                                        Quiz: Where do we check the status of "ft-status" ?
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="/url" method="GET">
-                                            <input type="text">
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <input type="submit" value="Submit"class="submit-btn" onclick="myalertpodeventTopic()" />
                             
                         </div>
           
