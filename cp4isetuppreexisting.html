@@ -108,10 +108,12 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Existing configuration in OCP</h1>
+                        <h1 class="mt-4">Existing OCP Configurations</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
-                            <li class="breadcrumb-item active">Existing Configuration in OCP</li>
+                            <li class="breadcrumb-item active">Integration Capabilities</li>
+                            <li class="breadcrumb-item active">Prepare</li>
+                            <li class="breadcrumb-item active">Existing OCP Configuration</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
@@ -125,7 +127,7 @@
                                     <li>Installed platform UI instance and associated pods</li>
                                 </ol>
                                 <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><b>CP4I Project</b></li>
+                                <li class="breadcrumb-item active"><h2 id="project">Project (aka namespace)</h2>></li>
                                 </ol>
                                 A project allows  users to organize and manage their content in isolation from other communities. Let us look into the content for cp4i project.
                                 <ol>
@@ -136,7 +138,7 @@
                                 <img src="assets/img/CP4ISetup/image002.png" alt="Usecase" class="center"  width= 50% height= 50%/>
                                 </ol>
                                 <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><b>License Key</b></li>
+                                <li class="breadcrumb-item active"><h2 id="license">License Key</h2></li>
                                 </ol>
                                 We use pull-secret as license key. pull-secret is used to authenticate with the services that are provided by the included authorities, Quay.io and registry.redhat.io, which serve the container images for OpenShift Container Platform components.
                                 <ol>
@@ -155,7 +157,7 @@
                                 </ol>
 
                                 <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><b>Installed Operators</b></li>
+                                    <li class="breadcrumb-item active"><h2 id="operators">Installed Operators</h2></li>
                                     </ol>
                                     Operators are pieces of software that ease the operational complexity of running another piece of software. Here we will view all the pre-installed operators.
                                     <ol>
@@ -191,7 +193,7 @@
 
 
                                 <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><b>Installed Pods</b></li>
+                                    <li class="breadcrumb-item active"><h2 id="pods">Installed Pods</h2></li>
                                     </ol>
                                     We want to show you the pods that are running as a result of the configuration of the operators and the Platform UI. The following steps will guid you to do this using the oc CLI. 
                                     <ol>
