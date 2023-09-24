@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Existing OCP COnfiguration</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-        
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Existing OCP COnfiguration</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-    </head>
-    <body>
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">IBM CSM Labs</a>
-            
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <a class="navbar-brand ps-3" href="index.html">Integration Practicum</a>
-            <!-- Navbar Search
+
+
+</head>
+
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">IBM CSM Labs</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="index.html">Integration Practicum</a>
+        <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>-->
-            <!-- Navbar
+        <!-- Navbar
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
@@ -41,75 +44,83 @@
                     </ul>
                 </li>
             </ul>-->
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="content.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Table Of Contents
-                            </a>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Overview
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Integration Capabilities</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Prepare
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
-                                    <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
-                                </nav>
-                            </div>
-                            
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Configure
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                            <a class="nav-link" href="MQSetup.html">Messaging Queue</a>
-                                            <a class="nav-link" href="EventstreamsSetup.html">Events</a>
-                                            <a class="nav-link" href="temp.html">Streaming Queue</a>
-                                            <a class="nav-link" href="apiSetup.html">APIs</a>
-                              
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Build
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="temp.html">Testing Applications</a>
-                                    <a class="nav-link" href="temp.html">API to MQ</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Run
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="temp.html">Scenario Walkthrough</a>
-                                </nav>
-                            </div>
-                            <div class="sb-sidenav-menu-heading">Add ons</div>
-                            <a class="nav-link" href="glossary.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Glossary
-                            </a>
-                            <!-- <a class="nav-link" href="index.html">
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="content.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Table Of Contents
+                        </a>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Integration Capabilities</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Prepare
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
+                                <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configure
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
+                                <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
+                                <a class="nav-link" href="temp.html">Streaming Queue</a>
+                                <a class="nav-link" href="apiSetup.html">APIs</a>
+
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Build
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Testing Applications</a>
+                                <a class="nav-link" href="temp.html">API to MQ</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Run
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Scenario Walkthrough</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Add ons</div>
+                        <a class="nav-link" href="glossary.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Glossary
+                        </a>
+                        <!-- <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
                             </a>
@@ -117,144 +128,191 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Tables
                             </a> -->
-                        </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">IBM CSM Labs</div>
-                       
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h2 class="mt-4">Existing OCP Configurations</h2>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <p class="mb-0">
-                                    There are few setup that is already configured. Let us navigate through those configurations.
-                                    These are as follows:
-                                    <ol>
-                                    <li>Project where we install our cloudpak software (cp4i) </li>
-                                    <li>License key that is used by software (pull-secret)</li>
-                                    <li>Installed operators (IBM Cloud pak foundational services,cp4i platform navigator)</li>
-                                    <li>Installed platform UI instance and associated pods</li>
-                                </ol>
-                                <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><h4 id="project">Project (aka namespace)</h4></li>
-                                </ol>
-                                A project allows  users to organize and manage their content in isolation from other communities. Let us look into the content for cp4i project.
-                                <ol>
-                                <li>Login to OCP console using ocpadmin by using Daffy htpasswd Provider. Details are given in the environment details section. </li>
-                                <img src="assets/img/CP4ISetup/image001.png" alt="Usecase" class="center" object-fit="contain"/>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM Labs</div>
+
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h2 class="mt-4">Existing OCP Configurations</h2>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                There are few setup that is already configured. Let us navigate through those
+                                configurations.
+                                These are as follows:
+                            <ol>
+                                <li>Project where we install our cloudpak software (cp4i) </li>
+                                <li>License key that is used by software (pull-secret)</li>
+                                <li>Installed operators (IBM Cloud pak foundational services,cp4i platform navigator)
+                                </li>
+                                <li>Installed platform UI instance and associated pods</li>
+                            </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="project">Project (aka namespace)</h4>
+                                </li>
+                            </ol>
+                            A project allows users to organize and manage their content in isolation from other
+                            communities. Let us look into the content for cp4i project.
+                            <ol>
+                                <li>Login to OCP console using ocpadmin by using Daffy htpasswd Provider. Details are
+                                    given in the environment details section. </li>
+                                <img src="assets/img/CP4ISetup/image001.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
                                 <br>
-                                <li>Go to Home -> Projects -> Check for “cp4i” project status should reflect Active.</li>
-                                <img src="assets/img/CP4ISetup/image002.png" alt="Usecase" class="center"  width= 50% height= 50%/>
-                                </ol>
-                                <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><h4 id="license">License Key</h4></li>
-                                </ol>
-                                We use pull-secret as license key. pull-secret is used to authenticate with the services that are provided by the included authorities, Quay.io and registry.redhat.io, which serve the container images for OpenShift Container Platform components.
-                                <ol>
-                                <li>Go to OCP Console -> Workloads -> Secrets -> Click Project-> enable “Show default project”</li>
-                                <img src="assets/img/CP4ISetup/image004.png" alt="Usecase" class="center" object-fit="contain"/>
+                                <li>Go to Home -> Projects -> Check for “cp4i” project status should reflect Active.
+                                </li>
+                                <img src="assets/img/CP4ISetup/image002.png" alt="Usecase" class="center" width=50%
+                                    height=50% />
+                            </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="license">License Key</h4>
+                                </li>
+                            </ol>
+                            We use pull-secret as license key. pull-secret is used to authenticate with the services
+                            that are provided by the included authorities, Quay.io and registry.redhat.io, which serve
+                            the container images for OpenShift Container Platform components.
+                            <ol>
+                                <li>Go to OCP Console -> Workloads -> Secrets -> Click Project-> enable “Show default
+                                    project”</li>
+                                <img src="assets/img/CP4ISetup/image004.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
                                 <br>
                                 <li>You will be able to see “openshift-config”. Choose “openshift-config”</li>
-                                <img src="assets/img/CP4ISetup/image005.png" alt="Usecase" class="center"  object-fit="contain"/>
+                                <img src="assets/img/CP4ISetup/image005.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
                                 <br>
-                                <li>Filter search by “pull-secret”. You will see the secret “pull-secret.” Click on it</li>
-                                <img src="assets/img/CP4ISetup/image006.png" alt="Usecase" class="center" object-fit="contain"/>
+                                <li>Filter search by “pull-secret”. You will see the secret “pull-secret.” Click on it
+                                </li>
+                                <img src="assets/img/CP4ISetup/image006.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
                                 <br>
                                 <li>You will be able to find License in the Data section (.dockerconfigjson)</li>
-                                <img src="assets/img/CP4ISetup/image007.png" alt="Usecase" class="center" object-fit="contain"/>
+                                <img src="assets/img/CP4ISetup/image007.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
                                 <br>
-                                </ol>
+                            </ol>
 
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><h4 id="operators">Installed Operators</h4></li>
-                                    </ol>
-                                    Operators are pieces of software that ease the operational complexity of running another piece of software. Here we will view all the pre-installed operators.
-                                    <ol>
-                                    <li>Go to OCP Console -> Operators -> Installed Operators. </li>
-                                    <img src="assets/img/CP4ISetup/image008.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
-                                    <br>
-                                    <li>Change the project to “cp4i”. Note: for this environment and for these labs we are installing the operators at the namespace level</li>
-                                    <img src="assets/img/CP4ISetup/image009.png" alt="Usecase" class="center"  object-fit="contain"/>
-                                    <br>
-                                    <li>IBM Cloud Pak Foundational Services and IBM Cloud Pak for Integration (cp4i platform navigator) is already installed</li>
-                                    <img src="assets/img/CP4ISetup/image010.png" alt="Usecase" class="center" object-fit="contain"/>
-                                    <br>
-                                    <li>Let us now explore the Cloud Pak for Integration operator. Identify the following items from the “IBM Cloud Pak for Integration” Operator.
-                                        <ul>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="operators">Installed Operators</h4>
+                                </li>
+                            </ol>
+                            Operators are pieces of software that ease the operational complexity of running another
+                            piece of software. Here we will view all the pre-installed operators.
+                            <ol>
+                                <li>Go to OCP Console -> Operators -> Installed Operators. </li>
+                                <img src="assets/img/CP4ISetup/image008.png" alt="Usecase" class="imagesmall"
+                                    object-fit="contain" />
+                                <br>
+                                <li>Change the project to “cp4i”. Note: for this environment and for these labs we are
+                                    installing the operators at the namespace level</li>
+                                <img src="assets/img/CP4ISetup/image009.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <br>
+                                <li>IBM Cloud Pak Foundational Services and IBM Cloud Pak for Integration (cp4i platform
+                                    navigator) is already installed</li>
+                                <img src="assets/img/CP4ISetup/image010.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <br>
+                                <li>Let us now explore the Cloud Pak for Integration operator. Identify the following
+                                    items from the “IBM Cloud Pak for Integration” Operator.
+                                    <ul>
                                         <li>api version</li>
                                         <li>Channel version installed</li>
                                         <li>cpu & memory requested for the operator</li>
-                                        </ul>
-                                        Also we have installed under this operator, an instance of the Platform UI which helps to provide an unified administration experience for administering the Cloud Pak. 
-                                        <ol type="a"> 
-                                            <li>Go to “Platform UI” tab -> Click “platform-navigator" </li>
-                                            <img src="assets/img/CP4ISetup/image011.png" alt="Usecase" class="center" object-fit="contain"/>
-                                             <br>
-                                            <li>Here you will find the url for the “Platform UI”. Note: we will be exploring the “Platform UI” at the later section of the lab </li>
-                                            <img src="assets/img/CP4ISetup/image012.png" alt="Usecase" class="center" object-fit="contain"/>
-                                            <br>
-                                        </ol>
+                                    </ul>
+                                    Also we have installed under this operator, an instance of the Platform UI which
+                                    helps to provide an unified administration experience for administering the Cloud
+                                    Pak.
+                                    <ol type="a">
+                                        <li>Go to “Platform UI” tab -> Click “platform-navigator" </li>
+                                        <img src="assets/img/CP4ISetup/image011.png" alt="Usecase" class="center"
+                                            object-fit="contain" />
+                                        <br>
+                                        <li>Here you will find the url for the “Platform UI”. Note: we will be exploring
+                                            the “Platform UI” at the later section of the lab </li>
+                                        <img src="assets/img/CP4ISetup/image012.png" alt="Usecase" class="center"
+                                            object-fit="contain" />
+                                        <br>
+                                    </ol>
 
-                                        </li>
-                                    
+                                </li>
+
+                                <br>
+                            </ol>
+
+
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="pods">Installed Pods</h4>
+                                </li>
+                            </ol>
+                            We want to show you the pods that are running as a result of the configuration of the
+                            operators and the Platform UI. The following steps will guid you to do this using the oc
+                            CLI.
+                            <ol>
+                                <li>Get the oc login details by following the below steps:</li>
+                                <ol type="a">
+                                    <li>Copy login command that is available from OCP console. The user id that you are
+                                        currently logged in “ocpadmin” is on the right side of the OCP console. Click
+                                        “Copy login command”. Note: a new tab opens up for login.</li>
+                                    <img src="assets/img/CP4ISetup/image013.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <br>
+                                    <li>Choose “Daffy htpasswd Provider” and login as “ocpadmin”</li>
+                                    <li>Click “Display Token” to get the credentials</li>
+                                    <img src="assets/img/CP4ISetup/image014.png" alt="Usecase" class="imagesmall"
+                                        object-fit="contain" />
+                                    <br>
+                                    <li>Copy “Log in with this token” and keep it in a notepad or any text editor. Note:
+                                        This token can be refreshed regularly. Follow these steps to get the new
+                                        tokenized login</li>
+                                    <img src="assets/img/CP4ISetup/image015.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <br>
+                                </ol>
+
+                                <li>Go to the environment details page -> click on the bastion</li>
+
+                                <ol type="a">
+                                    <li>For linux/mac os -> you can directly click on the SSH client.</li>
+                                    <li>For windows -> use putty and configure the ssh in putty to access the bastion
+                                        Putty download: https://www.putty.org/ </li>
+                                    <img src="assets/img/CP4ISetup/image016.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <br>
+                                </ol>
+
+                                <li>Follow these steps in the ocp oc CLI.</li>
+
+                                <ol type="a">
+                                    <li>Go into sudo mode </li>
+                                    <code> sudo su</code>
+                                    <li>oc login</li>
+                                    <code>oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</code>
+                                    <li>Change project to “cp4i” </li>
+                                    <code>oc project cp4i</code>
+                                    <li>Check various pods that is being installed. Note: do not close the oc CLI. You
+                                        will be using it in the labs frequently</li>
+                                    <code>oc get pods</code>
+                                    <br>
+                                    <img src="assets/img/CP4ISetup/image017.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
                                     <br>
                                 </ol>
 
 
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><h4 id="pods">Installed Pods</h4></li>
-                                    </ol>
-                                    We want to show you the pods that are running as a result of the configuration of the operators and the Platform UI. The following steps will guid you to do this using the oc CLI. 
-                                    <ol>
-                                    <li>Get the oc login details by following the below steps:</li>
-                                    <ol type="a"> 
-                                        <li>Copy login command that is available from OCP console. The user id that you are currently logged in “ocpadmin” is on the right side of the OCP console. Click “Copy login command”. Note: a new tab opens up for login.</li>
-                                        <img src="assets/img/CP4ISetup/image013.png" alt="Usecase" class="center" object-fit="contain"/>
-                                        <br>
-                                        <li>Choose “Daffy htpasswd Provider” and login as “ocpadmin”</li>
-                                        <li>Click “Display Token” to get the credentials</li>
-                                        <img src="assets/img/CP4ISetup/image014.png" alt="Usecase" class="imagesmall" object-fit="contain"/>
-                                        <br>
-                                        <li>Copy “Log in with this token” and keep it in a notepad or any text editor. Note: This token can be refreshed regularly. Follow these steps to get the new tokenized login</li>
-                                        <img src="assets/img/CP4ISetup/image015.png" alt="Usecase" class="center" object-fit="contain"/>
-                                        <br>
-                                    </ol>
-                           
-                                    <li>Go to the environment details page -> click on the bastion</li>
-                                    
-                                    <ol type="a"> 
-                                        <li>For linux/mac os -> you can directly click on the SSH client.</li>
-                                        <li>For windows -> use putty and configure the ssh in putty to access the bastion
-                                            Putty download: https://www.putty.org/ </li>
-                                        <img src="assets/img/CP4ISetup/image016.png" alt="Usecase" class="center"  object-fit="contain"/>
-                                    <br>
-                                    </ol>
 
-                                    <li>Follow these steps in the ocp oc CLI.</li>
-
-                                    <ol type="a"> 
-                                        <li>Go into sudo mode </li>
-                                        <code> sudo su</code>
-                                        <li>oc login</li>
-                                        <code>oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</code>
-                                        <li>Change project to “cp4i” </li>
-                                        <code>oc project cp4i</code>
-                                        <li>Check various pods that is being installed.  Note: do not close the oc CLI. You will be using it in the labs frequently</li>
-                                        <code>oc get pods</code>
-                                        <br>
-                                        <img src="assets/img/CP4ISetup/image017.png" alt="Usecase" class="center" object-fit="contain"/>
-                                        <br>
-                                    </ol>
-
-                                   
-                                    
-                                    <br>
-                                </ol>
+                                <br>
+                            </ol>
 
 
 
@@ -264,27 +322,29 @@
 
 
 
-                                </p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
-                            <div>
-                                <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
-                                &middot;
-                                <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
-                            </div>
+                            </p>
                         </div>
                     </div>
-                </footer>
-            </div>
+
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                        <div>
+                            <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                            &middot;
+                            <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-    </body>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
 </html>
