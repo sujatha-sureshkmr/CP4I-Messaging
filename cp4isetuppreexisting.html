@@ -12,7 +12,15 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align:text-bottom;
+            color: #d247e1d5;
+        }
+    </style>
 
 </head>
 
@@ -295,14 +303,14 @@
 
                                 <ol type="a">
                                     <li>Go into sudo mode </li>
-                                    <code> sudo su</code>
+                                    <div class="codeDiv"><pre><code> sudo su</code></pre></div>
                                     <li>oc login</li>
-                                    <code>oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</code>
+                                    <div class="codeDiv"><pre><code>oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</code></pre></div>
                                     <li>Change project to “cp4i” </li>
-                                    <code>oc project cp4i</code>
+                                    <div class="codeDiv"><pre><code>oc project cp4i</code></pre></div>
                                     <li>Check various pods that is being installed. Note: do not close the oc CLI. You
                                         will be using it in the labs frequently</li>
-                                    <code>oc get pods</code>
+                                        <div class="codeDiv"><pre><code>oc get pods</code></pre></div>
                                     <br>
                                     <img src="assets/img/CP4ISetup/image017.png" alt="Usecase" class="center"
                                         object-fit="contain" />
