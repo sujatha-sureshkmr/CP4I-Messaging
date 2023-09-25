@@ -170,21 +170,19 @@
                             </ol>
                             <p class="mb-0">
                                 Built on open source Apache Kafka, IBM Event Streams is an event-streaming platform that
-                                helps you build smart applications that can react to events as they happen. Some typical
-                                use cases for which Event Streams is a central piece are:
-                            <ol>
-                                <li>Creation of adaptive solutions: Use streams of data to build responsive, engaging
-                                    user experiences. </li>
-                                <li>Facilitate machine learning: Use events to move from batch processing to real-time
-                                    and predictive analytics.</li>
-                            </ol>
-                            IBM Event Streams offers a fully managed Apache Kafka service, ensuring durability and high
-                            availability for your solutions. By using Event Streams, you have support around the clock
-                            from our team of Kafka experts. Apache Kafka is a distributed messaging system. A Kafka
-                            cluster consists of a set of brokers. A cluster has a minimum of three brokers.
+                                helps you build smart applications that can react to events as they happen. 
+                            IBM Event Streams offers a fully managed Apache Kafka service deployed on OCP using operators, ensuring durability and high
+                            availability for your solutions.
                             </p>
-
-                            <p class="mb-0"> We will now setup and configure EventStreams & Topics.</p> </br>
+                            <p>In this section we will configure a Event Streams Cluster by proding custom resoure definitions to the installed operators.Including
+                                <ol><li>Event Streams definition that that will create the base cluster components.</li>
+                                <li>A series of kafka users that will be used. For interaction with the cluster.</li>
+                                <li>A topic that will be th target for event procing in this workshop.</li>
+                            </ol>
+                            and as shown in the picrture below.<br>
+                            <img src="/img/events-cluster.png" alt="Event Cluster">
+                            </p>
+                            <p class="mb-0"> We will now setup and configure this cluster.</p> </br>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"><h4 id="cluster">Define Event Cluster</h4></li>
                             </ol>
