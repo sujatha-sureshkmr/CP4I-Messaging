@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CP4I - Messaging</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script>
+
+
+        function myalertnewapifield() {
+            alert("1. Add new fields in swagger.json from other resources \n2. add it in getOrder_Mapping.map \n3.Regenerate bar files \n4.Upload the bar files and test it to confirm the new parameters are added.");
+        }
+        function myalertpodeventstreamsuser() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka User");
+        }
+        function myalertpodeventTopic() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">IBM CSM Labs</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="index.html">Integration Practicum</a>
+        <!-- Navbar Search
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>-->
+        <!-- Navbar
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>-->
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="content.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Table Of Contents
+                        </a>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Integration Capabilities</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Prepare
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
+                                <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
+                            </nav>
+                        </div>
+
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configure
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
+                                <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
+                                <a class="nav-link" href="temp.html">Streaming Queue</a>
+                                <a class="nav-link" href="apiSetup.html">APIs</a>
+
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Build
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Testing Applications</a>
+                                <a class="nav-link" href="temp.html">API to MQ</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Run
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Scenario Walkthrough</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Add ons</div>
+                        <a class="nav-link" href="glossary.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Glossary
+                        </a>
+                        <!-- <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a> -->
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM Labs</div>
+
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">API Setup</h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
+                        <li class="breadcrumb-item active">App connect & API Setup</li>
+                    </ol>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <p class="mb-0">
+                                Implementing a robust enterprise-grade messaging system that prioritizes security and
+                                reliability is essential for all types of applications within your backend integration
+                                framework.
+                            </p>
+
+                            <p class="mb-0"> In this tutorial, you will establish a message queue designed to receive
+                                order data originating from an API call made to send a request to MQ. The diagram
+                                highlights the specific component you will be creating and its role within the broader
+                                architecture of a banking application where fund transfers are initiated.
+                            </p> </br>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active"><b>Installation of App Connect</b></li>
+                            </ol>
+                            <p class="mb-0">Refer to this link for App Connect installation</p> </br>
+                            <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-installing-software">Installation
+                                of App Connect</a></li>
+                            <p class="mb-0"></p> </br>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active"><b>Configure App Connect Enterprise Toolkit for
+                                        MQ</b></li>
+                            </ol>
+                            <p class="mb-0"> We will now setup App connect for MQ transfer.request queue.
+
+                            <ol>
+                                <li>Go to bastion terminal and login to oc. Note: change the default project to cp4i.
+                                    (refer to installed pods)</li>
+                                <li>Prior to launching the App Connect Enterprise toolkit, it's important to verify the
+                                    IP address for IBM MQ. In the terminal window, you can accomplish this by executing
+                                    the OpenShift command: 'oc get svc -n cp4i | grep mq'. This command will provide you
+                                    with a list of services within the designated namespaces. Please make note of the IP
+                                    address, which, in this case, is '172.30.221.139', and ensure that it corresponds to
+                                    the port '1414'.</li>
+                                <img src="assets/img/CP4ISetup/image054.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <li>Launch your App Connect Enterprise Toolkit by either clicking on the application
+                                    icon or running the 'ace toolkit' command in the terminal window, depending on your
+                                    operating system.</li>
+                                <li>Download “transferrequest.zip” from the link here. </br>
+                                    <a href="Designerfiles/transferrequest.zip">transferrequest designer file</a>
+                                </li>
+                                <li>The toolkit will load your project. To import the 'transferrequest.zip' file you
+                                    downloaded (located at '~/Downloads/ace-apic.zip'), follow these steps: Go to 'File'
+                                    -> 'Import' -> 'Project Interchange' and then click 'Next.'</li>
+                                <img src="assets/img/CP4ISetup/image055.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <img src="assets/img/CP4ISetup/image056.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <li>The toolkit opens the project. To view the integration flow that you deploy, click
+                                    transferrequest -> Resources -> Subflows -> getOrder.subflow . </br>
+                                    Check the MQ node by clicking the MQ Output Node. Click Properties and select Basic,
+                                    and enter the queue name (you created in MQ Task) TRANSFER.REQUEST.</br>
+                                    Click on the MQ connection tab. App Connect Enterprise employs an MQ client
+                                    connection.</br>
+                                    Choose the MQ client connection properties.</br>
+                                    Input the Destination queue manager name as "fundtransfer".</br>
+                                    Provide the IP address of your MQ Queue manager host, as identified at the beginning
+                                    of this task.</br>
+                                    Specify the port number as "1414".</br>
+                                    Enter the Channel name as "SYSTEM.DEF.SVRCONN".</br>
+                                    Save the flow by using the shortcut Ctrl + S.</br> </li>
+                                <img src="assets/img/CP4ISetup/image057.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <li>In the Application Development view on the left, on transferrequest flow,
+                                    right-click on maps and then select New -> BAR file.</li>
+                                <img src="assets/img/CP4ISetup/image058.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <li>Input the BAR file name as "transferrquest" and then click on the "Finish" button.
+                                    App Connect Enterprise will proceed to generate an empty BAR file.</li>
+                                <img src="assets/img/CP4ISetup/image060.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+                                <li>To configure which artifacts should be included in the BAR file, select
+                                    "transferrequest" enable the "Compile and in-line resources" option, and then click
+                                    the "Build and Save" button. A pop-up window will appear, indicating that the
+                                    operation has been successfully completed. Click "OK" to proceed.</li>
+                                <img src="assets/img/CP4ISetup/image061.png" alt="Usecase" class="center"
+                                    object-fit="contain" />
+
+                            </ol>
+                            </p>
+                            <ol>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active"><b>Deploy Integration BAR file as containers</b>
+                                    </li>
+                                </ol>
+                                <p class="mb-0">In this particular assignment, you will be launching a BAR file through
+                                    the App Connect Enterprise Dashboard.
+
+                                <ol>
+                                    <li>Return to the Cloud Pak Platform Navigator using your web browser. Access the
+                                        Menu and navigate to the Integrations dashboard found within the Run section.
+                                    </li>
+                                    <li>To commence the deployment of the 'transferrequest.bar' file, it is necessary to
+                                        establish an Integration server. Let's proceed by creating one! Simply click on
+                                        the ‘Deploy Integrations’ option from the integrations dashboard.</li>
+                                    <img src="assets/img/CP4ISetup/image062.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>Within the "Create an Integration Server" page, you are presented with four
+                                        choices for deploying a BAR file. For this lab, you will select the "Quick start
+                                        integration" option and proceed by clicking "NEXT"</li>
+                                    <img src="assets/img/CP4ISetup/image063.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>Click to upload your BAR File. And select the “transferrequesr.bar”. And click
+                                        Next.</br>
+                                        <img src="assets/img/CP4ISetup/image064.png" alt="Usecase" class="center"
+                                            object-fit="contain" />
+                                    <li>You don’t need to download configuration package (Configuration package contains
+                                        the files that you can use for App Connect Enterprise works with Databases,
+                                        Event Streams, etc) click Next.</li>
+                                    <img src="assets/img/CP4ISetup/image065.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>On Create an Integration Server page, enter the Integration Server name as
+                                        transferrequest. Then click Create.</li>
+                                    <img src="assets/img/CP4ISetup/image066.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>During the deployment process, App Connect Enterprise opens the servers page.
+                                        You see the App Connect Enterprise Dashboard with the Integration Server orders
+                                        deployed and started .Click the transrequest server icon.</br>
+                                        <b>Note: The deployment process takes 2-3 minutes, refresh the browser to see
+                                            the BAR file.</b>
+                                    </li>
+                                    <img src="assets/img/CP4ISetup/image067.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>Click transferrequest API.</li>
+                                    <img src="assets/img/CP4ISetup/image068.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>This page displays the REST API Base URL. Copy the base URL (in the example
+                                        below:
+                                        http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1
+                                        ).</li>
+                                    <img src="assets/img/CP4ISetup/image069.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>In the Bastion terminal, run the following curl command and add "0000" to
+                                        complete it. Here's the command:</li>
+                                    <code>curl -G -k http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1/0000</code>
+                                    <li>If the API call is successful, you see JSON reply with {
+                                        "accountid":"ABC-1234567890","orderid":"0000","amount":1E+2,"transactiondate":"2023-09-17T17:36:13.965Z"}
+                                    </li>
+                                    <img src="assets/img/CP4ISetup/image070.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>To verify that the message has arrived in the "transfer.request" queue within
+                                        MQ, you can use the MQ Console. Simply open a web browser, navigate to the Cloud
+                                        Pak Platform Navigator, and click on the "fundtransfer" link. Then, select
+                                        "Manage fundtransfer".</li>
+                                    <img src="assets/img/CP4ISetup/image071.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>You would see in the queues on "fundtransfer". The queue “transfer.request” has
+                                        a message (look at maximum Depth)</li>
+                                    <img src="assets/img/CP4ISetup/image072.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                    <li>Click “TRANSFER.REQUEST” to view all the messages sent. You may also download
+                                        the output of the message.</li>
+                                    <img src="assets/img/CP4ISetup/image073.png" alt="Usecase" class="center"
+                                        object-fit="contain" />
+                                </ol>
+                                </p>
+                                <ol>
+
+                                    <ol class="breadcrumb mb-4">
+                                        <li class="breadcrumb-item active"><b>Assignment</b></li>
+                                    </ol>
+
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <i class="fas fa-table me-1"></i>
+                                            Quiz: There is a new requirement to capture a new field ("fund transfer
+                                            destination country") in this API. Please explain how do we do that?
+                                        </div>
+                                        <div class="card-body">
+                                            <form action="/url" method="GET">
+                                                <input type="text">
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <input type="submit" value="Submit" class="submit-btn"
+                                        onclick="myalertnewapifield()" />
+
+
+                        </div>
+
+                    </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                        <div>
+                            <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                            &middot;
+                            <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>
