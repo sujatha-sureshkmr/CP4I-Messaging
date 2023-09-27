@@ -199,171 +199,61 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><h4 id="overview">Overview</h4></li>
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">Overview</h4>
+                                </li>
                             </ol>
                             <p class="mb-0">
-                                In this section for the configure we will be configuring the combined API and Event End Point Manger, along with analytics and developer portal.
+                                In this section for the configure we will be configuring the combined API and Event End
+                                Point Manger, along with analytics and developer portal.
                                 The key components of this architecture are highlighted in the below image.
                             </p>
-                            <img src="api-eem.png" alt="API and Event EndPoint Management Components">
+                            <img src="api-eem.png" alt="API and Event Endpoint Management Components" width="80%">
 
                             <p class="mb-0"> In this part of the Scenario, we will confiure
-                                <ol><li>API Management Subsystem which includes the API and Cloud Manager components which admister the API subsystems</li>
-                                <li>The Analytics subsystem that gather statiistical data for analysis on the usage and perfomance of the API and event gateways</li>
-                                <li>THe API Gateways which provide the exposed interfaces for consumers and connectivity to API implementations</li>
-                                <li>Event Gateways Service handles incoming requests from applications that want to consume from the stream of events </li>
+                            <ol>
+                                <li>API Management Subsystem which includes the API and Cloud Manager components which
+                                    admister the API subsystems</li>
+                                <li>The Analytics subsystem that gather statiistical data for analysis on the usage and
+                                    perfomance of the API and event gateways</li>
+                                <li>THe API Gateways which provide the exposed interfaces for consumers and connectivity
+                                    to API implementations</li>
+                                <li>Event Gateways Service handles incoming requests from applications that want to
+                                    consume from the stream of events </li>
                             </ol>
-                            The gateays provide a crucial layer of abstraction for the consuming applicaiton that protects them from implementation details of the API or Event implementaitons behind.
-                            </p> </br>
+                            Gateways provide a crucial layer of abstraction for the consuming applicaitons that protects
+                            them from implementation details of the API/Event implementaitons behind.
+                            </br>In this image we highlight what will be configured.
+                            </br><img src="api-em-2.png" alt="API and Event Enpoint Management Configure Sequence"
+                                width="80%">
+                            </br>
+                            <ol>
+                                <li>Firstly we will configure the capabiltiies and wait for OCP to start the pods.</li>
+                                <li>Once the capailites for API are configured we will set the email server in the Cloud
+                                    Manager</li>
+                                <li>We will subsequently configure a provider organisation and the organisation owner
+                                </li>
+                                <li>Define a developer portal and some users for the portal for the created oganistion
+                                </li>
+                                <li>Create the API catalog for this demosntration</li>
+                                <li>Define the event gateway service for the manger.</li>
+                            </ol>
+                            </p>
+                            </br>
                             <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><b>Installation of App Connect</b></li>
+                                <li class="breadcrumb-item active"><h4 id="configure">Configure API Connect</h4></li>
                             </ol>
-                            <p class="mb-0">Refer to this link for App Connect installation</p> </br>
-                            <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-installing-software">Installation
-                                of App Connect</a></li>
-                            <p class="mb-0"></p> </br>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><b>Configure App Connect Enterprise Toolkit for
-                                        MQ</b></li>
-                            </ol>
+                            
                             <p class="mb-0"> We will now setup App connect for MQ transfer.request queue.
 
                             <ol>
-                                <li>Go to bastion terminal and login to oc. Note: change the default project to cp4i.
-                                    (refer to installed pods)</li>
-                                <li>Prior to launching the App Connect Enterprise toolkit, it's important to verify the
-                                    IP address for IBM MQ. In the terminal window, you can accomplish this by executing
-                                    the OpenShift command: 'oc get svc -n cp4i | grep mq'. This command will provide you
-                                    with a list of services within the designated namespaces. Please make note of the IP
-                                    address, which, in this case, is '172.30.221.139', and ensure that it corresponds to
-                                    the port '1414'.</li>
-                                <img src="assets/img/CP4ISetup/image054.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>Launch your App Connect Enterprise Toolkit by either clicking on the application
-                                    icon or running the 'ace toolkit' command in the terminal window, depending on your
-                                    operating system.</li>
-                                <li>Download “transferrequest.zip” from the link here. </br>
-                                    <a href="Designerfiles/transferrequest.zip">transferrequest designer file</a>
-                                </li>
-                                <li>The toolkit will load your project. To import the 'transferrequest.zip' file you
-                                    downloaded (located at '~/Downloads/ace-apic.zip'), follow these steps: Go to 'File'
-                                    -> 'Import' -> 'Project Interchange' and then click 'Next.'</li>
-                                <img src="assets/img/CP4ISetup/image055.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <img src="assets/img/CP4ISetup/image056.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>The toolkit opens the project. To view the integration flow that you deploy, click
-                                    transferrequest -> Resources -> Subflows -> getOrder.subflow . </br>
-                                    Check the MQ node by clicking the MQ Output Node. Click Properties and select Basic,
-                                    and enter the queue name (you created in MQ Task) TRANSFER.REQUEST.</br>
-                                    Click on the MQ connection tab. App Connect Enterprise employs an MQ client
-                                    connection.</br>
-                                    Choose the MQ client connection properties.</br>
-                                    Input the Destination queue manager name as "fundtransfer".</br>
-                                    Provide the IP address of your MQ Queue manager host, as identified at the beginning
-                                    of this task.</br>
-                                    Specify the port number as "1414".</br>
-                                    Enter the Channel name as "SYSTEM.DEF.SVRCONN".</br>
-                                    Save the flow by using the shortcut Ctrl + S.</br> </li>
-                                <img src="assets/img/CP4ISetup/image057.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>In the Application Development view on the left, on transferrequest flow,
-                                    right-click on maps and then select New -> BAR file.</li>
-                                <img src="assets/img/CP4ISetup/image058.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>Input the BAR file name as "transferrquest" and then click on the "Finish" button.
-                                    App Connect Enterprise will proceed to generate an empty BAR file.</li>
-                                <img src="assets/img/CP4ISetup/image060.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>To configure which artifacts should be included in the BAR file, select
-                                    "transferrequest" enable the "Compile and in-line resources" option, and then click
-                                    the "Build and Save" button. A pop-up window will appear, indicating that the
-                                    operation has been successfully completed. Click "OK" to proceed.</li>
-                                <img src="assets/img/CP4ISetup/image061.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-
-                            </ol>
-                            </p>
-                            <ol>
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active"><b>Deploy Integration BAR file as containers</b>
-                                    </li>
-                                </ol>
-                                <p class="mb-0">In this particular assignment, you will be launching a BAR file through
-                                    the App Connect Enterprise Dashboard.
-
-                                <ol>
-                                    <li>Return to the Cloud Pak Platform Navigator using your web browser. Access the
-                                        Menu and navigate to the Integrations dashboard found within the Run section.
-                                    </li>
-                                    <li>To commence the deployment of the 'transferrequest.bar' file, it is necessary to
-                                        establish an Integration server. Let's proceed by creating one! Simply click on
-                                        the ‘Deploy Integrations’ option from the integrations dashboard.</li>
-                                    <img src="assets/img/CP4ISetup/image062.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>Within the "Create an Integration Server" page, you are presented with four
-                                        choices for deploying a BAR file. For this lab, you will select the "Quick start
-                                        integration" option and proceed by clicking "NEXT"</li>
-                                    <img src="assets/img/CP4ISetup/image063.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>Click to upload your BAR File. And select the “transferrequesr.bar”. And click
-                                        Next.</br>
-                                        <img src="assets/img/CP4ISetup/image064.png" alt="Usecase" class="center"
-                                            object-fit="contain" />
-                                    <li>You don’t need to download configuration package (Configuration package contains
-                                        the files that you can use for App Connect Enterprise works with Databases,
-                                        Event Streams, etc) click Next.</li>
-                                    <img src="assets/img/CP4ISetup/image065.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>On Create an Integration Server page, enter the Integration Server name as
-                                        transferrequest. Then click Create.</li>
-                                    <img src="assets/img/CP4ISetup/image066.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>During the deployment process, App Connect Enterprise opens the servers page.
-                                        You see the App Connect Enterprise Dashboard with the Integration Server orders
-                                        deployed and started .Click the transrequest server icon.</br>
-                                        <b>Note: The deployment process takes 2-3 minutes, refresh the browser to see
-                                            the BAR file.</b>
-                                    </li>
-                                    <img src="assets/img/CP4ISetup/image067.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>Click transferrequest API.</li>
-                                    <img src="assets/img/CP4ISetup/image068.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>This page displays the REST API Base URL. Copy the base URL (in the example
-                                        below:
-                                        http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1
-                                        ).</li>
-                                    <img src="assets/img/CP4ISetup/image069.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>In the Bastion terminal, run the following curl command and add "0000" to
-                                        complete it. Here's the command:</li>
-                                    <code>curl -G -k http://transreq-http-cp4i.apps.daffy-cxon01mh.cloud.techzone.ibm.com/orders/v1/0000</code>
-                                    <li>If the API call is successful, you see JSON reply with {
-                                        "accountid":"ABC-1234567890","orderid":"0000","amount":1E+2,"transactiondate":"2023-09-17T17:36:13.965Z"}
-                                    </li>
-                                    <img src="assets/img/CP4ISetup/image070.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>To verify that the message has arrived in the "transfer.request" queue within
-                                        MQ, you can use the MQ Console. Simply open a web browser, navigate to the Cloud
-                                        Pak Platform Navigator, and click on the "fundtransfer" link. Then, select
-                                        "Manage fundtransfer".</li>
-                                    <img src="assets/img/CP4ISetup/image071.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>You would see in the queues on "fundtransfer". The queue “transfer.request” has
-                                        a message (look at maximum Depth)</li>
-                                    <img src="assets/img/CP4ISetup/image072.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
-                                    <li>Click “TRANSFER.REQUEST” to view all the messages sent. You may also download
-                                        the output of the message.</li>
-                                    <img src="assets/img/CP4ISetup/image073.png" alt="Usecase" class="center"
-                                        object-fit="contain" />
+                               
                                 </ol>
                                 </p>
                                 <ol>
 
                                     <ol class="breadcrumb mb-4">
-                                        <li class="breadcrumb-item active"><b>Assignment</b></li>
+                                        <li class="breadcrumb-item active"><h4>Assignment</h4></li>
                                     </ol>
 
                                     <div class="card mb-4">
@@ -381,7 +271,7 @@
 
                                     <input type="submit" value="Submit" class="submit-btn"
                                         onclick="myalertnewapifield()" />
-
+</ol>
 
                         </div>
 
