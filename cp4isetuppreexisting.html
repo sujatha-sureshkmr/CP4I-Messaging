@@ -19,11 +19,79 @@
             text-align: left;
             vertical-align:text-bottom;
             color: #da467d;
-            border: 1px solid grey;
-            box-sizing: border-box;
+        }
+        pre {
+        position: relative;
+        background: #d3d6db;
+        padding: 10px;
+        font-size: 15px;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        border: 1px solid #e6e7e9;
+        
+        }
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+            }
+
+        .copy-button:hover {
+        color: #000;
         }
     </style>
 <!--color: #d247e1d5-->
+
+<script>
+    function copyToClipboard(element) {
+        // Get the <pre> element
+const preTag = document.getElementById(element);
+
+// Create a copy button element
+const copyButton = document.createElement("span");
+copyButton.innerText = "Copy";
+copyButton.classList.add("copy-button");
+
+// Append the copy button to the <pre> tag
+preTag.appendChild(copyButton);
+
+// Add click event listener to the copy button
+copyButton.addEventListener("click", () => {
+  // Hide the copy button temporarily
+  copyButton.style.display = "none";
+
+  // Create a range and select the text inside the <pre> tag
+  const range = document.createRange();
+  range.selectNode(preTag);
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(range);
+
+  try {
+    // Copy the selected text to the clipboard
+    document.execCommand("copy");
+
+    // Alert the user that the text has been copied
+    copyButton.innerText = "Copied!";
+    setTimeout(function(){
+      copyButton.innerText = "Copy";
+    }, 2000);
+  } catch (err) {
+    console.error("Unable to copy text:", err);
+  } finally {
+    // Show the copy button again
+    copyButton.style.display = "inline";
+
+    // Deselect the text
+    window.getSelection().removeAllRanges();
+  }
+});
+    }
+</script>
 </head>
 
 <body>
@@ -305,14 +373,27 @@
 
                                 <ol type="a">
                                     <li>Go into sudo mode </li>
-                                    <div class="codeDiv"><pre><code>sudo su</code></pre></div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                    <pre id="myPreTag">sudo su</pre>
+                                    <script src="script.js"></script>
+                                    </div>
                                     <li>oc login</li>
-                                    <div class="codeDiv"><pre><code>oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</code></pre></div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag1')">
+                                        <pre id="myPreTag1">oc login --token=sha256~FMC9XyF_nJaCwHR_S_ctbDlx3QCjQZE5XDz_UW1_VRY --server=https://api.daffy-e9pdsed1.cloud.techzone.ibm.com:6443</pre>
+                                        <script src="script.js"></script>
+                                        </pre>
+                                    </div>
                                     <li>Change project to “cp4i” </li>
-                                    <div class="codeDiv"><pre><code>oc project cp4i</code></pre></div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
+                                        <pre id="myPreTag2">oc project cp4i</pre>
+                                        <script src="script.js"></script>
+                                        </div>
                                     <li>Check various pods that is being installed. Note: do not close the oc CLI. You
                                         will be using it in the labs frequently</li>
-                                        <div class="codeDiv"><pre><code>oc get pods</code></pre></div>
+                                        <div class="codeDiv" onclick="copyToClipboard('myPreTag3')">
+                                            <pre id="myPreTag3">oc get pods</pre>
+                                            <script src="script.js"></script>
+                                            </div>
                                     <br>
                                     <img src="assets/img/CP4ISetup/image017.png" alt="Usecase" class="center"
                                         object-fit="contain" />
