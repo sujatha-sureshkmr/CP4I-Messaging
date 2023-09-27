@@ -24,19 +24,83 @@
         function myalertpodeventTopic() {
             alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
         }
+        function copyToClipboard(element) {
+    // Get the <pre> element
+    const preTag = document.getElementById(element);
 
-    </script>
-    <style>
-        .codeDiv {
-                border: 1px #0000006e;
-                background-color: #f8f8f8;
-                text-align: left;
-                vertical-align:text-bottom;
-                color: #da467d;
-                border: 1px solid grey;
-                box-sizing: border-box;
+    // Create a copy button element
+    const copyButton = document.createElement("span");
+    copyButton.innerText = "Copy";
+    copyButton.classList.add("copy-button");
+
+    // Append the copy button to the <pre> tag
+    preTag.appendChild(copyButton);
+
+    // Add click event listener to the copy button
+    copyButton.addEventListener("click", () => {
+        // Hide the copy button temporarily
+        copyButton.style.display = "none";
+
+        // Create a range and select the text inside the <pre> tag
+        const range = document.createRange();
+        range.selectNode(preTag);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        try {
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Alert the user that the text has been copied
+            copyButton.innerText = "Copied!";
+            setTimeout(function() {
+                copyButton.innerText = "Copy";
+            }, 2000);
+        } catch (err) {
+            console.error("Unable to copy text:", err);
+        } finally {
+            // Show the copy button again
+            copyButton.style.display = "inline";
+
+            // Deselect the text
+            window.getSelection().removeAllRanges();
         }
-    </style>
+    });
+}
+    </script>
+<style>
+    .codeDiv {
+        border: 1px #0000006e;
+        background-color: #f8f8f8;
+        text-align: left;
+        vertical-align:text-bottom;
+        color: #da467d;
+    }
+    pre {
+    position: relative;
+    background: #d3d6db;
+    padding: 10px;
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    border: 1px solid #e6e7e9;
+    
+    }
+    .copy-button {
+        position: absolute;
+        top: 2px;
+        right: 10px;
+        cursor: pointer;
+        color: #fff;
+        background: gray;
+        border-radius: 0.5em;
+        padding: 2px 7px;
+        }
+
+    .copy-button:hover {
+    color: #000;
+    }
+</style>
 
 
 </head>
