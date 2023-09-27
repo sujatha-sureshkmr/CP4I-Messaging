@@ -26,17 +26,7 @@
         }
 
     </script>
-    <style>
-        .codeDiv {
-            border: 1px #0000006e;
-            background-color: #f8f8f8;
-            text-align: left;
-            vertical-align:text-bottom;
-            color: #da467d;
-            border: 1px solid grey;
-            box-sizing: border-box;
-        }
-    </style>
+
 
 </head>
 
@@ -110,7 +100,7 @@
                                 <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
                                 <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
                                 <a class="nav-link" href="temp.html">Streaming Queue</a>
-                                <a class="nav-link" href="apiSetup.html">APIs</a>
+                                <a class="nav-link" href="apiSetup.html">API and EEM</a>
 
                             </nav>
                         </div>
@@ -163,23 +153,25 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">API Setup</h1>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
-                        <li class="breadcrumb-item active">App connect & API Setup</li>
-                    </ol>
+                    <h1 class="mt-4">Configure API and Event Endpoint Management</h1>
                     <div class="card mb-4">
                         <div class="card-body">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active"><h4 id="overview">Overview</h4></li>
+                            </ol>
                             <p class="mb-0">
-                                Implementing a robust enterprise-grade messaging system that prioritizes security and
-                                reliability is essential for all types of applications within your backend integration
-                                framework.
+                                In this section for the configure we will be configuring the combined API and Event End Point Manger, along with analytics and developer portal.
+                                The key components of this architecture are highlighted in the below image.
                             </p>
+                            <img src="api-eem.png" alt="API and Event EndPoint Management Components">
 
-                            <p class="mb-0"> In this tutorial, you will establish a message queue designed to receive
-                                order data originating from an API call made to send a request to MQ. The diagram
-                                highlights the specific component you will be creating and its role within the broader
-                                architecture of a banking application where fund transfers are initiated.
+                            <p class="mb-0"> In this part of the Scenario, we will confiure
+                                <ol><li>API Management Subsystem which includes the API and Cloud Manager components which admister the API subsystems</li>
+                                <li>The Analytics subsystem that gather statiistical data for analysis on the usage and perfomance of the API and event gateways</li>
+                                <li>THe API Gateways which provide the exposed interfaces for consumers and connectivity to API implementations</li>
+                                <li>Event Gateways Service handles incoming requests from applications that want to consume from the stream of events </li>
+                            </ol>
+                            The gateays provide a crucial layer of abstraction for the consuming applicaiton that protects them from implementation details of the API or Event implementaitons behind.
                             </p> </br>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active"><b>Installation of App Connect</b></li>
