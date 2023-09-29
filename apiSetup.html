@@ -25,48 +25,48 @@
             alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
         }
         function copyToClipboard(element) {
-    // Get the <pre> element
-    const preTag = document.getElementById(element);
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
 
-    // Create a copy button element
-    const copyButton = document.createElement("span");
-    copyButton.innerText = "Copy";
-    copyButton.classList.add("copy-button");
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
 
-    // Append the copy button to the <pre> tag
-    preTag.appendChild(copyButton);
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
 
-    // Add click event listener to the copy button
-    copyButton.addEventListener("click", () => {
-        // Hide the copy button temporarily
-        copyButton.style.display = "none";
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
 
-        // Create a range and select the text inside the <pre> tag
-        const range = document.createRange();
-        range.selectNode(preTag);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
 
-        try {
-            // Copy the selected text to the clipboard
-            document.execCommand("copy");
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
 
-            // Alert the user that the text has been copied
-            copyButton.innerText = "Copied!";
-            setTimeout(function() {
-                copyButton.innerText = "Copy";
-            }, 2000);
-        } catch (err) {
-            console.error("Unable to copy text:", err);
-        } finally {
-            // Show the copy button again
-            copyButton.style.display = "inline";
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
 
-            // Deselect the text
-            window.getSelection().removeAllRanges();
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
         }
-    });
-}
     </script>
 
 
@@ -208,7 +208,7 @@
                                 Point Manger, along with analytics and developer portal.
                                 The key components of this architecture are highlighted in the below image.
                             </p>
-                            <img src="api-eem.png" alt="API and Event Endpoint Management Components" width="80%">
+                            <img src="img/api-eem.png" alt="API and Event Endpoint Management Components" width="80%">
 
                             <p class="mb-0"> In this part of the Scenario, we will confiure
                             <ol>
@@ -224,7 +224,7 @@
                             Gateways provide a crucial layer of abstraction for the consuming applicaitons that protects
                             them from implementation details of the API/Event implementaitons behind.
                             </br>In this image we highlight what will be configured.
-                            </br><img src="api-em-2.png" alt="API and Event Enpoint Management Configure Sequence"
+                            </br><img src="img/api-em-2.png" alt="API and Event Enpoint Management Configure Sequence"
                                 width="80%">
                             </br>
                             <ol>
@@ -241,41 +241,49 @@
                             </p>
                             </br>
                             <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active"><h4 id="configure">Configure API Connect</h4></li>
+                                <li class="breadcrumb-item active">
+                                    <h4 id="configure">Configure API Connect</h4>
+                                </li>
                             </ol>
-                            
-                            <p class="mb-0">For this configuration we will use the Integration Platform UI of the Cloud Pak for Integration the UI gives us a straight forward UI that allows for fast and easy configuration of the integration capabilties. See the previously given <a href="mqsetup.html#mq" target="_blank">Login instruction</a> and login into the CP4I Platform UI using the admin user id.
-                                </br></br><img src="platform-ui.png" alt="CP4I Platform UI Home page" width="80%">
-                                </br>
 
-
+                            <p class="mb-0">For this configuration we will use the Integration Platform UI of the Cloud
+                                Pak for Integration the UI gives us a straight forward UI that allows for fast and easy
+                                configuration of the integration capabilties. See the previously given <a
+                                    href="mqsetup.html#mq" target="_blank">Login instruction</a> and login into the CP4I
+                                Platform UI using the admin user id.
+                            </p></br>
+                            <ol>
+                                <li>Navigate to the Integration Instances page from the Platform UI home page</li>
+                            <img src="img/platform-ui.png" alt="CP4I Platform UI Home page" width="80%"></br>
+                        </br>
+                        <li>Click on the Create Instance button. On the Create Instance page you will see the integration capabilities that can be configured. Greyed out capabilities is an indicator that the operators for these capabilities are not yet installed.</li>
+                        <li>Select API Management</li>
+                        <img src="img/create-instance.png" alt="Create Instance" width="80%">
+                            </ol>
                             </p>
                             <ol>
-                               
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>Assignment</h4>
+                                    </li>
                                 </ol>
-                                </p>
-                                <ol>
 
-                                    <ol class="breadcrumb mb-4">
-                                        <li class="breadcrumb-item active"><h4>Assignment</h4></li>
-                                    </ol>
-
-                                    <div class="card mb-4">
-                                        <div class="card-header">
-                                            <i class="fas fa-table me-1"></i>
-                                            Quiz: There is a new requirement to capture a new field ("fund transfer
-                                            destination country") in this API. Please explain how do we do that?
-                                        </div>
-                                        <div class="card-body">
-                                            <form action="/url" method="GET">
-                                                <input type="text">
-                                            </form>
-                                        </div>
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-table me-1"></i>
+                                        Quiz: There is a new requirement to capture a new field ("fund transfer
+                                        destination country") in this API. Please explain how do we do that?
                                     </div>
+                                    <div class="card-body">
+                                        <form action="/url" method="GET">
+                                            <input type="text">
+                                        </form>
+                                    </div>
+                                </div>
 
-                                    <input type="submit" value="Submit" class="submit-btn"
-                                        onclick="myalertnewapifield()" />
-</ol>
+                                <input type="submit" value="Submit" class="submit-btn" onclick="myalertnewapifield()" />
+                            </ol>
 
                         </div>
 
