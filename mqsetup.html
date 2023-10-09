@@ -291,17 +291,49 @@
                                                 </tr>
                                                 <tr>
                                                     <th>Key</th>
+                                                    <td>fundtransfer.ini</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Value</th>
+                                                    <td>Service:
+                                                        Name=AuthorizationService </br>
+                                                        EntryPoints=14 </br>
+                                                        SecurityPolicy=UserExternal </br>
+                                                <tr>
+                                                    <th>Key</th>
                                                     <td>nativehamqsc.mqsc</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Value</th>
-                                                    <td>define ql(transfer.request) DEFPSIST(YES) </br>
-                                                        define ql(transfer.reply) DEFPSIST(YES)</br>
-                                                        DEFINE CHANNEL(FUNDTRANSFERCHL) CHLTYPE(SVRCONN) TRPTYPE(TCP)
-                                                        SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER')</br>
-                                                        set chlauth(FUNDTRANSFERCHL) TYPE(BLOCKUSER)
-                                                        USERLIST(NOBODY)</br>
-                                                        REFRESH SECURITY TYPE(CONNAUTH)
+                                                    <td>define ql(TRANSFER.REQUEST) REPLACE DEFPSIST(YES) </br>
+                                                    </br> </br>
+                                                        define ql(TRANSFER.REPLY) REPLACE DEFPSIST(YES) </br>
+                                                    </br> </br>
+                                                        DEFINE CHANNEL(FUNDTRANSFERCHL) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(REQUIRED) SSLCIPH('ANY_TLS12_OR_HIGHER')
+                                                    </br> </br>
+                                                        ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(OPTIONAL)
+                                                    </br> </br>
+                                                        set chlauth(FUNDTRANSFERCHL) TYPE(SSLPEERMAP) SSLPEER('CN=fundtransfer') USERSRC(MAP) MCAUSER('fundtransfer') ACTION(ADD)
+                                                    </br> </br>    
+                                                        SET AUTHREC PRINCIPAL('fundtransfer') OBJTYPE(QMGR) AUTHADD(CONNECT,INQ)
+                                                    </br> </br>    
+                                                        SET AUTHREC PROFILE('transfer.request') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
+                                                    </br> </br>    
+                                                        SET AUTHREC PROFILE('transfer.reply') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
+                                                    </br> </br>    
+                                                        DEFINE ql(TRQ.COPY) REPLACE   
+                                                    </br> </br>
+                                                        ALTER ql(TRANSFER.REQUEST) STREAMQ(TRQ.COPY)
+                                                    </br> </br>
+                                                        DEFINE CHANNEL(KAFKA.SVRCONN) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER') REPLACE
+                                                    </br> </br>
+                                                        SET CHLAUTH(KAFKA.SVRCONN) TYPE(BLOCKUSER) USERLIST('event-admin') WARN(YES) ACTION(REPLACE)
+                                                    </br> </br>
+                                                        REFRESH SECURITY
+                                                    </br> </br>
+                                                        SET AUTHREC OBJTYPE(QMGR) GROUP('kafkausers') AUTHADD(CONNECT, INQ)  
+                                                    </br> </br>
+                                                        SET AUTHREC OBJTYPE(QUEUE) PROFILE(TRQ.COPY) GROUP('kafkausers') AUTHADD(ALLMQI)
                                                     </td>
                                                 </tr>
                                             </tbody>
