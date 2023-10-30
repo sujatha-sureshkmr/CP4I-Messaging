@@ -11,21 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <style>
-        table {
-          border-collapse: collapse;
-          width: 100%;
-        }
-        
-        th, td {
-          text-align: left;
-          padding: 8px;
-        }
-        
-        tr:nth-child(even) {
-          background-color: #D6EEEE;
-        }
-        </style>
 </head>
 
 <body class="sb-nav-fixed">
@@ -99,7 +84,6 @@
                                 <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
                                 <a class="nav-link" href="temp.html">Streaming Queue</a>
                                 <a class="nav-link" href="apiSetup.html">API and EEM</a>
-
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
@@ -124,7 +108,7 @@
                         <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>
+                                <a class="nav-link" href="temp.html">Scenario Walkthrough</a>
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Add ons</div>
@@ -151,13 +135,17 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Glossary</h1>
+                    <h1 class="mt-4">Integration Practicum</h1>
 
-
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">
+                            <h4>Overview</h4>
+                        </li>
+                    </ol>
                     <div class="card mb-4">
                         <div class="card-header">
                             <i class="fas fa-book-open"></i>
-                            Glossary of Terms
+                            Funds Transfer Cloud Native Integration
                         </div>
                         <div class="card-body">
                             <div>
@@ -165,26 +153,94 @@
 
                             </div>
                             <div>
-                                <table>
-                                    <tr>
-                                    <th>#</th>
-                                    <th>Term</th>
-                                    <th colspan="3">Definition</th>
-                                    </tr>
-                                    <tr>
-                                    <td>1</td>
-                                    <td>CP4I</td>
-                                    <td colspan="3">CP4I is a acronym  meaning Cloud Pak for Integration</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>MQ</td>
-                                        <td colspan="3">MQ is short for IBM Messaging capacbilities also known as IBM Messaging Queue</td>
-                                        </tr>
-                                  </table>
+                                <p class="lead"><b>Use Case: Funds Transfer Scenario</b></p>
+                                <p class="lead">The bank needs to support the customers need to transfer payments/funds
+                                    to registered receivers when the transfer is received at the backend the customer
+                                    needs to be notified that the transfer was
+                                    initiated. Then once the processing is complete the customer will receive a second
+                                    notification that indicating the processing outcome
+                                </p>
+                                <img src="assets/img/CP4ISetup/usecase.png" alt="Usecase" class="center" width="700"
+                                    height="400" />
+
+                            </div>
+
+                            <div>
+                                <p></p>
+                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
+                                <p class="lead">
+                                <ol>
+                                    <li>User triggers a transfer of funds from their mobile banking</li>
+                                    <li>Backend for Frontend service invokes call to backend systems invokes the API
+                                    </li>
+                                    <li>API invokes persistent queue on the queue manager</li>
+                                    <li>The queue manager is configured to work with streaming queue which will post the
+                                        message to the events for processing by the subscribed event consumers</li>
+                                    <li>Events are processed on the event brokers</li>
+                                    <li>Event consumers process the inbound event</li>
+                                    <li>Core banking processes the transfer</li>
+                                    <li>When processing is complete core banking triggers notification to the events to
+                                        be picked up by the event consumers</li>
+                                </ol>
+                                </p>
+                                <img src="assets/img/CP4ISetup/architecture.png" alt="Usecase" class="center"
+                                    width="900" height="400" />
+
                             </div>
                         </div>
-                        <!-- <div class="row">
+
+                    </div>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">Environment Details</li>
+                    </ol>
+                    <div class="row">
+                        <div class="col-xl-2 col-md-3">
+                            <div class="card bg-primary text-white mb-4">
+                                <div class="card-body">Group 1</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-md-3">
+                            <div class="card bg-secondary text-white mb-4">
+                                <div class="card-body">Group 2</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-md-3">
+                            <div class="card bg-success text-white mb-4">
+                                <div class="card-body">Group 3</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-md-3">
+                            <div class="card bg-info text-white mb-4">
+                                <div class="card-body">Group 4</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-md-3">
+                            <div class="card bg-dark text-white mb-4">
+                                <div class="card-body">Group 5</div>
+                                <div class="card-footer d-flex align-items-center justify-content-between">
+                                    <a class="small text-white stretched-link" href="https://ibm.biz">View Details</a>
+                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
@@ -204,7 +260,7 @@
                                 </div>
                             </div>
                         </div>-->
-                    </div>
+                </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
