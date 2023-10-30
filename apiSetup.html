@@ -69,6 +69,41 @@
         }
     </script>
 
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
+            position: relative;
+            background: #d3d6db;
+            padding: 10px;
+            font-size: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border: 1px solid #e6e7e9;
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
+            color: #000;
+        }
+    </style>
 
 </head>
 
@@ -211,7 +246,7 @@
                             <img src="img/api-eem.png" alt="API and Event Endpoint Management Components" width="80%">
 
                             <p class="mb-0"> In this part of the Scenario, we will confiure
-                            <ol>
+                            <ul>
                                 <li>API Management Subsystem which includes the API and Cloud Manager components which
                                     admister the API subsystems</li>
                                 <li>The Analytics subsystem that gather statiistical data for analysis on the usage and
@@ -220,14 +255,14 @@
                                     to API implementations</li>
                                 <li>Event Gateways Service handles incoming requests from applications that want to
                                     consume from the stream of events </li>
-                            </ol>
+                            </ul>
                             Gateways provide a crucial layer of abstraction for the consuming applicaitons that protects
                             them from implementation details of the API/Event implementaitons behind.
                             </br>In this image we highlight what will be configured.
                             </br><img src="img/api-em-2.png" alt="API and Event Enpoint Management Configure Sequence"
                                 width="80%">
                             </br>
-                            <ol>
+                            <ol type="1">
                                 <li>Firstly we will configure the capabiltiies and wait for OCP to start the pods.</li>
                                 <li>Once the capailites for API are configured we will set the email server in the Cloud
                                     Manager</li>
@@ -254,15 +289,207 @@
                             </p></br>
                             <ol>
                                 <li>Navigate to the Integration Instances page from the Platform UI home page</li>
-                            <img src="img/platform-ui.png" alt="CP4I Platform UI Home page" width="80%"></br>
-                        </br>
-                        <li>Click on the Create Instance button. On the Create Instance page you will see the integration capabilities that can be configured. Greyed out capabilities is an indicator that the operators for these capabilities are not yet installed.</li>
-                        <li>Select API Management and Click Next</li>
-                        <img src="img/create-instance.png" alt="Create Instance" width="80%"></br></br>
-                        <li>Select Medium Single Replica and Click Next. This will install a Single instances of Management, Developer Portal, API Analytics and API Gateways</li>
-                        <img src="img/medium-single-replica.png" alt="Medium Single Replica" width="80%"></br></br>
+                                <img src="img/platform-ui.png" alt="CP4I Platform UI Home page" width="80%"></br>
+                                </br>
+                                <li>Click on the Create Instance button. On the Create Instance page you will see the
+                                    integration capabilities that can be configured. Greyed out capabilities is an
+                                    indicator that the operators for these capabilities are not yet installed.</li></br>
+                                <li>Select API Management and Click Next</li>
+                                <img src="img/create-instance.png" alt="Create Instance" width="80%"></br></br>
+                                <li>Select Medium Single Replica and Click Next. This will install a Single instances of
+                                    Management, Developer Portal, API Analytics and API Gateways.</li>
+                                <img src="img/medium-single-replica.png" alt="Medium Single Replica"
+                                    width="80%"></br></br>
+                                <li>On the capability configuration screen for API we will do a minimalistic setup and
+                                    this install we are not exploring advanced settings and options. If you want to see
+                                    some of the advanced settings you can toggle the advanced settings button. But for
+                                    the purposes of the scenario only a basic setup as per the chosen profile in the
+                                    previous step is needed.</li>
+                                <ol type="a">
+                                    <li>Enter a name in the "Name" field here we used <b>apic</b></li>
+                                    <li>Toggle the "Accept License agreement" to accepted</li>
+                                    <li>"License use" is optional but normally set to non production</li>
+                                    <li>"License ID" can use the default as per selection it may not match exactly what
+                                        is in the screenshot but would be similar</li>
+                                    <li>Check that the "Storage Class" is set it should be set to a esisting storage
+                                        class type that matches the RWO requirement</li>
+                                    <li>Once you are happy with the settings click the Create Button in the top right
+                                        corner</li>
+                                </ol>
+                                <img src="img/api-ms-config.png" alt="Medium Single Replica Configuration"
+                                    width="80%"></br></br>
+                                <li>The capabilities will now install and once it has we will complete additional
+                                    configurations. You can proceed with the next step configuring the mailtrap while
+                                    you wait for this to progress. When complete successfully you will see three new
+                                    integration instances types </li>
+                                <ol type="i">
+                                    <li>API-managed enterprise gateway (apic-gw) </li>
+                                    <li>API management adminstration (apic)</li>
+                                    <li>API management (apic)</li>
+                                </ol>
+                                <img src="img/api-capability-deployed.png" alt="Created Integration Instances"
+                                    width="80%"></br></br>
+                                <li>Once the new integration intances are created you can also take a look at the
+                                    created pods. you should observe and outcome similar to the below image showing the
+                                    running pods for API mangement, Analytics and API Gateways</li>
+                                <div class="codeDiv">
+                                    <pre><code>oc get pods -n cp4i --field-selector=status.phase=Running | grep apic</code></pre>
+                                </div>
+                                <img src="img/get-pods-out.png" alt="Output from get pods execution"
+                                    width="80%"></br></br>
                             </ol>
                             </p>
+                            <ol>
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>API Manager Notifications</h4>
+                                    </li>
+                                </ol>
+                                <p class="mb-0">In this section we will use mail trap and configure SMTP notfications
+                                    from the API Manager.
+                                </p></br>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h5>Mail Trap</h5>
+                                    </li>
+                                </ol>
+                                <p class="mb-0">To configure the nofifications we need a SMTP server setup for this lab
+                                    we will use mailtrap to simulate the SMTP server.
+                                </p></br>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h6>Signup to Mail Trap</h6>
+                                    </li>
+                                    <p>Note if you set this up as part of the lab prerequsites or already have a mail
+                                        trap account proceded to the <a href="#lmt">Logon to Mail Trap</a>. If you
+                                        prefer to not signup ask your instructor for the details to a mail trap account
+                                        that has been setup prior to the lab.</p>
+                                    <ol>
+                                        <li>Navigate to <a href="https://mailtrap.io/">Mail Trap</a> click the Sign Up
+                                            in the top right corner.</li>
+                                        <li>Create a new user account entering a email id. Prefer a public email address
+                                            to your corporate email address.</li>
+                                        <img src="img/mail-trap-new.png" alt="New Mail Trap Account" width="80%"></br>
+                                        <li>Verify the New account using the verification email sent to your supplied
+                                            email address.</li>
+                                        <img src="img/mail-trap-verify.png" alt="Verify email address"
+                                            width="80%"></br></br>
+                                        <li>Proceed to Log In to Mail Trap.</li></br></br>
+                                    </ol>
+                                    <li class="breadcrumb-item active">
+                                        <h6 id="lmt">Log In to Mail Trap</h6>
+                                    </li>
+                                    <ol>
+                                        <li>Log In to <a href="https://mailtrap.io/">Mail Trap</a> click the Log In
+                                            button in the top right corner. Enter the user email and password click Log
+                                            In</li>
+                                        <img src="img/mail-trap-login.png" alt="Log In" width="80%"></br>
+                                        <li>Select Email Testing > Inboxes and click MyInbox to navigate to the inbox we
+                                            will use for testing with the API Manager.</li>
+                                        <img src="img/mail-trap-myinbox.png" alt="Email Testing Inbox"
+                                            width="80%"></br></br>
+                                        <li>On the inbox window click Show Credentials to reveal the SMTP settings that
+                                            we will apply in the API Manager.</li>
+                                        <img src="img/mail-trap-show-details.png" alt="Inbox Show Credentials"
+                                            width="80%"></br></br>
+                                        <li>SMTP Settings,</li>
+                                        <img src="img/mail-trap-smtp-settings.png" alt="SMTP Settings"
+                                            width="80%"></br></br>
+                                    </ol>
+
+                                </ol>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h5>Configure Notifications In the API Manager</h5>
+                                    </li>
+                                </ol>
+                                <ol>
+                                    <li>From the Integration Instances view click on the "apic" link for the  API management adminstration instance.</li>
+                                    <img src="img/API-mgmt-sub.png" alt="API management administration" width="80%"></br></br>
+                                    <li>Login continuing with the Cloud Manager "Common Services User Registry". This will allow us to continue as the default created "admin" user.</li>
+                                    <img src="img/cloud-manager.png" alt="Cloud Manager Login" width="80%"></br></br>
+                                    <li>Click on the "Manage Resources" tile.</li>
+                                    <img src="img/manage-resources.png" alt="Manager Resources" width="80%"></br></br>
+                                    <li>From the Resoruces view select "Notifications" from the menu. In the Notifications view click the "Create" Button.</li>
+                                    <img src="img/manage-resources-notifications.png" alt="Manager Resources Notifications" width="80%"></br></br>
+                                    <li>Enter the mail server settings from the Mail Trap SMTP settings.</li>
+                                    <img src="img/mailserver-settings.png" alt="Mail Server Settings" width="80%"></br></br>
+                                    <li>Test the connection by sending a test email.</li>
+                                    <img src="img/test-mail.png" alt="Test Email semd to" width="80%"></br></br>
+                                    <li>Once complete the test email sent will be confirmed.</li>
+                                    <img src="img/test-mail-2.png" alt="Test Email semd to" width="80%"></br></br>
+                                    <li>Return to the mail trap inbox and you can view the test mail sent.</li>
+                                    <img src="img/test-mail-out.png" alt="Test email recved in mail trap" width="80%"></br></br>
+                                    <li>Click the setings (cog) button on the left hand icon menu.</li>
+                                    <img src="img/cloud-manager-settings.png" alt="Change the Mail Server Settings" width="80%"></br></br>
+                                    <li>Click the Notifications submenu in the Settings view. Click the Edit button to edit the mail server settings.</li>
+                                    <img src="img/cloud-manager-notifications.png" alt="Cloud Manager Settings Notifications" width="80%"></br></br>
+                                    <li>Select the new mail server thta was just defined and save the the change.</li>
+                                    <img src="img/cloud-manager-edit-email-server.png" alt="Edit Mail Server Settings" width="80%"></br></br>
+                                    <li>Saved changes to mailserver.</li>
+                                    <img src="img/cloud-manager-mail-server-saved.png" alt="Saved Mail Server Settings" width="80%"></br></br>
+                                    <li>Saved changes to mailserver.No Click on the Home Icon from the Icon Menu this will take us to the Home view for the catalog manager which is where the next section will begin.</li>
+                                </ol>
+                            </ol>
+                            <ol>
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>Create Provider Organization and Catalog</h4>
+                                    </li>
+                                </ol>
+                                <p class="mb-0">In this section we will create a provider orgnanization, catalog, and Developer Portal. Which will be used later in the creation and publising of APIs.
+                                </p></br></br>
+                                <ol>
+                                    <li>From the Cloud Manager howm view click on the Manage Organizations tile. You could also click on the Provider organizations Icon from the Icon menu.</li>
+                                    <img src="img/cloud-manager-manage-org.png" alt="Cloud Manager Manage Organizations" width="80%"></br></br>
+                                    <li>Click on the add button to begin creating the new provider organization.</li>
+                                    <img src="img/cloud-manager-add-provider-organization.png" alt="Add New provider Organization" width="80%"></br></br>
+                                    <li>Enter the name of the Organization details and the Organization Owner. In this simple demo we will persist with using the admin user as the owner. When the data is entered click Create button.</li>
+                                    <img src="img/cloud-manager-create-organization.png" alt="Create Organization" width="80%"></br></br>
+                                    <li>Change from the Cloud Manager to the API Manager. Click on the IBM Cloud Pak image button on the top left corner of the Cloud Manager. Once </li>
+                                    <img src="img/cloud-manager-switch-api-manager.png" alt="Navigate to Cloud Pak Home Page" width="80%"></br></br>
+                                    <li>In the Cloud Pak UI home page, click on the "Design APIs" menu link, this will launch the API Manager. Note you may or may not be promted for login. The provider organisation we created uses admin user which is part of the Common Services User Registry.</li>
+                                    <img src="img/cloud-pak-ui-design-apis.png" alt="Navigate to Design APIs" width="80%"></br></br>
+                                    <li>When the API Manager opens confirm the provider organization (DemoOrg) and user (admin) are correct. </li>
+                                    <img src="img/api-manager-home.png" alt="API Manger Home Page" width="80%"></br></br>
+                                    <li>For creating the developer portal the Organization Owner must have a email address. The admin id does not have an address at this potin so we will modify the settings now to add an email address to the owner. </li>
+                                    <img src="img/api-manager-myaccount-menu.png" alt="API Manger My Account" width="80%"></br></br>
+                                    <li>Enter a email address into the email field. Note emails will not actually be sent to this address as we are trapping them in the mail trap setup earlier.</li>
+                                    <img src="img/api-manager-account-edit.png" alt="API Manger Account Edit" width="80%"></br></br>
+                                    <li>Click Save once email address is set</li>.
+                                    <img src="img/api-manager-account-saved.png" alt="API Manger Account Edit" width="80%"></br></br>
+                                    <li>Click on the Manage Catalogs tile on the API Manager Home view.</li>
+                                    <img src="img/api-manager-manage-catalog.png" alt="API Manager Manage Catalogs" width="80%"></br></br>
+                                    <li>Click Add on the Manage catalog view.</li>
+                                    <img src="img/api-manager-manage-catalog-add.png" alt="Manage Catalog Add" width="80%"></br></br>
+                                    <li>Complete the Catalog definition and Click the create button.</li>
+                                    <img src="img/api-manager-create-catalog.png" alt="Manage Catalog Create" width="80%"></br></br>
+                                    <li>Click the Demo Catalog tile</li>
+                                    <img src="img/api-manager-manage-catalog-demo.png" alt="Manage Catalog Demo Catalog" width="80%"></br></br>
+                                    <li>Click on the "Catalog Settings" Tab and then Select the "Portal" settings from the left hand menu. Click the Create button to setup the Developer Portal for the catalog.</li>
+                                    <img src="img/api-manager-demo-catalog.png" alt="API Manager Demo Catalog" width="80%"></br></br>
+                                    <li>Select the portal-service from the select menu and click the Create button.</li>
+                                    <img src="img/api-manager-create-portal.png" alt="API Manager Create Portal" width="80%"></br></br>
+                                    <li>The portal service will be initiated it takes a few minutes to ready. After a few minutes try the URL. If the portal loads proceed to mailtrap and follow the instructions for setting the developer portal admin password.</li>
+                                    <img src="img/api-manager-developer-portal-created.png" alt="API Manager Portal Created" width="80%"></br></br>
+                                    <li>Wait some time then copy the Developer portal URL and paste it in a <b>new incognito browser</b>. This should help work around any insecure and certificate warnings.</li>
+                                    <img src="img/api-manager-developer-portal-url-copy.png" alt="API Manager Copy Portal URL" width="80%"></br></br>
+                                    <li>Click on the Show Advanced Button and Click proceed to site.</li>
+                                    <img src="img/developer-portal-proceed-to-site.png" alt="Developer Portal Proceed to Site" width="80%"></br></br>
+                                    <li>Once you see the home page for the portal proceed to the next step to complete the site setup by setting the admin password.</li>
+                                    <img src="img/developer-portal-home.png" alt="Developer Portal Home" width="80%"></br></br>
+                                    <li>Switch to the Mail Trap tab or if it was closed reopen and Log In to Mail Trap in new browser tab. In your Inbox you will see a email from the Developer Portal to setup the admin password.</li>
+                                    <img src="img/mailtrap-developer-portal-admin.png" alt="Mail Trap Developer Portal Admin" width="80%"></br></br>
+                                    <li>Copy the link in the email and paste to new ingognito tab.</li>
+                                    <li>Click Reset Button to continue.</li>
+                                    <img src="img/developer-portal-reset.png" alt="Developer Portal Reset" width="80%"></br></br>
+                                    <li>Set the new password. In this example copy the admin password from the Cloud pak Status tab of the configuration browser window. And then click Submit.</li>
+                                    <img src="img/developer-portal-admin-password-set.png" alt="Set Password" width="80%"></br></br>
+                                    <li>This completes this section of the instruction for the API Connect.</li>
+                                </ol>
+                            </ol>
                             <ol>
 
                                 <ol class="breadcrumb mb-4">
