@@ -1,4 +1,3 @@
-
 name: Generate HTML
 
 on:
@@ -34,17 +33,6 @@ jobs:
       - name: Run PHP script
         run: |
           php javamessagemq.php > javamessagemq_output.html
-          echo "Generated HTML content:"
-          cat javamessagemq_output.html
-
-      - name: Commit and push changes
-        run: |
-          git config user.name 'Sujatha Sureshkumar'
-          git config user.email 'sujatha.sureshkmr@gmail.com'
-          git add javamessagemq_output.html
-          git commit -m "Update HTML content"
-          git push
-.php > javamessagemq_output.html
           echo "Generated HTML content:"
           cat javamessagemq_output.html
 
