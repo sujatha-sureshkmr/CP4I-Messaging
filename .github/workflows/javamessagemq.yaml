@@ -39,9 +39,9 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config user.name 'Your Name'
-          git config user.email 'your.email@example.com'
-          git add output.html
+          git config user.name 'Sujatha Sureshkumar'
+          git config user.email 'sujatha.sureshkmr@gmail.com'
+          git add javamessagemq_output.html
           git commit -m "Update HTML content"
           git push
 .php > javamessagemq_output.html
@@ -50,8 +50,8 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config user.name 'Your Name'
-          git config user.email 'your.email@example.com'
-          git add output.html
+          git config user.name 'Sujatha Sureshkumar'
+          git config user.email 'sujatha.sureshkmr@gmail.com'
+          git add javamessagemq_output.html
           git commit -m "Update HTML content"
           git push
