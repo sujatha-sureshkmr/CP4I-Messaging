@@ -1,27 +1,10 @@
 name: Generate HTML
-
+    
 on:
   push:
     branches:
       - main
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run PHP script
-        run: |
-          php name: Generate HTML
-
-on:
-  push:
-    branches:
-      - main
-
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -36,7 +19,7 @@ jobs:
           echo "Generated HTML content:"
           cat javamessagemq_output.html
 
-      - name: Commit and push changes
+      - name: Commit and push changes  
         run: |
           git config user.name 'Sujatha Sureshkumar'
           git config user.email 'sujatha.sureshkmr@gmail.com'
