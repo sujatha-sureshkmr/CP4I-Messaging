@@ -141,18 +141,35 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Integration Practicum</h1>
+                    <h2 class="mt-4">Configure Streaming Queue</h2>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">Overview</h4>
+                                </li>
+                            </ol>
 
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">
-                            <h4>Overview</h4>
-                        </li>
-                    </ol>
-                    <input type="submit" value="Submit" class="submit-btn" />
-                    <form action="javamessagemq.php" method="post">
-                        <input type="submit" value="Run Script">
-                    </form>
-                    <a class="nav-link" href="javamessagemq_output.html">messagemq</a>
+                            <p class="mb-0">
+                                Kafka Connect with IBM Event Streams allows you to seamlessly integrate Kafka with various data sources and sinks, enabling real-time data streaming and data synchronization between different systems in your architecture. It simplifies the process of building and managing data pipelines, making it easier to work with data in a Kafka-based environment.<br>
+                            </p>
+                            <img src="assets/img/CP4ISetup/MQ_Architecture.png" alt="Usecase" class="center"
+                                object-fit="none" />
+
+                            <p class="mb-0"> We will now setup and configure streaming queue.</p> </br>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="map">Kafka connect</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">We will need to create a secret to push kafka connect images to ocp</p>
+                            <ol>
+                                <li>Go to ocp console -> kube:admin -> copy login command</li>
+                                <img src="assets/img/CP4ISetup/image077.png" alt="Usecase" class="center"
+                                    object-fit="none" />
+                                <li>Copy API token from the login command details</li>
+                                <img src="assets/img/CP4ISetup/image078.png" alt="Usecase" class="center"
+                                    object-fit="none" />
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
