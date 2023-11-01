@@ -153,8 +153,8 @@
                             <p class="mb-0">
                                 Kafka Connect with IBM Event Streams allows you to seamlessly integrate Kafka with various data sources and sinks, enabling real-time data streaming and data synchronization between different systems in your architecture. It simplifies the process of building and managing data pipelines, making it easier to work with data in a Kafka-based environment.<br>
                             </p>
-                            <img src="assets/img/CP4ISetup/MQ_Architecture.png" alt="Usecase" class="center"
-                                object-fit="none" />
+                            <!--<img src="assets/img/CP4ISetup/MQ_Architecture.png" alt="Usecase" class="center"
+                                object-fit="none" />-->
 
                             <p class="mb-0"> We will now setup and configure streaming queue.</p> </br>
                             <ol class="breadcrumb mb-4">
@@ -162,14 +162,59 @@
                                     <h4 id="map">Kafka connect</h4>
                                 </li>
                             </ol>
-                            <p class="mb-0">We will need to create a secret to push kafka connect images to ocp</p>
+                            <p class="mb-0">We will now create a secret to push kafka connect images to ocp</p>
                             <ol>
+                                <li>Go to bastion server -> login to ocp</li>
+                                <li>Execute the following command copy the route from oc get routes output</li>
+                                <pre><code>oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers 
+                                </br>oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers
+                                </code></pre>
+                                
+                                <img src="assets/img/CP4ISetup/image079.png" alt="Usecase" class="center"
+                                    object-fit="none" />
+                            
                                 <li>Go to ocp console -> kube:admin -> copy login command</li>
                                 <img src="assets/img/CP4ISetup/image077.png" alt="Usecase" class="center"
                                     object-fit="none" />
                                 <li>Copy API token from the login command details</li>
                                 <img src="assets/img/CP4ISetup/image078.png" alt="Usecase" class="center"
                                     object-fit="none" />
+                                <li>Go to Workloads -> secret -> project (cp4i) -> Create image pull secret</li>
+                                <div class="card-body">
+                                    <table id="datatablesSimple">
+                                        <thead>
+                                            <tr>
+                                                <th>Option</th>
+                                                <td>Value</td>
+                                                <td>Remarks</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>Secret name</th>
+                                                <td>cp4i-image-stream</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Registry server address</th>
+                                                <td><b>paste the output of the oc get routes for openshift-image-registry</b></td>
+                                                <td>Example: default-route-openshift-image-registry.apps.daffy-ak48g5wg.cloud.techzone.ibm.com</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Username</th>
+                                                <td>oc</td>
+                                                <td>Example: sha256~B0jEABlqy1TGZqJCrJ1uxLgjenL_37m9Kp0oB2wFj1Y</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Password</th>
+                                                <td><b>paste API token</b></td>
+                                            </tr>
+                                        </tbody>
+                                        </table>
+                                        </div>
+                            </ol>
+                        </div>
+                    </div>
+                    </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
