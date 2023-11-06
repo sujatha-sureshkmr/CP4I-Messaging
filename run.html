@@ -17,6 +17,13 @@
         function enableButton2() {
             document.getElementById("ApproveFundTransfer").disabled = false;
         }
+        function fundapprove(qmhostname, QueueName, AccountNo, FromCurr, ToCurr, CurrencyRate, TransferAmount) {
+            var ToTransferAmount = TransferAmount * CurrencyRate;
+
+            var message = "We are sending you a message to inform you that fund transfer of "+FromCurr+" "+ TransferAmount+" ("+ToCurr+" "+ ToTransferAmount+") to account number " + AccountNo + " that you have request is successfully completed. Reference #640"
+            alert(message);
+            enableButton2()
+        }
     </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -175,7 +182,7 @@
                             <button onclick="fundtransfer(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNo').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)">Submit</button>
                           
                         </div>
-                        <input type="button" id="ApproveFundTransfer" value="Approve Fund Transfer" disabled onclick="fundtransfer(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNo').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)"/>
+                        <input type="button" disabled id="ApproveFundTransfer" value="Approve Fund Transfer" onclick="fundapprove(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNo').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)"/>
                     </div>
                     <!--<input type="submit" value="Submit" class="submit-btn" onclick="myalertoperator()" />-->
 
