@@ -196,14 +196,19 @@
                                     <pre><code>cd ft-mq-jms-main/</code></pre>
                                     <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center"
                                         object-fit="none" />
-                                    <li>setup environment variables</li>
+                                    <li>Setup environment variables. Note: You may change the currency, rate and the amount. Below is just a sample.</li>
                                     <pre><code>export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")</code></pre>
                                     <pre><code>export QUEUE_NAME=TRANSFER.REQUEST</code></pre>
                                     <pre><code>export FromCurr=SGD</code></pre>
                                     <pre><code>export ToCurr=USD</code></pre>
                                     <pre><code>export CurrencyRate=0.74</code></pre>
                                     <pre><code>export TransferAmount=100</code></pre>
-                                    
+                                    <img src="assets/img/CP4ISetup/image099.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+                                    <li>We will now execute jms application. Note: ensure the ftpapp.jks and trust.jks files are available in the parent folder</li>
+                                    <pre><code>java -Djavax.net.ssl.keyStoreType=jks -Djavax.net.ssl.keyStore=ftappkey.jks -Djavax.net.ssl.keyStorePassword=password      -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStore=trust.jks -Djavax.net.ssl.trustStorePassword=password      -Dcom.ibm.mq.cfg.useIBMCipherMappings=false      -cp ./lib/com.ibm.mq.allclient-9.2.4.0.jar:./lib/javax.jms-api-2.0.1.jar:./lib/json-20211205.jar:.      com.ibm.mq.samples.jms.JmsPut</code></pre>
+                                    <img src="assets/img/CP4ISetup/image100.png" alt="Usecase" class="center"
+                                        object-fit="none" />
                                 </ol>
                             
                     
