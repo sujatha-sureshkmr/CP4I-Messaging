@@ -7,6 +7,10 @@
             shell_exec = shell_exec('ls /Users/sujathasureshkumar/Documents/GitHub/sujatha-sureshkmr.github.io/jms/')
             alert(shell_exec);
         }
+        function add(a, b) {
+            var sum = parseInt(a, 10) + parseInt(b, 10);
+            alert(sum);
+        }
     </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -101,7 +105,7 @@
                         <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="temp.html">Testing Applications</a>
+                                <a class="nav-link" href="testapplication.html">Testing Applications</a>
                                 <a class="nav-link" href="temp.html">API to MQ</a>
                             </nav>
                         </div>
@@ -114,7 +118,7 @@
                         <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="temp.html">Scenario Walkthrough</a>
+                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading">Add ons</div>
@@ -148,11 +152,30 @@
                             <h4>Overview</h4>
                         </li>
                     </ol>
-                    <input type="submit" value="Submit" class="submit-btn" />
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Fund Transfer Application
+                        </div>
+                        <div class="card-body">
+                            <h1>Fund transfer request</h1>
+                            qmhostname: <input type="text" name="Queue Manager Host Name" id="qmhostname" value="fundtransfer-ibm-mq-qm-cp4i.apps.daffy-5hrao4ff.cloud.techzone.ibm.com"><br> 
+                            QueueName: <input type="text" name="Queue Name" id="QueueName" value="TRANSFER.REQUEST"><br>
+                            FromCurr: <input type="text" name="From Currency" id="FromCurr" value="SGD"><br> 
+                            ToCurr: <input type="text" name="To Currency" id="ToCurr" value="USD" ><br>
+                            CurrencyRate: <input type="number" name="CurrencyRate" id="CurrencyRate" value="0.74"><br> 
+                            TransferAmount: <input type="number" name="Transfer Amount" id="TransferAmount" value="100"><br>
+                            <button onclick="add(document.getElementById('a').value,document.getElementById('b').value)">Submit</button>
+                          
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" class="submit-btn" onclick="myalertoperator()" />
+
+                    <!--<input type="submit" value="Submit" class="submit-btn" />
                     <form action="javamessagemq.php" method="post">
                         <input type="submit" value="Run Script">
                     </form>
-                    <a class="nav-link" href="javamessagemq_output.html">messagemq</a>
+                    <a class="nav-link" href="javamessagemq_output.html">messagemq</a>-->
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
