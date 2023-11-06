@@ -7,9 +7,11 @@
             shell_exec = shell_exec('ls /Users/sujathasureshkumar/Documents/GitHub/sujatha-sureshkmr.github.io/jms/')
             alert(shell_exec);
         }
-        function fundtransfer(a, b) {
-            var sum = parseInt(a, 10) + parseInt(b, 10);
-            alert(sum);
+        function fundtransfer(qmhostname, QueueName, FromCurr, ToCurr, CurrencyRate, TransferAmount, AccountNo) {
+            var ToTransferAmount = parseInt(TransferAmount, 10) * parseInt(message, 10);
+
+            var message = "We are sending you a message to inform you that fund transfer of + "+FromCurr+" "+ TransferAmount+" ("+ToCurr+" "+ ToTransferAmount +") to account number " + AccountNo + "that you have request is initiated. Reference #640"
+            alert(message);
         }
     </script>
     <meta charset="utf-8" />
@@ -166,7 +168,7 @@
                             To Currency:             <input type="text" name="ToCurr" id="ToCurr" value="USD" ><br>
                             Currency Rate:           <input type="text" name="CurrencyRate" id="CurrencyRate" value="0.74"><br> 
                             Transfer Amount:         <input type="text" name="TransferAmount" id="TransferAmount" value="100"><br>
-                            <button onclick="fundtransfer(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNO').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)">Submit</button>
+                            <button onclick="fundtransfer(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNo').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)">Submit</button>
                           
                         </div>
                     </div>
