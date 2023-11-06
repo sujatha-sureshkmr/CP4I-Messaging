@@ -172,14 +172,22 @@
                                 
                                 <img src="assets/img/CP4ISetup/image079.png" alt="Usecase" class="center"
                                     object-fit="none" />
-                            
+                                <li>Go to ocp console -> workloads -> secret -> event-admin -> copy the password</li>
+                                <img src="assets/img/CP4ISetup/image082.png" alt="Usecase" class="center"
+                                    object-fit="none" />
+                                <li>Go to CloudPak for Integration console -> Integration Instances -> click "ft-eventstreams" </li>
+                                <img src="assets/img/CP4ISetup/image083.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+                                <li>use username as "event-admin" and password (use the password retreieved from secret)</li>
+                                <img src="assets/img/CP4ISetup/image084.png" alt="Usecase" class="center"
+                                        object-fit="none" />
                                 <li>Go to ocp console -> kube:admin -> copy login command</li>
                                 <img src="assets/img/CP4ISetup/image077.png" alt="Usecase" class="center"
                                     object-fit="none" />
                                 <li>Copy API token from the login command details</li>
                                 <img src="assets/img/CP4ISetup/image078.png" alt="Usecase" class="center"
                                     object-fit="none" />
-                                <li>Go to Workloads -> secret -> project (cp4i) -> Create image pull secret</li>
+                                <li>Go to Workloads -> secret -> project (cp4i) -> Create image pull secret -> update following information -> click save</li>
                                 <div class="card-body">
                                     <table id="datatablesSimple">
                                         <thead>
@@ -196,7 +204,7 @@
                                             </tr>
                                             <tr>
                                                 <th>Registry server address</th>
-                                                <td><b>paste the output of the oc get routes for openshift-image-registry</b></td>
+                                                <td>paste the output of the oc get routes for openshift-image-registry</td>
                                                 <td>Example: default-route-openshift-image-registry.apps.daffy-ak48g5wg.cloud.techzone.ibm.com</td>
                                             </tr>
                                             <tr>
@@ -211,6 +219,13 @@
                                         </tbody>
                                         </table>
                                         </div>
+                                        <img src="assets/img/CP4ISetup/image080.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+
+                                        <li>Go to ocp console -> Operators -> Installed Operators -> IBM Event Streams -> kafka connect -> create kafka connect -> Yaml view -> paste the yaml code before</li>
+                                        <script src="https://gist.github.com/sujatha-sureshkmr/96d0a11b2c32249a4898a154461a3b2d.js"></script>
+                                        <img src="assets/img/CP4ISetup/image081.png" alt="Usecase" class="center"
+                                            object-fit="none" />
                             </ol>
                         </div>
                     </div>
