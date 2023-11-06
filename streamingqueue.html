@@ -208,6 +208,9 @@
                                 <li>You will also find the credentials created in the secret.</li>
                                 <img src="assets/img/CP4ISetup/image092.png" alt="Usecase" class="center"
                                         object-fit="none" />
+                                <li>Go to External -> Click "Generate SCRAM credentials". Name: "ft-evs-cred-ext", Choose "All Topics", "All Consumer Groups", "All Transaction ID", "Generate Credentials".</li>
+                                <img src="assets/img/CP4ISetup/image095.png" alt="Usecase" class="center"
+                                        object-fit="none" />
                                 <li>Go to ocp console -> kube:admin -> copy login command</li>
                                 <img src="assets/img/CP4ISetup/image077.png" alt="Usecase" class="center"
                                     object-fit="none" />
@@ -255,6 +258,18 @@
                                         <script src="https://gist.github.com/sujatha-sureshkmr/96d0a11b2c32249a4898a154461a3b2d.js"></script>
                                         <img src="assets/img/CP4ISetup/image081.png" alt="Usecase" class="center"
                                             object-fit="none" />
+                                        <li>check 1: verify build config created. Go to Builds -> BuildsConfigs</li>
+                                        <img src="assets/img/CP4ISetup/image093.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+                                        <li>check 2: verify build created and completed successfully. Go to Builds -> Builds</li>
+                                        <img src="assets/img/CP4ISetup/image094.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+                                        <li>check 3: pods are created and successfully running. Note: This would take 3 to 5 mins to complete. Go to workloads -> pods.</li>
+                                        <img src="assets/img/CP4ISetup/image093.png" alt="Usecase" class="center"
+                                        object-fit="none" />
+                                        <li>check 2: kafka connect container created and running successfully</li>
+                                        <img src="assets/img/CP4ISetup/image093.png" alt="Usecase" class="center"
+                                        object-fit="none" />
                             </ol>
                         </div>
                     </div>
