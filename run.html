@@ -162,10 +162,11 @@
                             qmhostname: <input type="text" name="Queue Manager Host Name" id="qmhostname" value="fundtransfer-ibm-mq-qm-cp4i.apps.daffy-5hrao4ff.cloud.techzone.ibm.com"><br> 
                             QueueName: <input type="text" name="Queue Name" id="QueueName" value="TRANSFER.REQUEST"><br>
                             FromCurr: <input type="text" name="From Currency" id="FromCurr" value="SGD"><br> 
+                            AccountNO: <input type="text" name="Account Number" id="AccountNO" value="ABCD11000111"><br> 
                             ToCurr: <input type="text" name="To Currency" id="ToCurr" value="USD" ><br>
                             CurrencyRate: <input type="number" name="CurrencyRate" id="CurrencyRate" value="0.74"><br> 
                             TransferAmount: <input type="number" name="Transfer Amount" id="TransferAmount" value="100"><br>
-                            <button onclick="add(document.getElementById('a').value,document.getElementById('b').value)">Submit</button>
+                            <button onclick="add(document.getElementById('qmhostname').value,document.getElementById('QueueName').value,document.getElementById('AccountNO').value,document.getElementById('FromCurr').value,document.getElementById('ToCurr').value,document.getElementById('CurrencyRate').value,document.getElementById('TransferAmount').value)">Submit</button>
                           
                         </div>
                     </div>
