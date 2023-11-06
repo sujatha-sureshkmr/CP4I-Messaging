@@ -197,13 +197,12 @@
                                     <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center"
                                         object-fit="none" />
                                     <li>setup environment variables</li>
-                                    <pre><code>export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")</code>
-                                    </br>
-                                       <code>export QUEUE_NAME=TRANSFER.REQUEST</code>
-                                       <code>export FromCurr=SGD</code>
-                                       <code>export ToCurr=USD</code>
-                                       <code>export CurrencyRate=0.74</code>
-                                       <code>export TransferAmount=100</code></pre>
+                                    <pre><code>export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")</code></pre>
+                                    <pre><code>export QUEUE_NAME=TRANSFER.REQUEST</code></pre>
+                                    <pre><code>export FromCurr=SGD</code></pre>
+                                    <pre><code>export ToCurr=USD</code></pre>
+                                    <pre><code>export CurrencyRate=0.74</code></pre>
+                                    <pre><code>export TransferAmount=100</code></pre>
                                     
                                 </ol>
                             
