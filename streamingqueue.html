@@ -166,7 +166,7 @@
                             <ol>
                                 <li>Go to bastion server -> login to ocp</li>
                                 <li>Execute the following command copy the route from oc get routes output</li>
-                                <pre><code>oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers 
+                                <pre><code>oc patch configs.imageregistry.operator.openshift.io/cluster --patch '{"spec":{"defaultRoute":true}}' --type=merge 
                                 </br>oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers
                                 </code></pre>
                                 
@@ -250,6 +250,8 @@
                                         object-fit="none" />
 
                                         <li>Go to ocp console -> Operators -> Installed Operators -> IBM Event Streams -> kafka connect -> create kafka connect -> Yaml view -> paste the yaml code before</li>
+                                        <li>Note: you will need to change output -> image variable from oc get routes. For example:  </li>
+                                        <pre><code>oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers</code></pre>
                                         <script src="https://gist.github.com/sujatha-sureshkmr/96d0a11b2c32249a4898a154461a3b2d.js"></script>
                                         <img src="assets/img/CP4ISetup/image081.png" alt="Usecase" class="center"
                                             object-fit="none" />
