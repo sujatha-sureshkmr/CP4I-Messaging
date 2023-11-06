@@ -60,8 +60,12 @@ public class JmsGet {
 	private static final String QMGR = "fundtransfer"; // Queue manager name
 	// private static final String APP_USER = "not_used"; // User name that application uses to connect to MQ
 	// private static final String APP_PASSWORD = "not_used"; // Password that the application uses to connect to MQ
-	private static final String QUEUE_NAME = "TRANSFER.REQUEST"; // Queue that the application uses to put and get messages to and from
-
+	// private static final String QUEUE_NAME = "TRANSFER.REQUEST"; // Queue that the application uses to put and get messages to and from
+	private static final String FromCurr = System.getenv("FromCurr"); 
+	private static final String ToCurr = System.getenv("ToCurr"); 
+	private static final double CurrencyRate = Double.parseDouble(System.getenv("CurrencyRate")); 
+	private static final double TransferAmount = Double.parseDouble(System.getenv("TransferAmount")); 
+	private static final String QUEUE_NAME = System.getenv("QUEUE_NAME"); 
 
 	/**
 	 * Main method

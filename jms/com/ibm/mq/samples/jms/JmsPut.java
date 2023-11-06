@@ -60,8 +60,12 @@ public class JmsPut {
 	private static final String QMGR = "fundtransfer"; // Queue manager name
 	// private static final String APP_USER = "not_used"; // User name that application uses to connect to MQ
 	// private static final String APP_PASSWORD = "not_used"; // Password that the application uses to connect to MQ
-	private static final String QUEUE_NAME = "TRANSFER.REQUEST"; // Queue that the application uses to put and get messages to and from
-
+	// private static final String QUEUE_NAME = "TRANSFER.REQUEST"; // Queue that the application uses to put and get messages to and from
+	private static final String FromCurr = System.getenv("FromCurr"); 
+	private static final String ToCurr = System.getenv("ToCurr"); 
+	private static final double CurrencyRate = Double.parseDouble(System.getenv("CurrencyRate")); 
+	private static final double TransferAmount = Double.parseDouble(System.getenv("TransferAmount")); 
+	private static final String QUEUE_NAME = System.getenv("QUEUE_NAME"); 
 
 	/**
 	 * Main method
@@ -100,7 +104,17 @@ public class JmsPut {
 			destination = context.createQueue("queue:///" + QUEUE_NAME);
 
 			long uniqueNumber = System.currentTimeMillis() % 1000;
-			TextMessage message = context.createTextMessage("Your lucky number today is " + uniqueNumber);
+			double ToTransferAmount = TransferAmount * CurrencyRate;
+
+			TextMessage message = context.createTextMessage("Your fundtransfer is in-progress of initialization. " + uniqueNumber);
+			if (QUEUE_NAME.equals("TRANSFER.REQUEST")) 
+			{
+				message = context.createTextMessage("We are sending you a message to inform you that fundtransfer of "+FromCurr +" "+ TransferAmount + " ( " + ToCurr +" "+ ToTransferAmount +" ) to account number ####ABC that you have request is initiated. Refernece #" + uniqueNumber);
+			}
+			if (QUEUE_NAME.equals("TRANSFER.REPLY") )
+			{
+				message = context.createTextMessage("We are sending you a message to inform you that fundtransfer of "+FromCurr +" "+ TransferAmount + " ( " + ToCurr +" "+ ToTransferAmount +" ) to account number ####ABC that you have request is successfully completed. Refernece #" + uniqueNumber);
+			}
 
 			producer = context.createProducer();
 			producer.send(destination, message);
