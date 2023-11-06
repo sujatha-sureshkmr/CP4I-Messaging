@@ -156,10 +156,22 @@
                             <!--<img src="assets/img/CP4ISetup/MQ_Architecture.png" alt="Usecase" class="center"
                                 object-fit="none" />-->
 
-                            <p class="mb-0"> We will now setup and configure streaming queue.</p> </br>
+                            
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="map">Kafka connect</h4>
+                                    <li class="mb-0">Clone the following repositry from github.</li> </br>
+                                    <pre><code>wget https://github.com/sujatha-sureshkmr/ft-mq-jms/archive/refs/heads/main.zip</code>
+                                    <code>unzip main.zip</code></pre>
+                                    <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center"
+                                    object-fit="none" />
+
+                                     <pre><code>export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")</code>
+                                     </br>
+                                        <code>export QUEUE_NAME=TRANSFER.REQUEST</code>
+                                        <code>export FromCurr=SGD</code>
+                                        <code>export ToCurr=USD</code>
+                                        <code>export CurrencyRate=0.74</code>
+                                        <code>export TransferAmount=100</code></pre>
                                 </li>
                             </ol>
                     
