@@ -209,6 +209,13 @@
                                     <pre><code>java -Djavax.net.ssl.keyStoreType=jks -Djavax.net.ssl.keyStore=ftappkey.jks -Djavax.net.ssl.keyStorePassword=password      -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStore=trust.jks -Djavax.net.ssl.trustStorePassword=password      -Dcom.ibm.mq.cfg.useIBMCipherMappings=false      -cp ./lib/com.ibm.mq.allclient-9.2.4.0.jar:./lib/javax.jms-api-2.0.1.jar:./lib/json-20211205.jar:.      com.ibm.mq.samples.jms.JmsPut</code></pre>
                                     <img src="assets/img/CP4ISetup/image100.png" alt="Usecase" class="center"
                                         object-fit="none" />
+                                    <li>Now, we will login to MQ console to verify if the messages are requested and sent.</br>
+                                        Go to cp4i console -> Integration Instances -> fundtransfer -> Manage -> fundtransfer (queue manager)</li>
+                                    <img src="assets/img/CP4ISetup/image101.png" alt="Usecase" class="center"
+                                    object-fit="none" />
+                                    <li>You will see messages are bring sent over and received replies</li>
+                                    <img src="assets/img/CP4ISetup/image102.png" alt="Usecase" class="center"
+                                    object-fit="none" />
                                 </ol>
                             
                     
