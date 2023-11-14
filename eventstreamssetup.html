@@ -263,13 +263,21 @@
                                     -> Existing Configuration in OCP -> Installed Pods).</li>
                                 <!--<img src="assets/img/CP4ISetup/image023.png" alt="Usecase" class="center" object-fit="none"/>-->
                                 <li>Create eventstreams.yaml file in oc terminal</li>
-                                <div class="codeDiv"><pre><code>vi eventstreams.yaml</code></pre></div>
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                    <pre id="myPreTag">vi eventstreams.yaml</pre>
+                                    <script src="script.js"></script>
+                                    </div>
+                                
                                 <li>Use the following yaml content, paste in the oc terminal. Save and exit from
                                     eventstreams.yaml</li>
                                     <script src="https://gist.github.com/sujatha-sureshkmr/1c87d1e6b83e56c3d27ff256d1f1d3af.js"></script>
-                                <div class="codeDiv">
-                                    <pre><code></code>oc apply -f eventstreams.yaml</code></pre>
-                                </div>
+
+                                     <li>Apply the changes to oc</li>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                        <pre id="myPreTag1">oc apply -f eventstreams.yaml</pre>
+                                        <script src="script.js"></script>
+                                        </div>
+                                
                             </ol>
 
                             <p class="mb-0"></p> </br>
@@ -289,7 +297,10 @@
                             <ol>
                                 <li>Create eventstreams_user.yaml file in oc terminal</li>
                                 <div class="codeDiv">
-                                <pre><code>vi eventstreams_user.yaml</code></pre>
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                    <pre id="myPreTag2">vi eventstreams_user.yaml</pre>
+                                    <script src="script.js"></script>
+                                    </div>
                             </div>
                                 <li>Use the following yaml content, paste in the oc terminal. Save and exit from
                                     eventstreams_user.yaml</li>
@@ -297,7 +308,10 @@
                                 
 
                                 <li>Apply the changes to oc</li>
-                                <div class="codeDiv"><pre><code>oc apply -f eventstreams_user.yaml</code></pre></div>
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                    <pre id="myPreTag2">oc apply -f eventstreams_user.yaml</pre>
+                                    <script src="script.js"></script>
+                                    </div>
                             </ol>
                             <p class="mb-0"></p> </br>
                             <ol class="breadcrumb mb-4">
@@ -312,7 +326,11 @@
                             </p>
                             <ol>
                                 <li>Create eventstreams_topic.yaml file in oc terminal</li>
-                                <div class="codeDiv"><pre><code>vi eventstreams_topic.yaml</code></pre></div>
+                                
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                    <pre id="myPreTag3">vi eventstreams_topic.yaml</pre>
+                                    <script src="script.js"></script>
+                                    </div>
                                 <li>Use the following yaml content, paste in the oc terminal. Save and exit from
                                     eventstreams_topic.yaml</li>
                                     <script src="https://gist.github.com/sujatha-sureshkmr/110cf3b7759575dbed53f27c46bfb37e.js"></script>
