@@ -274,8 +274,8 @@
                                     <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center"
                                         object-fit="none" />
                                     <li>Setup environment variables. Note: You may change the currency, rate and the amount. Below is just a sample.</li>
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
-                                        <pre id="myPreTag2">export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag3')">
+                                        <pre id="myPreTag3">export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")
                                             </br> export QUEUE_NAME=TRANSFER.REQUEST
                                             </br> export FromCurr=SGD
                                             </br> export ToCurr=USD
@@ -287,8 +287,8 @@
                                     <img src="assets/img/CP4ISetup/image099.png" alt="Usecase" class="center"
                                         object-fit="none" />
                                     <li>We will now execute jms application. Note: ensure the ftpapp.jks and trust.jks files are available in the parent folder</li>
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
-                                        <pre id="myPreTag2">java -Djavax.net.ssl.keyStoreType=jks -Djavax.net.ssl.keyStore=ftappkey.jks -Djavax.net.ssl.keyStorePassword=password      -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStore=trust.jks -Djavax.net.ssl.trustStorePassword=password      -Dcom.ibm.mq.cfg.useIBMCipherMappings=false      -cp ./lib/com.ibm.mq.allclient-9.2.4.0.jar:./lib/javax.jms-api-2.0.1.jar:./lib/json-20211205.jar:.      com.ibm.mq.samples.jms.JmsPut</pre>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag4')">
+                                        <pre id="myPreTag4">java -Djavax.net.ssl.keyStoreType=jks -Djavax.net.ssl.keyStore=ftappkey.jks -Djavax.net.ssl.keyStorePassword=password      -Djavax.net.ssl.trustStoreType=jks -Djavax.net.ssl.trustStore=trust.jks -Djavax.net.ssl.trustStorePassword=password      -Dcom.ibm.mq.cfg.useIBMCipherMappings=false      -cp ./lib/com.ibm.mq.allclient-9.2.4.0.jar:./lib/javax.jms-api-2.0.1.jar:./lib/json-20211205.jar:.      com.ibm.mq.samples.jms.JmsPut</pre>
                                         <script src="script.js"></script>
                                     </div> 
 
