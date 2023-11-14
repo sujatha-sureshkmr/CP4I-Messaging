@@ -7,6 +7,63 @@
             shell_exec = shell_exec('ls /Users/sujathasureshkumar/Documents/GitHub/sujatha-sureshkmr.github.io/jms/')
             alert(shell_exec);
         }
+        function testapplication() {
+            shell_exec = shell_exec('ls /Users/sujathasureshkumar/Documents/GitHub/sujatha-sureshkmr.github.io/jms/')
+            alert(shell_exec);
+        }
+
+
+        function myalertpodeventstreams() {
+            alert("Installed Operators -> IBM Event Streams -> EventStreams");
+        }
+        function myalertpodeventstreamsuser() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka User");
+        }
+        function myalertpodeventTopic() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
+        }
+        function copyToClipboard(element) {
+    // Get the <pre> element
+    const preTag = document.getElementById(element);
+
+    // Create a copy button element
+    const copyButton = document.createElement("span");
+    copyButton.innerText = "Copy";
+    copyButton.classList.add("copy-button");
+
+    // Append the copy button to the <pre> tag
+    preTag.appendChild(copyButton);
+
+    // Add click event listener to the copy button
+    copyButton.addEventListener("click", () => {
+        // Hide the copy button temporarily
+        copyButton.style.display = "none";
+
+        // Create a range and select the text inside the <pre> tag
+        const range = document.createRange();
+        range.selectNode(preTag);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        try {
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Alert the user that the text has been copied
+            copyButton.innerText = "Copied!";
+            setTimeout(function() {
+                copyButton.innerText = "Copy";
+            }, 2000);
+        } catch (err) {
+            console.error("Unable to copy text:", err);
+        } finally {
+            // Show the copy button again
+            copyButton.style.display = "inline";
+
+            // Deselect the text
+            window.getSelection().removeAllRanges();
+        }
+    });
     </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -197,6 +254,7 @@
 
                                 <ol>
                                     <li>Clone the following repositry from github.</li>
+                                    
                                     <pre><code>wget https://github.com/sujatha-sureshkmr/ft-mq-jms/archive/refs/heads/main.zip</code></pre>
                                     <pre><code>unzip main.zip</code></pre>
                                     <pre><code>cd ft-mq-jms-main/</code></pre>
