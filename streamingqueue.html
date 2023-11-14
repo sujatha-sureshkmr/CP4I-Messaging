@@ -159,10 +159,10 @@
                             <p class="mb-0"> We will now setup and configure streaming queue.</p> </br>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="map">Kafka connect</h4>
+                                    <h4 id="map">EventStreams</h4>
                                 </li>
                             </ol>
-                            <p class="mb-0">We will now create a secret to push kafka connect images to ocp</p>
+                            <p class="mb-0">We will now access eventstreams.</p>
                             <ol>
                                 <li>Go to bastion server -> login to ocp</li>
                                 <li>Execute the following command copy the route from oc get routes output</li>
@@ -178,6 +178,14 @@
                                 <li>Go to CloudPak for Integration console -> Integration Instances -> click "ft-eventstreams" </li>
                                 <img src="assets/img/CP4ISetup/image083.png" alt="Usecase" class="center"
                                         object-fit="none" />
+                            </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="map">Generate SCRAM credentials for eventstreams</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">We will now generate SCRAM credentials </p>
+                            <ol>
                                 <li>use username as "event-admin" and password (use the password retreieved from secret)</li>
                                 <img src="assets/img/CP4ISetup/image084.png" alt="Usecase" class="center"
                                         object-fit="none" />
@@ -217,6 +225,14 @@
                                 <li>Copy API token from the login command details</li>
                                 <img src="assets/img/CP4ISetup/image078.png" alt="Usecase" class="center"
                                     object-fit="none" />
+                                </ol>
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4 id="map">KafkaConnect</h4>
+                                    </li>
+                                </ol>
+                                <p class="mb-0">We will now create Kafka Connect.</p>
+                                <ol>
                                 <li>Go to Workloads -> secret -> project (cp4i) -> Create image pull secret -> update following information -> click save</li>
                                 <div class="card-body">
                                     <table id="datatablesSimple">
