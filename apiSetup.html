@@ -876,13 +876,42 @@
                                 </div>
                                 <img src="img/server-profile-keystore.png" alt="Server profile keystore"></br></br>
                                 <img src="img/server-keystore-out.png" alt="Server profile keystore out"></br></br>
-                                <li>With the key stores created we will swtch back to use the user interface for the remaining configurations. Logon to the Cloud Manager. Follow the steps for this as described in section <a href="#notifications">Configure Notifications In the API Manager</a>  step 1. Click Manage Resources</li>
+                                
+                            </ol>
+                            <ol>
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>Configure Event Gateway Client and Server TLS Profiles</h4>
+                                    </li>
+                                </ol>
+                                <li>With the key stores created we will switch back to use the web UI for the remaining configurations. Logon to the Cloud Manager. Follow the steps for this as described in section <a href="#notifications">Configure Notifications In the API Manager</a>  step 1. Click Manage Resources</li>
                                 <img src="img/manage-resources.png" alt="Cloud Manger Home"></br></br>
                                 <li>Click on TLS from the left hand menu.</li>
                                 <img src="img/cloud-manager-resources-tls.png" alt="Cloud Manger Home"></br></br>
                                 <li>Scroll down to the the Keystore and Truststore sections you can observer the Keystores and Truststore created above.</li>
                                 <img src="img/keystore-list.png" alt="Keystore List"></br></br>
                                 <img src="img/truststore-list.png" alt="Truststore List"></br></br>
+                                <li>Click "Create" on the  TLS Client Profile.</li>
+                                <img src="img/cloud-manager-create-client-tls-profile.png" alt="Create Client TLS Profile"></br></br>
+                                <li>Enter the "Title" for the TLS Client Profile "Event Gateway TLS Client Profile". Retain the default for the Protocols (TLS v1.2 and TLS v1.3)</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-1.png" alt="Create Client TLS Profile Title"></br></br>
+                                <li>Select the Keystore and Truststore for the Client Profile (Event Gateway Client Profile Keystore, Event Gsteway Client Profile Truststore)</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-2.png" alt="Create Client TLS Profile keystore truststore"></br></br>
+                                <li>Retain the selected default Ciphers</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-3.png" alt="Create Client TLS Profile Ciphers"></br></br>
+                                <li>Click "Save" and create the TLS Client Profile</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-4.png" alt="Create Client TLS Profile Save"></br></br>
+                                <li>Click "Create" on the  TLS Server Profile.</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-0.png" alt="Create Server TLS Profile"></br></br>
+                                <li>Enter the "Title" for the TLS Server Profile "Event Gateway TLS Server Profile".Retain the default for the Protocols (TLS v1.2 and TLS v1.3) </li>
+                                <img src="img/cloud-manager-create-server-tls-profile-1.png" alt="Create Server TLS Title"></br></br>
+                                <li>Set Mutual Authenticatio (None), Limit Renegotiation (true),  Keystore (Event Gateway Server Profile Keystore) and Truststore (None).</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-2.png" alt="Create Server TLS Mutual Auth, Limit Reneg, Keystore"></br></br>
+                                <li>Retain the selected default Ciphers</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-3.png" alt="Create Server TLS Ciphers"></br></br>
+                                <li>Click "Save" and create the TLS Server Profile</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-4.png" alt="Create Server TLS Profile Save"></br></br>
                             </ol>
                            
                             <ol>
