@@ -109,12 +109,12 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">IBM CSM Labs</a>
+        <a class="navbar-brand ps-3" href="index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="index.html">Integration Practicum</a>
+        <a class="navbar-brand ps-3" href="index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -221,7 +221,7 @@
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
-                    <div class="small">IBM CSM Labs</div>
+                    <div class="small">IBM CSM</div>
 
                 </div>
             </nav>
@@ -285,9 +285,6 @@
                                 <li>Go to Internal -> Click "Generate SCRAM credentials"</li>
                                 <img src="assets/img/CP4ISetup/image086.png" alt="Usecase" class="center"
                                         object-fit="none" />
-                                <li>Go to Internal -> Click "Generate SCRAM credentials"</li>
-                                <img src="assets/img/CP4ISetup/image086.png" alt="Usecase" class="center"
-                                        object-fit="none" />
                                 <li>Use credential name "ft-evs-int-2", choose "Produce messages, consume messages and create topics and schemas". Click next.</li>
                                 <img src="assets/img/CP4ISetup/image087.png" alt="Usecase" class="center"
                                         object-fit="none" />
@@ -306,7 +303,7 @@
                                 <li>You will also find the credentials created in the secret.</li>
                                 <img src="assets/img/CP4ISetup/image092.png" alt="Usecase" class="center"
                                         object-fit="none" />
-                                <li>Go to External -> Click "Generate SCRAM credentials". Name: "ft-evs-cred-ext", Choose "All Topics", "All Consumer Groups", "All Transaction ID", "Generate Credentials".</li>
+                                <li>Go to External -> Click "Generate SCRAM credentials". Name: "ft-evs-cred-ext",Produce messages: Choose "All Topics", consume messages : "All Consumer Groups", create topics and schemas : "All Transaction ID", "Generate Credentials".</li>
                                 <img src="assets/img/CP4ISetup/image095.png" alt="Usecase" class="center"
                                         object-fit="none" />
                                 <li>Go to ocp console -> kube:admin -> copy login command</li>
@@ -324,33 +321,39 @@
                                 <p class="mb-0">We will now create Kafka Connect.</p>
                                 <ol>
                                 <li>Go to Workloads -> secret -> project (cp4i) -> Create image pull secret -> update following information -> click save</li>
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
+                                    <pre id="myPreTag2">oc get routes -n openshift-image-registry -o custom-columns=:.spec.host --no-headers</pre>
+                                    <script src="script.js"></script>
+                                    </div>
                                 <div class="card-body">
                                     <table id="datatablesSimple">
                                         <thead>
                                             <tr>
-                                                <th>Option</th>
-                                                <td>Value</td>
-                                                <td>Remarks</td>
+                                                <th style="border:1px solid black;border-collapse:collapse;">Option</th>
+                                                <td style="border:1px solid black;border-collapse:collapse;">Value</td>
+                                                <td style="border:1px solid black;border-collapse:collapse;">Remarks</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th>Secret name</th>
-                                                <td>cp4i-image-stream</td>
+                                                <th style="border:1px solid black;border-collapse:collapse;">Secret name</th>
+                                                <td style="border:1px solid black;border-collapse:collapse;">cp4i-image-stream</td>
+                                                <td style="border:1px solid black;border-collapse:collapse;"></td>
                                             </tr>
                                             <tr>
-                                                <th>Registry server address</th>
-                                                <td>paste the output of the oc get routes for openshift-image-registry</td>
-                                                <td>Example: default-route-openshift-image-registry.apps.daffy-ak48g5wg.cloud.techzone.ibm.com</td>
+                                                <th style="border:1px solid black;border-collapse:collapse;">Registry server address</th>
+                                                <td style="border:1px solid black;border-collapse:collapse;">paste the output of the oc get routes for openshift-image-registry</td>
+                                                <td style="border:1px solid black;border-collapse:collapse;">Example: default-route-openshift-image-registry.apps.daffy-ak48g5wg.cloud.techzone.ibm.com</td>
                                             </tr>
                                             <tr>
-                                                <th>Username</th>
-                                                <td>oc</td>
-                                                <td>Example: sha256~B0jEABlqy1TGZqJCrJ1uxLgjenL_37m9Kp0oB2wFj1Y</td>
+                                                <th style="border:1px solid black;border-collapse:collapse;">Username</th>
+                                                <td style="border:1px solid black;border-collapse:collapse;">oc</td>
+                                                <td style="border:1px solid black;border-collapse:collapse;">Example: sha256~B0jEABlqy1TGZqJCrJ1uxLgjenL_37m9Kp0oB2wFj1Y</td>
                                             </tr>
                                             <tr>
-                                                <th>Password</th>
-                                                <td><b>paste API token</b></td>
+                                                <th style="border:1px solid black;border-collapse:collapse;">Password</th>
+                                                <td style="border:1px solid black;border-collapse:collapse;"> <b>paste API token</b></td>
+                                                <td style="border:1px solid black;border-collapse:collapse;"></td>
                                             </tr>
                                         </tbody>
                                         </table>
