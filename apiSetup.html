@@ -667,7 +667,8 @@
                                 </code></pre>
                                 </div>
                                 <img src="img/create-eem-demo.png" alt="Create EEM Demo" width="80%"></br></br>
-                                <li>We now need to wait for the Event Endpoint MNagment to start. You can periodically run the following command until status reaches phase "Running"
+                                <li>We now need to wait for the Event Endpoint MNagment to start. You can periodically
+                                    run the following command until status reaches phase "Running"
                                 </li>
                                 <div class="codeDiv">
                                     <pre><code>oc get EventEndpointManagement ademo-eem -o=jsonpath={'..phase'}
@@ -688,7 +689,9 @@
                                 <li>Copy the gist "egw.yaml" file to a local file createEGW.yaml. Replace the
                                     "{EEM_GATEWAY_URL}}" with the value of the Event management Gateway URL.
                                     earlier</li>
-                                <script src="https://gist.github.com/leonardBlunt/e6b26ae0ef5e4cfe208ea38b0bec4bf3.js"></script> </br></br>
+                                <script
+                                    src="https://gist.github.com/leonardBlunt/e6b26ae0ef5e4cfe208ea38b0bec4bf3.js"></script>
+                                </br></br>
 
                                 <li>Save the updates to file as createEGW.yaml then apply the file in the environment
                                 </li>
@@ -697,16 +700,20 @@
                                 </code></pre>
                                 </div>
                                 <img src="img/create-egw.png" alt="Create EGW " width="80%"></br></br>
-                                <li>Now we wait for the event gateway  pods to start. You can periodically run the following command until status reaches phase "Running"
+                                <li>Now we wait for the event gateway pods to start. You can periodically run the
+                                    following command until status reaches phase "Running"
                                 </li>
                                 <div class="codeDiv">
                                     <pre><code>oc get EventGateway ademo-event-gw -o=jsonpath={'..phase'}
                                 </code></pre>
                                 </div>
-                                <li>Copy the gist "eem-roles.json" file to a local file eem-roles.json. 
+                                <li>Copy the gist "eem-roles.json" file to a local file eem-roles.json.
                                 </li>
-                                <script src="https://gist.github.com/leonardBlunt/f318c696ff205cbd9f0271382db9135d.js"></script> </br></br>
-                                <li>Save the updates to eem-roles.json then patch the End Point Manager Secret with the roles. Note the change of command for Mac versuses other systems
+                                <script
+                                    src="https://gist.github.com/leonardBlunt/f318c696ff205cbd9f0271382db9135d.js"></script>
+                                </br></br>
+                                <li>Save the updates to eem-roles.json then patch the End Point Manager Secret with the
+                                    roles. Note the change of command for Mac versuses other systems
                                 </li>
                                 <b>MAC</b>
                                 <div class="codeDiv">
@@ -730,11 +737,15 @@
                                 <img src="img/eem-roles-patched.png" alt="EEM Roles patched " width="80%"></br></br>
                                 <li>Copy the gist "eem-users.json" file to a local file eem-users.json.
                                 </li>
-                                <script src="https://gist.github.com/leonardBlunt/1d36e127a5cfb9c4177ca075e8958b1d.js"></script></br></br>
-                               <li>Replace the string {{password}} with the same password used by "ocpadmin". if using the vi editior can use the global replace as shown here. </li>
-                               <img src="img/replace-password.png" alt="Repalce Password" width="25%"></br></br>
-                               
-                                <li>Save the updates to eem-users.json then patch the End Point Manager Secret with the users. Note the change of command for Mac versuses other systems
+                                <script
+                                    src="https://gist.github.com/leonardBlunt/1d36e127a5cfb9c4177ca075e8958b1d.js"></script>
+                                </br></br>
+                                <li>Replace the string {{password}} with the same password used by "ocpadmin". if using
+                                    the vi editior can use the global replace as shown here. </li>
+                                <img src="img/replace-password.png" alt="Repalce Password" width="25%"></br></br>
+
+                                <li>Save the updates to eem-users.json then patch the End Point Manager Secret with the
+                                    users. Note the change of command for Mac versuses other systems
                                 </li>
                                 <b>MAC</b>
                                 <div class="codeDiv">
@@ -746,7 +757,7 @@
                                     <pre><code>EEM_USERS=$(cat eem-users.json | base64 -w0)
                                 </code></pre>
                                 </div>
-                                
+
                                 <b>Patch the secret</b>
                                 <div class="codeDiv">
                                     <pre><code>RESPONSE=$(oc patch secret ademo-eem-ibm-eem-user-credentials -n cp4i -p '{"data": {"user-credentials.json": "'$EEM_USERS'"}}')
@@ -765,7 +776,9 @@
                                         <h4>Configure Event Gateway Key and Trust Stores</h4>
                                     </li>
                                 </ol>
-                                <p class="mb-0">In this section of configuration we will use the apic ingress certificates and eem certificates to establish trust stores that will be used for the Client and Server TLS profiles.</br>
+                                <p class="mb-0">In this section of configuration we will use the apic ingress
+                                    certificates and eem certificates to establish trust stores that will be used for
+                                    the Client and Server TLS profiles.</br>
                                 </p>
                                 <li>Get API Manager Route</li>
                                 <div class="codeDiv">
@@ -776,7 +789,7 @@
                                     <pre><code>echo "API_EP=${API_EP}"
                                     </code></pre>
                                 </div>
-                                
+
                                 <li>Get auth token for use with the API</li>
                                 <div class="codeDiv">
                                     <pre><code>admin_password=$(oc get secret -n cp4i apic-mgmt-admin-pass -o json | jq -r .data.password | base64 --decode)
@@ -795,7 +808,8 @@
                                     </code></pre>
                                 </div>
                                 <img src="img/access-token.png" alt="Access Token Commands"></br></br>
-                                <li>Get the admin organisation id this is needed for executing the API calls to the Catalog Manager</li>
+                                <li>Get the admin organisation id this is needed for executing the API calls to the
+                                    Catalog Manager</li>
                                 <div class="codeDiv">
                                     <pre><code>curl GET https://${API_EP}/api/orgs/admin \<br>&nbsp;&nbsp;&nbsp;&nbsp;-s -k -H "Content-Type: application/json" -H "Accept: application/json" \<br>&nbsp;&nbsp;&nbsp;&nbsp;-H "Authorization: Bearer ${admin_token}" --retry 5 > out2.json
                                     </code></pre>
@@ -809,7 +823,8 @@
                                     </code></pre>
                                 </div>
                                 <img src="img/org_id.png" alt="Admin Organisation ID"></br></br>
-                                <li>Retrieve the TLS certificates from the ademo-eem-ibm-eem-manager we will use this to create the keystore and trust store for the Client TLS Profile on the gateway</li>
+                                <li>Retrieve the TLS certificates from the ademo-eem-ibm-eem-manager we will use this to
+                                    create the keystore and trust store for the Client TLS Profile on the gateway</li>
                                 <div class="codeDiv">
                                     <pre><code>ca_crt=`oc get secret ademo-eem-ibm-eem-manager -o=jsonpath='{.data.ca\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
                                     </code></pre>
@@ -850,7 +865,8 @@
                                     </code></pre>
                                 </div>
                                 <img src="img/truststore-out.png" alt="Create truststore"></br></br>
-                                <li>Retrieve the TLS certificates from the ademo-eem-ibm-eem-manager-ca secret we will use this to create the keystore for the Server TLS Profile on the gateway</li>
+                                <li>Retrieve the TLS certificates from the ademo-eem-ibm-eem-manager-ca secret we will
+                                    use this to create the keystore for the Server TLS Profile on the gateway</li>
                                 <div class="codeDiv">
                                     <pre><code>eem_tls_crt=`oc get secret ademo-eem-ibm-eem-manager-ca -o=jsonpath='{.data.tls\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
                                     </code></pre>
@@ -876,7 +892,7 @@
                                 </div>
                                 <img src="img/server-profile-keystore.png" alt="Server profile keystore"></br></br>
                                 <img src="img/server-keystore-out.png" alt="Server profile keystore out"></br></br>
-                                
+
                             </ol>
                             <ol>
 
@@ -885,33 +901,51 @@
                                         <h4>Configure Event Gateway Client and Server TLS Profiles</h4>
                                     </li>
                                 </ol>
-                                <li>With the key stores created we will switch back to use the web UI for the remaining configurations. Logon to the Cloud Manager. Follow the steps for this as described in section <a href="#notifications">Configure Notifications In the API Manager</a>  step 1. Click Manage Resources</li>
+                                <li>With the key stores created we will switch back to use the web UI for the remaining
+                                    configurations. Logon to the Cloud Manager. Follow the steps for this as described
+                                    in section <a href="#notifications">Configure Notifications In the API Manager</a>
+                                    step 1. Click Manage Resources</li>
                                 <img src="img/manage-resources.png" alt="Cloud Manger Home"></br></br>
                                 <li>Click on TLS from the left hand menu.</li>
                                 <img src="img/cloud-manager-resources-tls.png" alt="Cloud Manger Home"></br></br>
-                                <li>Scroll down to the the Keystore and Truststore sections you can observer the Keystores and Truststore created above.</li>
+                                <li>Scroll down to the the Keystore and Truststore sections you can observer the
+                                    Keystores and Truststore created above.</li>
                                 <img src="img/keystore-list.png" alt="Keystore List"></br></br>
                                 <img src="img/truststore-list.png" alt="Truststore List"></br></br>
-                                <li>Click "Create" on the  TLS Client Profile.</li>
-                                <img src="img/cloud-manager-create-client-tls-profile.png" alt="Create Client TLS Profile"></br></br>
-                                <li>Enter the "Title" for the TLS Client Profile "Event Gateway TLS Client Profile". Retain the default for the Protocols (TLS v1.2 and TLS v1.3)</li>
-                                <img src="img/cloud-manager-create-client-tls-profile-1.png" alt="Create Client TLS Profile Title"></br></br>
-                                <li>Select the Keystore and Truststore for the Client Profile (Event Gateway Client Profile Keystore, Event Gsteway Client Profile Truststore)</li>
-                                <img src="img/cloud-manager-create-client-tls-profile-2.png" alt="Create Client TLS Profile keystore truststore"></br></br>
+                                <li>Click "Create" on the TLS Client Profile.</li>
+                                <img src="img/cloud-manager-create-client-tls-profile.png"
+                                    alt="Create Client TLS Profile"></br></br>
+                                <li>Enter the "Title" for the TLS Client Profile "Event Gateway TLS Client Profile".
+                                    Retain the default for the Protocols (TLS v1.2 and TLS v1.3)</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-1.png"
+                                    alt="Create Client TLS Profile Title"></br></br>
+                                <li>Select the Keystore and Truststore for the Client Profile (Event Gateway Client
+                                    Profile Keystore, Event Gsteway Client Profile Truststore)</li>
+                                <img src="img/cloud-manager-create-client-tls-profile-2.png"
+                                    alt="Create Client TLS Profile keystore truststore"></br></br>
                                 <li>Retain the selected default Ciphers</li>
-                                <img src="img/cloud-manager-create-client-tls-profile-3.png" alt="Create Client TLS Profile Ciphers"></br></br>
+                                <img src="img/cloud-manager-create-client-tls-profile-3.png"
+                                    alt="Create Client TLS Profile Ciphers"></br></br>
                                 <li>Click "Save" and create the TLS Client Profile</li>
-                                <img src="img/cloud-manager-create-client-tls-profile-4.png" alt="Create Client TLS Profile Save"></br></br>
-                                <li>Click "Create" on the  TLS Server Profile.</li>
-                                <img src="img/cloud-manager-create-server-tls-profile-0.png" alt="Create Server TLS Profile"></br></br>
-                                <li>Enter the "Title" for the TLS Server Profile "Event Gateway TLS Server Profile".Retain the default for the Protocols (TLS v1.2 and TLS v1.3) </li>
-                                <img src="img/cloud-manager-create-server-tls-profile-1.png" alt="Create Server TLS Title"></br></br>
-                                <li>Set Mutual Authenticatio (None), Limit Renegotiation (true),  Keystore (Event Gateway Server Profile Keystore) and Truststore (None).</li>
-                                <img src="img/cloud-manager-create-server-tls-profile-2.png" alt="Create Server TLS Mutual Auth, Limit Reneg, Keystore"></br></br>
+                                <img src="img/cloud-manager-create-client-tls-profile-4.png"
+                                    alt="Create Client TLS Profile Save"></br></br>
+                                <li>Click "Create" on the TLS Server Profile.</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-0.png"
+                                    alt="Create Server TLS Profile"></br></br>
+                                <li>Enter the "Title" for the TLS Server Profile "Event Gateway TLS Server
+                                    Profile".Retain the default for the Protocols (TLS v1.2 and TLS v1.3) </li>
+                                <img src="img/cloud-manager-create-server-tls-profile-1.png"
+                                    alt="Create Server TLS Title"></br></br>
+                                <li>Set Mutual Authenticatio (None), Limit Renegotiation (true), Keystore (Event Gateway
+                                    Server Profile Keystore) and Truststore (None).</li>
+                                <img src="img/cloud-manager-create-server-tls-profile-2.png"
+                                    alt="Create Server TLS Mutual Auth, Limit Reneg, Keystore"></br></br>
                                 <li>Retain the selected default Ciphers</li>
-                                <img src="img/cloud-manager-create-server-tls-profile-3.png" alt="Create Server TLS Ciphers"></br></br>
+                                <img src="img/cloud-manager-create-server-tls-profile-3.png"
+                                    alt="Create Server TLS Ciphers"></br></br>
                                 <li>Click "Save" and create the TLS Server Profile</li>
-                                <img src="img/cloud-manager-create-server-tls-profile-4.png" alt="Create Server TLS Profile Save"></br></br>
+                                <img src="img/cloud-manager-create-server-tls-profile-4.png"
+                                    alt="Create Server TLS Profile Save"></br></br>
                             </ol>
                             <ol>
 
@@ -920,37 +954,112 @@
                                         <h4>Configure Event Gateway Service</h4>
                                     </li>
                                 </ol>
-                                <p>We will now confiugre the Event Gateway service for this we will need the EEM Manager (ademo-eem-ibm-eem-apic) and Gateway (ademo-event-gw-ibm-egw-rt))routes</p>
-                                <li>Select  Networking (1) Select Routes (2) from left hand menu and filter the projects to cp4i (3) </li>
-                                <img src="img/openshift-networking-routes-cp4i.png" alt="OpenShift Networking Routes"></br></br>
+                                <p>We will now confiugre the Event Gateway service for this we will need the EEM Manager
+                                    (ademo-eem-ibm-eem-apic) and Gateway (ademo-event-gw-ibm-egw-rt))routes</p>
+                                <li>Select Networking (1) Select Routes (2) from left hand menu and filter the projects
+                                    to cp4i (3) </li>
+                                <img src="img/openshift-networking-routes-cp4i.png"
+                                    alt="OpenShift Networking Routes"></br></br>
                                 <li>Open in a new tab the ademo-eem-ibm-eem-apic route</li>
                                 <li>Open in a new tab the ademo-event-gw-ibm-egw-rt route</li>
-                                <li>In the Cloud Manger UI Navigate to the topology menu in using the lefthand icon menu</li>
-                                <img src="img/cloud-manager-topology-icon-menu.png" alt="Cloud Manager Topology Icon Menu" width="50%"></br></br>
+                                <li>In the Cloud Manger UI Navigate to the topology menu in using the lefthand icon menu
+                                </li>
+                                <img src="img/cloud-manager-topology-icon-menu.png"
+                                    alt="Cloud Manager Topology Icon Menu" width="50%"></br></br>
                                 <li>In the default availability zone Click "Register service"</li>
-                                <img src="img/cloud-manager-topology-register-service.png" alt="Cloud Manager Topology Reegister Service" width="50%"></br></br>
+                                <img src="img/cloud-manager-topology-register-service.png"
+                                    alt="Cloud Manager Topology Reegister Service" width="50%"></br></br>
                                 <li>Fill the Register Gateway Service Form 1) Title Details</li>
-                                <img src="img/create-gateway-service-title.png" alt="Create Gateway Service Title" width="80%"></br></br>
+                                <img src="img/create-gateway-service-title.png" alt="Create Gateway Service Title"
+                                    width="80%"></br></br>
                                 <li>Fill the Register Gateway Service Form 2) Service endpoint configuration</li>
-                                    <ul>
-                                        <li>Copy the Location from the ademo-eem-ibm-eem-apic route and paste to the "Management endpoint on the gateway service" field</li>
-                                        <img src="img/host-ademo-eem-ibm-eem-apic.png" alt="Route ademo-eem-ibm-eem-apic" width="80%"></br></br>
-                                        <li>Select the TLS Client Profile that was created earlier (Event Gateway Client Profile:1.0.0)</li>
-                                    </ul>
-                                <img src="img/create-gateway-service-endpoint-configuration.png" alt="Create Gateway Service endpoint configuration" width="80%"></br></br>
+                                <ul>
+                                    <li>Copy the Location from the ademo-eem-ibm-eem-apic route and paste to the
+                                        "Management endpoint on the gateway service" field</li>
+                                    <img src="img/host-ademo-eem-ibm-eem-apic.png" alt="Route ademo-eem-ibm-eem-apic"
+                                        width="80%"></br></br>
+                                    <li>Select the TLS Client Profile that was created earlier (Event Gateway Client
+                                        Profile:1.0.0)</li>
+                                </ul>
+                                <img src="img/create-gateway-service-endpoint-configuration.png"
+                                    alt="Create Gateway Service endpoint configuration" width="80%"></br></br>
                                 <li>Fill the Register Gateway Service Form 3) API Invocation Endpoint</li>
                                 <ul>
-                                    <li>Copy the Location from the host of the ademo-event-gw-ibm-egw-rt route paste to the "API endpoint base" field</li>
-                                    <img src="img/host-ademo-event-gw-ibm-egw-rt.png" alt="Route ademo-event-gw-ibm-egw-rt" width="80%"></br></br>
+                                    <li>Copy the Location from the host of the ademo-event-gw-ibm-egw-rt route paste to
+                                        the "API endpoint base" field</li>
+                                    <img src="img/host-ademo-event-gw-ibm-egw-rt.png"
+                                        alt="Route ademo-event-gw-ibm-egw-rt" width="80%"></br></br>
                                     <li>Add port :443 on end of copied route</li>
-                                    <li>Select the TLS Server Profile that was created earlier (Event Gateway Server Profile:1.0.0)</li>
-                                    
+                                    <li>Select the TLS Server Profile that was created earlier (Event Gateway Server
+                                        Profile:1.0.0)</li>
+
                                 </ul>
-                                <img src="img/create-gateway-service-invocation-endpoint.png" alt="Create Gateway Service Invocation Endpoint" width="80%"></br></br>
+                                <img src="img/create-gateway-service-invocation-endpoint.png"
+                                    alt="Create Gateway Service Invocation Endpoint" width="80%"></br></br>
                                 <li>Click "Save"</li>
 
 
-                           </ol>
+                            </ol>
+                            <ol>
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>Connect The Endpoint Manager to the Event Streams</h4>
+                                    </li>
+                                </ol>
+                                <p>In this section we will connect the event streams cluster to the end point manager</p>
+                                <li>Get the Event Cluster Connection Information from the Events UI. Navigate to the Cloud Pak Navigator, from the integration instances open the ft-eventstreams in a new browser tab </li>
+                                <img src="img/cloud-pak-ft-eventstreams.png"
+                                    alt="Cloud Pak Integration Instance Event Streams" width="80%"></br></br>
+                                <li>Click the "Connect to Cluster" Tile</li>
+                                    <img src="img/event-streams-ui-connect-to-cluster-tile.png"
+                                        alt="Event Streams UI Connect to the Cluster" width="80%"></br></br>
+                                <li>Copy the internal bootstrat address with the scram credentials</li>
+                                        <img src="img/event-streams-ui-connect-to-cluster-tile.png"
+                                            alt="Event Streams UI Connect to the Cluster" width="80%"></br></br>
+                                <li>Copy the internal bootstrat address with the scram credentials</li>
+                                <img src="img/event-streams-connect-to-cluster-scram.png"
+                                                alt="Event Streams Connect to the Cluster scram" width="80%"></br></br>
+                                <li>Return to the Platofrm Navigator and open the Event End Point Managment UI in a new incognito browser</li>
+                                <img src="img/event-streams-connect-to-cluster-scram.png"
+                                                alt="Event Streams Connect to the Cluster scram" width="80%"></br></br>
+                                <li>Launch the End Point Managment UI from the integrations instances view</li>
+                                <img src="img/eem-ui.png"
+                                                alt="Event End Point Manager UI Link"></br></br>
+                                <li>Login as "eem-admin"</li>
+                                <img src="img/eem-login.png"
+                                                alt="Event End Point Manager Login"></br></br>
+                                <li>Click the "Topics" icon from the icon menu</li>
+                                <img src="img/eem-topics-menu.png"
+                                alt="Event End Point Manager Topic Menu" width="80%"></br></br>
+                                <li>Click the "Add Topic" button from the add topic view</li>
+                                <img src="img/eem-add-topic.png"
+                                alt="Event End Point Manager Add Topic" width="80%"></br></br>
+                                <li>Click the "Add New Cluster" button</li>
+                                <img src="img/eem-add-topic-add-new-cluster.png"
+                                alt="Event End Point Manager Add Topic Add New Cluster" width="80%"></br></br>
+                                <li>Enter the cluster name "ft-eventstreams" on the cliuster information view and click next</li>
+                                <img src="img/eem-add-topic-cluster-information.png"
+                                alt="Event End Point Manager New Cluster Information" width="80%"></br></br>
+                                <li>Enter the broker server URL copied from the Event Streams UI brokers. Click "Accept all certificates" checkbox. Click Next</li>
+                                <img src="img/eem-add-topic-cluster-servers.png"
+                                alt="Event End Point Manager New Cluster Servers" width="80%"></br></br>
+                                <li>Get the scram credentails for the event-admin user which we will use to connect to the topic</li>
+                                <img src="img/event-admin-secret.png"
+                                alt="Event Admin Secret" width="80%"></br></br>
+                                <li>Enter the scram credentials entering the Kafka User event-admin and its password</li>
+                                <img src="img/eem-add-topic-cluster-users-credentials.png"
+                                alt="Event End Point Manager New Cluster Credentials" width="80%"></br></br>
+                                <li>Select the ft-status topic from available topics and finish the add topic wizard.</li>
+                                <img src="img/eem-add-topic-topics-ft-status.png"
+                                alt="Event End Point Manager Topics List" width="80%"></br></br>
+                                <li>Select the ft-status topic from topics lists</li>
+                                <img src="img/eem-topics-list.png"
+                                alt="Event End Point Manager Topics List" width="80%"></br></br>
+                                <li>Click the "Export AsyncAPI for IBM API Connect"</li>
+                                <img src="img/ft-status-export-async.png"
+                                alt="Event End Point Manager Export AsyncAPI" width="80%"></br></br>
+                            </ol>
                             <ol>
 
                                 <ol class="breadcrumb mb-4">
