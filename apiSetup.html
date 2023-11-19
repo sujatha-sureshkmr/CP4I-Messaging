@@ -783,7 +783,7 @@
                                     </code></pre>
                                 </div>
                                 <div class="codeDiv">
-                                    <pre><code>curl -X POST https://${API_EP}/api/token -s -k -H "Content-Type: application/json" -H "Accept: application/json" \<br>&nbsp;&nbsp;&nbsp;&nbsp;-d "{ \"realm\": \"admin/default-idp-1\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"username\": \"admin\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"password\": \"${admin_password}\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"client_id\": \"599b7aef-8841-4ee2-88a0-84d49c4d6ff2\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"client_secret\": \"0ea28423-e73b-47d4-b40e-ddb45c48bb0c\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"grant_type\": \"password\" }" --retry 5 > out.json"
+                                    <pre><code>curl -X POST https://${API_EP}/api/token -s -k -H "Content-Type: application/json" -H "Accept: application/json" \<br>&nbsp;&nbsp;&nbsp;&nbsp;-d "{ \"realm\": \"admin/default-idp-1\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"username\": \"admin\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"password\": \"${admin_password}\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"client_id\": \"599b7aef-8841-4ee2-88a0-84d49c4d6ff2\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"client_secret\": \"0ea28423-e73b-47d4-b40e-ddb45c48bb0c\",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\"grant_type\": \"password\" }" --retry 5 > out.json
                                     </code></pre>
                                 </div>
                                 <div class="codeDiv">
@@ -809,9 +809,9 @@
                                     </code></pre>
                                 </div>
                                 <img src="img/org_id.png" alt="Admin Organisation ID"></br></br>
-                                <li>Retrieve the TLS certificates from the apic-ingress-ca secret we will use this to create the keystore and trust store for the Client TLS Profile on the gateway</li>
+                                <li>Retrieve the TLS certificates from the ademo-eem-ibm-eem-manager we will use this to create the keystore and trust store for the Client TLS Profile on the gateway</li>
                                 <div class="codeDiv">
-                                    <pre><code>ca_crt=`oc get secret apic-ingress-ca -o=jsonpath='{.data.ca\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
+                                    <pre><code>ca_crt=`oc get secret ademo-eem-ibm-eem-manager -o=jsonpath='{.data.ca\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
                                     </code></pre>
                                 </div>
                                 <div class="codeDiv">
@@ -820,7 +820,7 @@
                                 </div>
                                 <img src="img/apic-ingress-ca_crt.png" alt="APIC Ingress CA_CRT"></br></br>
                                 <div class="codeDiv">
-                                    <pre><code>tls_crt=`oc get secret apic-ingress-ca -o=jsonpath='{.data.tls\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
+                                    <pre><code>tls_crt=`oc get secret ademo-eem-ibm-eem-manager -o=jsonpath='{.data.tls\.crt}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
                                     </code></pre>
                                 </div>
                                 <div class="codeDiv">
@@ -829,7 +829,7 @@
                                 </div>
                                 <img src="img/apic-ingress-tls-crt.png" alt="APIC Ingress TLS_CRT"></br></br>
                                 <div class="codeDiv">
-                                    <pre><code>tls_key=`oc get secret apic-ingress-ca -o=jsonpath='{.data.tls\.key}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
+                                    <pre><code>tls_key=`oc get secret ademo-eem-ibm-eem-manager -o=jsonpath='{.data.tls\.key}' | base64 -d | tr '\n\r' '*' | sed 's/*/\\\n\\\r/g'`
                                     </code></pre>
                                 </div>
                                 <div class="codeDiv">
@@ -913,7 +913,44 @@
                                 <li>Click "Save" and create the TLS Server Profile</li>
                                 <img src="img/cloud-manager-create-server-tls-profile-4.png" alt="Create Server TLS Profile Save"></br></br>
                             </ol>
-                           
+                            <ol>
+
+                                <ol class="breadcrumb mb-4">
+                                    <li class="breadcrumb-item active">
+                                        <h4>Configure Event Gateway Service</h4>
+                                    </li>
+                                </ol>
+                                <p>We will now confiugre the Event Gateway service for this we will need the EEM Manager (ademo-eem-ibm-eem-apic) and Gateway (ademo-event-gw-ibm-egw-rt))routes</p>
+                                <li>Select  Networking (1) Select Routes (2) from left hand menu and filter the projects to cp4i (3) </li>
+                                <img src="img/openshift-networking-routes-cp4i.png" alt="OpenShift Networking Routes"></br></br>
+                                <li>Open in a new tab the ademo-eem-ibm-eem-apic route</li>
+                                <li>Open in a new tab the ademo-event-gw-ibm-egw-rt route</li>
+                                <li>In the Cloud Manger UI Navigate to the topology menu in using the lefthand icon menu</li>
+                                <img src="img/cloud-manager-topology-icon-menu.png" alt="Cloud Manager Topology Icon Menu" width="50%"></br></br>
+                                <li>In the default availability zone Click "Register service"</li>
+                                <img src="img/cloud-manager-topology-register-service.png" alt="Cloud Manager Topology Reegister Service" width="50%"></br></br>
+                                <li>Fill the Register Gateway Service Form 1) Title Details</li>
+                                <img src="img/create-gateway-service-title.png" alt="Create Gateway Service Title" width="80%"></br></br>
+                                <li>Fill the Register Gateway Service Form 2) Service endpoint configuration</li>
+                                    <ul>
+                                        <li>Copy the Location from the ademo-eem-ibm-eem-apic route and paste to the "Management endpoint on the gateway service" field</li>
+                                        <img src="img/host-ademo-eem-ibm-eem-apic.png" alt="Route ademo-eem-ibm-eem-apic" width="80%"></br></br>
+                                        <li>Select the TLS Client Profile that was created earlier (Event Gateway Client Profile:1.0.0)</li>
+                                    </ul>
+                                <img src="img/create-gateway-service-endpoint-configuration.png" alt="Create Gateway Service endpoint configuration" width="80%"></br></br>
+                                <li>Fill the Register Gateway Service Form 3) API Invocation Endpoint</li>
+                                <ul>
+                                    <li>Copy the Location from the host of the ademo-event-gw-ibm-egw-rt route paste to the "API endpoint base" field</li>
+                                    <img src="img/host-ademo-event-gw-ibm-egw-rt.png" alt="Route ademo-event-gw-ibm-egw-rt" width="80%"></br></br>
+                                    <li>Add port :443 on end of copied route</li>
+                                    <li>Select the TLS Server Profile that was created earlier (Event Gateway Server Profile:1.0.0)</li>
+                                    
+                                </ul>
+                                <img src="img/create-gateway-service-invocation-endpoint.png" alt="Create Gateway Service Invocation Endpoint" width="80%"></br></br>
+                                <li>Click "Save"</li>
+
+
+                           </ol>
                             <ol>
 
                                 <ol class="breadcrumb mb-4">
