@@ -298,10 +298,10 @@
                                               
                                                 <tr>
                                                     <th style="border:1px solid black;border-collapse:collapse;">Value</th>
-                                                    <td style="border:1px solid black;border-collapse:collapse;">Service: </br>
+                                                    <td style="border:1px solid black;border-collapse:collapse;"><pre> <code>Service: </br>
                                                             Name=AuthorizationService </br>
                                                             EntryPoints=14 </br>
-                                                            SecurityPolicy=UserExternal </br>
+                                                            SecurityPolicy=UserExternal </br></code></pre>
                                            
                                                 <tr>
                                                     <th style="border:1px solid black;border-collapse:collapse;">Key</th>
@@ -309,35 +309,22 @@
                                                 </tr>
                                                 <tr>
                                                     <th style="border:1px solid black;border-collapse:collapse;">Value</th>
-                                                    <td style="border:1px solid black;border-collapse:collapse;">define ql(TRANSFER.REQUEST) REPLACE DEFPSIST(YES) </br>
-                                                    </br> </br>
-                                                        define ql(TRANSFER.REPLY) REPLACE DEFPSIST(YES) </br>
-                                                    </br> </br>
-                                                        DEFINE CHANNEL(FUNDTRANSFERCHL) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(REQUIRED) SSLCIPH('ANY_TLS12_OR_HIGHER')
-                                                    </br> </br>
-                                                        ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(OPTIONAL)
-                                                    </br> </br>
-                                                        set chlauth(FUNDTRANSFERCHL) TYPE(SSLPEERMAP) SSLPEER('CN=fundtransfer') USERSRC(MAP) MCAUSER('fundtransfer') ACTION(ADD)
-                                                    </br> </br>    
-                                                        SET AUTHREC PRINCIPAL('fundtransfer') OBJTYPE(QMGR) AUTHADD(CONNECT,INQ)
-                                                    </br> </br>    
-                                                        SET AUTHREC PROFILE('transfer.request') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
-                                                    </br> </br>    
-                                                        SET AUTHREC PROFILE('transfer.reply') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
-                                                    </br> </br>    
-                                                        DEFINE ql(TRQ.COPY) REPLACE   
-                                                    </br> </br>
-                                                        ALTER ql(TRANSFER.REQUEST) STREAMQ(TRQ.COPY)
-                                                    </br> </br>
-                                                        DEFINE CHANNEL(KAFKA.SVRCONN) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER') REPLACE
-                                                    </br> </br>
-                                                        SET CHLAUTH(KAFKA.SVRCONN) TYPE(BLOCKUSER) USERLIST('event-admin') WARN(YES) ACTION(REPLACE)
-                                                    </br> </br>
-                                                        REFRESH SECURITY
-                                                    </br> </br>
-                                                        SET AUTHREC OBJTYPE(QMGR) GROUP('kafkausers') AUTHADD(CONNECT, INQ)  
-                                                    </br> </br>
-                                                        SET AUTHREC OBJTYPE(QUEUE) PROFILE(TRQ.COPY) GROUP('kafkausers') AUTHADD(ALLMQI)
+                                                    <td style="border:1px solid black;border-collapse:collapse;"><pre> <code>define ql(TRANSFER.REQUEST) REPLACE DEFPSIST(YES) </br>
+                                                    define ql(TRANSFER.REPLY) REPLACE DEFPSIST(YES) 
+                                                    DEFINE CHANNEL(FUNDTRANSFERCHL) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(REQUIRED) SSLCIPH('ANY_TLS12_OR_HIGHER')
+                                                    ALTER AUTHINFO(SYSTEM.DEFAULT.AUTHINFO.IDPWOS) AUTHTYPE(IDPWOS) CHCKCLNT(OPTIONAL)
+                                                    set chlauth(FUNDTRANSFERCHL) TYPE(SSLPEERMAP) SSLPEER('CN=fundtransfer') USERSRC(MAP) MCAUSER('fundtransfer') ACTION(ADD)
+                                                    SET AUTHREC PRINCIPAL('fundtransfer') OBJTYPE(QMGR) AUTHADD(CONNECT,INQ)
+                                                    SET AUTHREC PROFILE('transfer.request') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
+                                                    SET AUTHREC PROFILE('transfer.reply') PRINCIPAL('fundtransfer') OBJTYPE(QUEUE) AUTHADD(BROWSE,GET,INQ,PUT)
+                                                    DEFINE ql(TRQ.COPY) REPLACE   
+                                                    ALTER ql(TRANSFER.REQUEST) STREAMQ(TRQ.COPY)
+                                                    DEFINE CHANNEL(KAFKA.SVRCONN) CHLTYPE(SVRCONN) TRPTYPE(TCP) SSLCAUTH(OPTIONAL) SSLCIPH('ANY_TLS12_OR_HIGHER') REPLACE
+                                                    SET CHLAUTH(KAFKA.SVRCONN) TYPE(BLOCKUSER) USERLIST('event-admin') WARN(YES) ACTION(REPLACE)
+                                                    REFRESH SECURITY
+                                                    SET AUTHREC OBJTYPE(QMGR) GROUP('kafkausers') AUTHADD(CONNECT, INQ)  
+                                                    SET AUTHREC OBJTYPE(QUEUE) PROFILE(TRQ.COPY) GROUP('kafkausers') AUTHADD(ALLMQI)
+                                                    </code></pre>
                                                     </td>
                                                 </tr>
                                             </tbody>
