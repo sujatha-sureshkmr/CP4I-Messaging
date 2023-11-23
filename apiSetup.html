@@ -636,6 +636,11 @@
                                 <img src="img/api-connect-platform-api-out.png" alt="APICONNECT PLATFORM API"
                                     width="80%"></br></br>
                                 <li>Create APIC platform cert secret</li>
+                                
+                                <div class="codeDiv">
+                                    <pre><code>APICONNECT_PLATFORM_API_HOSTNAME=$(echo "$APICONNECT_PLATFORM_API" | awk -F/ '{print $3}')
+                                                </code></pre>
+                                </div>
                                 <div class="codeDiv">
                                     <pre><code>echo "Retrieve certificate using hostname APICONNECT_PLATFORM_API_HOSTNAME= $APICONNECT_PLATFORM_API_HOSTNAME"
                                                 </code></pre>
