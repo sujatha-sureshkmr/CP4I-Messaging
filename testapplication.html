@@ -275,38 +275,10 @@
                                         <pre id="myPreTag10">cd </pre>
                                         <script src="script.js"></script>
                                     </div>
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag11')">
-                                        <pre id="myPreTag11">sudo yum install java-latest-openjdk-devel</pre>
-                                        <script src="script.js"></script>
-                                    </div>
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag12')">
-                                        <pre id="myPreTag12">sudo yum install java-latest-openjdk</pre>
-                                        <script src="script.js"></script>
-                                    </div>
-                                    <li>Clone the following repositry from github.</li>
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
-                                        <pre id="myPreTag">wget https://github.com/sujatha-sureshkmr/ft-mq-jms/archive/refs/heads/main.zip</pre>
-                                        <script src="script.js"></script>
-                                    </div>
-                                  
-
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag1')">
-                                        <pre id="myPreTag1">unzip main.zip</pre>
-                                        <script src="script.js"></script>
-                                    </div> 
-
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
+                                     <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
                                         <pre id="myPreTag2">cd ft-mq-jms-main/</pre>
                                         <script src="script.js"></script>
                                     </div> 
-                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag13')">
-                                        <pre id="myPreTag13"><code>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsPut.java </br>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsGet.java </br>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsPutGet.java
-                                        </code> </pre>
-                                        <script src="script.js"></script>
-                                    </div>
-                                    
-                                    <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center"
-                                        object-fit="none" />
                                     <li>Setup environment variables. Note: You may change the currency, rate and the amount. Below is just a sample.</li>
                                     <div class="codeDiv" onclick="copyToClipboard('myPreTag3')">
                                         <pre id="myPreTag3">export qmhostname=$(oc get route -n cp4i fundtransfer-ibm-mq-qm -o jsonpath="{.spec.host}")
