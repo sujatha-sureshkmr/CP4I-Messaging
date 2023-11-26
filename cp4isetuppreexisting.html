@@ -459,23 +459,16 @@ function copyToClipboard(element) {
                                     <img src="assets/img/CP4ISetup/image098.png" alt="Usecase" class="center" object-fit="none" />
                                     <li>We will now prepare the keys and certs that will be later used for IBM MQ.</li>
                                     <div class="codeDiv" onclick="copyToClipboard('myPreTag15')">
-                                        <pre id="myPmyPreTag15reTag"><code>keytool -importkeystore \
-                                            -deststorepass password -destkeypass password -destkeystore ftappkey.jks -deststoretype jks -alias ftappcert -destalias ftappcert \
-                                            -srckeystore ftapp.p12 -srcstoretype PKCS12 -srcstorepass password </code></pre>
+                                        <pre id="myPmyPreTag15reTag"><code>keytool -importkeystore \ </br>-deststorepass password -destkeypass password -destkeystore ftappkey.jks -deststoretype jks -alias ftappcert -destalias ftappcert \</br>-srckeystore ftapp.p12 -srcstoretype PKCS12 -srcstorepass password </code></pre>
                                         <script src="script.js"></script>
                                     </div>
                                     <div class="codeDiv" onclick="copyToClipboard('myPreTag16')">
-                                        <pre id="myPreTag16"><code>keytool -list -keystore ftappkey.jks -storepass password </br>
-                                            keytool -keystore trust.jks -storetype jks -importcert -file tls.crt -alias tlscert -storepass password -noprompt
-                                            </br>
-                                            keytool -list -keystore trust.jks -storepass password -alias tlscert </code></pre>
+                                        <pre id="myPreTag16"><code>keytool -list -keystore ftappkey.jks -storepass password </br>keytool -keystore trust.jks -storetype jks -importcert -file tls.crt -alias tlscert -storepass password -noprompt </br>keytool -list -keystore trust.jks -storepass password -alias tlscert </code></pre>
                                         <script src="script.js"></script>
                                     </div>
                                     <li>We will now create secrets that will be accessed by IBM MQ.</li>
                                     <div class="codeDiv" onclick="copyToClipboard('myPreTag17')">
-                                        <pre id="myPreTag17"><code>oc create secret tls nativehacert -n cp4i --key="tls.key" --cert="tls.crt"
-                                        </br>
-                                            oc create secret generic ftapp-secret -n cp4i --from-file=ftapp.crt=ftapp.crt</code></pre>
+                                        <pre id="myPreTag17"><code>oc create secret tls nativehacert -n cp4i --key="tls.key" --cert="tls.crt" </br>oc create secret generic ftapp-secret -n cp4i --from-file=ftapp.crt=ftapp.crt</code></pre>
                                         <script src="script.js"></script>
                                     </div>
 
