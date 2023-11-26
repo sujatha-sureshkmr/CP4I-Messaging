@@ -556,6 +556,17 @@
                                     <li>Click the Demo Catalog tile</li>
                                     <img src="img/api-manager-manage-catalog-demo.png" alt="Manage Catalog Demo Catalog"
                                         width="80%"></br></br>
+                                    <li>Click on (1) the "Consumers" Tab and then Select click (2) Add to AND SELECT (3) Create Organization.</li>
+                                    <img src="img/api-manager-demo-catalog-add-consumer-org.png" alt="Manage Catalog Create"
+                                        width="80%"></br></br>
+                                    <li>Enter the consumer organisation information and the details for a new user called consumer admin. Click create</li>
+                                    <img src="img/consumer-org.png" alt="Consumer Org"
+                                            width="80%"></br></br>
+                                    <img src="img/consumer-org-owner.png" alt="Consumer Org Owner"
+                                            width="80%"></br></br>
+                                    <li>Click the Demo Catalog tile</li>
+                                    <img src="img/api-manager-manage-catalog-demo.png" alt="Manage Catalog Demo Catalog"
+                                        width="80%"></br></br>
                                     <li>Click on the "Catalog Settings" Tab and then Select the "Portal" settings from
                                         the left hand menu. Click the Create button to setup the Developer Portal for
                                         the catalog.</li>
@@ -1070,30 +1081,57 @@
                                 <li>Click the "Export AsyncAPI for IBM API Connect"</li>
                                 <img src="img/ft-status-export-async.png"
                                 alt="Event End Point Manager Export AsyncAPI" width="80%"></br></br>
+
+                            
                             </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4>Configure Event Gateway For use by The DemoCatalog</h4>
+                                </li>
+                            </ol>
+                            <p>We will now add the event gateway server to the catalog</p>
                             <ol>
+                                <li>Logon to the API Manager from Click on the Manage Catalogs Tile. Click on the Demo Catalog. Click on the "Catalog Setting" tab.</li>
+                                <img src="img/api-manager-edit-gateway-services.png"
+                                alt="edit gateway settings" width="80%"></br></br>
+                                <li>Select the EEM Gateway.</li>
+                                <img src="img/api-manager-eem-gateway-service.png"
+                                alt="eem gatway service" width="80%"></br></br>
 
-                                <ol class="breadcrumb mb-4">
-                                    <li class="breadcrumb-item active">
-                                        <h4>Assignment</h4>
-                                    </li>
-                                </ol>
-
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
-                                        Quiz: There is a new requirement to capture a new field ("fund transfer
-                                        destination country") in this API. Please explain how do we do that?
-                                    </div>
-                                    <div class="card-body">
-                                        <form action="/url" method="GET">
-                                            <input type="text">
-                                        </form>
-                                    </div>
-                                </div>
-
-                                <input type="submit" value="Submit" class="submit-btn" onclick="myalertnewapifield()" />
                             </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4>Define Async API</h4>
+                                </li>
+                            </ol>
+                            <p>We will now define an ASYNC API that could be subsscribed and consumed by applications.</p>
+                            <ol>
+                                <li>Click the Home icon on the icon menu or logon to the API Manger if you have been logged out. Click the Develop API Products</li>
+                                <img src="img/api-manager-develop-api-products.png"
+                                alt="develop api" width="80%"></br></br>
+                                <li>API Manager Click "Add" click "API".</li>
+                                <img src="img/api-manager-develop-api-add.png"
+                                alt="catalog settings" width="80%"></br></br>
+                                <li>Select the "AsyncAPI" Tab and click "Next"</li>
+                                <img src="img/api-manager-add-async-api.png"
+                                alt="catalog settings" width="80%"></br></br>
+                                <li>Upload the ft-status.yaml file that was created when we downlaoded the AsyncAPI definition from the Topic in EEM.</li>
+                                <img src="img/api-manager-add-async-api-2.png"
+                                alt="catalog settings" width="80%"></br></br>
+                                <li>Click Next on the preview view</li>
+                                <li>Click Activate API and select the "DemoCatalog as the target catalog and CLick Next</li>
+                                <img src="img/api-manager-add-async-api-3.png"
+                                alt="Active API" width="80%"></br></br>
+                                <li>The API summary will be displayed</li>
+                                <img src="img/api-manager-add-async-api-4.png"
+                                alt="Active API Summary" width="80%"></br></br>
+
+
+                                <p>Managing granular access to topics would normally require a Kafka administrator to create and maintain multiple access control lists (ACLs). IBM Event Endpoint Manager enables consumers to self-administer their own access to topics. The Kafka administrator need only set up access between the Kafka cluster and the event gateway. From that point onward, the person deciding which topics the consumers can subscribe to no longer needs to be a Kafka specialist.</p>
+
+
+                            </ol>
+                    
 
                         </div>
 
