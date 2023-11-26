@@ -410,7 +410,76 @@ function copyToClipboard(element) {
 
                                 <br>
                             </ol>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="pods">JMS Application Configuration</h4>
+                                </li>
+                            </ol>
+                            Configuring a Java Message Service (JMS) application for IBM MQ involves the orchestration of crucial components within the IBM MQ messaging middleware. IBM MQ, a robust messaging solution, provides a reliable framework for communication between applications, utilizing JMS to facilitate seamless message exchange. </br> 
+                            The configuration process entails establishing a connection factory to define communication settings, such as connection parameters and authentication mechanisms. This connection factory serves as the gateway for creating connections to the IBM MQ messaging system.
+                            <ol>
+                                <ol type="a">
+                                    <li>We will now install Java. </br> Go to bastion terminal. Go into sudo mode </li>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag09')">
+                                        <pre id="myPreTag09">sudo su</pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag10')">
+                                        <pre id="myPreTag10">cd </pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag11')">
+                                        <pre id="myPreTag11">sudo yum install java-latest-openjdk-devel</pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag12')">
+                                        <pre id="myPreTag12">sudo yum install java-latest-openjdk</pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <li>Clone the following repositry from github.</li>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                        <pre id="myPreTag">wget https://github.com/sujatha-sureshkmr/ft-mq-jms/archive/refs/heads/main.zip</pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                  
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag1')">
+                                        <pre id="myPreTag1">unzip main.zip</pre>
+                                        <script src="script.js"></script>
+                                    </div> 
 
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag2')">
+                                        <pre id="myPreTag2">cd ft-mq-jms-main/</pre>
+                                        <script src="script.js"></script>
+                                    </div> 
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag13')">
+                                        <pre id="myPreTag13"><code>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsPut.java </br>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsGet.java </br>javac -cp lib/com.ibm.mq.allclient-9.2.4.0.jar:lib/javax.jms-api-2.0.1.jar com/ibm/mq/samples/jms/JmsPutGet.java
+                                        </code> </pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <li>We will now prepare the keys and certs that will be later used for IBM MQ.</li>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag15')">
+                                        <pre id="myPmyPreTag15reTag"><code>keytool -importkeystore \
+                                            -deststorepass password -destkeypass password -destkeystore ftappkey.jks -deststoretype jks -alias ftappcert -destalias ftappcert \
+                                            -srckeystore ftapp.p12 -srcstoretype PKCS12 -srcstorepass password </code></pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag16')">
+                                        <pre id="myPreTag16"><code>keytool -list -keystore ftappkey.jks -storepass password </br>
+                                            keytool -keystore trust.jks -storetype jks -importcert -file tls.crt -alias tlscert -storepass password -noprompt
+                                            </br>
+                                            keytool -list -keystore trust.jks -storepass password -alias tlscert </code></pre>
+                                        <script src="script.js"></script>
+                                    </div>
+                                    <li>We will now create secrets that will be accessed by IBM MQ.</li>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag17')">
+                                        <pre id="myPreTag17"><code>oc create secret tls nativehacert -n cp4i --key="tls.key" --cert="tls.crt"
+                                        </br>
+                                            oc create secret generic ftapp-secret -n cp4i --from-file=ftapp.crt=ftapp.crt</code></pre>
+                                        <script src="script.js"></script>
+                                    </div>
+
+                                </ol>   
+                            </ol>
 
 
 
