@@ -12,69 +12,73 @@
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
-
     <script>
-        function myalertoperator() {
-            alert("Packages name for the operators are: \nibm-integration-platform-navigator \nibm-mq  \nibm-appconnect  \nibm-apiconnect \nibm-eventendpointmanagement");
-        }
 
-        function myalertpodibmmq() {
-            alert("ibm-mq-xxxxxxxxxxx-xxxxx");
+
+        function myalertnewapifield() {
+            alert("1. Add new fields in swagger.json from other resources \n2. add it in getOrder_Mapping.map \n3.Regenerate bar files \n4.Upload the bar files and test it to confirm the new parameters are added.");
+        }
+        function myalertpodeventstreamsuser() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka User");
+        }
+        function myalertpodeventTopic() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
         }
         function copyToClipboard(element) {
-    // Get the <pre> element
-    const preTag = document.getElementById(element);
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
 
-    // Create a copy button element
-    const copyButton = document.createElement("span");
-    copyButton.innerText = "Copy";
-    copyButton.classList.add("copy-button");
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
 
-    // Append the copy button to the <pre> tag
-    preTag.appendChild(copyButton);
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
 
-    // Add click event listener to the copy button
-    copyButton.addEventListener("click", () => {
-        // Hide the copy button temporarily
-        copyButton.style.display = "none";
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
 
-        // Create a range and select the text inside the <pre> tag
-        const range = document.createRange();
-        range.selectNode(preTag);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
 
-        try {
-            // Copy the selected text to the clipboard
-            document.execCommand("copy");
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
 
-            // Alert the user that the text has been copied
-            copyButton.innerText = "Copied!";
-            setTimeout(function() {
-                copyButton.innerText = "Copy";
-            }, 2000);
-        } catch (err) {
-            console.error("Unable to copy text:", err);
-        } finally {
-            // Show the copy button again
-            copyButton.style.display = "inline";
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
 
-            // Deselect the text
-            window.getSelection().removeAllRanges();
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
         }
-    });
-}
-
     </script>
-        <style>
-            .codeDiv {
-                border: 1px #0000006e;
-                background-color: #f8f8f8;
-                text-align: left;
-                vertical-align:text-bottom;
-                color: #da467d;
-            }
-            pre {
+
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
             position: relative;
             background: #d3d6db;
             padding: 10px;
@@ -82,23 +86,24 @@
             word-wrap: break-word;
             white-space: pre-wrap;
             border: 1px solid #e6e7e9;
-            
-            }
-            .copy-button {
-                position: absolute;
-                top: 2px;
-                right: 10px;
-                cursor: pointer;
-                color: #fff;
-                background: gray;
-                border-radius: 0.5em;
-                padding: 2px 7px;
-                }
-    
-            .copy-button:hover {
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
             color: #000;
-            }
-        </style>
+        }
+    </style>
 
 </head>
 
@@ -231,147 +236,124 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h2 class="mt-4">Install Operators for Integration Capabilities</h2>
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Overview</a></li>
-                        <li class="breadcrumb-item active">Installation of new operators</li>
-                    </ol>
+                    <h1 class="mt-4">Environment Details</h1>
                     <div class="card mb-4">
                         <div class="card-body">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">Environment Groups</h4>
+                                </li>
+                            </ol>
                             <p class="mb-0">
-                                We will need to install the operators for the integration capabilties. These operators
-                                to be installed include:
-                            <ol>
-                                <li>IBM Messaging Queue</li>
-                                <li>IBM Event Streams</li>
-                                <li>IBM Event End Point Mangement</li>
-                                <li>IBM API connect</li>
-                                <li>IBM App connect</li>
-                                <li>IBM Foundation Assets</li>
-                            </ol>
-                            <ol class="breadcrumb mb-4">
-                                <li class="breadcrumb-item active">
-                                    <h4 id="mq">IBM Mesaging Queue</h4>
-                                </li>
-                            </ol>
-                            <p>IBM MQ is messaging middleware that simplifies and accelerates the integration of diverse
-                                applications and business data across multiple platforms. It uses message queues to
-                                facilitate the exchanges of information and offers a single messaging solution for
-                                cloud, mobile, Internet of Things (IoT) and on-premises environments.</p>
-
-                            <p>The IBM MQ Operator for Red Hat OpenShift Container Platform provides an easy way to
-                                manage the life cycle of IBM MQ queue managers.</p>
-                            <ol>
-                                <li>Go to OCP Console -> Operators-> Operator Hub -> Choose the project cp4i -> filter
-                                    by IBM MQ </li>
-                                <img src="assets/img/CP4ISetup/image018.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>Click Install</li>
-                                <img src="assets/img/CP4ISetup/image019.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>We will need to choose the various options for the installation. You may refer to
-                                    the details below. Note: It would take couple of minutes for the installation to
-                                    complete.</li>
-                                <img src="assets/img/CP4ISetup/image020.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>You will see a message of successful completion when the installation is complete.
-                                </li>
-                                <img src="assets/img/CP4ISetup/image021.png" alt="Usecase" class="center"
-                                    object-fit="contain" />
-                                <li>You can go to oc oc CLI to check on the installed pods.</li>
-                                <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
-                                    <pre id="myPreTag">oc get pods</pre>
-                                    <script src="script.js"></script>
+                                This section details the groups and a link to each environments configuration pages.
+                            </p></br>
+                            <div class="row">
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-primary text-white mb-4">
+                                        <div class="card-body">Group 1 (Agnes)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
                                     </div>
-                                </br>
+                                </div>
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-secondary text-white mb-4">
+                                        <div class="card-body">Group 2 (Sandeep)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-success text-white mb-4">
+                                        <div class="card-body">Group 3 (Leonard)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-info text-white mb-4">
+                                        <div class="card-body">Group 4 (Sujatha-1)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-dark text-white mb-4">
+                                        <div class="card-body">Group 5 (Sujatha-2)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-2 col-md-3">
+                                    <div class="card bg-warning text-white mb-4">
+                                        <div class="card-body">Group 6 (Ritika)</div>
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="https://ibm.biz">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                                </br>
 
-                            </ol>
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="assignment">Assignment</h4>
+                                    <h4 id="overview">Bastion Server Logon</h4>
                                 </li>
                             </ol>
-
-                            <p>
-                                You will now need to install the below listed operators. Note: This should take 3-5 mins
-                                for each installed operator. <br>
-                                a. IBM Event Streams<br>
-                                b. IBM API Connect<br>
-                                c. IBM Event Endpoint Management<br>
-                            </p>
-
-
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    Quiz: What are the pods installed for IBM MQ?
-                                </div>
-                                <div class="card-body">
-                                    <form action="/url" method="GET">
-                                        <input type="text">
-                                    </form>
-                                </div>
-                            </div>
-
-                            <input type="submit" value="Submit" class="submit-btn" onclick="myalertpodibmmq()" />
-
-
-                            </br></br>
-                            <div class="card mb-4">
-                                <div class="card-header">
-                                    <i class="fas fa-table me-1"></i>
-                                    Quiz: What is the operators installed in cp4i namespace?
-                                </div>
-                                <div class="card-body">
-                                    <table id="datatablesSimple">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Package Name</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            <tr>
-                                                <th>ibm platform navigator</th>
-                                                <th><input type="string"></th>
-                                            </tr>
-                                            <tr>
-                                                <th>ibm mq</th>
-                                                <th><input type="string"></th>
-                                            </tr>
-                                            <tr>
-                                                <th>ibm apiconnect</th>
-                                                <th><input type="string"></th>
-                                            </tr>
-                                            <tr>
-                                                <th>ibm streams</th>
-                                                <th><input type="string"></th>
-                                            </tr>
-                                            <tr>
-                                                <th>IBM Event Endpoint Management</th>
-                                                <th><input type="string"></th>
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <input type="submit" value="Submit" class="submit-btn" onclick="myalertoperator()" />
-
-                            </br>
+                            <ol>
+                                <li>
+                                    From the login link you will be presented with multiple tabs for the login information of the bastion server click on the "Bastion" tab. (1) Is the SSH login for the server. (2) Is the user name and password to use when authenticating.
+                                </li>
+                                <img src="img/bastion-server-tab.png" alt="Bastion Server" width="80%"></br></br>
+                            </ol>
 
 
 
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">OCP Logon</h4>
+                                </li>
+                            </ol>
+                            <ol>
+                                <li>
+                                    From the login link you will be presented with multiple tabs for the login information for OpenShift click on the "OpenShift Console" tab. (1) Is the OCP UI url. (2) Is the user name (opcadmin) and password to use when authenticating.
+                                </li>
+                                <img src="img/ocp-login.png" alt="OCP Login" width="80%"></br></br>
+                            </ol>
+
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">Cloud Pak Console</h4>
+                                </li>
+                            </ol>
+                            <ol>
+                                <li>
+                                    From the login link you will be presented with multiple tabs for the login information for Cloud Pak click on the "Cloud Pak Console" tab. (1) Is the Cloud Pak Concole url. (2) Is the user name (admin) and password to use when authenticating.
+                                </li>
+                                <img src="img/cloud-pak-login.png" alt="CP Login" width="80%"></br></br>
+                            </ol>
 
 
 
-                            </p>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">

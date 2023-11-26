@@ -7,13 +7,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Index</title>
+    <title>CP4I - Messaging</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script>
+
+
+        function myalertnewapifield() {
+            alert("1. Add new fields in swagger.json from other resources \n2. add it in getOrder_Mapping.map \n3.Regenerate bar files \n4.Upload the bar files and test it to confirm the new parameters are added.");
+        }
+        function myalertpodeventstreamsuser() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka User");
+        }
+        function myalertpodeventTopic() {
+            alert("Installed Operators -> IBM Event Streams -> Kafka Topic");
+        }
+        function copyToClipboard(element) {
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
+
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
+
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
+
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
+
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
+
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
+
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
+            position: relative;
+            background: #d3d6db;
+            padding: 10px;
+            font-size: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border: 1px solid #e6e7e9;
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
+            color: #000;
+        }
+    </style>
+
 </head>
 
-<body class="sb-nav-fixed">
+<body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="index.html">IBM CSM</a>
@@ -142,80 +236,69 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Integration Skills Launchpad</h1>
-
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">
-                            <h4>Overview</h4>
-                        </li>
-                    </ol>
+                    <h1 class="mt-4">Configure the App Connect Enterise and Designer</h1>
                     <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-book-open"></i>
-                            Funds Transfer Cloud Native Integration
-                        </div>
                         <div class="card-body">
-                            <div>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">Overview</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">
+                                In this section we will configure the App Connect Enteripise and Integration Design. We
+                                will use the PlatformINtegration UI to quickly configure a Integration Dashboard for
+                                running Integration Servers and a Integration Design instance that will support the Low
+                                code developent of the API to MQ using the integration connectors.
+                            </p></br>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4>Configure Integration Dashboard</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">In this section we will configure the integration dashboard.
+                            </p></br>
+                            <ol>
+                                <li>Navigate to the Integration Instances page from the Platform UI home page</li>
+                                <img src="img/platform-ui.png" alt="CP4I Platform UI Home page" width="80%"></br>
+                                </br>
+                                <li>Click on the Create Instance button. On the Create Instance page you will see the
+                                    integration capabilities that can be configured. Greyed out capabilities is an
+                                    indicator that the operators for these capabilities are not yet installed.</li></br>
+                                <li>Select Integration Dashboard and Click Next</li>
+                                <img src="img/integration-dashboard-1.png" alt="Create Integration Dashboard" width="80%"></br></br>
+                                <li>Select the Quickstart template and click Next</li>
+                                <img src="img/integration-dashboard-2.png" alt="Create Quickstart Dashboard" width="80%"></br></br>
+                                <li>For configuring this quick start instance we will name the instance "ace-db" and accept the license then leave otehr configuration options unchanged.</li>
+                                <img src="img/integration-dashboard-3.png" alt="Create Quickstart Dashboard Settings" width="80%"></br></br>
+                                <li>Wait for the integration Dashboard to change status to Ready.</li>
+                                <img src="img/ace-db-ready.png" alt="ACE Dashboard Ready" width="80%"></br></br>
+                                
+                            </ol>
 
-
-                            </div>
-                            <div>
-                                <p class="lead"><b>Use Case: Funds Transfer Scenario</b></p>
-                                <p class="lead">The bank's objective is to ensure seamless assistance for customers seeking to transfer payments or funds to their registered recipients. Upon the bank's receipt of the transfer request at the backend, a prompt notification will be sent to the customer, acknowledging the initiation of the transfer process.
-                                    Once the transfer undergoes processing and reaches completion, a second notification will be promptly dispatched to the customer. This notification will comprehensively detail the outcome of the processing, providing essential information regarding the successful transfer or any potential issues encountered during the transaction.
-                                    This approach aims to maintain transparency and provide customers with real-time updates throughout the transfer procedure, ensuring a smooth and reliable banking experience.
-                                </p>
-                                <img src="assets/img/CP4ISetup/usecase.png" alt="Usecase" class="center" width="700"
-                                    height="400" />
-
-                            </div>
-
-                            <div>
-                                <p></p>
-                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
-                                <p class="lead">
-                                <ol>
-                                    <li>User triggers a transfer of funds from their mobile banking</li>
-                                    <li>Backend for Frontend service invokes call to backend systems invokes the API
-                                    </li>
-                                    <li>API invokes persistent queue on the queue manager</li>
-                                    <li>The queue manager is configured to work with streaming queue which will post the
-                                        message to the events for processing by the subscribed event consumers</li>
-                                    <li>Events are processed on the event brokers</li>
-                                    <li>Event consumers process the inbound event</li>
-                                    <li>Core banking processes the transfer</li>
-                                    <li>When processing is complete core banking triggers notification to the events to
-                                        be picked up by the event consumers</li>
-                                </ol>
-                                </p>
-                                <img src="assets/img/CP4ISetup/architecture.png" alt="Usecase" class="center"
-                                    width="900" height="400" />
-
-                            </div>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4>Configure Integration Design</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">In this section we will configure the integration dashboard.
+                            </p></br>
+                            <ol>
+                                <li>Click on the Create Instance button. On the Create Instance page you will see the
+                                    integration capabilities that can be configured. Greyed out capabilities is an
+                                    indicator that the operators for these capabilities are not yet installed.</li></br>
+                                <li>Select Integration Design and Click Next</li>
+                                <img src="img/integration-design-1.png" alt="Create Integration Design" width="80%"></br></br>
+                                <li>Select the Quickstart template and click Next</li>
+                                <img src="img/integration-design-2.png" alt="Create Quickstart Design" width="80%"></br></br>
+                                <li>For configuring this quick start instance we will name the instance "ace-db" and accept the license then leave otehr configuration options unchanged.</li>
+                                <img src="img/integration-design-3.png" alt="Create Quickstart Design Settings" width="80%"></br></br>
+                                <li>Wait for the integration Design to change status to Ready.</li>
+                                <img src="img/ace-db-ready.png" alt="ACE Design Ready" width="80%"></br></br>
+                                
+                            </ol>
                         </div>
-
+            
                     </div>
-
-                    <!-- <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>-->
                 </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
@@ -235,12 +318,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
 </body>
 
 </html>
