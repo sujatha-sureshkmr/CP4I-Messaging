@@ -245,7 +245,11 @@
                                 </li>
                             </ol>
                             <p class="mb-0">
-                                In this section we will explore how we can utilise locode connectors to build APis for use with a variety of connectors. In this case we will connect to the earlier created Queue Manager. The Flow will result in a API deployed and exposed from API connect with the connector running on the integration designer and connected to IBM MQ. The picture below illustrates the development and flow that will be implemented
+                                In this section we will explore how we can utilise locode connectors to build APis for
+                                use with a variety of connectors. In this case we will connect to the earlier created
+                                Queue Manager. The Flow will result in a API deployed and exposed from API connect with
+                                the connector running on the integration designer and connected to IBM MQ. The picture
+                                below illustrates the development and flow that will be implemented
 
                             </p>
                             <img src="img/apic-to-mq.png" alt="ACE Designer to MQ" width="80%">
@@ -256,61 +260,120 @@
                             <h4>Connect to MQ From Integration Designer</h4>
                         </li>
                     </ol>
-                    <p class="mb-0">In this section we will design a simple API and build the integration flow using the MQ connector.
+                    <p class="mb-0">In this section we will design a simple API and build the integration flow using the
+                        MQ connector.
                     </p></br>
                     <ol>
-                        <li>Open the Integration Designer in a new tab by clicking on the ace-design link in the Integration Instances. This can also be done from the Platform Navigator home page by selecting the Integration Design menu link.</li>
+                        <li>Open the Integration Designer in a new tab by clicking on the ace-design link in the
+                            Integration Instances. This can also be done from the Platform Navigator home page by
+                            selecting the Integration Design menu link.</li>
                         <img src="img/ace-design-open.png" alt="ACE Open In new Tab" width="80%"></br></br>
                         <li>Click on the Catalog Icon on the Icon manu and navigate the the connectors catalog.</li>
                         <img src="img/ace-design-mq-catalog.png" alt="ACE Design Catalog" width="80%"></br></br>
-                        <li>Enter MQ in the search and select the MQ connector. Enter the MQ Connection details. Click Connect and yes to promt to connect to the Queue Manager</li>
+                        <li>Enter MQ in the search and select the MQ connector. Enter the MQ Connection details. Click
+                            Connect and yes to promt to connect to the Queue Manager</li>
                         <table>
-                            <tr><th colspan="3">Settings</th><th>Values</th></tr>
-                            <tr><td colspan="3">Queue Manager</td><td>fundtransfer</td></tr>
-                            <tr><td colspan="3">Queue Manager Host</td><td>Enter the Host value from your fundtransfer service (fundtransfer-ibm-mq)
-                                <img src="img/queue-manager-host.png" alt="Queue Manager Host" width="80%"></br></br>
-                            </td></tr>
+                            <tr>
+                                <th colspan="3">Settings</th>
+                                <th>Values</th>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Queue Manager</td>
+                                <td>fundtransfer</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Queue Manager Host</td>
+                                <td>Enter the Host value from your fundtransfer service (fundtransfer-ibm-mq)
+                                    <img src="img/queue-manager-host.png" alt="Queue Manager Host"
+                                        width="80%"></br></br>
+                                </td>
+                            </tr>
 
-                            <tr><td colspan="3">Listener Port</td><td>1414</td></tr>
-                            <tr><td colspan="3">Channel Name</td><td>FUNDINTCHL</td></tr>
+                            <tr>
+                                <td colspan="3">Listener Port</td>
+                                <td>1414</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Channel Name</td>
+                                <td>FUNDINTCHL</td>
+                            </tr>
                         </table>
                         <img src="img/mq-catalog-settings.png" alt="ACE Design MQ Settings" width="80%"></br></br>
                         <li>Click the Home Icon on the icon menu. Click "Create Flows for API" tile.</li>
                         <img src="img/create-flows-api-tile.png" alt="Create Flows API Tile" width="80%"></br></br>
                         <li>Enter "fundTransfer into the model name</li>
                         <img src="img/fundtransfer-model.png" alt="Fund Transfer Model" width="80%"></br></br>
-                        <li>We will now design a simple interface for the purpose of the example the data is less of a concern that showing the flow of data through the integration system. Add a few simple fields for the example as shown here.</li>
+                        <li>We will now design a simple interface for the purpose of the example the data is less of a
+                            concern that showing the flow of data through the integration system. Add a few simple
+                            fields for the example as shown here.</li>
                         <img src="img/simple-api-design.png" alt="Fund Transfer Model properties" width="80%"></br></br>
                         <li>Cick on the "Operations" tab and add a Create fundTransfer operation.</li>
-                        <img src="img/create-fund-transfer.png" alt="Create Fund transfer operation" width="80%"></br></br>
+                        <img src="img/create-fund-transfer.png" alt="Create Fund transfer operation"
+                            width="80%"></br></br>
                         <li>Cick on"Implement Flow".</li>
-                        <img src="img/implement-flow.png" alt="Create Fund transfer implement flow" width="80%"></br></br>
-                        <li>Select the Response Node. To keep it simple we will simply return the account number in the response.</li>
+                        <img src="img/implement-flow.png" alt="Create Fund transfer implement flow"
+                            width="80%"></br></br>
+                        <li>Select the Response Node. To keep it simple we will simply return the account number in the
+                            response.</li>
                         <img src="img/response-node-mapping.png" alt="Message ID and account" width="80%"></br></br>
                         <li>Cick on plus icon in the flow to add a MQ node.</li>
                         <li>Select your MQ Account and choose the put message action.</li>
                         <img src="img/add-mq-node.png" alt="MQ Account Action" width="80%"></br></br>
-                        <li>Enter the Queue Name, Message Type. For the paylod select the Available Mappings icon then select all available mappings and select the Object.</li>
+                        <li>Enter the Queue Name, Message Type. For the paylod select the Available Mappings icon then
+                            select all available mappings and select the Object.</li>
                         <img src="img/mq-flow-details-object-map.png" alt="MQ Details Object" width="80%"></br></br>
-                        
+
                         <li>Click Done.</li>
                         <li>Start the flow and test it.</li>
                         <img src="img/start-test-flow.png" alt="Start the message flow" width="80%"></br></br>
-                        <li>Click on (1) The "Test" Tab followed by (2) the operation and finally in the body view click (3) "Try it"</li>
+                        <li>Click on (1) The "Test" Tab followed by (2) the operation and finally in the body view click
+                            (3) "Try it"</li>
                         <img src="img/ace-design-test-tryit.png" alt="Try It" width="80%"></br></br>
                         <li>In the Parameters click Generate. Click "Send".</li>
-                        <img src="img/ace-design-test-parameters-generate.png" alt="Generate parameters" width="80%"></br></br>
+                        <img src="img/ace-design-test-parameters-generate.png" alt="Generate parameters"
+                            width="80%"></br></br>
                         <li>If successful you will get a response with the account number reflected back</li>
                         <img src="img/try-it-response.png" alt="Sample Response" width="80%"></br></br>
-                        <li>Open the MQ Explorer in a new tab from the Integration Instances. Click on Manager, and click on the fundTransfer Queue Manager</li>
+                        <li>Open the MQ Explorer in a new tab from the Integration Instances. Click on Manager, and
+                            click on the fundTransfer Queue Manager</li>
                         <img src="img/mq-explorer.png" alt="MQ Explorer" width="80%"></br></br>
                         <li>Click on the TRANSFER.REQUEST queue. </li>
                         <img src="img/fundtransfer-queues.png" alt="MQ FUNDTRANSFER REQUEST" width="80%"></br></br>
                         <li>Open the test message sent confirming the message was delivered to the queue.</li>
                         <img src="img/mq-message-on-queue.png" alt="MQ FUNDTRANSFER REQUEST" width="80%"></br></br>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">
+                                <h4>Export Flow and Create Integration Server</h4>
+                            </li>
+                        </ol>
+                        <p class="mb-0">In this section we will export the service flow we created and deploy the bar file to an integration server.
+                        </p></br>
+                        <ol>
+                            <li>Click the Dashboard Icon from the icon menu in the Integration Designer. Click on the elipse button  and click export</li>
+                            <img src="img/integration-design-dashboard-export.png" alt="Dashboard export" width="80%"></br></br>
+                            <li>Export the bar file and yaml file to local drive then unzip the fundtransfer.zip</li>
+                            <img src="img/integration-design-export-view.png" alt="Dashboard export" width="80%"></br></br>
+                            <li>Open the Integration dashboard in a new browser tab from the Integration Instances</li>
+                            <img src="img/integration-instances-ace-db-new-tab.png" alt="ACE DB new Tab" width="80%"></br></br>
+                            <li>Click on the Deploy Integrations tile</li>
+                            <img src="img/integration-dashboard-deploy-integrations-1.png" alt="ACE DB Deploy Integrations" width="80%"></br></br>
+                            <li>Click on quickstart template tile</li>
+                            <img src="img/integration-quickstart.png" alt="ACE DB Quickstart" width="80%"></br></br>
+                            <li>Upload the fundtransfer.bar BAR file from the unzipped folder. Click Next.</li>
+                            <img src="img/integration-barfile.png" alt="ACE DB Barfile" width="80%"></br></br>
+                            <li>Select the ACE Designer Account to include the MQ configuration. Click Next.</li>
+                            <img src="img/integration-account-configurations.png" alt="ACE DB Configurations" width="80%"></br></br>
+                            <li>Modify the name of the Integration server "ir-fundtransfer". Click Create.</li>
+                            <img src="img/integration-ir-fundtransfer.png" alt="ACE DB Integration Server" width="80%"></br></br>
+                            <li>Wait for the integration Server start. Then click on the server tile and Click on the fundTransfer API. Execute the test case for the deployed flow. Using teh same approach as executed in the designer.</li>
+                            <img src="img/integration-server-try-it.png" alt="ACE DB Runtimes Try It" width="80%"></br></br>
+                            <li>In the overview section of the API click on the download link for the yaml file</li>
+                            <img src="img/integration-server-api-download-yaml.png" alt="ACE YAML Download" width="80%"></br></br>
 
 
-        
+                        </ol>
+
+
                     </ol>
                 </div>
             </main>
