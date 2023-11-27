@@ -372,6 +372,39 @@
 
 
                         </ol>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">
+                                <h4>Import API to API Connect</h4>
+                            </li>
+                        </ol>
+                        <p class="mb-0">In this section we will import the API exposed on the integration service to the API.
+                        </p></br>
+                        <ol>
+                            <li>Open the API manager (From Platform UI home page click on Design APIs), logon on as your organisation adminstrator "orgadmin", using API Manger Registry. Click on the "Develop APIs and Products Tile"</li>
+                            <img src="img/api-manager-develop-apis.png" alt="ACE DB Develop APIs" width="80%"></br></br>
+                            <li>In the Develop API view click on the Add button and select API. </li>
+                            <img src="img/api-manager-develop-api-add.png" alt="ACE DB Develop Add APIs" width="80%"></br></br>
+                            <li>Click on "From Target Service" for the API type and click Next.</li>
+                            <img src="img/api-manager-from-target-service.png" alt="ACE DB Develop From Target Service" width="80%"></br></br>
+                            <li>Enter the Target Service Details. (1) Title (2) Target URL. Get the Target URL from the test screen in the Integration Server Testing</li>
+                            <img src="img/target-service.png" alt="Target Service" width="80%"></br></br>
+                            <img src="img/integration-server-target-url.png" alt="ACE Target URL" width="80%"></br></br>
+                            <li>Select the secure properties for the API and Click Next</li>
+                            <img src="img/secure-api.png" alt="Secure Service" width="80%"></br></br>
+                            <li>Select the secure properties for the API</li>
+                            <img src="img/secure-api.png" alt="Secure Service" width="80%"></br></br>
+                            <li>The summary will reflect the geenrated API and security. Click Edit API</li>
+                            <img src="img/secure-api.png" alt="Secure Service" width="80%"></br></br>
+                            <li>Bring the API online and we will do unit test.</li>
+                            <img src="img/bring-online.png" alt="Bring Online" width="80%"></br></br>
+                            <li>Copy the sample data.</li>
+                            <script src="https://gist.github.com/leonardBlunt/becb9725f4ecbee84b0b549b3350e352.js"></script>
+                            <li>Click on the (1) Test Tab. (2) Select a Post, Click on the Body tab and paste the test data</li>
+                            <img src="img/test-the-api.png" alt="Test the API" width="80%"></br></br>
+                            <li>Click send</li>
+                            <img src="img/test-success.png" alt="Test Success" width="80%"></br></br>
+
+                        </ol>
 
 
                     </ol>
