@@ -1,0 +1,64 @@
+openapi: 3.0.0
+info:
+  title: FXData
+  version: 1.0.0
+  description: FXData
+servers:
+  - url: http://leonards-macbook-pro-2.local:7800/fxdata/v1
+paths:
+  /currency-info:
+    get:
+      responses:
+        '200':
+          description: success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Currencies'
+      parameters:
+        - name: request-dt
+          in: query
+          schema:
+            $ref: '#/components/schemas/request-dt'
+components:
+  schemas:
+    symbol:
+      type: string
+      maxLength: 6
+      minLength: 6
+    request-dt:
+      type: string
+      maxLength: 10
+      minLength: 10
+      description: The request date format YYYY-MM-DD
+    Currency:
+      type: object
+      required:
+        - symbol
+        - request-dt
+        - open
+        - close
+        - low
+        - high
+      properties:
+        symbol:
+          $ref: '#/components/schemas/symbol'
+        request-dt:
+          $ref: '#/components/schemas/request-dt'
+        open:
+          type: number
+          description: The value of the currency rate at market open on date.
+        close:
+          type: number
+          description: The market value at the close of trading on the requested date.
+        low:
+          type: number
+          description: The lowest value for the currency symbol on the request date.
+        high:
+          type: number
+          description: The highest value for the currency symbol on the request date.
+    Currencies:
+      type: array
+      description: Response returns a list of currencies including their symbol and the request date
+      items:
+        $ref: '#/components/schemas/Currency'

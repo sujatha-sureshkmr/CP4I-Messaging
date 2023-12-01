@@ -7,21 +7,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Index</title>
+    <title>CP4I - Messaging</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script>
+        function copyToClipboard(element) {
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
+
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
+
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
+
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
+
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
+
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
+
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
+            position: relative;
+            background: #d3d6db;
+            padding: 10px;
+            font-size: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border: 1px solid #e6e7e9;
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
+            color: #000;
+        }
+        table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px; /* Adjust padding for cell content */
+      text-align: left; /* Align text within cells */
+    }
+    th {
+      background-color: #f2f2f2; /* Background color for header */
+    }
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 20%; /* Adjust the width of the first column */
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 40%; /* Adjust the width of the second column */
+    }
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 25%; /* Adjust the width of the third column */
+    }
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 15%; /* Adjust the width of the fourth column */
+    }
+    </style>
+
 </head>
 
-<body class="sb-nav-fixed">
+<body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">IBM CSM</a>
+        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="index.html">Integration Skills Launchpad</a>
+        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -48,72 +159,61 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="content.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Table Of Contents
-                        </a>
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
-                        <div class="sb-sidenav-menu-heading">Integration Capabilities</div>
+                        <div class="sb-sidenav-menu-heading">Use cases</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Prepare
+                            CP4I
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
-                                <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
+                                <a class="nav-link" href="./cp4i-ft/index.html">Funds Transfer</a>
+                                <a class="nav-link" href="./cp4i-others/index.html">Additional Practice Materials</a>
                             </nav>
                         </div>
-
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Configure
+                            CP4D
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
-                                <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
-                                <a class="nav-link" href="streamingqueue.html">Streaming Queue</a>
-                                <a class="nav-link" href="apiSetup.html">API and EEM</a>
-                                <a class="nav-link" href="appConnectEnterprise.html">App Connect Enterprise</a>
-
+                                <a class="nav-link" href="./cp4d-others/index.html">Additional Practice Materials</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Build
+                            CP4BA
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="apiToMQUsingACEDesigner.html">API to MQ Using Ace</a>
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
                             data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Run
+                            CP4APPS
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="testapplication.html">Testing Applications</a>
-                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
                             </nav>
                         </div>
-                        <div class="sb-sidenav-menu-heading">Environment Guides</div>
+                        <!--<div class="sb-sidenav-menu-heading">Environment Guides</div>
                         <a class="nav-link" href="logonInformation.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Environment Details
@@ -122,7 +222,7 @@
                         <a class="nav-link" href="glossary.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                             Glossary
-                        </a>
+                        </a>-->
                         <!-- <a class="nav-link" href="index.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Charts
@@ -135,6 +235,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">IBM CSM</div>
+                    <div class="small">Author : Sujatha Sureshkumar</div>
 
                 </div>
             </nav>
@@ -142,82 +243,76 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Integration Skills Launchpad</h1>
-
-                    <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item active">
-                            <h4>Overview</h4>
-                        </li>
-                    </ol>
+                    <h1 class="mt-4">Overview</h1>
                     <div class="card mb-4">
-                        <div class="card-header">
-                            <i class="fas fa-book-open"></i>
-                            Funds Transfer Cloud Native Integration  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>Authors: Sujatha Sureshkumar, Leonard Blunt, Sivakumar</b>
-                        
-                        </div>
                         <div class="card-body">
-                            <div>
-
-
-                            </div>
-                            <div>
-                                <p class="lead"><b>Use Case: Funds Transfer Scenario</b></p>
-                                <p class="lead">The bank's objective is to ensure seamless assistance for customers seeking to transfer payments or funds to their registered recipients. Upon the bank's receipt of the transfer request at the backend, a prompt notification will be sent to the customer, acknowledging the initiation of the transfer process.
-                                    Once the transfer undergoes processing and reaches completion, a second notification will be promptly dispatched to the customer. This notification will comprehensively detail the outcome of the processing, providing essential information regarding the successful transfer or any potential issues encountered during the transaction.
-                                    This approach aims to maintain transparency and provide customers with real-time updates throughout the transfer procedure, ensuring a smooth and reliable banking experience.
-                                </p>
-                                <img src="assets/img/CP4ISetup/usecase.png" alt="Usecase" class="center" width="700"
-                                    height="400" />
-
-                            </div>
-
-                            <div>
-                                <p></p>
-                                <p class="lead"><b>Funds Transfer Scenario - Sequence of Events</b></p>
-                                <p class="lead">
-                                <ol>
-                                    <li>User triggers a transfer of funds from their mobile banking</li>
-                                    <li>Backend for Frontend service invokes call to backend systems invokes the API
-                                    </li>
-                                    <li>API invokes persistent queue on the queue manager</li>
-                                    <li>The queue manager is configured to work with streaming queue which will post the
-                                        message to the events for processing by the subscribed event consumers</li>
-                                    <li>Events are processed on the event brokers</li>
-                                    <li>Event consumers process the inbound event</li>
-                                    <li>Core banking processes the transfer</li>
-                                    <li>When processing is complete core banking triggers notification to the events to
-                                        be picked up by the event consumers</li>
-                                </ol>
-                                </p>
-                                <img src="assets/img/CP4ISetup/architecture.png" alt="Usecase" class="center"
-                                    width="900" height="400" />
-
-                            </div>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">CloudPak for Integration  (CP4I)</h4>
+                                </li>
+                            </ol>
+                            <p class="mb-0">
+                                This section details the use case and guides for CP4I.
+                            </p></br>
+                            <div class="row">
+                                <div class="col-xl-12 col-md-3">
+                                    <div class="card bg-primary text-white mb-4">
+                                        <div class="card-body">CP4I - Funds Transfer</div>
+                                       
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="./cp4i-ft/index.html">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            <div class="card-body">In modern banking, the evolution of fund transfers thrives on an intricate integration powered by a suite of IBM solutions within Red Hat's Openshift environment. IBM Cloud Pak for Integration orchestrates this ecosystem, intertwined with IBM API Connect facilitating effortless mobile app transactions. Safeguarding the process, IBM MQ ensures secure queue management while IBM Event Streams drives real-time event processing, ensuring precision in fund transfer operations. This amalgamation culminates in a user-centric experience marked by instant notifications, representing a transformative era in banking, where innovation meets reliability, reshaping the landscape of financial transactions.</div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-xl-12 col-md-3">
+                                    <div class="card bg-primary text-white mb-4">
+                                        <div class="card-body">CP4I - Additional Practice Materials</div>
+                                       
+                                        <div class="card-footer d-flex align-items-center justify-content-between">
+                                            <a class="small text-white stretched-link" href="./cp4i-others/index.html">View
+                                                Details</a>
+                                            <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                            <div class="card-body"> Interactive tutorials and demo scenarios providing hands-on experience. These resources often cover specific use cases, allowing users to practice in a simulated environment.</div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                         </div>
 
                     </div>
-
-                    <!-- <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        Area Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>-->
                 </div>
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">
+                                <h4 id="overview">CloudPak for Data (CP4D)</h4>
+                            </li>
+                        </ol>
+                        <p class="mb-0">
+                            This section details the use case and guides for CP4D.
+                        </p></br>
+                        <div class="row">
+                            <div class="col-xl-12 col-md-3">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">CP4D - Additional Practice Materials</div>
+                                   
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="./cp4d-others/README.md">View
+                                            Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                        <div class="card-body"> Interactive tutorials and demo scenarios providing hands-on experience. These resources often cover specific use cases, allowing users to practice in a simulated environment.</div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                    </div>
+
+                </div>
+            </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -236,12 +331,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
-        crossorigin="anonymous"></script>
-    <script src="js/datatables-simple-demo.js"></script>
 </body>
 
 </html>

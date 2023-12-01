@@ -1,0 +1,35 @@
+# Jekyll main configuration file
+# See https://jekyllrb.com/docs/configuration/ to further customize this file
+# Defaults settings https://jekyllrb.com/docs/configuration/#default-configuration
+
+title: CP4I Modernization Practicum Workshop Singapore
+# description: "Contains Use Cases for some of the scenarios for CP4I Practicum"
+
+url: https://ibm-csm-sg.github.io
+baseurl: /ASEANZK-CP4I-Practicum
+permalink: date # how your URLs are built, see https://jekyllrb.com/docs/permalinks/#builtinpermalinkstyles
+
+# timezone: America/Los_Angeles # see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+#theme: architect
+#theme: cayman
+# theme: dinky
+#theme: hacker
+#theme: leap day
+#theme: merlot
+# theme: midnight
+#theme: minima
+#theme: minimal
+#theme: modernist
+#theme: slate
+#theme: tactile
+#theme: time machine
+#theme: hyde
+#theme: chirpy
+
+# look for themes on https://github.com/topics/jekyll-theme and https://rubygems.org/search?utf8=%E2%9C%93&query=jekyll-theme
+
+# Files to excludes from your website
+exclude:  
+ - .gitignore
+ - CNAME 
