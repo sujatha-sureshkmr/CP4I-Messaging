@@ -127,12 +127,12 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
+        <a class="navbar-brand ps-3" href="../../index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
+        <a class="navbar-brand ps-3" href="../../index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -159,7 +159,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index-cp4i-add.html">
+                        <a class="nav-link" href="../index-cp4i-add.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
@@ -173,10 +173,10 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="EvsMQ/evsMQ.html">Event Stream + MQ</a>
-                                <a class="nav-link" href="apicMQ/apicMQ.html">APIC + MQ</a>
-                                <a class="nav-link" href="intmod/intmod.html">Integration Modernization</a>
-                                <a class="nav-link" href="apilcm/apilcm.html">API Life Cycle Management</a>
+                                <a class="nav-link" href="../EvsMQ/evsMQ.html">Event Stream + MQ</a>
+                                <a class="nav-link" href="../apicMQ/apicMQ.html">APIC + MQ</a>
+                                <a class="nav-link" href="../intmod/intmod.html">Integration Modernization</a>
+                                <a class="nav-link" href="../apilcm/apilcm.html">API Life Cycle Management</a>
                             </nav>
                         </div>
                         <!--<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -249,50 +249,80 @@
                         <div class="card-body">
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="overview">IBM Cloud Pak for Integration (CP4I) - Additional Practice Materials</h4>
+                                    <h4 id="overview">CP4I Kafka Experience</h4>
                                 </li>
                             </ol>
                             <p class="mb-0">
                                 This section details CP4I - Additional Practice Materials.
                             </p></br>
-                            <table>
+                            <ul>
+                                <li><strong><a href="#introduction">Scenario Introduction</a></strong></li>
+                                <li><strong><a href="#architecture">Solution Architecture</a></strong></li>
+                                <li><strong><a href="#architecture_hl">High Level Architecture</a></strong></li>
+                                <li><strong><a href="#architecture_flow">Detailed Solution Flow</a></strong></li>
+                                <li><strong><a href="#software_list">List of Software Products Used</a></strong></li>
+                                <li><strong><a href="#solution_build">Solution Build</a></strong></li>
+                                </ul>
+                                <p><span id="introduction" /></p>
+                                <h2 id="ibm-cp4i-scenario-introduction">IBM CP4I Scenario Introduction</h2>
+                                <ul>
+                                <li><p>FictionCorp is a Online shopping company which recieves the user registration data and stores it in kafka cluster to be consumed by other subscribed applications. </p>
+                                </li>
+                                <li><p>They want to use MQ Queue Manager to consume data from kafka topic for to notified downstream applications for new user registrations. </p>
+                                </li>
+                                <li><p>They have recently bought CP4I entitelment and exploring to use IBM Event Streams and MQ for implementing above user case. </p>
+                                </li>
+                                </ul>
+                                <p><strong>Challanges</strong> <BR>
+                                Your team have (3) days to document your approach to a Solution to the customers business problem using CP4I capabilities and any external capabilities that you think are necessary or useful.
+                                Day 3: Demonstrate your solution to whole class.</p>
+                                <p><span id="architecture" /></p>
+                                <h2 id="solution-architecture">Solution Architecture</h2>
+                                <p><span id="architecture_hl" /></p>
+                                <h3 id="high-level-architecture">High Level Architecture</h3>
+                                <p><img src="img/high-level-architecture-diagram.png" width=600 height=480/></p>
+                                <ul>
+                                <li>We need an <strong>Application Integration</strong> capabilities for publishing an API to post the user registration data to be produced to <strong>Event Stream</strong> Topic.</li>
+                                <li>Another application witin <strong>Applicaion Integration</strong> will consume the user registration data and upload it to the IBM MQ Queue.</li>
+                                </ul>
+                                <p><span id="architecture_flow" /></p>
+                                <h3 id="detailed-solution-flow">Detailed Solution Flow</h3>
+                                <ol>
+                                <li>Inside <strong>IBM App Connect Enterprise</strong> there will be an application that will expose the API to post the Data and transform it to the format required by the business users and publish it in an <strong>IBM Event Streams</strong> topic.</li>
+                                <li>Second application will be created to consume User data from Topic and upload to he MQ Queue.</li>
+                                </ol>
+                                <p><span id="software_list" /></p>
+                                <h3 id="list-of-software-products-used-in-scenario">List of Software Products Used In Scenario</h3>
+                                <p><img src="img/cloud-pak-stack.png" width=800 height=480/></p>
+                                <p>The Cloud Pak for Integration services that we will be use are:</p>
+                                <ul>
+                                <li>IBM App Connect Enterprise</li>
+                                <li>IBM Event Streams</li>
+                                <li>IBM MQ</li>
+                                </ul>
+                                <p><span id="solution_build" /></p>
+                                <h2 id="solution-build">Solution Build</h2>
+                                <p>This scenario can be implemented/developed using <strong>one of the below two ways</strong>. You can use online <strong>CP4I App Connect Designer</strong> to design the flow and optionally export is as bar file to be deployed it on the integration server. Alternatively you can use traditional <strong>App Connect Enterprise (ACE) Client</strong> to design the flow and export the bar file to be deployed on the integration server.</p>
+                                <p>You can refer to below instructions to <strong><a href="Kafka-Pre-lab/Kafka-Pre-Lab.html">Create Connection to shared Kafka cluster.</a></strong> Steps to create Kafka connection and save credentials and certs for all Kafka labs. </p>
+                                <p>You may need to <strong><a href="Kafka-Pre-lab/Install-Client-Tools.html">install client tools</a></strong> to work on this lab. </p>
+                                <table>
                                 <thead>
-                                  <tr>
-                                    <th>Scenario Link</th>
-                                    <th>Use Case Description</th>
-                                    <th>CP4I Products Used</th>
-                                    <th>Authors</th>
-                                  </tr>
+                                <tr>
+                                <th>Subject</th>
+                                <th>Description</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td><a href="scenario5/index.md">Event Stream + MQ</a></td>
-                                    <td>FictionCorp is a Online shopping company which recieves the user registration data and stores it in kafka cluster to be consumed by other subscribed applications. They want to use MQ Queue Manager to consume data from kafka topic for to notified downstream applications for new user registrations. </br> They have recently bought CP4I entitelment and exploring to use IBM Event Streams and MQ for implementing above user case.</td>
-                                    <td>Event Streaming (IBM Event Stream) </br>Enterprise Messaging (IBM MQ) </br>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved </strong> <BR><BR> <strong>Sujatha Sureshkumar</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario2/README.md">APIC + MQ</a></td>
-                                    <td>The XYZ Bank still has a core banking system running on IBM System Z. Currently the only way to integrate with this system is via MQ. The core banking system provides typical account functions such as query balance, deposit and withdraw. </br>The Bank has initiated a digital transformation program to modernize their channel applications such as Internet Banking, using reactive technology to make it more user friendly and compelling to their customers. They want to user APIs in order to quickly unlock their assets in the legacy systems - so that their channel applications can consume.
-                                    </br>Security is paramount, they need to ensure that the APIs exposed needs to be secured using client id/secret and OAuth/OIDC. Architect and build a solution that enable the customer to expose their digital assets via APIs using Cloud Pak for Integration. Each transaction should trigger events that can be audited or based on business rules trigger alerts.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise) <BR><BR>Enterprise Messaging (IBM MQ)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Glen Christian</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario3/README.md">Integration Modernization</a></td>
-                                    <td>Your customer has been a long-time user of App Connect (IIB/WMB) and MQ. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM Agile Integration practices. <BR> They would like you to use one of their existing flows and queue definitions to explore how to move to containerized integration. While eager to understand the modernization journey, they also have reservations on their ability to scale and manage the workload.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments..</td>
-                                    <td>Enterprise Messaging (IBM MQ) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Santhoshi Gopalkrishnan</strong> <BR><BR> <strong>Mano Saelao</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario4/ReadMe.md">API Life Cycle Management</a></td>
-                                    <td>Your customer has been an OpenAPI definition for an exiting REST service. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM API connect to deploy their rest services. <BR>They would like you to create an API by importing the OpenAPI definition for an existing REST service. Also configure Security endpoints, and proxy to invoke endpoint. After testing the REST API in the online developer toolkit, publish it API for their developers.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Pham Manh Hung</strong></td>
-                                  </tr>
-                                
+                                <tr>
+                                <td><a href="Lab_1/Lab_1.html">Using CP4I App Connect Designer</a></td>
+                                <td><strong>Event Driven flows(Kafka)</strong> The purpose of this lab is to provide an introduction to Kafka using <strong>App Connect Designer</strong> Smart connectors to create producers and consumers of Kafka messages using Event Steams </td>
+                                </tr>
+                                <tr>
+                                <td><a href="Lab_2/Lab_2.html">Using IBM App Connect Client </a></td>
+                                <td><strong>Event Driven flows (Kafka)</strong> The purpose of this lab is to provide an introduction to Kafka Toolkit using <strong>App Connect Enterprise (ACE)</strong> to create producers and consumers of Kafka messages using Event Steams.</td>
+                                </tr>
                                 </tbody>
-                              </table>
+                                </table>
 
                     </div>
                 </div>

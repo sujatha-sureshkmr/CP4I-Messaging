@@ -127,12 +127,12 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
+        <a class="navbar-brand ps-3" href="../../../index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
+        <a class="navbar-brand ps-3" href="../../../index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -159,7 +159,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index-cp4i-add.html">
+                        <a class="nav-link" href="../../index-cp4i-add.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
@@ -173,10 +173,10 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="EvsMQ/evsMQ.html">Event Stream + MQ</a>
-                                <a class="nav-link" href="apicMQ/apicMQ.html">APIC + MQ</a>
-                                <a class="nav-link" href="intmod/intmod.html">Integration Modernization</a>
-                                <a class="nav-link" href="apilcm/apilcm.html">API Life Cycle Management</a>
+                                <a class="nav-link" href="../../EvsMQ/evsMQ.html">Event Stream + MQ</a>
+                                <a class="nav-link" href="../../apicMQ/apicMQ.html">APIC + MQ</a>
+                                <a class="nav-link" href="../../intmod/intmod.html">Integration Modernization</a>
+                                <a class="nav-link" href="../../apilcm/apilcm.html">API Life Cycle Management</a>
                             </nav>
                         </div>
                         <!--<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -249,50 +249,56 @@
                         <div class="card-body">
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="overview">IBM Cloud Pak for Integration (CP4I) - Additional Practice Materials</h4>
+                                    <h4 id="overview">Install Client Tools</h4>
                                 </li>
                             </ol>
                             <p class="mb-0">
-                                This section details CP4I - Additional Practice Materials.
+                                This section details installation of client tools.
                             </p></br>
-                            <table>
-                                <thead>
-                                  <tr>
-                                    <th>Scenario Link</th>
-                                    <th>Use Case Description</th>
-                                    <th>CP4I Products Used</th>
-                                    <th>Authors</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td><a href="scenario5/index.md">Event Stream + MQ</a></td>
-                                    <td>FictionCorp is a Online shopping company which recieves the user registration data and stores it in kafka cluster to be consumed by other subscribed applications. They want to use MQ Queue Manager to consume data from kafka topic for to notified downstream applications for new user registrations. </br> They have recently bought CP4I entitelment and exploring to use IBM Event Streams and MQ for implementing above user case.</td>
-                                    <td>Event Streaming (IBM Event Stream) </br>Enterprise Messaging (IBM MQ) </br>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved </strong> <BR><BR> <strong>Sujatha Sureshkumar</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario2/README.md">APIC + MQ</a></td>
-                                    <td>The XYZ Bank still has a core banking system running on IBM System Z. Currently the only way to integrate with this system is via MQ. The core banking system provides typical account functions such as query balance, deposit and withdraw. </br>The Bank has initiated a digital transformation program to modernize their channel applications such as Internet Banking, using reactive technology to make it more user friendly and compelling to their customers. They want to user APIs in order to quickly unlock their assets in the legacy systems - so that their channel applications can consume.
-                                    </br>Security is paramount, they need to ensure that the APIs exposed needs to be secured using client id/secret and OAuth/OIDC. Architect and build a solution that enable the customer to expose their digital assets via APIs using Cloud Pak for Integration. Each transaction should trigger events that can be audited or based on business rules trigger alerts.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise) <BR><BR>Enterprise Messaging (IBM MQ)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Glen Christian</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario3/README.md">Integration Modernization</a></td>
-                                    <td>Your customer has been a long-time user of App Connect (IIB/WMB) and MQ. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM Agile Integration practices. <BR> They would like you to use one of their existing flows and queue definitions to explore how to move to containerized integration. While eager to understand the modernization journey, they also have reservations on their ability to scale and manage the workload.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments..</td>
-                                    <td>Enterprise Messaging (IBM MQ) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Santhoshi Gopalkrishnan</strong> <BR><BR> <strong>Mano Saelao</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario4/ReadMe.md">API Life Cycle Management</a></td>
-                                    <td>Your customer has been an OpenAPI definition for an exiting REST service. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM API connect to deploy their rest services. <BR>They would like you to create an API by importing the OpenAPI definition for an existing REST service. Also configure Security endpoints, and proxy to invoke endpoint. After testing the REST API in the online developer toolkit, publish it API for their developers.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Pham Manh Hung</strong></td>
-                                  </tr>
-                                
-                                </tbody>
-                              </table>
+                            <ul>
+                                <li><a href="#_Toc105518921">IBM App Connect Enterprise (ACE) Toolkit Setup</a></li>
+                                <li><a href="#_Toc105518922">Openshift Command Line Interface (CLI) Setup</a></li>
+                                </ul>
+                                <p><span id="_Toc105518921" class="anchor"></span></p>
+                                <h2 id="ibm-app-connect-enterprise-ace-toolkit-setup">IBM App Connect Enterprise (ACE) Toolkit Setup</h2>
+                                <p>Install IBM App Connect Enterprise for developers (also called ACE).
+                                Make sure to select the correct download package for your OS (Windows,
+                                Linux, Mac).</p>
+                                <p>Click on <strong>Download</strong> button on the following
+                                link: <a href="https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-download-ace-developer-edition-get-started"><u>https://www.ibm.com/docs/en/app-connect/12.0?topic=enterprise-download-ace-developer-edition-get-started</u></a></p>
+                                <p><img src="./media/image2.png" style="width:6.26806in;height:2.87361in"
+                                alt="Graphical user interface, text, application, Teams Description automatically generated" /></p>
+                                <p>The version used in this practicum is 12.0.8</p>
+                                <p><img src="./media/image3.jpeg"
+                                style="width:6.26806in;height:0.70139in" /></p>
+                                <p><img src="./media/image3.1.jpeg"
+                                style="width:6.26806in;height:0.70139in" /></p>
+                                <p><img src="./media/image4.jpeg" style="width:6.26806in;height:3.37014in"
+                                alt="Table Description automatically generated" /></p>
+                                <p>Complete the installation through the installer package you just
+                                downloaded for your OS. eg: 12.0.8.0-ACE-MAC64-DEVELOPER-UNSIGNED. You
+                                can use the IBM ACE Installation page as a guide to complete the
+                                installation.</p>
+                                <p><img src="./media/image4.1.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.2.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.3.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.4.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.5.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.6.jpeg" style="width:6in;height:4in" />
+                                <img src="./media/image4.7.jpeg" style="width:6in;height:4in" /></p>
+                                <p>Once installed, open the installed ACE toolkit. A view similar to the
+                                screenshot below will launch.</p>
+                                <p><img src="./media/image-xx-0.jpeg" style="width:8in;height:4in" /></p>
+                                <p><img src="./media/image-xx-1.png" style="width:6.26806in;height:3.37014in" /></p>
+                                <p><span id="_Toc105518922" class="anchor"></span></p>
+                                <h2 id="openshift-command-line-interface-cli-setup">Openshift Command Line Interface (CLI) Setup</h2>
+                                <p>Download Openshift Command line tools (OC Client)</p>
+                                <p><img src="./media/image5.png" style="width:6.26806in;height:1.14375in" /></p>
+                                <p>Download OC Client for your platform</p>
+                                <p><img src="./media/image6.png" style="width:6.26806in;height:2.10486in" /></p>
+                                <p>Place downloaded oc binary file (oc or oc.exe )to the path in variable for your platform. See the below URL for more details.</p>
+                                <p><a href="https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html">https://docs.openshift.com/container-platform/4.10/cli_reference/openshift_cli/getting-started-cli.html</a> </p>
+                                <p>Alternate URL Reference: <a href="https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/">https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable-4.10/</a></p>
 
                     </div>
                 </div>

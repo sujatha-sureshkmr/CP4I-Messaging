@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CP4I - Messaging</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script>
+        function copyToClipboard(element) {
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
+
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
+
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
+
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
+
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
+
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
+
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
+            position: relative;
+            background: #d3d6db;
+            padding: 10px;
+            font-size: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border: 1px solid #e6e7e9;
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
+            color: #000;
+        }
+        table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px; /* Adjust padding for cell content */
+      text-align: left; /* Align text within cells */
+    }
+    th {
+      background-color: #f2f2f2; /* Background color for header */
+    }
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 20%; /* Adjust the width of the first column */
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 40%; /* Adjust the width of the second column */
+    }
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 25%; /* Adjust the width of the third column */
+    }
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 15%; /* Adjust the width of the fourth column */
+    }
+    </style>
+
+</head>
+
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../../../index.html">IBM CSM</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="../../../index.html">Integration Skills Launchpad</a>
+        <!-- Navbar Search
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>-->
+        <!-- Navbar
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>-->
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="../../index-cp4i-add.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Use cases</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4I - Additional Practice Materials
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="../../EvsMQ/evsMQ.html">Event Stream + MQ</a>
+                                <a class="nav-link" href="../../apicMQ/apicMQ.html">APIC + MQ</a>
+                                <a class="nav-link" href="../../intmod/intmod.html">Integration Modernization</a>
+                                <a class="nav-link" href="../../apilcm/apilcm.html">API Life Cycle Management</a>
+                            </nav>
+                        </div>
+                        <!--<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4D
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="./cp4d-others/README.md">Additional Practice Materials</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4BA
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4APPS
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
+                            </nav>
+                        </div> -->
+                        <!--<div class="sb-sidenav-menu-heading">Environment Guides</div>
+                        <a class="nav-link" href="logonInformation.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Environment Details
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Add ons</div>
+                        <a class="nav-link" href="glossary.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Glossary
+                        </a>-->
+                        <!-- <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a> -->
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM</div>
+                    <div class="small">Author : Sujatha Sureshkumar</div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Overview</h1>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">IBM App Connect Enterprise - App Connect Kafka Designer Event flow</h4>
+                                </li>
+                            </ol>
+                            <p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#Setup_connections">2. Setup connection to Smart connectors for this lab</a> <BR>
+  &nbsp;&nbsp; <a href="#Setup_kafka">2.1. Create the Kafka topic.</a> <BR><pre><code>&amp;nbsp;&amp;nbsp; [<span class="hljs-string">2.2. Create MQ Queue for the consumer.</span>](<span class="hljs-link">#Setup_MQ</span>) <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">BR</span>&gt;</span></span>
+</code></pre>  &nbsp;&nbsp; <a href="#Setup_MQ_Security">2.3 Configure Default Channel Security</a> <BR></li>
+<li><a href="#Setup_API">3. Create API to publish message to topic and event flow to consume topics.</a> <BR>
+&nbsp;&nbsp; <a href="#Create_API">3.1. Create API to publish message to Kafka topic.</a> <BR>
+  &nbsp;&nbsp; <a href="#Create_Consumer">3.2. Create Event-driven flow to consume Kafka messages.</a> <BR></li>
+<li><a href="#test_designer_flow">4. Testing the Kafka flows</a></li>
+<li><a href="#deploy_a_designer_flow">5. Deploying Your Designer Flow to App Connect Dashboard  </a></li>
+</ul>
+<p><a href="../index.md">Return to main lab page</a></p>
+<hr>
+<p><span id="introduction" /></p>
+<h1 id="1-introduction">1. Introduction</h1>
+<p>React to events in real time to deliver responsive and personalized experiences for applications and customer experience.  Built on open source Apache Kafka, IBM Event Streams is an event-streaming platform that helps you build smart applications that can react to events as they happen.</p>
+<ul>
+<li>The purpose of this LAB is to show how to publish messages on to the Kafka broker to be consumed by other applications that are listening to a topic.  We will create a simple API that will create messages and then publish them to our topic.  We will also then create an <strong>event driven flow</strong>f that will be listening to the topic and will put the message on to a MQ queue.</li>
+</ul>
+<p>1. From your home page in the upper left it will show your login name and you can always click on <strong>IBM Automation</strong> to get to this home page.   </p>
+<ul>
+<li>For this lab we will be using <strong>App Connect Designer</strong>, under Integration Messaging we will use <strong>MQ</strong>, and under Event Streaming we will use <strong>event-steam</strong> for our Kafka broker.  </li>
+</ul>
+<p><img src="images/2.png" alt="alt text"></p>
+<p>2. You can right click on each of these capabilities and open them in a new tab.<br>You wil then have a tab open for each of them to help save time.  </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p><span id="Setup_connections" /></p>
+<h1 id="2-create-the-kafka-topic-and-mq-queue-for-this-lab">2. Create the Kafka topic and MQ Queue for this lab</h1>
+<p><span id="Setup_kafka" /></p>
+<h2 id="2-1-create-the-kafka-topic">2.1 Create the Kafka topic</h2>
+<p>1. Now go to the tab for <strong>event-stream</strong> or you can click on the link from the home page and this will take you to the IBM Event Streams home page.   </p>
+<p><img src="images/es1.png" alt="alt text"></p>
+<p>2. Now we will create our topic. Click on the <strong>Create a topic</strong> tile. </p>
+<p><img src="images/es2.png" alt="alt text"></p>
+<p>3. Now enter the name of your topic.  Since this is a shared Kafka broker, use your userid as part of the topic name.  In this example, we are logged in as chopper1 so the topic name is <strong>chopper1.mytopic</strong>.  Click <strong>Next</strong>.</p>
+<p><img src="images/es3.png" alt="alt text"></p>
+<p>4. Leave the partitions at 1 and click <strong>Next</strong>.</p>
+<p><img src="images/es4.png" alt="alt text"></p>
+<p>5. Since this is for a lab, change the Message retention to <strong>A day</strong> and click <strong>Next</strong>.
+<strong>Note:</strong> If we wanted to retain message longer we could change this to meet those needs.</p>
+<p><img src="images/es5.png" alt="alt text"></p>
+<p>6. For the Replicas, we will change the <strong>Minimum in-sync replicas</strong> to <strong>1</strong> and select <strong>Replication factor:1</strong>.  Note:  Make sure that the radial button next to Replication factor:1 is selected before clicking <strong>Create topic</strong>.</p>
+<p><img src="images/es6.png" alt="alt text"></p>
+<p>7. Now you will be back on the Topics screen.  You may see other users topics in the list but make sure you see your topic you just created.  </p>
+<p>8. Save the cluster SCRAM credentials and certificates as per <strong><a href="../Kafka-Pre-lab/Kafka-Pre-Lab.md">Create Connection to shared Kafka cluster</a></strong>.</p>
+<p><span id="Setup_MQ" /></p>
+<h2 id="2-2-create-mq-queue-for-the-consumer">2.2 Create MQ Queue for the consumer</h2>
+<p>1.Now go to the tab for <strong>MQ Console</strong> </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p>Or you can click on the link from the home page and this will take you to the IBM MQ Console home page.   </p>
+<p><img src="images/mq1.png" alt="alt text"></p>
+<p>2. Now click on your Queue Manger tile.  </p>
+<p><img src="images/mq2.png" alt="alt text"></p>
+<p>3. The name of your Queue Manager will be MQGR<strong>X</strong> where <strong>X</strong> = the number of your userid.  In this example we are using chopper1.  Save this for later use.<br>We will be creating a new local Queue for this lab.   Click on <strong>Create</strong></p>
+<p><img src="images/mq3.png" alt="alt text"></p>
+<p>4. Click on the local Queue tile.  </p>
+<p><img src="images/mq4.png" alt="alt text"></p>
+<p>5. Now enter the Queue name.  In the example we used <strong>DEMO.MYTOPIC.EVENT</strong> then click <strong>Create</strong>.  </p>
+<p><img src="images/mq5.png" alt="alt text"></p>
+<p>6. We now have your Queue defined.   Click on the <strong>IBM Automation</strong> on the upper left to go back to the homepage. </p>
+<p><img src="images/mq6.png" alt="alt text"></p>
+<p><span id="Setup_MQ_Security" /></p>
+<h2 id="2-3-configure-default-channel-security">2.3 Configure Default Channel Security</h2>
+<p>There are different layers of authorization and authentication configured on the Channel access. To simplify the exercise, we will proceed to disable to Channel security authentication and authorization using the script <a href="../Assets/mq_ace_lab.mqsc">mq_ace_lab.mqsc</a> . Below steps will assist to disable. </p>
+<p>Copy Login Commands to login to oc client.</p>
+<p><img src="./images/image25.png" style="width:8in"  /></p>
+<p>Login to Openshift cluster using oc client.</p>
+<p><img src="./images/image26.png" style="width:8in" /></p>
+<p><u> <i> oc login --token=sha256~xxxxxx-xxxxxx-g --server=<a href="https://servername:30273">https://servername:30273</a> </i> </u></p>
+<p>run below command to see all your projects.</p>
+<p><u> <i> oc projects </i> </u></p>
+<p>Run below command to switch to your project.</p>
+<p><u> <i> oc project cp4i </i> </u></p>
+<p>Run below command to see the pod name of the mq queue manager.</p>
+<p><u> <i> oc get pods | grep -i mq </i> </u></p>
+<p>Note the MQ Queue Manager POD Name. eg. <strong> quickstart-cp4i-ibm-mq-0 </strong></p>
+<p>Change Directory to the location of your mqsc file. Use the following command to upload mqsc file to the MQ pod. QUICKSTART is queue manager name.</p>
+<hr>
+<p>oc exec -it <strong>quickstart-cp4i-queue-ibm-mq-0(this is your pod’s name)</strong> runmqsc <strong>QUICKSTART(QMGR-Name)</strong> &lt; mq_ace_lab.mqsc</p>
+<hr>
+<p>This script performs:</p>
+<ul>
+<li><p>Disable Chlauth security</p>
+</li>
+<li><p>Disable clientauth security</p>
+</li>
+<li><p>Disable user security on MQ objects level</p>
+</li>
+</ul>
+<p>The above command should succeed with below lines in the end.</p>
+<p><u> <i>
+94 MQSC commands read.</p>
+<p>No commands have a syntax error.</p>
+<p>All valid MQSC commands were processed.
+</i> </u></p>
+<p>Note the default channels details. Go to the Applications Tab for the Queue Manager that you created.</p>
+<p><img src="./images/image24.1.jpeg" style="width:8in"  /></p>
+<p>Click on App Channels link in the left pane. Click on the Filter and Select Show System Channels.</p>
+<p><img src="./images/image25.1.jpeg" style="width:8in"  /></p>
+<p>You should be able to see the System Channels. Note the default channel to be used for MQ Communication. eg. SYSTEM.DEF.SVRCONN</p>
+<p><img src="./images/image26.1.jpeg" style="width:8in"  /></p>
+<p><span id="Setup_API" /></p>
+<h1 id="3-create-api-to-publish-message-to-topic-and-event-flow-to-consume-topics">3. Create API to publish message to topic and event flow to consume topics</h1>
+<p>In this section, we will create a simple API that will create messages and then publish them to our topic.  We will also then create an <strong>event driven flow</strong> that will be listening to the topic and will put the message on to a MQ queue.</p>
+<p><strong>Note:</strong> We are just building the one flow to put the events to a queue but you could also build additional flows for other business units to react to the same message and send email, Slack, etc. </p>
+<p><span id="Create_API" /></p>
+<h2 id="3-1-create-api-to-publish-message-to-kafka-topic">3.1 Create API to publish message to Kafka topic</h2>
+<p>1.Now go to the tab for <strong>IBM Automation</strong> </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p>Or you can click on the <strong>Menu -&gt; Design -&gt; Integration</strong> from the home page and this will take you to the IBM ACE Designer page. </p>
+<p><img src="images/des1.png" alt="alt text"></p>
+<p>2. You should be on the App Connect Designer home page.   On the left menu select the Dashboard icon.  Once on the Dashboard page on the right side select <strong>New</strong> and click on <strong>Flows for an API</strong>.  </p>
+<p><img src="images/des2.png" alt="alt text"></p>
+<p>3. First thing we will do is create the model for this.  We will call the model <strong>KafkaProducer</strong></p>
+<p><img src="images/des3.png" alt="alt text"></p>
+<p>4. For this example, we will map the following properties these will all be data type String except for amount we will change that to number. </p>
+<p><strong>Note:</strong> The &quot;Add property +&quot; is used to add additional property fields. </p>
+<ol>
+<li>id</li>
+<li>name</li>
+<li>amount</li>
+<li>description</li>
+</ol>
+<p>When done click on the <strong>Operations tab.</strong></p>
+<p><img src="images/des4.png" alt="alt text"></p>
+<p>5. We will now select the operation we will build for this API.<br>Click on the drop down to add an operation. </p>
+<p><img src="images/des5.png" alt="alt text"></p>
+<p>6. We will use the Create operation for this.  Click on that.</p>
+<p><img src="images/des6.png" alt="alt text"></p>
+<p>7. We now have the POST operation ready and will implement our flow.   Click on the <strong>Implement Flow</strong> button.  This will take us to the flow designer.  </p>
+<p><img src="images/des7.png" alt="alt text"></p>
+<p>8. Now click on the blue <strong>+</strong> and enter <strong>Kafka</strong> on the search line or scroll down to the <strong>Kafka connector</strong>.  Select the <strong>Send message</strong>. </p>
+<p><img src="images/des8.png" alt="alt text"></p>
+<p>9.If you already have a connection you can skip to <strong>Step 12</strong>
+If not, click on <strong>Connect</strong>.</p>
+<p><img src="images/des9.png" alt="alt text"></p>
+<p>10. For the Authorization method, make sure to select <strong>(SASL_SSL)</strong> from the dropdown.  Click <strong>Continue</strong>. </p>
+<p><img src="images/des10.png" alt="alt text"></p>
+<p>11. Now fill in the fields.  We will use the SCRAM credentials we saved earlier. Refer to <strong><a href="../Kafka-Pre-lab/Kafka-Pre-Lab.md">Create Connection to shared Kafka cluster</a></strong> for details.</p>
+<ul>
+<li>a. Kafka broker list: bootstrap URL of the cluster</li>
+<li>b. username: SCRAM username </li>
+<li><p>c. password: SCRAM password </p>
+</li>
+<li><p>For the Security mechaniam: make sure to select the <strong>512</strong></p>
+</li>
+<li>Open the <strong>es-cert.pem</strong> file we downloaded.  Copy the whole thing and paste in the CA certiticate.  Scroll to the bottom and Click <strong>Connect</strong>.</li>
+</ul>
+<p><img src="images/des11.png" alt="alt text"></p>
+<p>12. Now select the topic for your userid that you created in the last section.  For the payload, we will fill it in with the mapping the input to the API.  </p>
+<p><img src="images/des12.png" alt="alt text"></p>
+<p>13. We will complete the API by updating the Reponse.  Click on the Reponse.
+We will map the Kafka Offset to the id in the reponse of the API.<br>When done click on the <strong>Done</strong> button in the upper right.  </p>
+<p><img src="images/des13.png" alt="alt text"></p>
+<p><span id="Create_Consumer" /></p>
+<h2 id="3-2-create-event-driven-flow-to-consume-kafka-messages">3.2 Create Event-driven flow to consume Kafka messages</h2>
+<p>1. Now go to the App Connect Designer Dashboard by clicking on the left hand menu icon</p>
+<p><img src="images/des14.png" alt="alt text"></p>
+<p>2. You will now see the API flow you just created for producing Kafka messages to your topic. 
+Next, we will click on <strong>New</strong> - <strong>Event-driven flow</strong> to create the consumer flow.</p>
+<p><img src="images/des15.png" alt="alt text"></p>
+<p>3. Now click on the blue <strong>+</strong> and scroll down to the <strong>Kafka</strong> connector or just start typing in the search field.  Select the <strong>New message</strong>.
+You should already have an Account setup from the last section.   </p>
+<p><img src="images/des16.png" alt="alt text"></p>
+<p>4. Now we will see the configuration screen for the Kafka connector. 
+ Now select the topic for your userid that you created in the previous section.  For the Group ID, we will use your userid as the unique ID.  In this case, we are using chopper1.
+ <strong>Note:</strong> Make sure you use your userid for this.<br> <strong>Note:</strong> For the Message offset you can select  earlier so that you will get all messages that had been produced already for the offset.</p>
+<p><img src="images/des17.png" alt="alt text"></p>
+<p>5. Now click on the blue <strong>+</strong> and scroll down to the <strong>IBM MQ</strong> connector or just start typing in the search field.  Select the <strong>Put message on a queue</strong>. </p>
+<p><img src="images/des18.png" alt="alt text"></p>
+<p>6. Now click on the blue <strong>+</strong> and scroll down to the <strong>IBM MQ</strong> connector or just start typing in the search field.  Select the <strong>Put message on a queue</strong>. 
+If you don&#39;t have an Account already setup for your MQ connector <strong>click on Connect</strong>
+If you have a Account already setup skip to <strong>Step XX</strong>. </p>
+<p><img src="images/des19.png" alt="alt text"></p>
+<p>7. Select Connection Type as Basic Connectin and fill in the connection details from like <strong>Queue Manager Name</strong> and <strong>Hostname</strong>.</p>
+<ul>
+<li>Enter the QMgr name</li>
+<li>For the QMgr host - use <strong>(service-name)</strong> corresponding to the MQ instance name in OCP console</li>
+<li>Port is 1414</li>
+<li>Channel SYSTEM.DEF.SVRCONN</li>
+</ul>
+<p>Click <strong>Connect</strong></p>
+<p><img src="images/des20.png" alt="alt text"></p>
+<p>7. Click <strong>Continue</strong></p>
+<p><img src="images/des21.png" alt="alt text"></p>
+<p>8. Now we will complete the mapping for our MQ connector.  </p>
+<ol>
+<li>Queue name:      DEMO.MYTOPIC.EVENT</li>
+<li>Message type:    TEXT </li>
+<li>Message payload: If you click in the box the suggested mapping is displayed.  Select the <strong>Payload</strong>. </li>
+</ol>
+<p>We will also give the flow a meaningful name.   In this example we can use <strong>Consume Kafka messages</strong>.<br>When done click on the <strong>Dashboard</strong> in the upper left corner. </p>
+<p><img src="images/des22.png" alt="alt text"></p>
+<p>9. Now from the Dashboard we see our two flows we created.  Now continue to the next section to test the flows.   </p>
+<p><img src="images/des23.png" alt="alt text"></p>
+<p><span id="test_designer_flow" /></p>
+<h1 id="4-testing-the-kafka-flows">4 Testing the Kafka flows</h1>
+<p>We will now test the new Kafka flows.   </p>
+<p>1. You will now be on your home page and in the upper left it will show your login name and you can always click on <strong>IBM Automation</strong> to get to this home page.   </p>
+<ul>
+<li>For this lab we are using <strong>App Connect Designer</strong>, under Integration Messaging we will use <strong>MQ</strong>, and under Event Streaming we will use <strong>es-demo</strong> for our Kafka broker.  </li>
+</ul>
+<p><img src="images/2.png" alt="alt text"></p>
+<p>2. To make testing easier you should right click on each of these capiblities and open them in a new tab.<br>You will then have a tab open for each of them to help save time.  </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p>3. Let&#39;s first go to the App Connect Dashboard.  Here you will see your Kafka flows created.  We will start with the <strong>Kafka Producer API</strong> click on the tile to open it. </p>
+<p><img src="images/tst1.png" alt="alt text"></p>
+<p>4. Now in the upper right corner we will click on the switch to start the API. </p>
+<p><img src="images/tst2.png" alt="alt text"></p>
+<p>5. You will now see that the Test button is on the menu.   Click on the <strong>Test Button</strong> and you will see the API test page.   Click on the POST operation.  </p>
+<p><img src="images/tst3.png" alt="alt text"></p>
+<p>6. Next we will click on the <strong>Try it</strong> button.  </p>
+<p><img src="images/tst4.png" alt="alt text"></p>
+<p>7. Now scroll down the API test page and you can click on <strong>Generate</strong> to populate the body of the API.  This will show all the fields for the API call.  You can change the fields if you like as in this example.
+Click <strong>Send</strong> button. </p>
+<p>YOu will then see the API Request and the Reponse to the API call.   We have just produced a kafka message and the offset is 5 which is returned in the API call. </p>
+<p><img src="images/tst5.png" alt="alt text"></p>
+<p>8. Now let&#39;s go to the Event Streams tab and click on the left menu to open the topics.  You should see your topic that you created in the first section of this lab.  In this example it is chopper1.mytopic. </p>
+<p><img src="images/tst6.png" alt="alt text"></p>
+<p>9. Click on your topic to open your topic.  On your topic page click on the Message button and this will show the message you just created. </p>
+<p><img src="images/tst7.png" alt="alt text"></p>
+<p>You can click on the message to open it and see the content. </p>
+<p><img src="images/tst7a.png" alt="alt text"></p>
+<p>10. Now let&#39;s go to the MQ Console tab and click on your Queue Manager title, in this example it is MQGR1. 
+You will see that your queue should show zero messages.  This is since we didn&#39;t start the consumer flow yet to put the kafka messages to the queue.  </p>
+<p><img src="images/tst8.png" alt="alt text"></p>
+<p>11. Now let&#39;s go back to the to the  App Connect Dashboard.  You will see that the Consumer flow is not running.  Click on the 3 dots of the tile and select start to start the flow.   </p>
+<p><img src="images/tst9.png" alt="alt text"></p>
+<p>12. You now should see the consumer flow Running. </p>
+<p><img src="images/tst10.png" alt="alt text"></p>
+<p>13. Now let&#39;s go back to the MQ Console tab and click on your Queue Manager title, in this example it is MQGR1. 
+Click on the Refresh Icon and you should see a message on your queue now.  <strong>Note</strong> This is due to Kafka broker keeping the messages available so when applications start up they can go back and pick up messages that have already been produced.   </p>
+<p><img src="images/tst11.png" alt="alt text"></p>
+<p>14.You can click on the queue to view the message and the data. </p>
+<p><img src="images/tst12.png" alt="alt text"></p>
+<p><span id="summary" /></p>
+<h2 id="summary">Summary</h2>
+<p>You can go back and produce more messages using the API flow and stop and start the consumer flow as well. </p>
+<p><span id="deploy_a_designer_flow" /></p>
+<h1 id="5-deploying-your-designer-flow-to-app-connect-dashboard-optional-">5. Deploying Your Designer Flow to App Connect Dashboard (Optional)</h1>
+<p>Additionally, We can export our Designer flow as a bar file and deploy to App Connect Dashboard on Cloud Pak for Integration. For now, its not covered in this Lab.</p>
+                            
+
+                    </div>
+                </div>
+      
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                        <div>
+                            <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                            &middot;
+                            <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

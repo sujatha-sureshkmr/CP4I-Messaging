@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CP4I - Messaging</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <script>
+        function copyToClipboard(element) {
+            // Get the <pre> element
+            const preTag = document.getElementById(element);
+
+            // Create a copy button element
+            const copyButton = document.createElement("span");
+            copyButton.innerText = "Copy";
+            copyButton.classList.add("copy-button");
+
+            // Append the copy button to the <pre> tag
+            preTag.appendChild(copyButton);
+
+            // Add click event listener to the copy button
+            copyButton.addEventListener("click", () => {
+                // Hide the copy button temporarily
+                copyButton.style.display = "none";
+
+                // Create a range and select the text inside the <pre> tag
+                const range = document.createRange();
+                range.selectNode(preTag);
+                window.getSelection().removeAllRanges();
+                window.getSelection().addRange(range);
+
+                try {
+                    // Copy the selected text to the clipboard
+                    document.execCommand("copy");
+
+                    // Alert the user that the text has been copied
+                    copyButton.innerText = "Copied!";
+                    setTimeout(function () {
+                        copyButton.innerText = "Copy";
+                    }, 2000);
+                } catch (err) {
+                    console.error("Unable to copy text:", err);
+                } finally {
+                    // Show the copy button again
+                    copyButton.style.display = "inline";
+
+                    // Deselect the text
+                    window.getSelection().removeAllRanges();
+                }
+            });
+        }
+    </script>
+
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align: text-bottom;
+            color: #da467d;
+        }
+
+        pre {
+            position: relative;
+            background: #d3d6db;
+            padding: 10px;
+            font-size: 15px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            border: 1px solid #e6e7e9;
+
+        }
+
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+        }
+
+        .copy-button:hover {
+            color: #000;
+        }
+        table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px; /* Adjust padding for cell content */
+      text-align: left; /* Align text within cells */
+    }
+    th {
+      background-color: #f2f2f2; /* Background color for header */
+    }
+    th:nth-child(1),
+    td:nth-child(1) {
+      width: 20%; /* Adjust the width of the first column */
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+      width: 40%; /* Adjust the width of the second column */
+    }
+    th:nth-child(3),
+    td:nth-child(3) {
+      width: 25%; /* Adjust the width of the third column */
+    }
+    th:nth-child(4),
+    td:nth-child(4) {
+      width: 15%; /* Adjust the width of the fourth column */
+    }
+    </style>
+
+</head>
+
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../../../index.html">IBM CSM</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="../../../index.html">Integration Skills Launchpad</a>
+        <!-- Navbar Search
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>-->
+        <!-- Navbar
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>-->
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="../../index-cp4i-add.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Use cases</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4I - Additional Practice Materials
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="../../EvsMQ/evsMQ.html">Event Stream + MQ</a>
+                                <a class="nav-link" href="../../apicMQ/apicMQ.html">APIC + MQ</a>
+                                <a class="nav-link" href="../../intmod/intmod.html">Integration Modernization</a>
+                                <a class="nav-link" href="../../apilcm/apilcm.html">API Life Cycle Management</a>
+                            </nav>
+                        </div>
+                        <!--<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4D
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="./cp4d-others/README.md">Additional Practice Materials</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4BA
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            CP4APPS
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="temp.html">Additional Practice Materials</a>
+                            </nav>
+                        </div> -->
+                        <!--<div class="sb-sidenav-menu-heading">Environment Guides</div>
+                        <a class="nav-link" href="logonInformation.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Environment Details
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Add ons</div>
+                        <a class="nav-link" href="glossary.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Glossary
+                        </a>-->
+                        <!-- <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a> -->
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM</div>
+                    <div class="small">Author : Sujatha Sureshkumar</div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Overview</h1>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">
+                                    <h4 id="overview">IBM App Connect Enterprise - Kafka Toolkit flow</h4>
+                                </li>
+                            </ol>
+                            <p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#event-streams-setup">2. Event Streams Setup</a><ul>
+<li><a href="#create-topic">2.1 Create Topic</a></li>
+<li><a href="#create-mq">2.2 Create MQ Queue for the consumer</a></li>
+<li><a href="#create-mq-security">2.3 Configure Default Channel Security</a></li>
+</ul>
+</li>
+<li><a href="#app-connect-toolkit">3. Create Kafka assets in toolkit</a><ul>
+<li><a href="#kafka-api">3.1 Create Kafka API test Producer in toolkit</a></li>
+<li><a href="#producer-bars">3.2 Create Bar file to deploy our Producer flow</a></li>
+<li><a href="#kafka-consumer">3.3 Create Kafka Consumer in toolkit</a></li>
+<li><a href="#consumer-bars">3.4 Create Bar file to deploy our Consumer flow</a><ul>
+<li><a href="#deploy-to-dashbd">4. Deploy the assets to the ACE Dashboard</a></li>
+</ul>
+</li>
+<li><a href="#create-config">4.1 Create Configurations in ACE Dashboard</a></li>
+<li><a href="#deploy-bar">4.2 Deploy BAR file using ACE Dashboard</a></li>
+<li><a href="#create-server">4.3 Create Server in ACE Dashboard</a></li>
+</ul>
+</li>
+<li><a href="#test">5. Test our Deploy assets</a></li>
+</ul>
+<p><a href="../index.md">Return to main lab page</a></p>
+<hr>
+<p><span id="introduction" /></p>
+<h1 id="1-introduction">1. Introduction</h1>
+<p>React to events in real time to deliver responsive and personalized experiences for applications and customer experience.  Built on open source Apache Kafka, IBM Event Streams is an event-streaming platform that helps you build smart applications that can react to events as they happen.</p>
+<p>This lab we will configure and deploy an API Integration Flow developed with ACE Toolkit that uses the Kafka Nodes to connect to an Event Streams cluster to produce events using the latest version of the ACE.</p>
+<p>We will also configure and deploy an Integration Flow developed with ACE Toolkit that uses the Kafka Node to connect to an Event Streams cluster to consume those events and put them onto an MQ queue as wells as write to log file.</p>
+<p><span id="event-streams-setup" /></p>
+<h1 id="2-setup-consumer-endpoints-kafka-topic-and-mq-queue">2. Setup Consumer Endpoints, Kafka Topic and MQ Queue</h1>
+<p>1. First we will login to your assigned cluster URL that you were assigned.  We will create the kafka topic and MQ Queue we will be using.  </p>
+<p>1. You will now be on your home page and in the upper left it will show your login name and you can always click on <strong>IBM Automation</strong> to get to this home page.   </p>
+<ul>
+<li>For this lab we will be using <strong>App Connect Dashboard</strong>, under Integration Messaging we will use <strong>MQ</strong>, and under Event Streaming we will use <strong>event-stream</strong> for our Kafka broker.  </li>
+</ul>
+<p><img src="images/2.png" alt="alt text"></p>
+<p>2. You can right click on each of these capabilities and open them in a new tab.<br>You will then have a tab open for each of them to help save time.  </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p><span id="create-topic" /></p>
+<h2 id="2-1-create-the-kafka-topic">2.1 Create the Kafka topic</h2>
+<p>Now fill in the fields.  We will use the SCRAM credentials and certificates as per <strong><a href="../Kafka-Pre-lab/Kafka-Pre-Lab.md">Create Connection to shared Kafka cluster</a></strong>.</p>
+<p>Once you complete this or if you have already completed you will have the following details saved in a notepad and the certs should be in your download directory.</p>
+<pre><code><span class="hljs-keyword">a</span>. The bootstrap <span class="hljs-built_in">URL</span> <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> cluster
+b. The SCRAM username
+c. The SCRAM password
+d. The PEM certificate (used <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Designer flows).
+e. The PKCS12 password (used <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Toolkit flows).
+f. The PKCS12 certificate (used <span class="hljs-keyword">in</span> <span class="hljs-keyword">the</span> Toolkit flows).
+</code></pre><p>1. Now go to the tab for <strong>event-stream</strong> or you can click on the link from the home page and this will take you to the IBM Event Streams home page.   </p>
+<p><img src="images/es1.png" alt="alt text"></p>
+<p>2. Now we will create our topic. Click on the <strong>Create a topic</strong> tile. </p>
+<p><img src="images/es2.png" alt="alt text"></p>
+<p>3. Now enter the name of your topic.  Since this is a shared Kafka broker, use your userid/name/unique-idetifier as part of the topic name.  In this example, we created the topic name is <strong>chopper1.toolkit-topic</strong>.  Click <strong>Next</strong>.</p>
+<p><strong>Note:</strong> Make sure you use your userid/name/unique-idetifier without adding additional characters since this is tied to the connection details in the Pre-lab section. </p>
+<p><img src="images/es3.png" alt="alt text"></p>
+<p>4. Leave the partitions at 1 and click <strong>Next</strong>.</p>
+<p><img src="images/es4.png" alt="alt text"></p>
+<p>5. Since this is for a lab, change the Message retention to <strong>A Week</strong> and click <strong>Next</strong>.
+<strong>Note:</strong> If we wanted to retain message longer we could change this to meet those needs.</p>
+<p><img src="images/es5.png" alt="alt text"></p>
+<p>6. For the Replicas, we will change the <strong>Minimum in-sync replicas</strong> to <strong>1</strong> and select <strong>Replication factor:1</strong>.  Note:  Make sure that the radial button next to Replication factor:1 is selected before clicking <strong>Create topic</strong>.</p>
+<p><img src="images/es6.png" alt="alt text"></p>
+<p>7. Now you will be back on the Topics screen.  You may see other users topics in the list but make sure you see your topic.  In this example, we just created the ex: <strong>chopper1.toolkit-topic</strong> topic.</p>
+<p>On the left menu click on the home page.  </p>
+<p><img src="images/es7.png" alt="alt text"></p>
+<p>8. We are now back on the Event Steams home page.   We need to make we have the PKCS12 cert downloaded to our VDI since this is where we need to have this to setup our configuration.<br>If you already download the PKCS12 cert for the Event streams then skip to <strong>step 11</strong>.
+Otherwise click on the <strong>Connect to the cluster</strong> tile. </p>
+<p><img src="images/es8.png" alt="alt text"></p>
+<p>9. Now we will click on the PKCS12 Download certificate. </p>
+<p><img src="images/es9.png" alt="alt text"></p>
+<p>10. We will sve the es-cert.p12 file and also we need to save the password.  </p>
+<p><img src="images/es10.png" alt="alt text"></p>
+<p>11. Due to the version of Java in ACE we will need to convert the PKCS12 to a JKS.<br>We will do this by running the following command.  </p>
+<p><code>
+keytool -importkeystore -srckeystore es-cert.p12 -srcstoretype PKCS12 -destkeystore es-cert.jks -deststoretype JKS -srcstorepass XXXXXXX -deststorepass XXXXXX -noprompt
+</code></p>
+<p>We will first open a terminal window.  Next cd to the Downloads directory.  If you do a ls es-cert* command you should see the es-demo.p12 cert you just download. 
+The only thing you need to change in this example is replace the XXXXXX with the password you saved for the PKCS12 cert. 
+Once done do a list again and you will now see the es-cert.jks file. </p>
+<p><img src="images/es11.png" alt="alt text"></p>
+<p><span id="create-mq" /></p>
+<h2 id="2-2-create-mq-queue-for-the-consumer">2.2 Create MQ Queue for the consumer</h2>
+<p>1.Now go to the tab for <strong>MQ Console</strong> </p>
+<p><img src="images/3.png" alt="alt text"></p>
+<p>Or you can click on the link from the home page and this will take you to the IBM MQ Console home page.   </p>
+<p><img src="images/mq1.png" alt="alt text"></p>
+<p>2. Now click on your Queue Manger tile.  </p>
+<p><img src="images/mq2.png" alt="alt text"></p>
+<p>3. We will be creating a new local Queue for this lab.   Click on <strong>Create</strong></p>
+<p><img src="images/mq3.png" alt="alt text"></p>
+<p>4. Click on the local Queue tile.  </p>
+<p><img src="images/mq4.png" alt="alt text"></p>
+<p>5. Now enter the Queue name.  You can use your userid/name/unique-idetifier as part of the Queue Name to make it unique as its a shared cluster. In the example we used <strong>TOOLKIT.KAFKA.CONSUMER</strong> then click <strong>Create</strong>.  </p>
+<p><img src="images/mq5.png" alt="alt text"></p>
+<p>6. We now have your Queue defined.    </p>
+<p><img src="images/mq6.png" alt="alt text"></p>
+<p><span id="create-mq-security" /></p>
+<h2 id="2-3-configure-default-channel-security">2.3 Configure Default Channel Security</h2>
+<p>There are different layers of authorization and authentication configured on the Channel access. To simplify the exercise, we will proceed to disable to Channel security authentication and authorization using the script <a href="../Assets/mq_ace_lab.mqsc">mq_ace_lab.mqsc</a> . Below steps will assist to disable. </p>
+<p>Copy Login Commands to login to oc client.</p>
+<p><img src="./images/image25.png" style="width:8in"  /></p>
+<p>Login to Openshift cluster using oc client.</p>
+<p><img src="./images/image26.png" style="width:8in" /></p>
+<p><u> <i> oc login --token=sha256~xxxxxx-xxxxxx-g --server=<a href="https://servername:30273">https://servername:30273</a> </i> </u></p>
+<p>run below command to see all your projects.</p>
+<p><u> <i> oc projects </i> </u></p>
+<p>Run below command to switch to your project.</p>
+<p><u> <i> oc project cp4i </i> </u></p>
+<p>Run below command to see the pod name of the mq queue manager.</p>
+<p><u> <i> oc get pods | grep -i mq </i> </u></p>
+<p>Note the MQ Queue Manager POD Name. eg. <strong> quickstart-cp4i-ibm-mq-0 </strong></p>
+<p>Change Directory to the location of your mqsc file. Use the following command to upload mqsc file to the MQ pod. QUICKSTART is queue manager name.</p>
+<hr>
+<p>oc exec -it <strong>quickstart-cp4i-queue-ibm-mq-0(this is your pod’s name)</strong> runmqsc <strong>QUICKSTART(QMGR-Name)</strong> &lt; mq_ace_lab.mqsc</p>
+<hr>
+<p>This script performs:</p>
+<ul>
+<li><p>Disable Chlauth security</p>
+</li>
+<li><p>Disable clientauth security</p>
+</li>
+<li><p>Disable user security on MQ objects level</p>
+</li>
+</ul>
+<p>The above command should succeed with below lines in the end.</p>
+<p><u> <i>
+94 MQSC commands read.</p>
+<p>No commands have a syntax error.</p>
+<p>All valid MQSC commands were processed.
+</i> </u></p>
+<p>Note the default channels details. Go to the Applications Tab for the Queue Manager that you created.</p>
+<p><img src="./images/image24.1.jpeg" style="width:8in"  /></p>
+<p>Click on App Channels link in the left pane. Click on the Filter and Select Show System Channels.</p>
+<p><img src="./images/image25.1.jpeg" style="width:8in"  /></p>
+<p>You should be able to see the System Channels. Note the default channel to be used for MQ Communication. eg. SYSTEM.DEF.SVRCONN</p>
+<p><img src="./images/image26.1.jpeg" style="width:8in"  /></p>
+<p>Click on the <strong>IBM Automation</strong> on the upper left to go back to the homepage.</p>
+<p><span id="app-connect-toolkit" /></p>
+<h1 id="3-create-kafka-assets-in-toolkit">3. Create Kafka assets in toolkit</h1>
+<p>In this lab we will use a simple project that exposes an API to POST information into a Kafka topic.  In addition we will create a consumer project that will subscribe to our topic and consume the messages that our test API POST to the Kafka topic.  </p>
+<p><span id="kafka-api" /></p>
+<h2 id="3-1-create-kafka-api-test-producer-in-toolkit">3.1 Create Kafka API test Producer in toolkit</h2>
+<p>In this section, we will use App Connect Toolkit to create a simple API that will produce messages and publish to our topic.
+We have a Project Interchange File provided that you will configure to use your user info for accessing the shared Kafka Broker in our lab cluster. </p>
+<ul>
+<li>Now download the <strong>KafkaProducerAPI-Template-PI.zip</strong> 
+Click here and save the zip file to your device. <ul>
+<li><a href="../Assets/KafkaProducerAPI-Template-PI.zip">KafkaProducerAPI-Template-PI.zip</a>.</li>
+</ul>
+</li>
+</ul>
+<p>1. First we will start the ACE toolkit in our device.  Double click on the Terminal icon on the desktop to open a terminal window.  This will land you in the home directory.<br>Enter the following command to launch the ACE toolkit kit <strong>ace toolkit</strong>.
+You will be presented with a window to select your workspace.   Enter the workspace name  <strong>/home/student/IBM/ACET12/workspace</strong> and click launch.</p>
+<p><strong>Note:</strong> If you don&#39;t have the ACE client, refer to <strong><a href="../Kafka-Pre-lab/Install-Client-Tools.md">install client tools</a></strong>.</p>
+<p><img src="images/1atk.png" alt="alt text"></p>
+<p>2. If this is the first time using this workspace you will see the following screen and can just click to close the page.  </p>
+<p><img src="images/2tk.png" alt="alt text"></p>
+<p>3. The Eclipse based Integration Toolkit will open:</p>
+<p><img src="images/3tk.png" alt="alt text"></p>
+<p>A)    <strong>The Application Development</strong> window <span style="color:red"><b>(A)</b></span> is where your Applications, REST APIs, etc. will be shown in your workspace</p>
+<p>B)    Window <span style="color:red"><b>(B)</b></span> is where resources that you open (for example message flows) will be shown.</p>
+<p>C)    Window <span style="color:red"><b>(C)</b></span> is where properties of resources that you highlight in window <span style="color:red"><b>(B)</b></span> can be viewed </p>
+<p>D)    The <strong>Integration Explorer</strong> Window <span style="color:red"><b>(D)</b></span> is where you can view and manage deployed  assets (for example Applications and Message flows). Note assets are deployed to Integration Servers that are optionally managed by an Integration Node. When they are managed by an integration node the integration servers will appear “under” an integration node in this view. When not managed by an integration node they will be found under the “<strong>Integration Servers</strong>” view in this window.  </p>
+<p>4. Now we will import this Project Interchange file into our Toolkit.  Right click in the Application Development pane and select <strong>Import</strong></p>
+<p><img src="images/4tk.png" alt="alt text"></p>
+<p>5. The Import window will show and select the <strong>Project Interchange</strong> and click <strong>Next</strong></p>
+<p><img src="images/5tk.png" alt="alt text"></p>
+<p>6. When you downloaded the Project Interchange file <a href="../Assets/KafkaProducerAPI-Template-PI.zip">KafkaProducerAPI-Template-PI.zip</a>, it should be in the Download directory.   Click on the Download in the left menu and you will see your PI file. 
+Select the API Template and click <strong>Open</strong></p>
+<p><img src="images/6tk.png" alt="alt text"></p>
+<p>7. You will now see the Content of this PI file.   Make sure both the KafkaProducerAPI and es-policy-project are checked and click <strong>Finished</strong></p>
+<p><img src="images/7tk.png" alt="alt text"></p>
+<p>8. You will now see the project in the Application Development on the left sdie.   Open it can go to the Subflows folder and double click on the <strong>postContacts.subflow</strong> and you will see the flow open.</p>
+<p>Review the complete flow. Click on the <strong>KafkaProducer</strong> in the flow.In the Properties tab, you will make your updates to this flow. In the Basic Tab, Replace the <strong>Topic name</strong> as per your unique userid/name/unique identifier.  You can enter your unique userid/name/unique identifier for the <strong>Client ID</strong> to identify the client. You can enter anything for the <strong>Bootstrap servers</strong> here as the address will be picked up from Policy. Review all other properties tab. Make sure you have the correct Policy Name configured under the policy tab.</p>
+<p><strong>Note</strong> Enter CTRL-S to save your updates.</p>
+<p><img src="images/8tk.png" alt="alt text"></p>
+<p><span id="truststore" /></p>
+<p>9. Now we will open the Event Stream Policy where we will configure the connection info to the Kafka broker.  The only thing you may need to change is the Bootstrap Server address for your Kafka Broker. There are few important things to note here as documented in table below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Property</th>
+<th style="text-align:left">Description / Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Type</td>
+<td style="text-align:left">Kafka</td>
+</tr>
+<tr>
+<td style="text-align:left">Bootstrap Server</td>
+<td style="text-align:left">Link when you generating SCRAM credential</td>
+</tr>
+<tr>
+<td style="text-align:left">Security protocol</td>
+<td style="text-align:left">SASL_SSL</td>
+</tr>
+<tr>
+<td style="text-align:left">SASL Mechanism</td>
+<td style="text-align:left">SCRAM-SHA-512</td>
+</tr>
+<tr>
+<td style="text-align:left">SSL protocol</td>
+<td style="text-align:left">TLSv1.2</td>
+</tr>
+<tr>
+<td style="text-align:left">Security identity (DSN)</td>
+<td style="text-align:left"><strong>ACE param contains SCRAM user and password. This exact name will be used later in integration server configuration properties in setdbparms.txt. You can keep it same</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">SASL config</td>
+<td style="text-align:left">org.apache.kafka.common.security.scram.ScramLoginModule required;</td>
+</tr>
+<tr>
+<td style="text-align:left">SSL trustore location</td>
+<td style="text-align:left"><strong>name and location of truststore in ACE container. It will be always inside /home/aceuser/truststores/ folder. The trust store file name depends on the name of the configuration property &#39;Truststore&#39; for integration server. You can configure /home/aceuser/truststores/username-es-cert.jks here</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">SSL trustore type</td>
+<td style="text-align:left">JKS or PKCS12 (for now, we plan to use JKS)</td>
+</tr>
+<tr>
+<td style="text-align:left">SSL trustore security identity</td>
+<td style="text-align:left"><strong>ACE param contain trustore password. This exact name will be used later in integration server configuration properties in setdbparms.txt. You can keep it same</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">Enable SSL certificate hostname checking</td>
+<td style="text-align:left">true</td>
+</tr>
+</tbody>
+</table>
+<p><img src="images/9tk.png" alt="alt text"></p>
+<p>10. Make sure to save your updates.   If you click on the postContacts.subflow you will see there is an <strong>&#39;*&#39;</strong> that means it isn&#39;t saved.  You can do a CTRL-S to save.  Do the same for the es policy.  </p>
+<p><img src="images/9atk.png" alt="alt text"></p>
+<p><span id="producer-bars" /></p>
+<h2 id="3-2-create-bar-file-to-deploy-our-producer-flow">3.2 Create Bar file to deploy our Producer flow</h2>
+<p>1. Now we will create the BAR file to deploy our flow. Navigate to the <em>File menu and select </em>New and then BAR file</p>
+<p><img src="images/10tk.png" alt="alt text"></p>
+<p>2. In the pop-up window enter the name of the BAR file, i.e. kafka-api-producer and click Finish. </p>
+<p><img src="images/11tk.png" alt="alt text"></p>
+<p>3. The BAR Editor is open. Select Applications, shared libraries, services, REST APIs, and Test Projects to display the right type of resources and then select your application, in this case KafkaProducerAPI. Finally click Build and Save... to create the BAR file. </p>
+<p><img src="images/12tk.png" alt="alt text"></p>
+<p>4. You can dismiss the notification window reporting the result clicking OK. </p>
+<p><img src="images/13tk.png" alt="alt text"></p>
+<p>5. We need to do a final step. We need to create a zip file from the Policy Project we created earlier in this section.
+First we will open the Files tools</p>
+<p><img src="images/14tk.png" alt="alt text"></p>
+<p>6. Now goto the directory were we saved the Policy.  This should be under the ACE Toolkit workspace.  You will see the es_policy_project right click on it and select <strong>Compress</strong></p>
+<p><img src="images/15tk.png" alt="alt text"></p>
+<p>7. In the <strong>Compress Window</strong> make sure to select <strong>.zip</strong> for the format and the <strong>Location</strong> will be Desktop. Click <strong>Create</strong></p>
+<p><img src="images/16tk.png" alt="alt text"></p>
+<p><span id="kafka-consumer" /></p>
+<h2 id="3-3-create-kafka-consumer-in-toolkit">3.3 Create Kafka Consumer in toolkit</h2>
+<p>In this section, we will use App Connect Toolkit to create a consumer flow that will consumer the messages produced by our API producer from our topic.
+We have a Project Interchange File provided that you will configure to use your user info for accessing the shared Kafka Broker in our lab cluster. </p>
+<ul>
+<li>Now download the <strong>KafkaConsumerTemplatePI.zip</strong> 
+Click here and save the zip file to your VDI. <ul>
+<li><a href="../Assets/KafkaConsumerTemplatePI.zip">KafkaConsumerTemplatePI.zip</a></li>
+</ul>
+</li>
+</ul>
+<p>1. Now we will import this Project Interchange file into our Toolkit.  Right click in the Application Development pane and select <strong>Import</strong></p>
+<p><img src="images/4tk.png" alt="alt text"></p>
+<p>2. The Import window will show and select the <strong>Project Interchange</strong> and click <strong>Next</strong></p>
+<p><img src="images/5tk.png" alt="alt text"></p>
+<p>3. When you downloaded the Project Interchange file - <a href="../Assets/KafkaConsumerTemplatePI.zip">KafkaConsumerTemplatePI.zip</a>, it should be in the Download directory.   Click on the Download in the left menu and you will see your PI file.  Select the Consumer Template and click <strong>Open</strong></p>
+<p><img src="images/6ctk.png" alt="alt text"></p>
+<p>4. You will now see the Content of this PI file.   Make sure both the Kafka Consumer App and MQ_Policy_Project are checked and click <strong>Finished</strong></p>
+<p><img src="images/7ctk.png" alt="alt text"></p>
+<p>8. You will now see the project in the Application Development on the left sdie.   </p>
+<ul>
+<li><p><span style="color:red"><b>(1)</b></span> Open the KafkaConsumer_App and go to the Flows folder and double click on the <strong>KafkaConsumer.msgflow</strong> and you will see the flow open.</p>
+</li>
+<li><p><span style="color:red"><b>(2)</b></span> Open the MQ_Policy_Project -&gt; Policy and double click on the <strong>dev_policy.xml</strong> and you will see the policy open.</p>
+</li>
+<li><p><span style="color:red"><b>(3)</b></span> In the msgflow click on the KafkaConsumer and make sure the Properites tab is selected below.  </p>
+</li>
+</ul>
+<ul>
+<li><p><span style="color:red"><b>(4)</b></span> This is where you will make your updates to this flow.<br>   (4a) - For the Topic name you will the exact topic name created by you. 
+   (4b) For the Consumer Group ID and the Client ID, enter the unique username/identifier that you used for topic naming. </p>
+</li>
+<li><p><span style="color:red"><b>(5)</b></span> Click on the node <strong>KAFKA.CONSUME.ACCOUNTS</strong> and under the basic tab, verify the queue name that you have created. Under the Policy Tab, review the MQ policy name to be used. You can leave all other options as default.</p>
+</li>
+</ul>
+<p><strong>Note</strong> Enter CTL-S to save your updates.</p>
+<p><img src="images/8ctk.png" alt="alt text"></p>
+<p>9. Now we will update the MQ policy for the Consumer flow. Click on the dev.policyxml and you will see the Policy and the attributes.   We have the populated and you only need to change the <strong>Queue manager Name and its Host name</strong>. Also review the default channel name here. eg. <strong>SYSTEM.DEF.SVRCONN</strong></p>
+<p>9a. For the host name, login to RedHat Openshift console, and under Networking -&gt; Services, find the service name based on your MQ instance name. Click on it and you can see the MQ Service Host Name.</p>
+<p><img src="images/RH_SVC_NAME.jpeg" width=800 height=480/></p>
+<p><img src="images/RH_SVC_HOST_NAME.jpeg" width=800 height=480/></p>
+<p>9b. Enter CTL-S to save your updates.</p>
+<p><img src="images/9ctk.png" alt="alt text"></p>
+<p><span id="consumer-bars" /></p>
+<h2 id="3-4-create-bar-file-to-deploy-our-consumer-flow">3.4 Create Bar file to deploy our Consumer flow</h2>
+<p>1. Now we will create the BAR file to deploy our flow. Navigate to the <em>File menu and select </em>New and then BAR file</p>
+<p><img src="images/10tk.png" alt="alt text"></p>
+<p>2. In the pop-up window enter the name of the BAR file, i.e. kafka-consumer and click Finish. </p>
+<p><img src="images/11ctk.png" alt="alt text"></p>
+<p>3. The BAR Editor is open. Select Applications, shared libraries, services, REST APIs, and Test Projects to display the right type of resources and then select your application, in this case KafkaConsumer_App. Finally click Build and Save... to create the BAR file. </p>
+<p><img src="images/12ctk.png" alt="alt text"></p>
+<p>4. You can dismiss the notification window reporting the result clicking OK. </p>
+<p><img src="images/13ctk.png" alt="alt text"></p>
+<p>5. We need to do a final step. We need to create a zip file from the Policy Project we created earlier in this section.
+First we will open the Files tools</p>
+<p><img src="images/14tk.png" alt="alt text"></p>
+<p>6. Now goto the directory were we saved the Policy.  This should be under the ACE Toolkit workspace.  You will see the es_policy_project right click on it and select <strong>Compress</strong></p>
+<p><img src="images/15ctk.png" alt="alt text"></p>
+<p>7. In the <strong>Compress Window</strong> make sure to select <strong>.zip</strong> for the format and the <strong>Location</strong> will be Desktop.
+Click <strong>Create</strong></p>
+<p><img src="images/16ctk.png" alt="alt text"></p>
+<h3 id="-summary-so-far-"><strong>Summary so far</strong></h3>
+<p>So far now we have two bar files (kafka-api-producer.bar and kafka-consumer.bar) and two policy projects zip files (es_policy_project.zip and MQ_Policy_Project.zip).</p>
+<p><span id="deploy-to-dashbd" /></p>
+<h1 id="4-create-configuration-for-deploying-to-the-app-connect-dashboard">4. Create Configuration for Deploying to the App Connect Dashboard</h1>
+<p>Now we will go to the App Connect Dashboard to import our BAR files we created and also create the needed configurations to deploy our solution to a Server. </p>
+<p>1. You can go to the Cloud Pack home page and Click on Dashboard to get back to the main designer page where you will see your API running.</p>
+<p><img src="images/cf1a.png" alt="alt text"></p>
+<p>Or if you already have a tab open from earlier in the lab you can select that.</p>
+<p><img src="images/cf1b.png" alt="alt text"></p>
+<p>2. You should now be on the App Connect Dashboard homepage.  </p>
+<p><span id="create-config" /></p>
+<h2 id="4-1-deploy-bar-file-using-ace-dashboard">4.1 Deploy BAR file using ACE Dashboard</h2>
+<p>1. From the ACE Dashboard home page navigate to the BAR files section clicking the Document icon</p>
+<p><img src="images/bar1a.png" alt="alt text"></p>
+<p>2.  On the BAR files section click Import BAR + button. </p>
+<p><img src="images/bar1.png" alt="alt text"></p>
+<p>3. In the wizard click the hyperlink <strong>Drag and drop a BAR file or click to upload</strong> to upload the BAR file we created in the previous section. </p>
+<p><img src="images/bar2a.png" alt="alt text"></p>
+<p>4. Navigate to the folder where the BAR file was created (In the VDI it should be in /home/student/IBM/ACET12/workspace/BARfiles) and select the file and click Open.  </p>
+<p><img src="images/bar2.png" alt="alt text"></p>
+<p>5. To complete the process click Import.  </p>
+<p><img src="images/bar3.png" alt="alt text"></p>
+<p>6. After a moment the file will be displayed in the list of BAR files available with the status of Not deployed</p>
+<p><img src="images/bar4.png" alt="alt text"></p>
+<p>7. Now we have uploaded our API Kafka BAR file and need to also upload the Consumer Kafka BAR file.  </p>
+<p>8. Repeat steps 1-6 to upload the consumer BAR we created. When complete you should have both being displayed in the list of BAR files available with the status of Not deployed</p>
+<p><img src="images/bar5.png" alt="alt text"></p>
+<p><span id="deploy-bar" /></p>
+<h2 id="4-2-create-configurations-in-ace-dashboard">4.2 Create Configurations in ACE Dashboard</h2>
+<p>1. We will now go to the configuration section and created the needed configurations needed to deploy are BAR files.
+Click on the Wrench icon to navigate to the Configuration section.
+Once the screen is updated click on the <strong>Create configuration</strong>. </p>
+<p><img src="images/cf1.png" alt="alt text"></p>
+<p>2. In the wizard click on the Type drop down box to select <strong>Truststore</strong> to upload the Event Streams certificate.</p>
+<p><img src="images/cf2.png" alt="alt text"></p>
+<p>3. In the Import truststore click to import the certificate you download in the previous section and converted to a JKS (es-cert.jks).  </p>
+<p><img src="images/cf3.png" alt="alt text"></p>
+<p>4. This will fill in the name. You may update the name as per configured in the kafka policy project, eg. username-es-cert.jks <strong><a href="#truststore">see the trust store location here</a></strong> . You can then add a brief description if you want to. Finally click <strong>Create</strong> to add the TrustStore Configuration. </p>
+<p><img src="images/cf3a.png" alt="alt text"></p>
+<p>5. Now we will define the Configuration to store the credentials selecting the <strong>setdbparms.txt</strong> type from the drop down box. </p>
+<p><img src="images/cf4.png" alt="alt text"></p>
+<p>6. In the next window enter the name of the configuration. You can use <yourname>-esdemo-scram-credential. Followed by a brief description i.e. Credential to connect to es-demo using SCRAM. Finally use the following information as a reference to enter the data in the text box.</p>
+<table>
+<thead>
+<tr>
+<th>Resource Name</th>
+<th>User</th>
+<th>Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><em>truststore::truststorePass</em></strong></td>
+<td>dummy</td>
+<td>&lt;Password obtained when downloading the PKCS12 certificate&gt;</td>
+</tr>
+<tr>
+<td><strong><em>kafka::aceflowsSecId</em></strong></td>
+<td>&lt;This will be your id used to create SCRAM credentials.&gt;</td>
+<td>&lt;Password obtained for your id when you created your SCRAM credentials to connect to Event Streams&gt;  </td>
+</tr>
+</tbody>
+</table>
+<p>Here is an example from when the lab was created:</p>
+<p><code>
+truststore::truststorePass dummy CMOzxxfSYGMT</p>
+<p>kafka::aceflowsSecId chopper1 hAUDJTO76Fx0</p>
+<p></code></p>
+<p>Finally click <strong>Create</strong> to add the setdbparm.txt Configuration. </p>
+<p><img src="images/cf5.png" alt="alt text"></p>
+<p>7. Now we will create the Configuration for the Policy selecting the <strong>Policy project</strong> type from the drop down box. 
+Enter the name of the policy i.e. <strong>&lt;username&gt;-es-demo-scram-policy</strong> , add a brief description if you want to, i.e. <strong>Policy to connect to Event Streams instance es-demo using SCRAM</strong> and finally click on hyper link <strong>Drag and drop a single file here or click to import</strong> to import the zip file we created in the previous section. </p>
+<p><img src="images/cf6.png" alt="alt text"></p>
+<p>8. Navigate to the folder where you saved the zip file in the previous section, select the file and click Open. </p>
+<p><img src="images/cf7.png" alt="alt text"></p>
+<p>9. Once the policy is imported click <strong>Create</strong> to add the Policy to the Configuration. </p>
+<p><img src="images/cf8.png" alt="alt text"></p>
+<p>10. Now we will create the Configuration for the Policy selecting the <strong>Policy project</strong> type from the drop down box. 
+Enter the name of the policy i.e. <strong>&lt;username&gt;-mq-policy</strong> , add a brief description if you want to, i.e. <strong>Policy to connect to QMgr</strong> and finally click on hyper link <strong>Drag and drop a single file here or click to import</strong> to import the zip file we created in the previous section. </p>
+<p><img src="images/cf9.png" alt="alt text"></p>
+<p>11. Navigate to the folder where you saved the zip file in the previous section, select the file and click Open. </p>
+<p><img src="images/cf10.png" alt="alt text"></p>
+<p>12. Once the policy is imported click <strong>Create</strong> to add the Policy to the Configuration. </p>
+<p><img src="images/cf11.png" alt="alt text"></p>
+<p>13. Once done you should have 4 new configurations that will be used when deploying the bar files into Integration Servers in the next section. </p>
+<p><img src="images/cf12.png" alt="alt text"></p>
+<p><span id="create-server" /></p>
+<h2 id="4-3-create-server-in-ace-dashboard">4.3 Create Server in ACE Dashboard</h2>
+<p>1. Now navigate to the Dashboard section so we can Create servers for Integration Deloyment. </p>
+<p><img src="images/serv1a.png" alt="alt text"></p>
+<p>2.From the Dashboard screen click on the <strong>Deploy Integration +</strong> button. </p>
+<p><img src="images/serv1b.png" alt="alt text"></p>
+<p>3. This will start the deployment wizard. Select the *Quick start toolkit integration tile and then click the Next button. </p>
+<p><img src="images/servXX.png" alt="alt text"></p>
+<p>4. In the next window click on the drop down box to select the BAR file  <strong>kafka-api-producer</strong> we previously uploaded and then click Next. </p>
+<p><img src="images/serv1c.png" alt="alt text"></p>
+<p>5. In the next window select the 3 configurations we created in the previous section and then click Next.<br><strong>Note:</strong> Do not include the MQ policy.  We will use that for the consumer flow</p>
+<p><img src="images/serv1d.png" alt="alt text"></p>
+<p>6. In the next page give your deployment a name, i.e &lt;username&gt;-kafka-api-producer-toolkit and click Advance settings.   </p>
+<p><img src="images/serv1e.png" alt="alt text"></p>
+<p>7. Now scroll down to the Runtime container section and change the CPU request and Memory request.  This will help to speed up the deployment for the lab.   Then click <strong>Create</strong> </p>
+<p><img src="images/serv1f.png" alt="alt text"></p>
+<p>8. After a moment you will be taken back to the Dashboard page where you will see a new tile with your Integration Server deployment name in Pending state, similar to the picture shown below.
+We will now create Server to deploy the Consumer BAR file.  Click <strong>Deploy Integration +</strong></p>
+<p><img src="images/serv2.png" alt="alt text"></p>
+<p>9. This will start the deployment wizard. Select the *Quick start toolkit integration tile and then click the Next button. </p>
+<p><img src="images/servXX.png" alt="alt text"></p>
+<p>10. In the next window click on the drop down box to select the BAR file  <strong>kafka-consumer</strong> we previously uploaded and then click Next. </p>
+<p><img src="images/serv2a.png" alt="alt text"></p>
+<p>11. In the next window select the 4 configurations we created in the previous section and then click Next.<br><strong>Note:</strong> We will include the MQ policy for this flow since we are putting the messages to MQ Queue. </p>
+<p><img src="images/serv2b.png" alt="alt text"></p>
+<p>12. In the next page give your deployment a name, i.e &lt;username&gt;-kafka-consumer-toolkit and click Advance settings.   </p>
+<p><img src="images/serv2c.png" alt="alt text"></p>
+<p>13. Now scroll down to the Runtime container section and change the CPU request and Memory request.  This will help to speed up the deployment for the lab.   Then click <strong>Create</strong> </p>
+<p><img src="images/serv2d.png" alt="alt text"></p>
+<p>14. You will be returned to the The App Connect Dashboard as it is deploying the Integration Server in the background creating the corresponding pod in the specified namespace of the Red Hat OpenShift Container Platform. This process can take more than a minute depending on your environment. Click the refresh button in your browser until you see the tile corresponding to your deployment in Ready state as shown below:</p>
+<p><img src="images/serv3a.png" alt="alt text"></p>
+<p><span id="test" /></p>
+<h1 id="5-test-that-everything-is-working-as-expected-">5 Test that everything is working as expected.</h1>
+<p>We will now test are flows but using the Kafka API to generate a Kafka message that our consumer flow will get and then write to a log file and put the message onto a MQ queue. </p>
+<p>1. From the App Connect Dashboard screen make sure both your Integrations Servers are running and then click on the kafka api tile. </p>
+<p><img src="images/serv3b.png" alt="alt text"></p>
+<p>2. You will see the content which includes the API.   Click on the API to open it.</p>
+<p><img src="images/serv3c.png" alt="alt text"></p>
+<p>3. In the KafkaProducerAPI click on the <strong>POST</strong> operation and select the the <strong>Try it</strong>.  </p>
+<p><img src="images/serv3d.png" alt="alt text"></p>
+<p>4. Scroll down to the Body of the API and click on the <strong>Genrate</strong> to populate the body of the API.  Then click <strong>Send</strong></p>
+<p><strong>Note</strong> you can change the generated content to something more meaningful. </p>
+<p><img src="images/serv3e.png" alt="alt text"></p>
+<p>5. You will then see the response from the API and should include a 200 OK</p>
+<p><img src="images/serv3f.png" alt="alt text"></p>
+<p>6. Now go to the Event Stream Home page and select the Topics on the left hand menu.</p>
+<p><img src="images/tst1.png" alt="alt text"></p>
+<p>7. You will then see several topics from others since this is a shared Kafka cluster.   Select the topic you created for this lab.</p>
+<p><img src="images/tst2.png" alt="alt text"></p>
+<p>8. Click on <strong>Messages</strong> and you will see a list of all messages published to this topic.  Click on the current message and you will see the content to the right.  </p>
+<p><img src="images/tst3.png" alt="alt text"></p>
+<p>9. Now let&#39;s go to the MQ Console and select the Manager Tile for your QMgr.   </p>
+<p><img src="images/tst4.png" alt="alt text"></p>
+<p>10. You will see a list of Queues that you have for your QMgr.
+You should see the Queue you created for this lab eg. <strong>TOOLKIT.KAFKA.CONSUMER</strong>  Every time you run the API Kafka Producers you will see the message depth increase.   </p>
+<p><img src="images/tst5.png" alt="alt text"></p>
+<p>11. Now let&#39;s go to the Red Hat Openshift Console.  Select Workloads and select Pods to see all your running pods in your Project (cp4i). 
+Find the kafka consumer pod (as per name of your integration server) and select that.</p>
+<p><img src="images/tst6.png" alt="alt text"></p>
+<p>12. This is the Pod running your consumer container.  Select the <strong>Terminal</strong> which will open a terminal into your container. 
+Enter the following commands to view the file your flow creates.
+<code></p>
+<p>cd /tmp</p>
+<p>ls -ls kafka-example*</p>
+<p>cat kafka-example*
+</code>  </p>
+<p><img src="images/tst7.png" alt="alt text"></p>
+<h1 id="summary">Summary</h1>
+<p>We have now completed the lab which shows how we can produce a message to be published to the kafka broker and then a consumer that will consume the messages for that topic and put to an MQ queue and write to a local file. </p>
+                            
+
+                    </div>
+                </div>
+      
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                        <div>
+                            <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                            &middot;
+                            <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+
+</html>

@@ -127,12 +127,12 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
+        <a class="navbar-brand ps-3" href="../../../index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
+        <a class="navbar-brand ps-3" href="../../../index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -159,7 +159,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index-cp4i-add.html">
+                        <a class="nav-link" href="../../index-cp4i-add.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
@@ -173,10 +173,10 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="EvsMQ/evsMQ.html">Event Stream + MQ</a>
-                                <a class="nav-link" href="apicMQ/apicMQ.html">APIC + MQ</a>
-                                <a class="nav-link" href="intmod/intmod.html">Integration Modernization</a>
-                                <a class="nav-link" href="apilcm/apilcm.html">API Life Cycle Management</a>
+                                <a class="nav-link" href="../../EvsMQ/evsMQ.html">Event Stream + MQ</a>
+                                <a class="nav-link" href="../../apicMQ/apicMQ.html">APIC + MQ</a>
+                                <a class="nav-link" href="../../intmod/intmod.html">Integration Modernization</a>
+                                <a class="nav-link" href="../../apilcm/apilcm.html">API Life Cycle Management</a>
                             </nav>
                         </div>
                         <!--<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
@@ -249,50 +249,95 @@
                         <div class="card-body">
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="overview">IBM Cloud Pak for Integration (CP4I) - Additional Practice Materials</h4>
+                                    <h4 id="overview">Create a connection to the Kafka clusters</h4>
                                 </li>
                             </ol>
-                            <p class="mb-0">
-                                This section details CP4I - Additional Practice Materials.
-                            </p></br>
-                            <table>
+                            <p>There are several labs that use Kafka and we will need to create a connection to access the Kafka cluster when using Smart connectors, Toolkit flows, and Event Endpoint apis. 
+                                You will need to save the details from this section to be used in varies labs. </p>
+                                <p><strong>NOTE: You should do this from the VDI since you will need to run varies commands so best to have the cert files saved to the VDI</strong></p>
+                                <p><a href="../index.md#lab-sections">Return to Scenario main page</a></p>
+                                <h1 id="1-create-scram-credentials-to-connect-to-event-streams">1. Create SCRAM credentials to connect to Event Streams</h1>
+                                <p>1. Use the URL to the CP4I cluster that was provided to you from the instructor.   Select the <strong>Enterprise LDAP</strong>.</p>
+                                <p><img src="images/0.png" alt="alt text"></p>
+                                <p>2. When prompted use the username and password provided to you for this lab. In this example, we are using chopper1.</p>
+                                <p><img src="images/1.png" alt="alt text"></p>
+                                <p>3. You will now be on your home page and in the upper left it will show your login name.   Under <strong>Event Streaming</strong> click on the <strong>es-demo</strong> link to take you to the Event Streams Home page.</p>
+                                <p><img src="images/2.png" alt="alt text"></p>
+                                <p>4. Now we will select the <strong>Connect to this Cluster</strong> tile.</p>
+                                <p> <img src="images/3.png" alt="alt text"></p>
+                                <p>5. Now we will see the Cluster connection screen. Make sure you select <strong>External</strong> and then click the <strong>Generate SCRAM credentials</strong>.</p>
+                                <p><img src="images/4.png" alt="alt text"></p>
+                                <p>6. You will need to enter the following details.</p>
+                                <table>
                                 <thead>
-                                  <tr>
-                                    <th>Scenario Link</th>
-                                    <th>Use Case Description</th>
-                                    <th>CP4I Products Used</th>
-                                    <th>Authors</th>
-                                  </tr>
+                                <tr>
+                                <th>Option</th>
+                                <th style="text-align:center">Value</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <td><a href="scenario5/index.md">Event Stream + MQ</a></td>
-                                    <td>FictionCorp is a Online shopping company which recieves the user registration data and stores it in kafka cluster to be consumed by other subscribed applications. They want to use MQ Queue Manager to consume data from kafka topic for to notified downstream applications for new user registrations. </br> They have recently bought CP4I entitelment and exploring to use IBM Event Streams and MQ for implementing above user case.</td>
-                                    <td>Event Streaming (IBM Event Stream) </br>Enterprise Messaging (IBM MQ) </br>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved </strong> <BR><BR> <strong>Sujatha Sureshkumar</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario2/README.md">APIC + MQ</a></td>
-                                    <td>The XYZ Bank still has a core banking system running on IBM System Z. Currently the only way to integrate with this system is via MQ. The core banking system provides typical account functions such as query balance, deposit and withdraw. </br>The Bank has initiated a digital transformation program to modernize their channel applications such as Internet Banking, using reactive technology to make it more user friendly and compelling to their customers. They want to user APIs in order to quickly unlock their assets in the legacy systems - so that their channel applications can consume.
-                                    </br>Security is paramount, they need to ensure that the APIs exposed needs to be secured using client id/secret and OAuth/OIDC. Architect and build a solution that enable the customer to expose their digital assets via APIs using Cloud Pak for Integration. Each transaction should trigger events that can be audited or based on business rules trigger alerts.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise) <BR><BR>Enterprise Messaging (IBM MQ)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Glen Christian</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario3/README.md">Integration Modernization</a></td>
-                                    <td>Your customer has been a long-time user of App Connect (IIB/WMB) and MQ. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM Agile Integration practices. <BR> They would like you to use one of their existing flows and queue definitions to explore how to move to containerized integration. While eager to understand the modernization journey, they also have reservations on their ability to scale and manage the workload.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments..</td>
-                                    <td>Enterprise Messaging (IBM MQ) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Santhoshi Gopalkrishnan</strong> <BR><BR> <strong>Mano Saelao</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario4/ReadMe.md">API Life Cycle Management</a></td>
-                                    <td>Your customer has been an OpenAPI definition for an exiting REST service. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM API connect to deploy their rest services. <BR>They would like you to create an API by importing the OpenAPI definition for an existing REST service. Also configure Security endpoints, and proxy to invoke endpoint. After testing the REST API in the online developer toolkit, publish it API for their developers.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Pham Manh Hung</strong></td>
-                                  </tr>
-                                
+                                <tr>
+                                <td>Credential name</td>
+                                <td style="text-align:center">For the <strong>credentials name</strong> use your userid/username/unique identifier</td>
+                                </tr>
+                                <tr>
+                                <td>What do you want your application to do?</td>
+                                <td style="text-align:center">Produce messages, consume messages and create topics and schemas</td>
+                                </tr>
+                                <tr>
+                                <td>Which topics does the application need to access?</td>
+                                <td style="text-align:center">All topics</td>
+                                </tr>
+                                <tr>
+                                <td>Which consumer group does the application need to access?</td>
+                                <td style="text-align:center">All consumer group</td>
+                                </tr>
+                                <tr>
+                                <td>Choose which transactional IDs the application can access</td>
+                                <td style="text-align:center">All transactional IDs</td>
+                                </tr>
                                 </tbody>
-                              </table>
+                                </table>
+                                <p>6b. For the <strong>credentials name</strong> use your userid/username/unique identifier. Make sure the <strong>Produce messages, consume messages and create topics and schemas</strong> button is selected and then click <strong>Next</strong>.</p>
+                                <p>7. On the next screen select the <strong>All Topics</strong>.  Click <strong>Next</strong>.</p>
+                                <p>8. On the next screen select the <strong>All consumer group</strong>.  Click <strong>Next</strong>.</p>
+                                <p>9. Select the <strong>All transactional IDs</strong>.  Click <strong>Generate credentials</strong>.</p>
+                                <p>10. Now that we have the credentials generated use the icon to copy them and save them for use later in other labs. </p>
+                                <ul>
+                                <li>a. Save the bootstrap URL of the cluster</li>
+                                <li>b. Save the SCRAM username </li>
+                                <li><p>c. Save the SCRAM password </p>
+                                </li>
+                                <li><p>Last is to download the PEM certificate. </p>
+                                </li>
+                                </ul>
+                                <p><img src="images/9.png" alt="alt text"></p>
+                                <p>11. Save the es-cert.pem, this will be used to connect to the Event Stream Cluster. </p>
+                                <p><img src="images/10.png" alt="alt text"></p>
+                                <p>12. We will also download the PKCS12 certificate and save the <strong>PKCS12 password</strong>. This will be used to connect to the Event Stream Cluster when using the toolkit flows. </p>
+                                <p><img src="images/11.png" alt="alt text"></p>
+                                <p>13. Due to the version of Java in ACE we will need to convert the PKCS12 to a JKS.  We will do this by running the following command.  </p>
+                                <p><code>
+                                keytool -importkeystore -srckeystore es-cert.p12 -srcstoretype PKCS12 -destkeystore es-cert.jks -deststoretype JKS -srcstorepass XXXXXXX -deststorepass XXXXXX -noprompt
+                                </code></p>
+                                <p>We will first open a terminal window.  Next cd to the Downloads directory.  If you do a ls es-cert* command you should see the es-demo.p12 cert you just download. 
+                                The only thing you need to change in this example is replace the XXXXXX with the password you saved for the PKCS12 cert. 
+                                Once done do a list again and you will now see the es-cert.jks file. </p>
+                                <h1 id="summary">Summary</h1>
+                                <p>We should now have the following saved for use in the Kafka labs. </p>
+                                <ul>
+                                <li>a. The bootstrap URL of the cluster</li>
+                                <li>b. The SCRAM username </li>
+                                <li>c. The SCRAM password </li>
+                                <li>d. The PEM certificate (used in the Designer flows).</li>
+                                <li>e. The PKCS12 password (used in the Toolkit flows).</li>
+                                <li>f. The PKCS12 certificate (used in the Toolkit flows).</li>
+                                <li>g. The JKS Certificate (used in the Toolkit flows).</li>
+                                </ul>
+                                <p>You should have a text file saved on the device with this info and the cert files will be in your Downloads directory. </p>
+                                <p><img src="images/12.png" alt="alt text"></p>
+                                
+                           
 
                     </div>
                 </div>
