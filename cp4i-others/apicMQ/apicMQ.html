@@ -127,12 +127,12 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
+        <a class="navbar-brand ps-3" href="../../index.html">IBM CSM</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
+        <a class="navbar-brand ps-3" href="../../index.html">Integration Skills Launchpad</a>
         <!-- Navbar Search
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <div class="input-group">
@@ -159,7 +159,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <a class="nav-link" href="index-cp4i-add.html">
+                        <a class="nav-link" href="../index-cp4i-add.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
@@ -249,50 +249,613 @@
                         <div class="card-body">
                             <ol class="breadcrumb mb-4">
                                 <li class="breadcrumb-item active">
-                                    <h4 id="overview">IBM Cloud Pak for Integration (CP4I) - Additional Practice Materials</h4>
+                                    <h4 id="overview">IBM CP4I Practicum APIC MQ</h4>
                                 </li>
                             </ol>
-                            <p class="mb-0">
-                                This section details CP4I - Additional Practice Materials.
-                            </p></br>
-                            <table>
-                                <thead>
-                                  <tr>
-                                    <th>Scenario Link</th>
-                                    <th>Use Case Description</th>
-                                    <th>CP4I Products Used</th>
-                                    <th>Authors</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td><a href="scenario5/index.md">Event Stream + MQ</a></td>
-                                    <td>FictionCorp is a Online shopping company which recieves the user registration data and stores it in kafka cluster to be consumed by other subscribed applications. They want to use MQ Queue Manager to consume data from kafka topic for to notified downstream applications for new user registrations. </br> They have recently bought CP4I entitelment and exploring to use IBM Event Streams and MQ for implementing above user case.</td>
-                                    <td>Event Streaming (IBM Event Stream) </br>Enterprise Messaging (IBM MQ) </br>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved </strong> <BR><BR> <strong>Sujatha Sureshkumar</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario2/README.md">APIC + MQ</a></td>
-                                    <td>The XYZ Bank still has a core banking system running on IBM System Z. Currently the only way to integrate with this system is via MQ. The core banking system provides typical account functions such as query balance, deposit and withdraw. </br>The Bank has initiated a digital transformation program to modernize their channel applications such as Internet Banking, using reactive technology to make it more user friendly and compelling to their customers. They want to user APIs in order to quickly unlock their assets in the legacy systems - so that their channel applications can consume.
-                                    </br>Security is paramount, they need to ensure that the APIs exposed needs to be secured using client id/secret and OAuth/OIDC. Architect and build a solution that enable the customer to expose their digital assets via APIs using Cloud Pak for Integration. Each transaction should trigger events that can be audited or based on business rules trigger alerts.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise) <BR><BR>Enterprise Messaging (IBM MQ)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Glen Christian</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario3/README.md">Integration Modernization</a></td>
-                                    <td>Your customer has been a long-time user of App Connect (IIB/WMB) and MQ. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM Agile Integration practices. <BR> They would like you to use one of their existing flows and queue definitions to explore how to move to containerized integration. While eager to understand the modernization journey, they also have reservations on their ability to scale and manage the workload.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments..</td>
-                                    <td>Enterprise Messaging (IBM MQ) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Santhoshi Gopalkrishnan</strong> <BR><BR> <strong>Mano Saelao</strong></td>
-                                  </tr>
-                                  <tr>
-                                    <td><a href="scenario4/ReadMe.md">API Life Cycle Management</a></td>
-                                    <td>Your customer has been an OpenAPI definition for an exiting REST service. They have recently decided to investigate the value of modernizing their integration. They are eager to explore IBM API connect to deploy their rest services. <BR>They would like you to create an API by importing the OpenAPI definition for an existing REST service. Also configure Security endpoints, and proxy to invoke endpoint. After testing the REST API in the online developer toolkit, publish it API for their developers.<BR> Demonstrate how to analyze, componentize, and containerize existing integration artefacts, and illustrate how to scale and monitor the new deployments.</td>
-                                    <td>API Management (IBM API Connect) <BR><BR>Application Integration (IBM App Connect Enterprise)</td>
-                                    <td><strong>Sandeep Ved</strong> <BR><BR> <strong>Pham Manh Hung</strong></td>
-                                  </tr>
-                                
-                                </tbody>
-                              </table>
+                            <h1 id="scenario-details">Scenario Details</h1>
+                            <h3 id="-topic-1-1-introduction-readme-md-introduction-"><a href="apicMQ.html#introduction">Topic 1.1: Introduction</a></h3>
+                            <h3 id="-topic-1-2-requirement-readme-md-requirement-"><a href="apicMQ.html#requirement">Topic 1.2: Requirement</a></h3>
+                            <h3 id="-topic-1-3-challenge-and-approach-readme-md-challenge-and-approach-"><a href="apicMQ.html#challenge-and-approach">Topic 1.3: Challenge and Approach</a></h3>
+                            <h2 id="introduction">Introduction</h2>
+                            <ul>
+                            <li><p>The XYZ Bank still has a core banking system running on IBM System Z. Currently the only way to integrate with this system is via MQ.</p>
+                            </li>
+                            <li><p>The core banking system provides typical account functions such as query balance, deposit and withdraw. </p>
+                            </li>
+                            <li><p>The Bank has initiated a digital transformation program to modernize their channel applications such as Internet  Banking, using reactive technology to make it more user friendly and compelling to their customers.</p>
+                            </li>
+                            <li><p>They want to use APIs in order to  quickly unlock their assets in the legacy systems - so that their channel applications can consume.</p>
+                            </li>
+                            <li><p>Security is paramount, they need to ensure that the APIs exposed needs to be secured using client id/secret and OAuth/OIDC.</p>
+                            </li>
+                            </ul>
+                            <p><img src="Scenario/img/01-scenario2-diagram.png" style="width:10in;height:6in" /></p>
+                            <h2 id="requirement">Requirement</h2>
+                            <ul>
+                            <li><p>Architect and build a solution that enable the customer to expose their digital assets via APIs using Cloud Pak for Integration.</p>
+                            </li>
+                            <li><p>Each transaction should trigger events that can be audited or based on business rules trigger alerts.</p>
+                            </li>
+                            </ul>
+                            <h2 id="challenge-and-approach">Challenge and Approach</h2>
+                            <p>Your team has 3 days to document your approach to a Solution to the customers business problem using CP4I capabilities and any external capabilities that you think are necessary or useful.</p>
+                            <p><strong>Day 3</strong>: Demonstrate your solution to whole class</p>
+                            
+                            <h1 id="introduction">Introduction</h1>
+<h3 id="-topic-2-1-cloud-pak-for-integration-readme-md-ibm-cloud-pak-for-integration-"><a href="apicMQ.html#ibm-cloud-pak-for-integration">Topic 2.1: Cloud Pak for Integration</a></h3>
+<h3 id="-topic-2-2-introduction-to-cluster-readme-md-introduction-to-cluster-"><a href="apicMQ.html#introduction-to-cluster">Topic 2.2: Introduction to Cluster</a></h3>
+<h3 id="-topic-2-3-introduction-to-openshift-readme-md-introduction-to-openshift-"><a href="apicMQ.html#introduction-to-openshift">Topic 2.3: Introduction to OpenShift</a></h3>
+<h2 id="ibm-cloud-pak-for-integration">IBM Cloud Pak for Integration</h2>
+<p>IBM Cloud Pak for Integration brings together IBM’s market-leading middleware capabilities to support a broad range of integration styles and use cases. With powerful deployment, lifecycle management, and production services running on Red Hat OpenShift, it enables clients to leverage the latest agile integration practices, simplify the management of their integration architecture, and reduce cost. Deployment of IBM Cloud Pak for Integration requires RedHat OpenShift cluster.</p>
+<p>A IBM Cloud Pak® for Integration installation consists of a Red Hat® OpenShift® Container Platform cluster with one or more Cloud Pak for Integration operators installed and one or more Cloud Pak for Integration instances deployed.</p>
+<p>In general, you can have one of the following clusters:</p>
+<ul>
+<li><p><strong>Managed OpenShift</strong> clusters, on which some operation, monitoring and billing are integrated with the cloud-platform provider. These clusters are built and managed by the cloud-provider&#39;s interface:</p>
+<ul>
+<li>RedHat OpenShift on IBM Cloud (ROKS)</li>
+<li>RedHat OpenShift on AWS (ROSA)</li>
+<li>Azure RedHat OpenShift (ARO)</li>
+</ul>
+</li>
+<li><p><strong>Installer Provisioned Infrastructure (IPI)</strong> clusters which are created using the openshift-install command. These IPI clusters can typically be enhanced to accommodate infrastructure and storage nodes using the gitops scaffolding.</p>
+<ul>
+<li>Azure</li>
+<li>AWS</li>
+<li>VMware</li>
+</ul>
+</li>
+<li><p><strong>User Provisioned Infrastructure (UPI)</strong> clusters, which are built manually to accommodate an unsupported environment. Although we did not prefer this path, we understand that there are valid customer situation that may warrant the UPI implementation. However, with UPI, you are responsible on building the additional structure so that the cluster is production ready.</p>
+</li>
+</ul>
+<p>Several customer may also request that the cluster would not have internet access (i.e <strong>restricted network or airgapped</strong>). Although most can be fulfilled with IPI airgapped cluster, some specific deployment may need to be UPI.</p>
+<p>For the purpose of this workshop, we will be using IBM Cloud Pak for Integration on IBM ROKS</p>
+<h2 id="introduction-to-cluster">Introduction to Cluster</h2>
+<p>If you&#39;re completely new to the concept of clusters, do follow the quick and easy tutorial <a href="https://cloud.ibm.com/docs/openshift?topic=openshift-openshift_tutorial">here</a> to learn more</p>
+<blockquote>
+<p>With Red Hat® OpenShift® on IBM Cloud®, you can create highly available clusters with virtual or bare metal worker nodes that come installed with the Red Hat OpenShift on IBM Cloud Container Platform orchestration software. You get all the advantages of a managed offering for your cluster infrastructure environment, while using the Red Hat OpenShift tooling and catalog that runs on Red Hat Enterprise Linux for your app deployments.</p>
+</blockquote>
+<h2 id="introduction-to-openshift">Introduction to OpenShift</h2>
+<p>OpenShift is a platform that allows you to run containerized applications and workloads and is powered by Kubernetes. It is an offering that comes with Red Hat support, regardless of where you choose to run your applications and workloads. </p>
+<p>One of the big advantages of OpenShift is being able to take advantage of public and private resources which includes bare metal or virtualized hardware whether it is on-premise or on a cloud provider. </p>
+<p><img src="Introduction/img/openshift-overview.png" alt="Overview of OpenShift" style="width:10in;height:6in"></p>
+<p>This is the high level OpenShift Container Platform overview.</p>
+<p>For developers, OpenShift has two different ways of enabling them to work with their platform. They can take advantage of either the CLI or a web console. </p>
+<h1 id="solution-architecture">Solution Architecture</h1> 
+<h3 id="-topic-3-1-high-level-architecture-readme-md-high-level-architecture-"><a href="apicMQ.html#high-level-architecture">Topic 3.1: High Level Architecture</a></h3>
+<h3 id="-topic-3-2-detailed-solution-flow-readme-md-detailed-solution-flow-"><a href="apicMQ.html#detailed-solution-flow">Topic 3.2: Detailed Solution Flow</a></h3>
+<h3 id="-topic-3-3-list-of-software-products-used-in-scenario2-readme-md-list-of-software-products-used-in-scenario2-"><a href="apicMQ.html#list-of-software-products-used-in-scenario2">Topic 3.3: List of Software Products Used In Scenario2</a></h3>
+<h4 id="-topic-3-3-1-ibm-app-connect-enterprise-readme-md-ibm-app-connect-enterprise-"><a href="apicMQ.html#ibm-app-connect-enterprise">Topic 3.3.1: IBM App Connect Enterprise</a></h4>
+<h4 id="-topic-3-3-2-ibm-event-streams-readme-md-ibm-event-streams-"><a href="apicMQ.html#ibm-event-streams">Topic 3.3.2: IBM Event Streams</a></h4>
+<h4 id="-topic-3-3-3-ibm-api-connect-readme-md-ibm-api-connect-"><a href="apicMQ.html#ibm-api-connect">Topic 3.3.3: IBM API Connect</a></h4>
+<h4 id="-topic-3-3-4-ibm-enterprise-messaging-mq-readme-md-ibm-enterprise-messaging-mq-"><a href="apicMQ.html#ibm-enterprise-messaging-mq">Topic 3.3.4: IBM Enterprise Messaging (MQ)</a></h4>
+<h2 id="high-level-architecture">High Level Architecture</h2>
+<p><img src="Architecture/img/01-high-level-architecture.png" alt="High Level Solution Architecture" style="width:10in;height:6in"></p>
+<h2 id="detailed-solution-flow">Detailed Solution Flow</h2>
+<p><img src="Architecture/img/02-detailed-solution.png" alt="Detailed Solution" style="width:10in;height:6in"></p>
+<h2 id="list-of-software-products-used-in-scenario2">List of Software Products Used In Scenario2</h2>
+<p><img src="Architecture/img/03-cloud-pak-stack.png" alt="Cloud Pak Architecture" style="width:10in;height:6in"></p>
+<p>The Cloud Pak for Integration services that we will be used are:</p>
+<h3 id="ibm-app-connect-enterprise">IBM App Connect Enterprise</h3>
+<p>IBM Cloud Pak for Integration includes a market-leading application integration capability called App Connect Enterprise (ACE). It enables the implementation of API and event-driven integrations and provides extensive adaptation to on-premises and cloud-based applications. It provides tooling that is optimized to the users&#39; skillsets, so that they can be productive in a matter of hours and achieve real results in days. </p>
+<p>Powerful underlying capabilities facilitate the implementation of even the most complex integration patterns. As a result, data can be moved quickly, accurately and robustly.</p>
+<h3 id="ibm-api-connect">IBM API Connect</h3>
+<p>IBM Cloud Pak for Integration includes API Connect as an integrated API management offering, where all of the steps in the API lifecycle, and the actions that surround it, are performed within the offering.</p>
+<p>The steps of the API lifecycle include: </p>
+<ul>
+<li>Create</li>
+<li>Run</li>
+<li>Manage </li>
+<li>Secure </li>
+<li>Socialize APIs</li>
+</ul>
+<p>With API Connect, you can perform all of the lifecycle steps in a single integrated offering, removing the requirement to use multiple API management offerings to obtain the same capability.</p>
+<h3 id="ibm-enterprise-messaging-mq-">IBM Enterprise Messaging (MQ)</h3>
+<p>IBM Cloud Pak for Integration includes MQ, that can transport any type of data as messages, enabling businesses to build flexible, reusable architectures such as service-oriented architecture (SOA) environments. It works with a broad range of computing platforms, applications, web services and communications protocols for security-rich message delivery. </p>
+<p>IBM MQ provides a communications layer for visibility and control of the flow of messages and data inside and outside your organization.</p>
+<p>An application has a choice of programming interfaces, and programming languages to connect to IBM MQ.</p>
+<p>IBM MQ is messaging and queuing middleware, with several modes of operation: </p>
+<ul>
+<li>Point-to-point </li>
+<li>Publish/Subscribe </li>
+<li>File transfer</li>
+</ul>
+<p>Applications can publish messages to many subscribers over multicast.</p>
+
+<h1 id="ibm-cloud-pak-for-integration-configuration">IBM Cloud Pak for Integration - Configuration</h1>
+<p><a href="#_Toc105518919"><strong>4.1. High Level Architecture</strong></a></p>
+<p><a href="#_Toc105518920"><strong>4.2. Prepare Client Tools</strong></a></p>
+<ul>
+<li><a href="#_Toc105518921">4.2.1 IBM App Connect Enterprise (ACE) Toolkit</a></li>
+<li><a href="#_Toc105518922">4.2.2 OC Client</a></li>
+<li><a href="#_Toc105518923">4.2.3 Mailtrap SMTP Setup</a></li>
+</ul>
+<p><a href="#_Toc105518924"><strong>4.3. Messaging Queue (MQ)</strong></a></p>
+<ul>
+<li><a href="#_Toc105518925"><strong>4.3.1 Create Queue Manager</strong></a></li>
+<li><a href="#_Toc105518926"><strong>4.3.2 Create Queue</strong></a></li>
+<li><a href="#_Toc105518927"><strong>4.3.3 Configure Default Channel Security</strong></a></li>
+</ul>
+<p><a href="#_Toc105518929"><strong>4.4. Integration - ACE to MQ</strong></a></p>
+<ul>
+<li><a href="#_Toc105518930"><strong>4.4.1 Prepare - Asset into IBM ACE Toolkit</strong></a></li>
+<li><a href="#_Toc105518931"><strong>4.4.2 Build - BAR File</strong></a></li>
+</ul>
+<p><a href="#_Toc105518928"><strong>4.5. Integration Dashboard - Deploy a local integration server</strong></a></p>
+<p><a href="#_Toc105518933"><strong>4.6. API Connect (APIC)</strong></a></p>
+<ul>
+<li><a href="#_Toc105518934"><strong>4.6.1 Cloud Manager (API Management Administration)</strong></a><ul>
+<li><a href="#create-organization">Create Organization</a></li>
+<li><a href="#configure-smtp-for-notifications">Configure SMTP for notifications</a></li>
+<li><a href="#configure-admin-email-id">Configure admin email id</a></li>
+</ul>
+</li>
+<li><a href="#_Toc105518938"><strong>4.6.2 API Manager (API Management)</strong></a><ul>
+<li><a href="#develop-api">Develop API</a></li>
+<li><a href="#configure-api">Configure API</a></li>
+<li><a href="#develop-product">Develop Product</a></li>
+<li><a href="#create-catalog">Create Catalog</a></li>
+<li><a href="#publish-product">Publish Product</a></li>
+<li><a href="#api-connect-developer-portal">API Connect Developer Portal</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="-">------------------------------------------------------------------</h3>
+<p><span id="_Toc105518919" class="anchor"></span></p>
+<h1 id="high-level-architecture">High Level Architecture</h1>
+<p>Below is the high level architecture that we plan to implement as part
+of this scenario.</p>
+<p><img src="Configuration/media/image1.png" /></p>
+<p><span id="_Toc105518920" class="anchor"></span></p>
+<h1 id="prepare-client-tools">Prepare Client Tools</h1>
+<p>Make sure that you setup/prepare the below pre-req before proceeding.</p>
+<p><span id="_Toc105518921" class="anchor"></span></p>
+<h3 id="ibm-app-connect-enterprise-ace-toolkit-setup">IBM App Connect Enterprise (ACE) Toolkit Setup</h3>
+<p>Refer to the instruction <a href="../Configuration/Install-Client-Tools.md#ibm-app-connect-enterprise-ace-toolkit-setup">here</a></p>
+<p><span id="_Toc105518922" class="anchor"></span></p>
+<h3 id="openshift-command-line-interface-cli-setup">Openshift Command Line Interface (CLI) Setup</h3>
+<p>Refer to the instruction <a href="../Configuration/Install-Client-Tools.md#openshift-command-line-interface-cli-setup">here</a></p>
+<p><span id="_Toc105518923" class="anchor"></span></p>
+<h3 id="mailtrap-smtp-setup">Mailtrap SMTP Setup</h3>
+<p>Refer to the instruction <a href="../Configuration/Install-Client-Tools.md#mailtrap-smtp-setup">here</a></p>
+<p><span id="_Toc105518924" class="anchor"></span></p>
+<h1 id="messaging-queue-mq-">Messaging Queue (MQ)</h1>
+<p><span id="_Toc105518925" class="anchor"></span></p>
+<h2 id="check-create-queue-manager">Check &amp; Create Queue Manager</h2>
+<p>Go to IBM Cloud Pak home. Check the IBM Cloud PAK URL from Openshift Route cp4d or as per given by the instructor.</p>
+<p><img src="Configuration/media/image9.png" style="width:8in"  /></p>
+<p>Login to IBM Cloud Pak using the IBM provided credentials (admin only).</p>
+<p><img src="Configuration/media/image10.png" style="width:8in" /></p>
+<p>Use IBM provided Authentication (admin only) and log in with admin and its password.</p>
+<p><img src="Configuration/media/image11.png" style="width:8in"  /></p>
+<p>Go to IBM Cloud Pak Home. You can verify the currently added/configure instances from Menu -&gt; Integration Instances.</p>
+<p><img src="Configuration/media/image12.png" style="width:8in"/></p>
+<p>The below instances should already be pre-created for you.</p>
+<p><img src="Configuration/media/image12.1.png" style="width:8in" /></p>
+<p>Click on <strong>Messaging</strong> as highlighted in the screen below. (Menu -&gt; Run -&gt; Messaging)</p>
+<p><img src="Configuration/media/image12.png" style="width:8in" /></p>
+<p>This will redirect to a Messaging screen as below. If there MQ Console does not appear,Click on Create an instance to create a new queue manager instance. If MQ Queue Manager appear, then you can skip creating queue manager.</p>
+<p><img src="Configuration/media/image13.png" style="width:8in" /></p>
+<p>Alternatively Queue Manager can be created from Menu -&gt; Administration -&gt; Integration Instances -&gt; Create An Instance+. Select Messaging Option and proceed as below.</p>
+<p>Select <strong>Quick start</strong> option from this screen, and click on Next.</p>
+<p><img src="Configuration/media/image14.png" style="width:8in" /></p>
+<p>Modify the details for your queue manager as below:</p>
+<ul>
+<li><strong>License acceptance</strong> – Toggle the button from OFF to ON state </li>
+</ul>
+<p><img src="Configuration/media/image15.png" style="width:8in" /></p>
+<ul>
+<li>Select <strong>Type of availability</strong> from dropdown as SingleInstance</li>
+</ul>
+<p><img src="Configuration/media/image16.png" style="width:8in" /></p>
+<ul>
+<li>Select <strong>Type of Volume</strong> from the drop down as persistent-claim </li>
+</ul>
+<p><img src="Configuration/media/image17.png" style="width:8in"  /></p>
+<p>Lastly click on <strong>Create</strong> from the top right corner and queue manager
+will be created. You will be redirected to a new page, showing the
+details of your newly created Queue manager. </p>
+<p>The Queue Manager Name is always QUICKSTART unless the name was changed from the advanced properties in the final Creation Screen. Need to toggle the Advanced option to see the advance details.</p>
+<p><img src="Configuration/media/image18.png" style="width:8in" /></p>
+<p>Click on queue manager name --> It should open up MQ Console</p>
+<p><img src="Configuration/media/image19.png" style="width:8in" /></p>
+<p>Click on manage --> quickstart to open queue manager</p>
+<p><img src="Configuration/media/image20.png" style="width:8in" /></p>
+<p><span id="_Toc105518926" class="anchor"></span></p>
+<h2 id="create-queue">Create Queue</h2>
+<p>Click on Create icon to create the queue.</p>
+<p><img src="Configuration/media/image21.png" style="width:8in"  /></p>
+<p>Select a Local Queue.</p>
+<p><img src="Configuration/media/image22.png" style="width:8in" /></p>
+<p>Provide the details of the queue and click <strong>create</strong>.</p>
+<p><img src="Configuration/media/image23.png" style="width:8in" /></p>
+<p>Queue will be created shortly.</p>
+<p><img src="Configuration/media/image24.png" style="width:8in"  /></p>
+<p><span id="_Toc105518927" class="anchor"></span></p>
+<h2 id="configure-default-channel-security-">Configure Default Channel Security**</h2>
+<p>There are different layers of authorization and authentication configured on the Channel access. To simplify the exercise, we will proceed to disable to Channel security authentication and authorization using the script <a href="../mq_ace_lab.mqsc">mq_ace_lab.mqsc</a> . Below steps will assist to disable. </p>
+<p>Copy Login Commands to login to oc client.</p>
+<p><img src="Configuration/media/image25.png" style="width:8in"  /></p>
+<p>Login to Openshift cluster using oc client.</p>
+<p><img src="Configuration/media/image26.png" style="width:8in" /></p>
+<p><u> <i> oc login --token=sha256~xxxxxx-xxxxxx-g --server=<a href="https://servername:30273">https://servername:30273</a> </i> </u></p>
+<p>run below command to see all your projects.</p>
+<p><u> <i> oc projects </i> </u></p>
+<p>Run below command to switch to your project.</p>
+<p><u> <i> oc project cp4i </i> </u></p>
+<p>Run below command to see the pod name of the mq queue manager.</p>
+<p><u> <i> oc get pods | grep -i mq </i> </u></p>
+<p>Note the MQ Queue Manager POD Name. eg. <strong> quickstart-cp4i-ibm-mq-0 </strong></p>
+<p>Change Directory to the location of your mqsc file. Use the following command to upload mqsc file to the MQ pod. QUICKSTART is queue manager name.</p>
+<hr>
+<p>oc exec -it <strong>quickstart-cp4i-queue-ibm-mq-0(this is your pod’s name)</strong> runmqsc <strong>QUICKSTART(QMGR-Name)</strong> &lt; mq_ace_lab.mqsc</p>
+<hr>
+<p>This script performs:</p>
+<ul>
+<li><p>Disable Chlauth security</p>
+</li>
+<li><p>Disable clientauth security</p>
+</li>
+<li><p>Disable user security on MQ objects level</p>
+</li>
+</ul>
+<p>The above command should succeed with below lines in the end.</p>
+<p><u> <i>
+94 MQSC commands read.</p>
+<p>No commands have a syntax error.</p>
+<p>All valid MQSC commands were processed.
+</i> </u></p>
+<p>Note the default channels details. Go to the Applications Tab for the Queue Manager that you created.</p>
+<p><img src="Configuration/media/image24.1.jpeg" style="width:8in"  /></p>
+<p>Click on App Channels link in the left pane. Click on the Filter and Select Show System Channels.</p>
+<p><img src="Configuration/media/image25.1.jpeg" style="width:8in"  /></p>
+<p>You should be able to see the System Channels. Note the default channel to be used for MQ Communication.</p>
+<p><img src="Configuration/media/image26.1.jpeg" style="width:8in"  /></p>
+<p><span id="_Toc105518929" class="anchor"></span></p>
+<h1 id="integration-ace-to-mq">Integration - ACE to MQ</h1>
+<p>Integration has the following components:</p>
+<ul>
+<li><p><a href="#_Toc105518930"><u>Prepare</u></a></p>
+</li>
+<li><p><a href="#_Toc105518931"><u>Build</u></a></p>
+</li>
+<li><p><a href="#_Toc105518928"><u>Deploy</u></a></p>
+</li>
+</ul>
+<p><span id="_Toc105518930" class="anchor"></span></p>
+<h2 id="prepare-asset-into-ibm-ace-toolkit">Prepare - Asset into IBM ACE Toolkit</h2>
+<p>Open IBM ACE Toolkit under a workspace and create a REST API project.</p>
+<p><img src="Configuration/media/image34.png" style="width:6.26806in" /></p>
+<p>Give it a name and select the specification as Swagger 2.0 Click Finish.</p>
+<p><img src="Configuration/media/image35.png" style="width:6.26806in" /></p>
+<p>Open the REST API Description. In the right Pane, Under Resources, Click on + icon to create a resource.</p>
+<p><img src="Configuration/media/image36.png" style="width:6.26806in" /></p>
+<p>Enter the resource path and select the operation as post. Click Apply.</p>
+<p><img src="Configuration/media/image37.png" style="width:6.26806in" /></p>
+<p>A New resource will be created.</p>
+<p><img src="Configuration/media/image38.png" style="width:6.26806in" /></p>
+<p>Click on the subflow icon or this new resource.</p>
+<p><img src="Configuration/media/image39.png" style="width:6.26806in"  /></p>
+<p>New subflow editor will open. Drag the IBM MQ -&gt; MQ Output Connector from the
+transformation section in the left toolbox.</p>
+<p><img src="Configuration/media/image40.png" style="width:6.26806in" /></p>
+<p>Connect the Boxes together.</p>
+<p><img src="Configuration/media/image41.png" style="width:6.26806in"  /></p>
+<p>Find the MQ Queue Manager Service IP address from the “openshift
+console” or oc client (oc get svc | grep -i mq).</p>
+<p><img src="Configuration/media/image42.png" style="width:6.26806in" /></p>
+<p><img src="Configuration/media/image43.png" style="width:6.26806in;height:3.50833in" /></p>
+<p>Click on the MQ Output and configure the MQ Details. Enter the Queue Name.</p>
+<p><img src="Configuration/media/image45.png" style="width:6.26806in;height:2.93333in" /></p>
+<p>Enter the MQ Queue Name in the <strong>Basic Tab</strong>. Then in the <strong>MQ Connection tab</strong>, Enter the MQ Connection Details like Queue Manager Name, Queue Manager
+Host Name (Service IP), Listener Port no (1414 Default), Connection Channel Name (default – SYSTEM.DEF.SVRCONN).</p>
+<p><img src="Configuration/media/image46.png" style="width:6.26806in;height:4.87153in"  /></p>
+<p>If you have a policy for MQ EndPoint,then you can configure the policy name in the <strong>policy tab</strong> here in the format {MQPolicyProjectName}:PolicyName, so that it can be used as a configuration for the integration server. In this case, above details on <strong>MQ Connection tab</strong> are not required. The Policy Project Creation Reference is <strong><a href="Create-MQ-Policy.md">here</a></strong>.</p>
+<p><img src="Configuration/media/mq-policy-8.jpeg" style="width:8in;height:4in"  /></p>
+<p><span id="_Toc105518931" class="anchor"></span></p>
+<h2 id="build-bar-file">Build – BAR File</h2>
+<p>Add a new BAR file in the project to package and export the
+configuration.</p>
+<p><img src="Configuration/media/image47.png" style="width:4.14412in;height:4.90741in"  /></p>
+<p>Enter the bar file details and click Finish.</p>
+<p><img src="Configuration/media/image48.png" style="width:4.40476in;height:3.77426in"  /></p>
+<p>Include the newly created project. Add the Build options and Click Save.</p>
+<p><img src="Configuration/media/image49.png" style="width:6.26806in;height:2.37639in"  /></p>
+<p>Rebuild BAR and save file one more time.</p>
+<p><img src="Configuration/media/image50.png" style="width:6.26806in;height:2.02083in"  /></p>
+<p><img src="Configuration/media/image51.png" style="width:4.02778in;height:1.30556in" /></p>
+<p><img src="Configuration/media/image52.png" style="width:3.875in;height:1.41667in" /></p>
+<p>Check the properties of the generated bar file.</p>
+<p><img src="Configuration/media/image53.png" style="width:2.61111in;height:4.86111in"  /></p>
+<p>Copy the bar file path or open it in finder window.</p>
+<p><img src="Configuration/media/image54.png" style="width:5.90278in;height:3.95833in"  /></p>
+<p><span id="_Toc105518928" class="anchor"></span></p>
+<h1 id="integration-dashboard-deploy-an-integration-server">Integration Dashboard - Deploy an integration server</h1>
+<p>Proceed to create a Integration Server in CP4I Console. Click on Deploy Integrations.</p>
+<p><img src="Configuration/media/image55.jpeg" style="width:10.26806in"/></p>
+<p>Click Deploy a Server and Chose a Quick Start Plan. Click Next.</p>
+<p><img src="Configuration/media/image56.jpeg"  /></p>
+<p>Drag and Drop the newly generated bar file here. Click Next.</p>
+<p><img src="Configuration/media/image57.jpeg"  /></p>
+<p>Skip any Configuration to be applied this integration if you have not created a Policy Project. Just Click <strong>Next</strong>. </p>
+<p>If you have a MQ Policy Project, then you can create configuration for it, select it and Click <strong>Next</strong>. Click <strong><a href="Create-MQ-Policy.md#integration-server---mq-policy-project-configuration">here</a></strong> for more details.</p>
+<p><img src="Configuration/media/image58.jpeg"  /></p>
+<p>Enter the Integration Server Name starting with your Name to make it unique, Select License. Click Create.</p>
+<p><img src="Configuration/media/image59.jpeg" /></p>
+<p>The Integration Server will be created and ready shortly. You may
+refresh the page to check on the readiness status update.</p>
+<p><img src="Configuration/media/image60.jpeg" /></p>
+<p>Click on the Server once its ready.</p>
+<p><img src="Configuration/media/image61.jpeg" /></p>
+<p>Click on the API.</p>
+<p><img src="Configuration/media/image62.png" style="width:6.26806in" /></p>
+<p>Click on the <u>post/AccountEnquiry.</u></p>
+<p><img src="Configuration/media/image63.png" style="width:6.27545in;height:3.20238in" /></p>
+<p>Click on Try It Tab to test the Rest Interface.</p>
+<p><img src="Configuration/media/image64.png" style="width:6.29107in;height:3.41667in" /></p>
+<p>Click on Generate to generate a random test message. Click Send.</p>
+<p><img src="Configuration/media/image65.png" style="width:6.077in;height:3.40476in" /></p>
+<p>The response should come successfully.</p>
+<p><img src="Configuration/media/image66.png" style="width:6.26806in;height:2.95in" /></p>
+<p>This completes the creation and testing of local integration server.</p>
+<p><span id="_Toc105518933" class="anchor"></span></p>
+<h1 id="api-connect-apic-">API Connect (APIC)</h1>
+<p>Navigate to Administration -> Integration Instances.</p>
+<p><img src="Configuration/media/image67.png" style="width:6.26806in;height:1.44514in" /></p>
+<p>If there is no existing instance of <strong>API Management</strong>, Create an instance of the API Connect (API Management) as per following procedure. </p>
+<p>If there is already an instance, then you should be able to see instances for API Management, API Management Administration, API-managed enterprise gateway. In this case, just click on the instance name for API Management Administration and continue to create organiation as per next section of <strong><a href="#_Toc105518934">Cloud Manager (API Management Administration)</a></strong>.</p>
+<p><img src="Configuration/media/image68.png" style="width:6.26806in;height:4.07639in"  /></p>
+<p>Chose the basic one node plan. Click Next.</p>
+<p><img src="Configuration/media/image69.jpg" /></p>
+<p>Enter the API instance Name and accept the license. Enter the license ID.</p>
+<p><img src="Configuration/media/image70.jpg" /></p>
+<p>The matching Storage Class will be automatically selected. Click Finish.</p>
+<p><img src="Configuration/media/image71.jpg" /></p>
+<p>The following API Connect Instances will be created in about 45 minutes.</p>
+<ul>
+<li><p><strong>API Managed Enterprise Gateway</strong> is the data power gateway.</p>
+</li>
+<li><p><strong>API Management</strong> is the instance where we can configure/Develop new APIs Products and catalog. (API Manager).</p>
+</li>
+<li><p><strong>API Management Administration</strong> is where we can create organization, configure authentication settings, SMTP settings etc .</p>
+</li>
+</ul>
+<p><img src="Configuration/media/image72.png" style="width:6.26806in;height:2.44097in"  /></p>
+<p><img src="Configuration/media/image72.1.jpg" style="width:6.26806in;height:3.42431in" /></p>
+<p><span id="_Toc105518934" class="anchor"></span></p>
+<h2 id="cloud-manager-api-management-administration-">Cloud Manager (API Management Administration)</h2>
+<h3 id="create-organization">Create Organization</h3>
+<p>Click on the API Management Administration Link to open Cloud Manager
+Console.</p>
+<p>Click Manage Organization.</p>
+<p><img src="Configuration/media/image73.png" style="width:6.26806in;height:3.9in"  /></p>
+<p>Click on Add to create an API organization which is like a logical
+separation of multiple API users.</p>
+<p><img src="Configuration/media/image74.png" style="width:6.26806in;height:2.09931in" /></p>
+<p>Enter the Organization Name.</p>
+<p><img src="Configuration/media/image75.png" style="width:6.26806in;height:3.81736in"  /></p>
+<p>Change the User Registry to Common Services User Registry. Enter the
+existing user name as admin. Click Create.</p>
+<p><img src="Configuration/media/image76.png" style="width:6.26806in;height:3.47361in"  /></p>
+<p><img src="Configuration/media/image77.png" style="width:6.26806in;height:0.99074in"  /></p>
+<h3 id="configure-smtp-for-notifications">Configure SMTP for notifications</h3>
+<p>Click on Resource’s link in the left pane. Click on Notification Link in the left pane.</p>
+<p><img src="Configuration/media/image78.png" style="width:6.26806in;height:3.80417in" /></p>
+<p>Click on Create button to create a new SMTP Server.</p>
+<p><img src="Configuration/media/image79.png" style="width:6.26806in;height:1.80208in" /></p>
+<p>Add a new smtp server for email notifications. You can add any smtp
+provider eg. Sendgrid or mailtrap or any other.</p>
+<p><img src="Configuration/media/image80.png" style="width:6.26806in;height:3.82569in" /></p>
+<p>Click test email to test the connection. Enter the recipient email id
+and click Send Test Email.</p>
+<p><img src="Configuration/media/image81.png" style="width:4.38889in;height:1.48611in" /></p>
+<p>The email should be sent successfully. You can verify this only through the mailtrap inbox. It will not land in the actual reciever inbox.</p>
+<p><img src="Configuration/media/image82.png" style="width:4.36111in;height:1.45833in" /></p>
+<p>Click Save to save the config.</p>
+<p><img src="Configuration/media/image83.png" style="width:6.26806in;height:1.42778in" /></p>
+<p>Also update the same email smtp settings for the Dummy mail server as well.</p>
+<p><img src="Configuration/media/image84.png" style="width:6.26806in;height:1.34653in" /></p>
+<h3 id="configure-admin-email-id">Configure admin email id</h3>
+<p>In the Cloud Manager, Under Manage Organization, Go to Logged in User (admin) Settings and click My Account.</p>
+<p><img src="Configuration/media/image85.png" style="width:6.26806in;height:1.66736in" /></p>
+<p>Update the email id for the current account. Very Important. Otherwise
+later you will not be able to create a portal service under a catalog.</p>
+<p><img src="Configuration/media/image86.png" style="width:6.26806in;height:2.83889in" /></p>
+<p><span id="_Toc105518938" class="anchor"></span></p>
+<h2 id="api-manager-api-management-">API Manager (API Management)</h2>
+<p>Click on the API Management Link to open API Management Console. If you
+see below picture then your Organization is not set correctly.</p>
+<p><img src="Configuration/media/image87.png" style="width:6.26806in" /></p>
+<p>After setting the organization correctly, the API Manager should look like this.</p>
+<p><img src="Configuration/media/image88.jpeg" style="width:6.26806in" /></p>
+<h3 id="develop-api">Develop API</h3>
+<p>Click on Develop APIs and products. Create a new API. This will
+encapsulate the API created on the ACE.</p>
+<p><img src="Configuration/media/image89.png" style="width:6.26806in;height:1.47917in" /></p>
+<p>Chose the default option &quot;From Target Service&quot;. Click Next.</p>
+<p><img src="Configuration/media/image90.png" style="width:6.26806in;height:3.97292in" /></p>
+<p>Provide the details for Target service.</p>
+<p><img src="Configuration/media/image91.png" style="width:6.26806in" /></p>
+<p>Note the Target Service URL from Integration Dashboard that we created
+earlier.</p>
+<p><img src="Configuration/media/image92.png" style="width:6.26806in;height:2.28194in"  /></p>
+<p>example, <a href="http://hostname/MyEquiry/v1/AccountEnquiry">http://hostname/MyEquiry/v1/AccountEnquiry</a></p>
+<p>Enter the title of the API. This will also create an endpoint / base
+path using which the API can be called and it will just redirect the
+request to Target Service URL.</p>
+<p><img src="Configuration/media/image93.png" style="width:6.26806in" /></p>
+<p>Click Next.</p>
+<p><img src="Configuration/media/image94.png" style="width:6.26806in;height:1.76042in" /></p>
+<p>Click Edit API.</p>
+<p><img src="Configuration/media/image95.png" style="width:6.26806in;height:1.76319in" /></p>
+<h3 id="configure-api">Configure API</h3>
+<p>After Clicking Edit API, API Design Screen will open.</p>
+<p><img src="Configuration/media/image96.png" style="width:6.26806in;height:4.67431in"  /></p>
+<p>As we are exposing only post service in the backend we can delete the
+other operations from here.</p>
+<p><img src="Configuration/media/image97.png" style="width:6.26806in;height:3.94167in"  /></p>
+<p>Click Save.</p>
+<p><img src="Configuration/media/image98.png" style="width:6.26806in"  /></p>
+<p>Under Security Schema Click Add to add another security schema.</p>
+<p><img src="Configuration/media/image99.png" style="width:6.26806in"  /></p>
+<p>Select apiKey as the security definition key.</p>
+<p><img src="Configuration/media/image100.png" style="width:6.26806in;height:3.12083in"  /></p>
+<p>Enter the details as below.</p>
+<p><img src="Configuration/media/image101.png" style="width:6.26806in;height:4.79028in"  /></p>
+<p>Client Secret is added as security schema. Click Save.</p>
+<p><img src="Configuration/media/image102.png" style="width:6.14652in;height:4.58367in"  /></p>
+<p>Go to General -> Security . Edit the security schema name.</p>
+<p><img src="Configuration/media/image103.png" style="width:6.17732in;height:4.60664in"  /></p>
+<p>Select both parameter and Click Submit.</p>
+<p><img src="Configuration/media/image104.png" style="width:6.26806in;height:2.27083in"  /></p>
+<p>Click Save.</p>
+<p><img src="Configuration/media/image105.png" style="width:6.26806in;height:2.58958in"  /></p>
+<p>Now make this API online so that it will be published in a development
+sandbox.</p>
+<p><img src="Configuration/media/image106.png" style="width:2.73611in;height:0.625in"  /></p>
+<p><img src="Configuration/media/image107.png" style="width:2.73611in;height:0.625in"  /></p>
+<h3 id="develop-product">Develop Product</h3>
+<p>Go to API Manager Home again and click on &quot;Develop API and Products&quot;.</p>
+<p><img src="Configuration/media/image108.png" style="width:6.26806in"  /></p>
+<p>Now we need to package this API into a product. One product can have
+multiple APIs.</p>
+<p><img src="Configuration/media/image109.png" style="width:6.26806in;height:1.54722in" /></p>
+<p>Click Add -> Product.</p>
+<p><img src="Configuration/media/image110.png" style="width:6.26806in;height:1.54722in" /></p>
+<p>Click Next.</p>
+<p><img src="Configuration/media/image111.png" style="width:6.26806in;height:1.96389in" /></p>
+<p>Give a product Name. Click Next.</p>
+<p><img src="Configuration/media/image112.png" style="width:6.26806in;height:2.67778in" /></p>
+<p>Select an API to be added into this product. Click Next.</p>
+<p><img src="Configuration/media/image113.png" style="width:6.26806in;height:2.17222in" /></p>
+<p>Review the plan details. You can more plans by clicking on Add Button.
+Can define the new plan name and rate limit (eg. API Calls Frequency). You can add arbitary plans and API Calls Frequency.</p>
+<p><img src="Configuration/media/image114.png" style="width:6.26806in;height:3.65in"  /></p>
+<p>Click Next After adding the required plans.</p>
+<p><img src="Configuration/media/image115.png" style="width:6.26806in;height:4.46736in" /></p>
+<p>Click Next with default options.</p>
+<p><img src="Configuration/media/image116.png" style="width:6.26806in;height:3.44861in" /></p>
+<p>Click Done. We will publish it separately later after creating catalog.</p>
+<p><img src="Configuration/media/image117.png" style="width:6.26806in;height:2.05764in" /></p>
+<p>New product is added with the new API.</p>
+<p><img src="Configuration/media/image118.png" style="width:6.26806in;height:1.68611in" /></p>
+<p>Go to API Manager &quot;Manage Settings&quot; to update the email Notification
+settings.</p>
+<p><img src="Configuration/media/image119.png" style="width:6.26806in;height:3.42431in" /></p>
+<p>Go to &quot;Notifications&quot;. Click Edit.</p>
+<p><img src="Configuration/media/image120.png" style="width:6.26806in;height:1.81042in" /></p>
+<p>Configure the sender name and email address.</p>
+<p><img src="Configuration/media/image121.png" style="width:6.26806in;height:1.81042in" /></p>
+<p><img src="Configuration/media/image122.png" style="width:6.26806in;height:1.81042in" /></p>
+<h3 id="create-catalog">Create Catalog</h3>
+<p>Now we can create a catalog. One catalog can contain one developer
+portal where this product can be published. We can have a internal and
+external catalog where internal catalog is for internal organization and
+external is for external users.</p>
+<p>Go to manage catalogs under API Manager.</p>
+<p><img src="Configuration/media/image123.png" style="width:6.26806in;height:3.69583in" /></p>
+<p>Create new Catalog.</p>
+<p><img src="Configuration/media/image124.png" style="width:6.26806in;height:1.95278in" /></p>
+<p>Enter a name and Click Create</p>
+<p><img src="Configuration/media/image125.png" style="width:6.26806in;height:2.72431in" /></p>
+<p>Open the new Catalog and navigate to Catalog settings.</p>
+<p><img src="Configuration/media/image126.png" style="width:6.26806in;height:1.94306in" /></p>
+<p><img src="Configuration/media/image127.png" style="width:6.26806in;height:2.99097in" /></p>
+<p>Create a developer portal here. Click Create. If the email if is not updated for the logged in user
+account, then there will be an error mentioning so. Update the admin
+user email id from Cloud Manager -> My Account as explained earlier.
+Also make sure smtp settings are correct under Cloud Manager
+notification settings.</p>
+<p><img src="Configuration/media/image128.png" style="width:6.26806in;height:2.99097in" /></p>
+<p>Select the portal service as &quot;portal-service&quot; and Click Create. </p>
+<p><img src="Configuration/media/image129.png" style="width:6.26806in;height:2.39097in" /></p>
+<p>It will take a few minutes for the portal service to be ready. You will
+receive an email once its ready to set the password for the portal admin
+account.</p>
+<p><img src="Configuration/media/image130.png" style="width:6.26806in;height:2.53403in" /></p>
+<p>Note down the Portal API URL from <strong>Catalog Settings -> Portal</strong> . eg.</p>
+<p><a href="https://hostname/api-organization/practicum-catalog">https://hostname/api-organization/practicum-catalog</a></p>
+<p>(optional) Once you receive the email to set the password click on that
+link and set the password for the admin account for API Manager.</p>
+<h3 id="publish-product">Publish Product</h3>
+<p>In the original API Manager Window, Now lets publish the product to the new catalog from API Manager first. So it can be visible in this catalog.</p>
+<p>Go to API Manager Home and click Develop APIs and Products. Go to Products Tab. Select the product settings and click Publish.</p>
+<p><img src="Configuration/media/image131.png" style="width:6.26806in;height:2.43472in" /></p>
+<p>Select the new catalog.Click Next. </p>
+<p><img src="Configuration/media/image131.jpeg" style="width:6.26806in;height:2.43472in" /></p>
+<p>You can set the catalog visibility to Authenticated users. Click Publish. </p>
+<p><img src="Configuration/media/image132.jpeg" style="width:6.26806in" /></p>
+<p><img src="Configuration/media/image133.jpeg" style="width:6.26806in" /></p>
+<p>It will be published shortly.</p>
+<h3 id="api-connect-developer-portal">API Connect Developer Portal</h3>
+<p>Open the Portal API URL as noted above in the browser.</p>
+<p><strong>Note:</strong> Use <strong>Mozilla Browser</strong> only for this as there will be issues
+with chrome browser with default self-signed certificate settings and
+chrome will prevent the connection.</p>
+<p><img src="Configuration/media/image133.png" style="width:6.26806in;height:3.85972in" /></p>
+<p>Click on <strong>Create Account</strong> to create a new account.</p>
+<p><img src="Configuration/media/image134.png" style="width:6.26806in;height:2.82292in" /></p>
+<p>You will receive email with activation instructions.</p>
+<p><img src="Configuration/media/image135.png" style="width:5.45833in;height:4.51389in" /></p>
+<p>The account will be activated and you will be able to login with the
+newid. Sign in with the new id and password.</p>
+<p><img src="Configuration/media/image136.png" style="width:6.26806in;height:3.85972in" /></p>
+<p>Click on Create a new App.</p>
+<p><img src="Configuration/media/image137.png" style="width:5.56071in;height:4.78014in" /></p>
+<p>Enter an application Name and click Save.</p>
+<p><img src="Configuration/media/image138.png" style="width:5.76829in;height:3.47337in" /></p>
+<p>Once application created successfully, note down the Key and Secret for
+this application. You can not see the Key and Secret for this
+application after this page. Each application will interact with API
+Manager/ACE using this client secret. Click OK.</p>
+<p><img src="Configuration/media/image139.png" style="width:6.26806in" /></p>
+<ul>
+<li><p>Key: 81b789b18XXXXXXXXXX069ec1757beb9</p>
+</li>
+<li><p>Secret: 0a38029dXXXXXXXXXXa16f47aa943eb</p>
+</li>
+</ul>
+<p>You can optionally click on verify link to verify your secret against
+this application’s key.</p>
+<p>Click on <strong>Why not browse the available APIs</strong> to subscribe to API
+Product for this App.</p>
+<p><img src="Configuration/media/image140.png" style="width:6.26806in" /></p>
+<p>Click on the published API product.</p>
+<p><img src="Configuration/media/image141.png" style="width:6.26806in" /></p>
+<p>Just click on the <strong>Select</strong> button for one of the plan exposed by the
+product.</p>
+<p><img src="Configuration/media/image142.png" style="width:6.26806in" /></p>
+<p>Select the <strong>application</strong> to be subscribed.</p>
+<p><img src="Configuration/media/image143.png" style="width:6.26806in" /></p>
+<p>To confirm subscription, click Next.</p>
+<p><img src="Configuration/media/image144.png" /></p>
+<p>Click Done.</p>
+<p><img src="Configuration/media/image145.png" /></p>
+<p>Click on <strong>POST /</strong> option under overview, in the left pane.</p>
+<p><img src="Configuration/media/image146.png" s /></p>
+<p>Click on <strong>Try It</strong> tab to test this API product.</p>
+<p><img src="Configuration/media/image147.png" /></p>
+<p>Enter the API Secret for authentication and click Send.</p>
+<p><img src="Configuration/media/image148.png" /></p>
+<p>If you receive an error like below, then it could be because you are
+using any other browser than Firefox. Or the Certificate is not trusted.</p>
+<p><img src="Configuration/media/image149.png"  /></p>
+<p>Open this URL in the error below in the browser. eg.</p>
+<p><a href="https://hostname/api-organization/practicum-catalog/my-account-api/">https://hostname/api-organization/practicum-catalog/my-account-api/</a></p>
+<p>Accept the certificate. Ignore the error. </p>
+<p><img src="Configuration/media/image150.png" border=1 /></p>
+<p>Now You can try to send the API call one more time, you should be able
+to see the response successfully.</p>
+<p><img src="Configuration/media/image151.png"  /></p>
+<p>Check in the IBM MQ if this message has been stored in Queue
+Successfully.</p>
+<p> Go to Integration Instances -> Messaging instance Name -> Manage -> Queue name</p>
+<p><img src="Configuration/media/image152.png" /></p>
+
+<h1 id="conclusion">Conclusion</h1>
+<p>Details are provided above for the setup, installation and configuration of Cloud Pak for Integration for the described use case.
+We conclude our work on the practicum workshop and expect you have acquired the fundamentals and usage of IBM Cloud Pak for Integration.
+We wish the best to you and hope the workshop may be helpful in your journey to Modernizing Applications and keeping pace with the technology and trends.</p>
+
 
                     </div>
                 </div>
