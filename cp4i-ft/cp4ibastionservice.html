@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <style>
+        .codeDiv {
+            border: 1px #0000006e;
+            background-color: #f8f8f8;
+            text-align: left;
+            vertical-align:text-bottom;
+            color: #da467d;
+        }
+        pre {
+        position: relative;
+        background: #d3d6db;
+        padding: 10px;
+        font-size: 15px;
+        word-wrap: break-word;
+        white-space: pre-wrap;
+        border: 1px solid #e6e7e9;
+        
+        }
+        .copy-button {
+            position: absolute;
+            top: 2px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff;
+            background: gray;
+            border-radius: 0.5em;
+            padding: 2px 7px;
+            }
+
+        .copy-button:hover {
+        color: #000;
+        }
+    </style>
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="../index.html">IBM CSM</a>
+
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <a class="navbar-brand ps-3" href="../index.html">Integration Skills Launchpad</a>
+        <!-- Navbar Search
+            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                <div class="input-group">
+                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </form>-->
+        <!-- Navbar
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>-->
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Core</div>
+                        <a class="nav-link" href="content.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Table Of Contents
+                        </a>
+                        <a class="nav-link" href="index-cp4i-ft.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Overview
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Lab Prerequisites</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts_lp_1" aria-expanded="false" aria-controls="collapseLayouts_lp_1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Setup Runthrough and preparations
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts_lp_1" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
+                                <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts_lp_2" aria-expanded="false" aria-controls="collapseLayouts_lp_2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Optional Setup
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts_lp_2" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4ibastionservice.html">Configure Bastion Service (optional)</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">MQ-EventStreams</div>
+                     
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_1"
+                            aria-expanded="false" aria-controls="collapsePages_mq_1">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configure
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages_mq_1" aria-labelledby="headingThree"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
+                                <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
+                                <a class="nav-link" href="streamingqueue.html">Streaming Queue</a>
+                                <!--<a class="nav-link" href="testapplication.html">Testing Applications</a>
+                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>-->
+
+                            </nav>
+                        </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_2"
+                        aria-expanded="false" aria-controls="collapsePages_mq_2">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Configuration Validation
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages_mq_2" aria-labelledby="headingFour"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" href="testapplication.html">Testing Applications</a>
+                            <!--<a class="nav-link" href="run.html">Scenario Walkthrough</a>-->
+                        </nav>
+                    </div>
+                    <div class="sb-sidenav-menu-heading">API-MQ</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_3"
+                            aria-expanded="false" aria-controls="collapsePages_mq_3">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configure
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages_mq_3" aria-labelledby="headingFive"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="apiSetup.html">API and EEM</a>
+                                <a class="nav-link" href="appConnectEnterprise.html">App Connect Enterprise</a>
+
+                            </nav>
+                        </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages_mq_4" aria-expanded="false" aria-controls="collapsePages_mq_4">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configuration Validation
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages_mq_4" aria-labelledby="headingSix"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="apiToMQUsingACEDesigner.html">API to MQ Using Ace</a>
+                            </nav>
+                    </div>
+                   
+                        <div class="sb-sidenav-menu-heading">Environment Guides</div>
+                        <a class="nav-link" href="logonInformation.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Environment Details
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Add ons</div>
+                        <a class="nav-link" href="glossary.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Glossary
+                        </a>
+                        <!-- <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                Charts
+                            </a>
+                            <a class="nav-link" href="index.html">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                Tables
+                            </a> -->
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">IBM CSM</div>
+                    <div class="small">Author : Sujatha Sureshkumar</div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4"></h1>
+                    <!--
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item active">
+                            <h4>Bastion Service (Optional)</h4>
+                            <p class="lead">Creating a bastion service in Red Hat OpenShift involves setting up a secure entry point to access and manage resources within your cluster. This service is intended as a contingency plan to be utilized only in the event that the practicum bastion server is inaccessible during the practicum session.</p>
+                        </li>
+                    </ol>-->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <i class="fas fa-book-open"></i>
+                            Bastion Service (Optional) 
+                        </div>
+                        <div class="card-body">
+                            <div>
+
+
+                            </div>
+                            <div>
+                                <p class="lead">Creating a bastion service in Red Hat OpenShift involves setting up a secure entry point to access and manage resources within your cluster. This service is intended as a contingency plan to be utilized only in the event that the practicum bastion server is inaccessible during the practicum session.</p>
+                                
+
+                            </div>
+
+                            <div>
+                                <p></p>
+                                <p class="lead"><b>Creating Bastion Service</b></p>
+                                <p class="lead">
+                                <ol>
+                                    <li>Go to Openshift Console -> Click "+"</li>
+                                    <img src="assets/img/CP4ISetup/image108.png" alt="Usecase" class="center"/>
+                                    <li>Choose -> "All Projects". Add the following code snippet and click "Create"</li>
+                                    <script src="https://gist.github.com/sujatha-sureshkmr/097cede3ecc87993ec96981673ddbde4.js"></script>
+                                    <img src="assets/img/CP4ISetup/image109.png" alt="Usecase" class="center" width="900" height="400" />
+                                    <li>Go to Workloads -> Pods -> Project -> "All Projects" -> search for "Bastion-service". Note: Wait till you see the pod running state/status.</li>
+                                    <img src="assets/img/CP4ISetup/image111.png" alt="Usecase" class="center" width="900" height="400" />
+                                    <li>Click the pod related to bastion-service -> Terminal</br>Note:This bastion service is in raw form and hence you will need to install basic libraries such as "wget".</li>
+                                    <img src="assets/img/CP4ISetup/image112.png" alt="Usecase" class="center" width="900" height="400" />
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                        <pre id="myPreTag">yum install -y wget</pre>
+                                        <script src="script.js"></script>
+                                        </div>
+                                    <img src="assets/img/CP4ISetup/image110.png" alt="Usecase" class="center" width="900" height="400" />
+                                   
+                                </ol>
+                                </p>
+                                
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Area Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Bar Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        </div>-->
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; IBM Cloud Pak®</div>
+                        <div>
+                            <a href="https://www.ibm.com/us-en/privacy?lnk=flg-priv-usen">Privacy Policy</a>
+                            &middot;
+                            <a href="https://www.ibm.com/legal?lnk=flg-tous-usen">Terms of use</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>
