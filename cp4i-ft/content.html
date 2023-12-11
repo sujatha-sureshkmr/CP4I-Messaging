@@ -56,63 +56,94 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Overview
                         </a>
-                        <div class="sb-sidenav-menu-heading">Integration Capabilities</div>
+                        <div class="sb-sidenav-menu-heading">Lab Prerequisites</div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            data-bs-target="#collapseLayouts_lp_1" aria-expanded="false" aria-controls="collapseLayouts_lp_1">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Prepare
+                            Setup Runthrough and preparations
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                        <div class="collapse" id="collapseLayouts_lp_1" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link" href="cp4isetuppreexisting.html">Existing OCP Configuration</a>
                                 <a class="nav-link" href="cp4isetupnewoperators.html">Install Integration Operators</a>
                             </nav>
                         </div>
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
-                            aria-expanded="false" aria-controls="collapsePages">
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts_lp_2" aria-expanded="false" aria-controls="collapseLayouts_lp_2">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Optional Setup
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts_lp_2" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link" href="cp4ibastionservice.html">Configure Bastion Service (optional)</a>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">MQ-EventStreams</div>
+                     
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_1"
+                            aria-expanded="false" aria-controls="collapsePages_mq_1">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                             Configure
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                        <div class="collapse" id="collapsePages_mq_1" aria-labelledby="headingThree"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link" href="mqsetup.html">Messaging Queue</a>
                                 <a class="nav-link" href="eventstreamssetup.html">Events Cluster</a>
                                 <a class="nav-link" href="streamingqueue.html">Streaming Queue</a>
+                                <!--<a class="nav-link" href="testapplication.html">Testing Applications</a>
+                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>-->
+
+                            </nav>
+                        </div>
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_2"
+                        aria-expanded="false" aria-controls="collapsePages_mq_2">
+                        <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                        Configuration Validation
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="collapsePages_mq_2" aria-labelledby="headingFour"
+                        data-bs-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                            <a class="nav-link" href="testapplication.html">Testing Applications</a>
+                            <!--<a class="nav-link" href="run.html">Scenario Walkthrough</a>-->
+                        </nav>
+                    </div>
+                    <div class="sb-sidenav-menu-heading">API-MQ</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages_mq_3"
+                            aria-expanded="false" aria-controls="collapsePages_mq_3">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Configure
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages_mq_3" aria-labelledby="headingFive"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link" href="apiSetup.html">API and EEM</a>
                                 <a class="nav-link" href="appConnectEnterprise.html">App Connect Enterprise</a>
 
                             </nav>
                         </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapsePages1" aria-expanded="false" aria-controls="collapsePages1">
+
+                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapsePages_mq_4" aria-expanded="false" aria-controls="collapsePages_mq_4">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Build
+                            Configuration Validation
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages1" aria-labelledby="headingOne"
+                    </a>
+                    <div class="collapse" id="collapsePages_mq_4" aria-labelledby="headingSix"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link" href="apiToMQUsingACEDesigner.html">API to MQ Using Ace</a>
                             </nav>
-                        </div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapsePages2" aria-expanded="false" aria-controls="collapsePages2">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Run
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages2" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="testapplication.html">Testing Applications</a>
-                                <a class="nav-link" href="run.html">Scenario Walkthrough</a>
-                            </nav>
-                        </div>
+                    </div>
+                   
                         <div class="sb-sidenav-menu-heading">Environment Guides</div>
                         <a class="nav-link" href="logonInformation.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -135,7 +166,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">IBM CSM</div>
-
+                    <div class="small">Author : Sujatha Sureshkumar</div>
                 </div>
             </nav>
         </div>
