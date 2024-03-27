@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<title>Sample XHTML5 Application</title>
+<script defer="defer" type="application/javascript">
+//<![CDATA[
+function populate(filename)
+{
+ var file = document.getElementById('log1').files[0];
+ var reader = new FileReader();
+ reader.onload = function(e)
+ {
+  document.getElementById('myTextarea').value = e.target.result;
+ };
+ reader.readAsText(file);
+}
+//]]>
+</script>
+<style type="text/css">
+
+</style>
+</head>
+
+<body>
+
+<form id="log1">
+<fieldset>
+<p>Select File from cng1wlsbe1b:</p>
+
+<input onclick="populate(document.getElementById('file1').value);" type="button" value="clicky clicky" />
+<input id="file_upload" type="file" value="" />
+
+<select id="file1" name="file1">
+<option value="CCS1be1" onclick="populate('log1','ACCS1be1.txt')">CCS1be1</option>
+<option value="CCS1beadm1" onclick="populate('log1','cng1wlsbe1bCCS1beadm1.txt')">CCS1beadm1</option>
+<option value="engine_A" onclick="populate('log1','cng1wlsbe1bengine_A.txt')">engine_A</option>
+</select>
+
+<textarea rows="10" id="myTextarea" name="comment" form="log1" style="width:100%"></textarea>
+</fieldset>
+</form>
+
+</body>
+</html>
