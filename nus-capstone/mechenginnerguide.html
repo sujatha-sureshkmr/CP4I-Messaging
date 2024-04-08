@@ -11,6 +11,20 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <title>Upload images using Python and Flask</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -21,7 +35,7 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Intelligent EV Parts Component Retrieval System (IECRS)</a>
+        <a class="navbar-brand ps-3" href="../index.html">Intelligent Document Processing System</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -85,12 +99,62 @@
                         <div class="card-body">
                            
                             <div>
-                                 <p class="lead"><b>Chatbot Manual</b></p>
-                                 <p class="lead"><b>Chatbot LLM</b></p>
+                                    <h2><b>Installation Libraries</b></h2>
+                                    <script src="https://gist.github.com/sujatha-sureshkmr/8b30c9b84a28b44449c98d9f3cc7cd9a.js"></script>
+                                    <br>
+                                    <h2 class="lead"><b>Download source from github</b></h2>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag')">
+                                       <pre id="myPreTag">git lfs install</pre>
+                                       <script src="script.js"></script>
+                                    </div>
+                                    <div class="codeDiv" onclick="copyToClipboard('myPreTag1')">
+                                       <pre id="myPreTag1">git lfs clone https://github.com/sujatha-sureshkmr/Capstone-PM-2024-10-IECRS01.git</pre>
+                                       <script src="script.js"></script>
+                                    </div>
+                                   </br>
 
                             </div>
 
-                            
+                            <h2><b>Mech Engineer Chatbot manual</b></h2>
+                            <p class="lead">Choose the following option and click submit</b></p>
+                        </br></br>
+                                <img src="img/img_mod_train_1.png" alt="Usecase" class="center" />
+                            </br></br>
+                                <table >
+                                    <thead>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Field</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Product Type</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. EVB, MedicalInstruments</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Product Manufacturer</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. Nissan, Tesla</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Manufacted Year</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. 2013, 2014</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Component</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. Service plug, plug</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </br></br>
+                                <img src="img/EVB_Nissan_2013/img_0_21.png" alt="Usecase" class="center" width="500" height="700"/>
+                            </br></br>
+                                <p class="lead">This picture depicts the main image and followed by components in different colours</p>
+                            </br></br>
+                                <img src="img/EVB_Nissan_2013/img_1_16.png" alt="Usecase" class="center" width="2" height="2"/>
+                            </br></br>
+                                <p class="lead">This picture depicts the main image and followed by components in different colours</p>
                         </div>
 
                     </div>

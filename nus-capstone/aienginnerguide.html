@@ -98,12 +98,12 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="../index.html">NUS Capstone 2024</a>
+        <a class="navbar-brand ps-3" href="{{ url_for('index') }}">NUS Capstone 2024</a>
 
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Intelligent EV Parts Component Retrieval System (IECRS)</a>
+        <a class="navbar-brand ps-3" href="{{ url_for('index') }}">Intelligent Document Processing System</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -232,7 +232,44 @@
                                 </div>
 
                                 </ol>
-                                <h2><b>Knowledge graph validation and model building</b></h2>
+                                <h2><b>Model Training</b></h2>
+                                <p class="lead">Choose the following option and click submit</b></p>
+                            </br></br>
+                                <img src="img/img_mod_train_1.png" alt="Usecase" class="center" />
+                            </br></br>
+                                <table >
+                                    <thead>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Field</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Details</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Product Type</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. EVB, MedicalInstruments</td>
+                                        </tr>
+                                    
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Product Manufacturer</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. Nissan, Tesla</td>
+                                        </tr>
+                                        <tr>
+                                            <th style="border:1px solid black;border-collapse:collapse;">Manufacted Year</th>
+                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. 2013, 2014</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </br></br>
+                                <img src="img/img_mod_train_2.png" alt="Usecase" class="center" />
+                            </br></br>
+                                <p class="lead">
+                                    <ol>
+                                        <li>You will be able to make changes in the text. Make changes and click submit for the changes to take effect.</li>
+                                        <li>You may also click the image to view the component images legend. Please note the actual component segmentation will be shown in mech engineer section</li>
+                                    </ol>
+                                </p>
+                               
                             </div>
 
                             

@@ -22,32 +22,23 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript">
-            const form = document.getElementById('prediction-form');
-            const resultDiv = document.getElementById('result');
-            const locationSelect = document.getElementById('location');
+        $(function () {
+            $("#chkPassport").click(function () {
+                if ($(this).is(":checked")) {
+                    $("#page_from").removeAttr("disabled");
+                    $("#page_from").focus();
+                    document.getElementById("page_from").required = true;
 
-            // Fetch locations from CSV file
-            const csvData = "Locations\nLoc1\nLoc2\nLoc3"
-            const rows = csvData.split('\n');
-            for (let i = 1; i < rows.length; i++) {
-            const location = rows[i].trim();
-            if (location !== '') {
-                const option = document.createElement('option');
-                option.value = location;
-                option.textContent = location;
-                locationSelect.appendChild(option);
-            }
-            }
-
-            form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Retrieve the form values
-            const location = document.getElementById('location').value;
-            const sqft = document.getElementById('sqft').value;
-            const bath = document.getElementById('bath').value;
-            const bhk = document.getElementById('bhk').value;
+                    $("#page_to").removeAttr("disabled");
+                    $("#page_to").focus();
+                    document.getElementById("page_to").required = true;
+                } 
+                else {
+                    $("#page_from").attr("disabled", "disabled");
+                    $("#page_to").attr("disabled", "disabled");
+                }
             });
+        });
     </script>
 
 
@@ -61,7 +52,7 @@
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
-        <a class="navbar-brand ps-3" href="../index.html">Intelligent EV Parts Component Retrieval System (IECRS)</a>
+        <a class="navbar-brand ps-3" href="../index.html">Intelligent Document Processing System</a>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
@@ -114,9 +105,9 @@
                     <h1 class="mt-4">AI Engineer model training</h1>
 
                     <ol class="breadcrumb mb-4">
-                        <!--<li class="breadcrumb-item active">
-                            <h4>Executive Summary</h4>
-                        </li>-->
+                        <li class="breadcrumb-item active">
+                            <h4>This page is for illustation purposes only. Please clone the github repository given in the AI Engineer Handbook if you want play around.</h4>
+                        </li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-header">
@@ -129,47 +120,216 @@
                             <div>
                                 <div class="card-body">
                                     <div class="signup-form" style="margin-top: 50px;">
-                                        <form method="post" action="aidocumentprocessing.html" enctype="multipart/form-data">
-                                        <h5>Upload files using Python and Flask</h5>
+                                        <form method="post" action="/aimodeltraining.html" enctype="multipart/form-data">
+                                        <h5>Let us begin to look into extracted knowledge graph</h5>
                                         <div class="form-group">
-                                            {% if msg %}
-                                            <div class="alert alert-info" role="alert">
-                                                <ul><li>{{ msg }}</li></ul>
-                                            </div>
-                                            {% endif %}
                                             <div class="ui-widget">
-                                                <label for="tags">Choose the Product, Manufacturer and Year:</label></div><br>
-                                                <form id="prediction-form">
-                                                    <label for="location">Location:</label>
-                                                    <select id="location" name="location" required>
-                                                      <option value="" disabled selected>Select location</option>
-                                                    </select>
-
-                                                    <label for="sqft">sqft:</label>
-                                                    <select id="sqft" name="sqft" required>
-                                                      <option value="" disabled selected>Select sqft</option>
-                                                    </select>
-
-                                                    <label for="bath">bath:</label>
-                                                    <select id="bath" name="bath" required>
-                                                      <option value="" disabled selected>Select bath</option>
-                                                    </select>
-
-                                                    <label for="bhk">bhk:</label>
-                                                    <select id="bhk" name="bhk" required>
-                                                      <option value="" disabled selected>Select bhk</option>
-                                                    </select>
-
-                                                    <button type="submit">Predict Price</button>
-                                                  </form>
-                                            </br>
-                                                <input type="submit" name="submit" class="btn btn-success btn-lg btn-block" value="Submit">
+                                                <label for="tags">Choose the suitable options and click submit</label></div><br>
+                                                <form method="post" action="/aimodeltraining.html" enctype="multipart/form-data">
+                                                     <div class="form-group">
+                                                         <label for="product_type">Product Type:</label>
+                                                         <select id="product_type" name="product_type" class="form-control">
+                                                            <option value="volvo">EVB</option>
+                                                            <option value="saab">Medical</option>
+                                                         </select>
+                                                     
+                                                         <label for="product_manufacturer">Product Manufacturer:</label>
+                                                         <select id="product_manufacturer" name="product_manufacturer" class="form-control">
+                                                            <option value="volvo">Nissan</option>
+                                                            <option value="saab">Hyundai</option>
+                                                         </select>
+                                                    
+                                                         <label for="manufactured_year">Manufactured Year:</label>
+                                                         <select id="manufactured_year" name="manufactured_year" class="form-control">
+                                                            <option value="volvo">2013</option>
+                                                            <option value="saab">2014</option>
+                                                         </select>
+                                                     </div>
+                                         
+                                                     <button type="submit" name="extract" class="btn btn-success btn-lg btn-block">Submit</button>
+                                                 </form>
+                                                </br></br>
+                                                <p class="lead">Knowledge graph plot</b></p>
+                                                <img src="img/hierarchy_plot.png" alt="Service Plug" />
+                                                </br></br>
+                                                <table class="table table-bordered table-hover table-condensed">
+                                                    <thead><tr><th title="Field #1">Index</th>
+                                                    <th title="Field #2">Header_0</th>
+                                                    <th title="Field #3">Header_1</th>
+                                                    <th title="Field #4">Header_2</th>
+                                                    <th title="Field #5">Header_3</th>
+                                                    <th title="Field #6">Header_4</th>
+                                                    <th title="Field #7">Header_image</th>
+                                                    <th title="Field #8">Text</th>
+                                                    <th title="Field #9">image_name</th>
+                                                    </tr></thead>
+                                                    <tbody><tr>
+                                                    <td align="right">0</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - evb</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_0_21.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a>
+                                                    </td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">1</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - service plug</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_16.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">2</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - service plug retainer</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_17.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">3</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - battery pack upper case</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_18.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">4</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - seal</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_19.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">5</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - plug</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_20.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">6</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - plug washer</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_21.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">7</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - breather</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_22.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">8</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - battery pack case side</td>
+                                                    <td>
+                                                        <a href="img/EVB_Nissan_2013/img_1_23.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td align="right">9</td>
+                                                    <td>unit disassembly assembly</td>
+                                                    <td>liion battery</td>
+                                                    <td>battery pack upper case</td>
+                                                    <td>battery pack upper case  explode view</td>
+                                                    <td>nan</td>
+                                                    <td>evb</td>
+                                                    <td>Component - : always replace every disa</td>
+                                                    <td> <a href="img/EVB_Nissan_2013/img_1_24.png">
+                                                        <div 
+                                                            >Click here for image
+                                                        </div>
+                                                      </a></td>
+                                                    </tr>
+                                                    </tbody></table>
                                             </div>
+                                       
                                         </div>
-                                        </form>
                                     
         
-                                    
+                                </div>
                                 </div>
 
                            </div>
