@@ -154,9 +154,9 @@
                     <h1 class="mt-4">AI Engineer Handbook</h1>
 
                     <ol class="breadcrumb mb-4">
-                        <!--<li class="breadcrumb-item active">
-                            <h4>Executive Summary</h4>
-                        </li>-->
+                        <li class="breadcrumb-item active">
+                            <h4 class="text-danger">This page is for illustation purposes only. Please clone the github repository given in the AI Engineer Handbook if you want play around.</h4>
+                        </li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-header">
@@ -180,6 +180,14 @@
                                     <script src="script.js"></script>
                                  </div>
                                 </br>
+                                <h2><b>Run Flask</b></h2>
+                                <h5>Go to Capstone-PM-2024-10-IECRS01 folder location</h5>
+                                <div class="codeDiv" onclick="copyToClipboard('myPreTag3')">
+                                    <pre id="myPreTag3">set FLASK_APP=app <br>set FLASK_DEBUG=1 <br>flask run</pre>
+                                    <script src="script.js"></script>
+                                 </div>
+
+                            </br>
                                 <h2><b>Document Processing</b></h2>
                                 <img src="img/img_doc_process_1.png" alt="Usecase" class="center" />
                                 <div class="card-body">
@@ -233,44 +241,26 @@
 
                                 </ol>
                                 <h2><b>Model Training</b></h2>
-                                <p class="lead">Choose the following option and click submit</b></p>
-                            </br></br>
+                                <h2><b>AI Engineer Module -> Model Training</b></h2>
+                                <h2><b>Knowledge graph validation</b></h2>
+                                <h6>Let us begin to look into extracted knowledge graph.</h6>
+                                <h6>Choose product type, product manufacturer and manufactured year and click <b> Fetch Components</b>. This step brings in the main and sub components for the particular guide.</h6>
                                 <img src="img/img_mod_train_1.png" alt="Usecase" class="center" />
-                            </br></br>
-                                <table >
-                                    <thead>
-                                        <tr>
-                                            <th style="border:1px solid black;border-collapse:collapse;">Field</th>
-                                            <td style="border:1px solid black;border-collapse:collapse;">Details</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th style="border:1px solid black;border-collapse:collapse;">Product Type</th>
-                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. EVB, MedicalInstruments</td>
-                                        </tr>
-                                    
-                                        <tr>
-                                            <th style="border:1px solid black;border-collapse:collapse;">Product Manufacturer</th>
-                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. Nissan, Tesla</td>
-                                        </tr>
-                                        <tr>
-                                            <th style="border:1px solid black;border-collapse:collapse;">Manufacted Year</th>
-                                            <td style="border:1px solid black;border-collapse:collapse;">Required field. e.g. 2013, 2014</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </br></br>
+                                <br>
+                                <h6>Choose main component and sub component to retrieve the knowledge db</h6>
                                 <img src="img/img_mod_train_2.png" alt="Usecase" class="center" />
-                            </br></br>
-                                <p class="lead">
-                                    <ol>
-                                        <li>You will be able to make changes in the text. Make changes and click submit for the changes to take effect.</li>
-                                        <li>You may also click the image to view the component images legend. Please note the actual component segmentation will be shown in mech engineer section</li>
-                                    </ol>
-                                </p>
-                               
-                            </div>
+                                <br>
+                                <h6>This warning shows when the chosen main compoent and sub components doesnt match with our records. No worries, we still display the knowledge graph based on sub component</h6>
+                                <img src="img/img_mod_train_3_a.png" alt="Usecase" class="center" />
+                                <br>
+                                <h6>There can be instances where our knowledge graph brings in multiple images for the same component. Those records are displayed here for you to update. We have displayed the folder location of the knowledge graph for you to revise it.</h6>
+                                <img src="img/img_mod_train_3.png" alt="Usecase" class="center" />
+                                <br>
+                                <h6>This picture shows knowledge graph of the component that you have chosen.</h6>
+                                <img src="img/img_mod_train_4.png" alt="Usecase" class="center" />
+                                <br>
+                                <h6>This picture knows detailed knowledge graph with components and its images.</h6>
+                                <img src="img/img_mod_train_5.png" alt="Usecase" class="center" />
 
                             
                         </div>
