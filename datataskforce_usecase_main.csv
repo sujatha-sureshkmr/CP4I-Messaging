@@ -1,0 +1,101 @@
+Business Unit / Segments,Report Name,"Report Description
+(objective, key parameters, etc.)","Source System Dependency
+(What are the source systems involved?)",Job Category,Data Analytics Stage
+Consumer Banking,01: Credit Bureau Submissions,Regular Accounts Report,,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,01: Credit Bureau Submissions,Limits,,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,01: Credit Bureau Submissions,Bad Debts,,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,01: Credit Bureau Submissions,Aggregate Outstanding Balances,,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,01: Credit Bureau Submissions,Exceptions report handling,,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,"02: Regulatory and Risk
+SPFMart / Money Mule: SPF requirements matching potential mules/ fraud/ scam/ victims and bank transaction and information details","Multiple sources : SGPS, SIBS.
+Data Requirement: Batch - Daily",We have 1 year of staging files to consume.,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,Cards,Cards Source data: Data and Entry Quality Check Exercise,ALL Cardlink Data,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,"CRM, customer support, personalized banking, product recommendations, etc.","Data quality management
+Ensure data is clean and accurate. Implement processes for ongoing data cleaning, de-duplication, and quality checks.",ALL  data ingested,01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,Deposits,"Quality control on the data for use: 
+1. Data is ingested properly
+   a. fields have the correct input
+   b. ballpark check on distributions
+2. Operational check on data properly read, but discrepancy determined to be source of data ","Dependent on SNO 4, 5, 6",01: Regulatory Requirements,01:Regulatory/ Quality
+Consumer Banking,Reconciliation - Ops,"Reports, instead of waiting for batch, they use inflight data, and reconcile within data lake.
+Data requirement : real time",ALL  data ingested,02: Operational Enablement,01:Regulatory/ Quality
+Consumer Banking,Cards,Cards Acquisitions Dashboard and Monitoring,"RCSU
+Oneview
+Cardlink",03: use case: monitoring and quick query,03:Descriptive (monitoring)
+Consumer Banking,Cards,Cards Portfolio Dashboard and Monitoring,"Cardlink
+RCSU
+OneView",03: use case: monitoring and quick query,03:Descriptive (monitoring)
+Consumer Banking,Cards,Cards Transactions Dashboard,"Cardlink
+RCSU
+OneView",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Cards,Cards Vintage Performance Dashboard,"Cardlink
+RCSU
+OneView",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Cards,Cards Collections Productivity and Performance,"Cardlink
+NEO",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Cards,Cards Campaigns Performance Dashboard,Cardlink,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Cards,"Credit Card Application: Credit card inbound traffics, conversion rate at each application step, lead time","RCSU
+OneView
+Cardlink",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Cards,Credit Card Application: Credit card application turnaround time analytics,"RCSU
+OneView
+Cardlink",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Deposits,"Wholistic Acquisition datamart which monitors and contains the following info: 
+Acquisition application status
+Acquisition Process flow and process
+Acquisition Sales and Channels information
+Acquisition Fraud and Money Mule Typologies and Parameters (level 3/ gold level)","Dependent on SNO 8, 9, 10, 11",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Deposits,"Reports, instead of waiting for batch, they use inflight data, and reconcile within data lake.
+Data requirement : Daily/real time",We have 1 year of staging files to comsume.,03: use case: monitoring and quick query,01:Regulatory/ Quality
+Consumer Banking,Ploan,P-loan product analytics to monitor application performance & drop-off,,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Ploan,P-loan application turnaround time weekly report,,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Digital Clicks: Wholistic Clicks source data mart (bronze / Silver level ),"Ensure the data and information available in Clicks can be ingested and is accessible, with data pipelines in place. Data prepared to be able to fit into the other schemas as well as dashboard - ready","MAA  information ing: Digital Clicks abe ingested and is accessible, with data pipelines in placed",04: Use Case: Alternative Data Features,04:Diagnostic
+Consumer Banking,Mortgage,"Redbrick emortgage customer journey & behavioral data.
+Data acquisition
+Gather all data contribute to a comprehensive customer profile, including demographics, etc.",,04: Use Case: Alternative Data Features,04:Diagnostic
+Consumer Banking,PLoan,"Lendela p-loan customer journey & behavioral data 
+Data acquisition
+Gather all data contribute to a comprehensive customer profile, including demographics, etc.",,04: Use Case: Alternative Data Features,04:Diagnostic
+Consumer Banking,"CRM, customer support, personalized banking, product recommendations, etc.","Continuous improvement
+Regularly review and update to incorporate new data sources and improve data processing techniques","ALL data ingested
+AI/ML ops cycle",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Customer 360 view and hyper personalization segment,"Data acquisition
+Gather all data contribute to a comprehensive customer journey, including device, conversion, drop-off, lead time, frequency, etc.","ALL data ingested
+AI/ML ops cycle",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Ploan,"Customer segmentation for targeted personal loan products
+i.e. reviewing past loan applications to identify patterns in customer demographics (age group, occupation, nationalities, locations, etc.) and utilize that information to inference who are CIMB’s ideal customers.","ALL data ingested
+AI/ML ops cycle",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Ploan,Customer analytics for preapproved p-loan ,,05: Use Case: AI/ML customer segmentation/ personalization,04:Diagnostic
+Customer Support,"Chatbot (WhatsApp, Web widget) (Customer Support for both consumer and commercial banking)","Customer Engagement Analysis including daily active user, daily messages, conversion rate to measure chatbot utilities & performance",")    daily irtco, daily messages, conversion rate to measure chatbot utilities & performanced",02: Operational Enablement,06:Prescriptive
+Data Governance,DQ rules for Sibs and Cardlink.,"Currently the DQ check is running on EUC (MS Access) and the data is manually extracted from SIBS through ITSR and Cardlink (via data staging). As we are developing the Data platform, we need to ensure the data quality is checked and the data in the Platform is of acceptable quality. ",,01: Regulatory Requirements,01:Regulatory/ Quality
+HR/IT Sec,ID removal - HR/IT Sec ,"Get the feed from YODA and systems.
+Data Requirement: Batch -Weekly/Monthly",,01: Regulatory Requirements,02:Operational Rqmt
+SG Commercials,Deposits,CASA Balance,SIBS,03: use case: monitoring and quick query,03:Descriptive (monitoring)
+SG Commercials,Deposits,FD Balance,SIBS,03: use case: monitoring and quick query,03:Descriptive (monitoring)
+SG Commercials,Deposits,CASA Balance Movement,SIBS,03: use case: monitoring and quick query,03:Descriptive (monitoring)
+SG Commercials,Digital SME lending platform (Loan Origination System (LOS)),"Digital SME loan inbound traffics, conversion rate at each application step, lead time",Application in implementation phase,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,Digital SME lending platform (Loan Origination System (LOS)),Digital SME loan application turnaround time analytics,Application in implementation phase,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,FX revenue,FX revenue,Murex,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,Loan Drawdown/ Repayment,"Loan Drawdown/ Repayment (e.g. customer early payment, partial redemption, full redemption. Losing the revenue coming from the loans) e.g. drawdown -> good for business (interest to the loan).",SIBS/ Oracle BI report -> main source CDM,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,"Online Business Current Account (OBCA) Business customers. No sibs integration. Currently, we manually enters the data into SIBS.","Online Business Current Account (OBCA) data:
+Ensure the data and information available from Finance with regards to Online Business Current Account (OBCA) data is ingested into the datalake",Not available,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,Trade Fee,Trade Fee,SIBS/ Oracle BI report -> main source CDM,03: use case: monitoring and quick query,04:Diagnostic
+SG Commercials,Trade Txn,Trade Txn,SIBS/ Oracle BI report -> main source CDM,03: use case: monitoring and quick query,04:Diagnostic
+SG Operations,Audit Confirmation,"Retrieve information from SIBS, STFS, MUREX, etc to consolidate customer holdings at specific date and prepare audit confirmation to Requesting party",Yes,02: Operational Enablement,02:Operational Rqmt
+SG Operations,CDD report compilation,"Retrieve information from SIBS, Netreveal, STFS, Mures. Compass, etc to compile customer review report",Partial,02: Operational Enablement,04:Diagnostic
+Consumer Banking,Error monitoring,"System log & alert
+Monitor system errors and push alerts to relevant stakeholders",,02: Operational Enablement,02:Operational Rqmt
+SG Operations,Loan Grading management,"Compare loan grading between SIBS, ICRES, TAPS, etc to ensure they are consistent across different system",,02: Operational Enablement,01:Regulatory/ Quality
+SG Operations,MIS Report for performance review,"Track transaction Volume, Head Count, LED, etc to compile management report ",,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Customer digital journey behaviour,Utilizing customer digital touchpoints such as web & app data to understand better product intent and opportunity discovery on daily basis,"Clicks, Web data (Adobe Analytics), Digital application systems",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Customer 360 view,"Normalizing and stitching all datapoints (product information, transactional pattern, intent, usage, lifestage etc..)  from customer to form a single customer level view","Demographics, all product portfolio, transactions, applications, interest & intent, web & app, campaign, inbound interactions, credit & risk",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Hyper personalization,"Identifying the best product, offer, channel, content & time to approach a customer. Personalization at weekly level",Customer 360,05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Customer Network,"Identifying customer's network circle, knowing who are their friends, family etc. Utilizing these data to model influential power for use in analytics","Customer transaction, demographics, location",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Customer Intent & Interest,"Utilizing customer card & banking transactions, location, browsing and response data in order to model what are the strong interest & intent of every customer","Customer transaction, location, web, campaign response data",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Customer response view,"Understanding how are customers responding to campaigns through our various channels (SMS, eDM, PN, TM etc) in order to determine effective & preferred communication method",Inbound & Outbound campaign logs and respond data,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Customer Inbound behaviour,"Knowing when and where are customers interacting with out branches, call centre & sales to better understanding customer interactions correlation to business drivers","Branch, ATM, call centre & sales staff",03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Retargeting drop-off in near real-time,"Ability to know who are the customers who have attempted to start application journey but do not complete, re-target them through other channels",Application & web + app data in real-time,03: use case: monitoring and quick query,04:Diagnostic
+Consumer Banking,Personalizing offers based on customer intent in near real-time,"Using customer interactions, intent, location data etc. We can personalized offers (e.g. rates, etc), location based + merchant offers to customer in a timely manner","Inbound, response, interest & intent, location, Customer 360 in real-time",05: Use Case: AI/ML customer segmentation/ personalization,04:Diagnostic
+Consumer Banking,Customer Money Management Assistant,"Ability to analyse and classify customer's inflow - outflow through cards, loans, recurring transfers, deposit txns etc. Provide real-time advise to customers in clicks on money management tips, recurring payments/ transfers reminder",Customer transactions (all products),05: Use Case: AI/ML customer segmentation/ personalization,04:Diagnostic
+Consumer Banking,Attrition risk identification,"Using customers transaction (Cards & Deposit) behaviour, sentiment analysis from call centre logs etc to identify high risk to attrite","Call centre logs, customer transactions (all products)",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
+Consumer Banking,Customer satisfaction level,"Identifying customer satisfaction with the organization by their interactions, unhappy journies such as high application turnaround time","Application data, call centre logs",05: Use Case: AI/ML customer segmentation/ personalization,06:Prescriptive
