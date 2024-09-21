@@ -100,9 +100,21 @@
                         <div class="card-body">
                            
                             <div>
-                                 <p class="lead"><b>Document Processing</b></p>
-                                 <p class="lead"><b>Model Training</b></p>
+                                <form method="post" action="/aimodeltraining.html" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <label for="product_type">Product Type, Manufacturer, Year:</label>
+                                        <select id="product_type" name="product_type" class="form-control">
+                                           <option value="volvo">EVB_Nissan_2013</option>
+                                           <option value="saab">EVB_Nissan_2015</option>
+                                        </select>
+                                    
+                                    </div>
+                        
+                                    <button type="submit" name="extract" class="btn btn-success btn-lg btn-block">Fetch components</button>
+                                </form>
 
+                               </br> </br>
+                               <img src="img/img_llm_output_description.png" alt="Usecase" class="center"/>
                             </div>
 
                             
